@@ -14,3 +14,12 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+
+# Buienradar weather tracker
+weather:
+  - platform: buienradar
+    forecast: true
+
+# Buienradar radar image
+camera:
+  - platform: buienradar
