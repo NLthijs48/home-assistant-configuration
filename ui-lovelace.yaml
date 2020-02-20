@@ -1,0 +1,106 @@
+title: '152'
+views:
+  - badges:
+      - entity: person.thijs
+      - entity: person.frits
+      - entity: sun.sun
+    cards:
+      - entity: media_player.4k
+        type: media-control
+      - entity: weather.152
+        type: weather-forecast
+      - entities:
+          - light.frits_room_wall
+          - light.frits_room_door
+          - light.frits_room_window
+        show_header_toggle: true
+        title: Frits' room
+        type: entities
+      - entities:
+          - light.dining_hall
+          - light.kitchen_closet
+          - light.living_room_tv
+          - light.dining_long_wall
+          - light.living_room_couch
+          - light.kitchen_cooking
+          - light.living_room_floor
+          - light.dining_middle
+        show_header_toggle: true
+        title: Living Room
+        type: entities
+      - entities:
+          - light.thijs_room
+        show_header_toggle: true
+        title: Thijs' room
+        type: entities
+      - entities:
+          - automation.turn_off_the_lights_when_i_leave_home
+        title: Automation
+        type: entities
+      - entities:
+          - light.group_for_wakeup
+          - light.living_room
+          - light.toilet_2
+          - light.kitchen
+          - light.tv
+          - light.frits_room
+          - light.thijs_room_2
+          - light.dining
+          - light.group_1
+          - light.attic
+          - light.small_room_2
+          - light.group_for_wakeup_2
+          - light.hall_upstairs_2
+          - light.hall_2
+          - light.closet_2
+        title: Light
+        type: entities
+    panel: false
+    path: default_view
+    title: Home
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.plex_thijs
+        show_header_toggle: false
+        title: Plex
+        type: entities
+      - entity: media_player.plex_chrome
+        type: media-control
+      - entities:
+          - entity: device_tracker.phone_thijs
+          - entity: device_tracker.phone_frits
+        hours_to_show: 24
+        refresh_interval: 0
+        title: Who was home?
+        type: history-graph
+      - entities:
+          - entity: media_player.4k
+        hours_to_show: 48
+        refresh_interval: 0
+        title: Watching TV
+        type: history-graph
+      - entity: light.led_strip
+        theme: default
+        type: light
+      - entity: media_player.4k
+        type: media-control
+      - cards:
+          - entity: weather.br_unknown_station
+            name: Buienradar
+            type: weather-forecast
+          - aspect_ratio: 100%
+            camera_image: camera.buienradar_loop
+            camera_view: live
+            entity: camera.buienradar_loop
+            hold_action:
+              action: none
+            name: Buienradar
+            show_name: false
+            show_state: false
+            tap_action:
+              action: none
+            type: picture-entity
+        type: vertical-stack
+    path: living-room
+    title: Living room

@@ -15,6 +15,10 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+# Use ui-lovelace.yml to configure the UI
+lovelace:
+  mode: yaml
+
 # Buienradar weather tracker
 weather:
   - platform: buienradar
