@@ -13,7 +13,11 @@ tts:
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+
+# Editor scenes
 scene: !include scenes.yaml
+# Manual scenes, split into separate files
+scene old: !include_dir_merge_list scenes
 
 # Use ui-lovelace.yml to configure the UI
 #lovelace:

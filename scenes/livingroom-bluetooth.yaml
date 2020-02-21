@@ -1,0 +1,21 @@
+# Listen to music using Bluetooth
+
+id: scene.livingroom.bluetooth
+name: Bluetooth
+entities:
+  # Turn off the TV (might have been watching something before)
+  media_player.philips_tv:
+    state: 'off'
+  # Set the LED strip to blue :)
+  light.led_strip:
+    brightness: 254
+    rgb_color:
+      - 71
+      - 0
+      - 255
+    state: on
+  # Turn on the receiver
+  media_player.receiver:
+    source: Bluetooth
+    state: on
+    volume_level: 0.5

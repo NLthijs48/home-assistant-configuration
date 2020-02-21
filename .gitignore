@@ -6,6 +6,7 @@
 !*.yaml
 !.gitignore
 !*.md
+!scenes
 
 # Ignore folders.
 .storage
