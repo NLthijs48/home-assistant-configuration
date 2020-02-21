@@ -7,6 +7,9 @@
 !.gitignore
 !*.md
 !scenes
+!rest-client.env.json
+!api
+!*.http
 
 # Ignore folders.
 .storage

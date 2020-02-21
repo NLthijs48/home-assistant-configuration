@@ -1,0 +1,5 @@
+POST {{host}}/config/core/check_config
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
