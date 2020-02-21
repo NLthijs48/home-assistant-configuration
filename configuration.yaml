@@ -28,18 +28,38 @@ weather:
 camera:
   - platform: buienradar
 
+# Used to turn on the Philips TV
+wake_on_lan:
+
 # Onkyo integration
 media_player:
   - platform: onkyo
     host: 10.0.2.1
     name: receiver
-    sources:
-      tv-cd: TV
-      video3: Bluetooth
-      video2: T-Mobile
-      video6: Steam link
+    #sources:
+    #  tv-cd: TV
+    #  video3: Bluetooth
+    #  video2: T-Mobile
+    #  video6: Steam link
   - platform: philips_js
     host: 10.0.2.22
     name: TV
-    api_version: 5
+    api_version: 6
+    turn_on_action:
+      - service: rest_command.chromecast_boot_tv
+      # Old wake-on-lan, does not work with a wired connection (did not try wifi)
+      - service: wake_on_lan.send_magic_packet
+        data:
+          mac: 70:af:24:e5:28:2d
+
+# REST commands
+rest_command:
+  tv_input:
+    url: http://10.0.2.22:1925/6/input/key
+    method: POST
+    payload: '{"key": "{{ key }}"'
+    content_type: 'application/json'
+  chromecast_boot_tv:
+    url: http://10.0.2.12:8008/apps/ChromeCast
+    method: POST
 
