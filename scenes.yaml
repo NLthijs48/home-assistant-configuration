@@ -134,3 +134,30 @@
       supported_features: 20364
       video_out: yes,out
       volume_level: 0.5
+- id: '1582288628836'
+  name: TV/receiver off
+  entities:
+    light.led_strip:
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: LED strip
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 63
+    media_player.receiver:
+      friendly_name: receiver
+      source_list:
+      - TV
+      - Bluetooth
+      - T-Mobile
+      - Steam link
+      state: 'off'
+      supported_features: 20364
+      video_out: yes,out
+    media_player.tv:
+      channel_list: []
+      friendly_name: TV
+      state: 'on'
+      supported_features: 3900
