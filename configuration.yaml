@@ -40,4 +40,6 @@ media_player:
       video6: Steam link
   - platform: philips_js
     host: 10.0.2.22
+    name: TV
+    api_version: 5
 
