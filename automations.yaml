@@ -1,6 +1,6 @@
 - id: '1578751685651'
   alias: Turn off the lights when I leave home
-  description: ''
+  description: 'TODO: add Frits + and condition'
   trigger:
   - entity_id: person.thijs
     event: leave
@@ -39,4 +39,8 @@
   - device_id: 8455ac358bbe4b47998c1fba2a51dae4
     domain: light
     entity_id: light.dining_middle
+    type: turn_off
+  - device_id: 4c60706067b342d7870be6612fc12368
+    domain: light
+    entity_id: light.led_strip
     type: turn_off
