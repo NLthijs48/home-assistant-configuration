@@ -124,7 +124,7 @@
     media_player.receiver:
       friendly_name: receiver
       is_volume_muted: false
-      source: cd_tv/cd
+      source: TV
       source_list:
       - TV
       - Bluetooth
