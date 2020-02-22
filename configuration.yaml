@@ -40,11 +40,11 @@ media_player:
   - platform: onkyo
     host: 10.0.2.1
     name: receiver
-    #sources:
-    #  tv-cd: TV
-    #  video3: Bluetooth
-    #  video2: T-Mobile
-    #  video6: Steam link
+    sources:
+      cd: TV
+      video3: Bluetooth
+      video2: T-Mobile
+      video6: Steam link
   - platform: philips_js
     host: 10.0.2.22
     name: TV

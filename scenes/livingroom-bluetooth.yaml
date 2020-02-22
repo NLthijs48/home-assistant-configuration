@@ -16,6 +16,6 @@ entities:
     state: on
   # Turn on the receiver
   media_player.receiver:
-    source: Bluetooth
     state: on
+    source: Bluetooth
     volume_level: 0.5
