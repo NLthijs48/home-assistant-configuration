@@ -1,0 +1,27 @@
+# Watch old-school linear TV
+
+name: Home cinema TV
+entities:
+
+  # Turn on the tv + receiver
+  media_player.4k:
+    app_id: CC1AD845
+    app_name: Default Media Receiver
+    is_volume_muted: false
+    media_content_id: https://home-assistant.io/images/cast/splash.png
+    state: idle
+
+  # Set the LED strip to purple
+  light.tv_led_strip:
+    brightness: 254
+    rgb_color:
+      - 255
+      - 46
+      - 129
+    state: on
+
+  # Set receiver input
+  media_player.receiver:
+    state: on
+    source: T-Mobile
+    volume_level: 0.5

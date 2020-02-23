@@ -1,0 +1,16 @@
+# Turn off the home cinema installation
+
+name: Home Cinema turn off
+entities:
+
+  # Turn off the TV
+  media_player.philips_tv:
+    state: off
+
+  # Turn off the LED strip
+  light.tv_led_strip:
+    state: off
+
+  # Turn on the receiver
+  media_player.receiver:
+    state: off

@@ -1,21 +1,23 @@
 # Listen to music using Bluetooth
 
-id: scene.livingroom.bluetooth
-name: Bluetooth
+name: Home cinema bluetooth
 entities:
+
+  # Turn on the receiver
+  media_player.receiver:
+    state: on
+    source: Bluetooth
+    volume_level: 0.5
+
   # Turn off the TV (might have been watching something before)
   media_player.philips_tv:
     state: 'off'
+
   # Set the LED strip to blue :)
-  light.led_strip:
+  light.tv_led_strip:
     brightness: 254
     rgb_color:
       - 71
       - 0
       - 255
     state: on
-  # Turn on the receiver
-  media_player.receiver:
-    state: on
-    source: Bluetooth
-    volume_level: 0.5
