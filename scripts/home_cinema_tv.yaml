@@ -1,0 +1,28 @@
+alias: "View T-Mobile TV"
+description: "View T-Mobile TV and setup sound"
+sequence:
+  # Turn on the TV (turns on the receiver as well)
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.hdmi_0
+
+  # Set the TV to the Receiver input (T-mobile box is connected to the receiver)
+  - service: hdmi_cec.select_device
+    data:
+      device: Receiver
+
+  # Set the receiver to the T-Mobile input
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.receiver
+      source: T-Mobile
+
+  # Set the LED strip to purple
+  - service: light.turn_on
+    entity_id: group.living_room
+    data:
+      brightness: 254
+      rgb_color:
+        - 255
+        - 46
+        - 129

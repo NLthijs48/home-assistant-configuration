@@ -1,0 +1,18 @@
+alias: "Turn off media"
+description: "Turn off the TV and receiver"
+sequence:
+  # Turn off the LED strip
+  - service: light.turn_off
+    data:
+      entity_id: light.tv_led_strip
+      transition: 5
+
+  # Turn off the TV (also turns off the receiver)
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.hdmi_0
+
+  # Turn off the receiver (for the case where the TV was already off)
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.hdmi_5

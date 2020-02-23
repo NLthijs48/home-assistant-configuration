@@ -2,6 +2,7 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+# Entity customizations
 homeassistant:
   customize:
     person.thijs:
@@ -19,7 +20,7 @@ tts:
 
 group: !include groups.yaml
 automation: !include automations.yaml
-script: !include scripts.yaml
+script: !include_dir_named scripts
 
 # Editor scenes
 scene: !include scenes.yaml
@@ -56,12 +57,14 @@ media_player:
     host: 10.0.2.22
     name: TV
     api_version: 6
-    turn_on_action:
-      - service: rest_command.chromecast_boot_tv
-      # Old wake-on-lan, does not work with a wired connection (did not try wifi)
-      - service: wake_on_lan.send_magic_packet
-        data:
-          mac: 70:af:24:e5:28:2d
+
+# HDMI setup as seen from the TV
+hdmi_cec:
+  platform: media_player
+  devices:
+    0: TV
+    1: Receiver
+    3: Chromecast
 
 # REST commands
 rest_command:
@@ -74,6 +77,7 @@ rest_command:
     url: http://10.0.2.12:8008/apps/ChromeCast
     method: POST
 
+# Light groups
 light:
   - platform: group
     name: Living room lights

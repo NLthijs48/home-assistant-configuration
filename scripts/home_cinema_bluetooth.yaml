@@ -1,0 +1,26 @@
+alias: "Use bluetooth for listening music"
+description: "View T-Mobile TV and setup sound"
+sequence:
+
+  # TODO turn off the TV? might turn off the receiver as well
+
+  # Turn on the receiver
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.hdmi_5
+
+  # Receiver input
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.receiver
+      source: Bluetooth
+
+  # LED strip to blue
+  - service: light.turn_on
+    entity_id: group.living_room
+    data:
+      brightness: 254
+      rgb_color:
+        - 0
+        - 0
+        - 255
