@@ -100,3 +100,9 @@ light:
       - light.dining_table
       - light.dining_duck
       - light.dining_large_painting
+  - platform: group
+    name: "Frits' room lights"
+    entities:
+      - light.frits_room_wall
+      - light.frits_room_cabinet
+      - light.frits_room_window
