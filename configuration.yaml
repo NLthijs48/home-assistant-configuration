@@ -2,6 +2,13 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+homeassistant:
+  customize:
+    person.thijs:
+      entity_picture: "/local/thijs.jpg"
+    person.frits:
+      entity_picture: "/local/frits.jpg"
+
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
 #   base_url: example.duckdns.org:8123
