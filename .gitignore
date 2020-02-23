@@ -1,14 +1,6 @@
-# Example .gitignore file for your config dir.
-# An * ensures that everything will be ignored.
-*
-
-# You can whitelist files/folders with !, these will not be ignored.
-!*.yaml
-!.gitignore
-!*.md
-!scenes
-!api/*.http
-!api/rest-client.env.json
+# Intellij IDEA
+*.iml
+.idea
 
 # Ignore folders.
 .storage
