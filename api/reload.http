@@ -1,0 +1,41 @@
+POST {{host}}/services/homeassistant/reload_core_config
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+POST {{host}}/services/automation/reload
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+POST {{host}}/services/group/reload
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+POST {{host}}/services/person/reload
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+POST {{host}}/services/scene/reload
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+POST {{host}}/services/script/reload
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+POST {{host}}/services/zone/reload
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
