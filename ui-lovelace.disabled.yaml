@@ -80,7 +80,7 @@ views:
         refresh_interval: 0
         title: Watching TV
         type: history-graph
-      - entity: light.led_strip
+      - entity: light.tv_led_strip
         theme: default
         type: light
       - entity: media_player.4k

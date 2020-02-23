@@ -67,3 +67,36 @@ rest_command:
     url: http://10.0.2.12:8008/apps/ChromeCast
     method: POST
 
+light:
+  - platform: group
+    name: Living room lights
+    entities:
+      - light.kitchen_cooking
+      - light.kitchen_kielzogschild
+      - light.dining_table
+      - light.dining_duck
+      - light.dining_large_painting
+      - light.living_room_iceland_1
+      - light.living_room_iceland_2
+      - light.living_room_standing
+      - light.tv_led_strip
+  - platform: group
+    name: TV lights
+    entities:
+      - light.living_room_iceland_1
+      - light.living_room_iceland_2
+      - light.living_room_standing
+      - light.tv_led_strip
+  - platform: group
+    name: Kitchen lights
+    entities:
+      - light.kitchen_cooking
+      - light.kitchen_kielzogschild
+      # Cannot add switch.kitchen_sink to this light group,
+      # is linked to light.kitchen_lights using automations
+  - platform: group
+    name: Dining lights
+    entities:
+      - light.dining_table
+      - light.dining_duck
+      - light.dining_large_painting

@@ -42,5 +42,5 @@
     type: turn_off
   - device_id: 4c60706067b342d7870be6612fc12368
     domain: light
-    entity_id: light.led_strip
+    entity_id: light.tv_led_strip
     type: turn_off
