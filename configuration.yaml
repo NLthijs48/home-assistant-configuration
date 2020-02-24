@@ -10,6 +10,11 @@ homeassistant:
     person.frits:
       entity_picture: "/local/frits.jpg"
 
+# Setup SSL
+http:
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
 #   base_url: example.duckdns.org:8123
