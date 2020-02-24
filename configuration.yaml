@@ -14,10 +14,7 @@ homeassistant:
 http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
-
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
+  base_url: https://home.wiefferink.me
 
 # Text to speech
 tts:
