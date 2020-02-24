@@ -119,3 +119,14 @@ light:
       - light.frits_room_wall
       - light.frits_room_cabinet
       - light.frits_room_window
+
+# Machine monitoring
+glances:
+  # Raspberry Pi itself
+  - host: 127.0.0.1
+    port: 61209
+    name: glances_pi
+
+  # Desktop Thijs
+  #- host: 10.0.100.1
+
