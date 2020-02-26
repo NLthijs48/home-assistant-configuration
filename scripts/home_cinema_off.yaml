@@ -12,6 +12,11 @@ sequence:
     data:
       entity_id: media_player.hdmi_0
 
+  # Turn off the Chromecast (otherwise it will keep playing in the background)
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.4k
+
   # Turn off the receiver (for the case where the TV was already off)
   - service: media_player.turn_off
     data:
