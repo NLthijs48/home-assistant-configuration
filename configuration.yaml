@@ -16,6 +16,10 @@ http:
   ssl_key: /ssl/privkey.pem
   base_url: https://home.wiefferink.me
 
+# Setup history database (MariaDB addon)
+recorder:
+  db_url: mysql://homeassistant:n3zhl5kxyeofrgg2yf9pmxtkdv5ubojb6xayvrd68ttgod3szju3qymhti65q9qx@core-mariadb/homeassistant?charset=utf8
+
 # Text to speech
 tts:
   - platform: google_translate
