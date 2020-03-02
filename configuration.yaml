@@ -54,6 +54,7 @@ media_player:
   - platform: onkyo
     host: 10.0.2.1
     name: receiver
+    receiver_max_volume: 100
     sources:
       cd: TV
       video3: Bluetooth
