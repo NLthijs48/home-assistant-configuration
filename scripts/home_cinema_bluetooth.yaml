@@ -1,5 +1,6 @@
-alias: "Use bluetooth for listening music"
-description: "View T-Mobile TV and setup sound"
+alias: Use bluetooth for listening music
+description: View T-Mobile TV and setup sound
+icon: mdi:bluetooth
 sequence:
 
   # TODO turn off the TV? might turn off the receiver as well

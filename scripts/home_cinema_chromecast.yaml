@@ -1,5 +1,6 @@
-alias: "Use the Chromecast"
-description: "View the Chromecast on TV and setup sound"
+alias: Use the Chromecast"
+description: View the Chromecast on TV and setup sound
+icon: mdi:cast
 sequence:
   # Turn on the TV (turns on the receiver as well)
   - service: media_player.turn_on

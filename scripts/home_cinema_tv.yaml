@@ -1,5 +1,6 @@
-alias: "View T-Mobile TV"
-description: "View T-Mobile TV and setup sound"
+alias: View T-Mobile TV
+description: View T-Mobile TV and setup sound
+icon: mdi:television-classic
 sequence:
   # Turn on the TV (turns on the receiver as well)
   - service: media_player.turn_on
