@@ -20,7 +20,7 @@ sequence:
 
   # Set the LED strip to purple
   - service: light.turn_on
-    entity_id: group.living_room
+    entity_id: light.tv_led_strip
     data:
       brightness: 254
       rgb_color:
