@@ -135,3 +135,7 @@ glances:
   # Desktop Thijs
   #- host: 10.0.100.1
 
+# Spotify
+spotify:
+  client_id: a42ebc5a66854bc3985bd7c08c54eaaa
+  client_secret: d56538c409be4f1ba29485293140f7b7
