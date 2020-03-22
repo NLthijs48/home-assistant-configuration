@@ -1,7 +1,11 @@
-alias: Turn off media
+alias: Home cinema - Off
 description: Turn off the TV and receiver
 icon: 'mdi:television-off'
 sequence:
+  - service: script.home_cinema_mode
+    data:
+      mode: 'off'
+
   # Turn off the LED strip
   - service: light.turn_off
     data:

@@ -1,0 +1,46 @@
+# Shows status of all media players that are active
+type: entities
+title: Media
+show_header_toggle: false
+entities:
+
+  # Show chromecast when not off
+  - type: conditional
+    conditions:
+      - entity: media_player.4k
+        state_not: 'off'
+    row:
+      type: 'custom:mini-media-player'
+      entity: media_player.4k
+      artwork: cover
+      hide:
+        icon: true
+        mute: true
+        power: true
+        runtime: false
+        volume: true
+
+  # Show receiver when not off
+  - type: conditional
+    conditions:
+      - entity: media_player.receiver
+        state_not: 'off'
+    row:
+      type: 'custom:mini-media-player'
+      name: Speakers
+      icon: 'mdi:speaker'
+      entity: media_player.receiver
+      group: true
+      hide:
+        controls: true
+        mute: true
+        power: true
+
+  # Google home
+  - type: 'custom:mini-media-player'
+    name: Google Home Mini
+    icon: 'mdi:google-home'
+    entity: media_player.living_room_speaker
+    group: true
+    tts:
+      platform: google_translate

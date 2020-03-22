@@ -1,0 +1,74 @@
+# Living room lights control
+type: entities
+title: Lights
+show_header_toggle: false
+entities:
+  - entity: light.living_room_lights
+    name: All of them
+    state_color: false
+    type: 'custom:slider-entity-row'
+  - label: Areas
+    type: section
+  - entities:
+      - entity: light.living_room_iceland_1
+        icon: 'mdi:track-light'
+        name: 'Iceland #1'
+      - entity: light.living_room_iceland_2
+        icon: 'mdi:track-light'
+        name: 'Iceland #2'
+      - entity: light.living_room_standing
+        icon: 'mdi:floor-lamp'
+        name: Standing
+      - entity: light.tv_led_strip
+        icon: 'mdi:led-strip-variant'
+        name: LED strip
+    group_config:
+      type: 'custom:slider-entity-row'
+    head:
+      entity: light.tv_lights
+      icon: 'mdi:television'
+      name: TV
+      state_color: false
+      type: 'custom:slider-entity-row'
+    open: false
+    type: 'custom:fold-entity-row'
+  - entities:
+      - entity: light.dining_table
+        icon: 'mdi:track-light'
+        name: Table
+      - entity: light.dining_duck
+        icon: 'mdi:track-light'
+        name: Duck paintings
+      - entity: light.dining_large_painting
+        icon: 'mdi:track-light'
+        name: Large painting
+    group_config:
+      type: 'custom:slider-entity-row'
+    head:
+      entity: light.dining_lights
+      icon: 'mdi:table-chair'
+      name: Dining
+      state_color: false
+      type: 'custom:slider-entity-row'
+    open: false
+    type: 'custom:fold-entity-row'
+  - entities:
+      - entity: light.kitchen_cooking
+        icon: 'mdi:track-light'
+        name: Cooking area
+        type: 'custom:slider-entity-row'
+      - entity: light.kitchen_kielzogschild
+        icon: 'mdi:track-light'
+        name: Kielzogschild
+        type: 'custom:slider-entity-row'
+      - entity: switch.kitchen_sink
+        icon: 'mdi:water-pump'
+        name: Sink
+    head:
+      entity: light.kitchen_lights
+      icon: 'mdi:chef-hat'
+      name: Kitchen
+      state_color: false
+      type: 'custom:slider-entity-row'
+    open: false
+    type: 'custom:fold-entity-row'

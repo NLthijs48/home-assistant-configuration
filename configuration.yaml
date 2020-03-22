@@ -9,6 +9,8 @@ homeassistant:
       entity_picture: "/local/thijs.jpg"
     person.frits:
       entity_picture: "/local/frits.jpg"
+  packages:
+    home_cinema: !include features/home_cinema/definitions.yaml
 
 # Setup SSL
 http:
@@ -26,16 +28,18 @@ tts:
 
 group: !include groups.yaml
 automation: !include automations.yaml
-script: !include_dir_named scripts
 
-# Editor scenes
-scene: !include scenes.yaml
-# Manual scenes, split into separate files
-scene old: !include_dir_list scenes
-
-# Use ui-lovelace.yml to configure the UI
-#lovelace:
-#  mode: yaml
+# Frontend settings
+lovelace:
+  # Keep using storage mode for most dashboards
+  mode: storage
+  dashboards:
+    ui-home:
+      mode: yaml
+      title: Home
+      icon: mdi:home
+      show_in_sidebar: true
+      filename: ui-home.yaml
 
 # Buienradar weather tracker
 weather:
@@ -48,30 +52,6 @@ camera:
 
 # Used to turn on the Philips TV
 wake_on_lan:
-
-# Onkyo integration
-media_player:
-  - platform: onkyo
-    host: 10.0.2.1
-    name: receiver
-    receiver_max_volume: 100
-    sources:
-      cd: TV
-      video3: Bluetooth
-      video2: T-Mobile
-      video6: Steam link
-  - platform: philips_js
-    host: 10.0.2.22
-    name: TV
-    api_version: 6
-
-# HDMI setup as seen from the TV
-hdmi_cec:
-  platform: media_player
-  devices:
-    0: TV
-    1: Receiver
-    3: Chromecast
 
 # REST commands
 rest_command:

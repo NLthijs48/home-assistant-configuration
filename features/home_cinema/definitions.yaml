@@ -1,0 +1,56 @@
+# Implements home cinema modes:
+# - Off: tv/receiver/etc are off
+# - Chromecast: view/listen to chromecast content
+# - Bluetooth: listen to bluetooth music
+# - TV: view T-mobile linear tv
+
+# Tracker of the current state
+input_select:
+  home_cinema_mode:
+    name: Home cinema mode
+    icon: mdi:speaker-multiple
+    options:
+      - 'off'
+      - 'chromecast'
+      - 'bluetooth'
+      - 'tv'
+
+# Tracks whether we are moving towards a new state
+input_boolean:
+  home_cinema_pending:
+    name: Home cinema changing state
+    icon: mdi:loading
+    initial: off # Assume not loading after restart
+
+# Script for changing between modes
+script:
+  home_cinema_mode: !include scripts/set_mode.yaml
+
+  home_cinema_off: !include scripts/off.yaml
+  home_cinema_chromecast: !include scripts/chromecast.yaml
+  home_cinema_bluetooth: !include scripts/bluetooth.yaml
+  home_cinema_tv: !include scripts/tv.yaml
+
+# Onkyo integration
+media_player:
+  - platform: onkyo
+    host: 10.0.2.1
+    name: receiver
+    receiver_max_volume: 100
+    sources:
+      cd: TV
+      video3: Bluetooth
+      video2: T-Mobile
+      video6: Steam link
+  - platform: philips_js
+    host: 10.0.2.22
+    name: TV
+    api_version: 6
+
+# HDMI setup as seen from the TV
+hdmi_cec:
+  platform: media_player
+  devices:
+    0: TV
+    1: Receiver
+    3: Chromecast

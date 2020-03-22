@@ -1,29 +1,33 @@
-alias: View T-Mobile TV
-description: View T-Mobile TV and setup sound
-icon: mdi:television-classic
+alias: Home cinema - Chromecast
+description: Use the Chromecast to view/listen
+icon: mdi:cast
 sequence:
+  - service: script.home_cinema_mode
+    data:
+      mode: chromecast
+
   # Turn on the TV (turns on the receiver as well)
   - service: media_player.turn_on
     data:
       entity_id: media_player.hdmi_0
 
-  # Set the TV to the Receiver input (T-mobile box is connected to the receiver)
+  # TV to the Chromecast input
   - service: hdmi_cec.select_device
     data:
-      device: Receiver
+      device: Chromecast
 
-  # Set the receiver to the T-Mobile input
+  # Receiver to the TV input
   - service: media_player.select_source
     data:
       entity_id: media_player.receiver
-      source: T-Mobile
+      source: TV
 
-  # Set the LED strip to purple
+  # LED strip to green
   - service: light.turn_on
     entity_id: light.tv_led_strip
     data:
       brightness: 254
       rgb_color:
+        - 0
         - 255
-        - 46
-        - 129
+        - 0

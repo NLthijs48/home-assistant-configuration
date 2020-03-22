@@ -1,0 +1,25 @@
+# Button row to set media mode of the living room
+type: glance
+title: TV modes
+show_state: false
+entities:
+  - entity: script.home_cinema_chromecast
+    name: Chromecast
+    tap_action:
+      action: call-service
+      service: script.home_cinema_chromecast
+  - entity: script.home_cinema_bluetooth
+    name: Bluetooth
+    tap_action:
+      action: call-service
+      service: script.home_cinema_bluetooth
+  - entity: script.home_cinema_tv
+    name: TV
+    tap_action:
+      action: call-service
+      service: script.home_cinema_tv
+  - entity: script.home_cinema_off
+    name: 'Off'
+    tap_action:
+      action: call-service
+      service: script.home_cinema_off
