@@ -39,3 +39,39 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
+
+POST {{host}}/services/frontend/reload_themes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+POST {{host}}/services/input_boolean/reload
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+POST {{host}}/services/input_select/reload
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+POST {{host}}/services/input_text/reload
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+POST {{host}}/services/input_datetime/reload
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+POST {{host}}/services/input_number/reload
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
