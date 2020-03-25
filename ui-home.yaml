@@ -1,23 +1,27 @@
+title: 'Home'
 custom_header:
   compact_mode: true
-  footer_mode: true
+  footer_mode: false
   menu_hide: true
   reverse_button_direction: true
   reverse_tab_direction: true
-title: 'Home'
 views:
-  - badges: []
+
+  # Living room
+  - icon: 'mdi:theater'
+    path: living-room
+    badges: []
     cards:
-      - !include ui/lights/livingroom.yaml
+      - !include features/lighting/ui/living_room.yaml
       - !include features/home_cinema/ui/mode-select.yaml
       - !include features/home_cinema/ui/players.yaml
       - !include features/home_cinema/ui/mode-select-2.yaml
       #- !include ui/media/plex-status.yaml, not useful yet
 
-    icon: 'mdi:theater'
-    path: living-room
-    title: ''
-  - badges:
+  # Home
+  - icon: mdi:home
+    path: default_view
+    badges:
       - entity: person.thijs
       - entity: person.frits
       - entity: sun.sun
@@ -108,16 +112,13 @@ views:
               labels: true
             type: 'custom:mini-graph-card'
         type: vertical-stack
-    icon: 'mdi:home'
-    panel: false
-    path: default_view
-    title: ''
-  - badges: []
+
+  # Thijs
+  - title: Thijs
+    path: thijs
+    badges: []
     cards:
-      - entity: light.ceiling_thijs
-        icon: 'mdi:rectangle-outline'
-        name: Light
-        type: light
+      - !include features/lighting/ui/room_thijs.yaml
       - entities:
           - entity: media_player.bedroom_speaker
             group: true
@@ -132,37 +133,16 @@ views:
         type: entities
       - entity: media_player.spotify_thijs
         type: media-control
-      - client_id: a42ebc5a66854bc3985bd7c08c54eaaa
-        type: 'custom:spotify-card'
-    icon: ''
-    path: thijs
-    title: Thijs
-  - badges: []
+      # TODO fix redirect url for new dashboard path (and think about what this card should do)
+      #- client_id: a42ebc5a66854bc3985bd7c08c54eaaa
+      #  type: 'custom:spotify-card'
+
+  # Frits
+  - title: Frits
+    path: frits
+    badges: []
     cards:
-      - entities:
-          - entities:
-              - entity: light.frits_room_wall
-                icon: 'mdi:image-size-select-actual'
-                name: Wall
-              - entity: light.frits_room_cabinet
-                icon: 'mdi:wardrobe'
-                name: Cabinet
-              - entity: light.frits_room_window
-                icon: 'mdi:window-closed-variant'
-                name: Window
-            group_config:
-              type: 'custom:slider-entity-row'
-            head:
-              entity: light.frits_room_lights
-              icon: 'mdi:track-light'
-              name: Ceiling
-              state_color: false
-              type: 'custom:slider-entity-row'
-            open: false
-            type: 'custom:fold-entity-row'
-        show_header_toggle: false
-        title: Lights
-        type: entities
+      - !include features/lighting/ui/room_frits.yaml
       - entities:
           - sensor.bssid
           - sensor.battery_level_2
@@ -174,149 +154,12 @@ views:
           - sensor.sim_1
           - sensor.ssid
         type: entities
-    path: frits
-    title: Frits
-  - badges: []
-    cards:
-      - entities:
-          - entities:
-              - entity: light.tv_lights
-                icon: 'mdi:television'
-                name: TV
-                state_color: false
-                type: 'custom:slider-entity-row'
-              - entity: light.dining_lights
-                icon: 'mdi:table-chair'
-                name: Dining
-                state_color: false
-                type: 'custom:slider-entity-row'
-              - entity: light.kitchen_lights
-                icon: 'mdi:chef-hat'
-                name: Kitchen
-                state_color: false
-                type: 'custom:slider-entity-row'
-            head:
-              entity: light.living_room_lights
-              name: Living room
-              state_color: false
-              type: 'custom:slider-entity-row'
-            type: 'custom:fold-entity-row'
-          - entities:
-              - entity: sensor.toilet_motion_sensor
-                icon: 'mdi:motion-sensor'
-                name: Motion sensor
-            head:
-              entity: light.toilet
-              icon: 'mdi:toilet'
-              state_color: false
-              type: 'custom:slider-entity-row'
-            type: 'custom:fold-entity-row'
-          - entities:
-              - entity: sensor.hall_ground_floor_motion_sensor
-                icon: 'mdi:motion-sensor'
-                name: Motion sensor
-            head:
-              entity: light.ground_floor_hall
-              icon: 'mdi:road'
-              name: Hall
-              state_color: false
-              type: 'custom:slider-entity-row'
-            type: 'custom:fold-entity-row'
-          - entities:
-              - entity: sensor.closet_motion_sensor
-                icon: 'mdi:motion-sensor'
-                name: Motion sensor
-            head:
-              entity: light.closet
-              icon: 'mdi:wardrobe'
-              name: Closet
-              state_color: false
-              type: 'custom:slider-entity-row'
-            type: 'custom:fold-entity-row'
-        show_header_toggle: false
-        title: Ground floor
-        type: entities
-      - entities:
-          - entities:
-              - entity: sensor.first_floor_motion_sensor
-                icon: 'mdi:motion-sensor'
-                name: Motion sensor
-            head:
-              entity: light.hall_first_floor
-              icon: 'mdi:road'
-              name: Hall
-              state_color: false
-              type: 'custom:slider-entity-row'
-            type: 'custom:fold-entity-row'
-          - entities:
-              - entity: light.frits_room_wall
-                icon: 'mdi:image-size-select-actual'
-                name: Wall
-              - entity: light.frits_room_cabinet
-                icon: 'mdi:wardrobe'
-                name: Cabinet
-              - entity: light.frits_room_window
-                icon: 'mdi:window-closed-variant'
-                name: Window
-            group_config:
-              type: 'custom:slider-entity-row'
-            head:
-              entity: light.frits_room_lights
-              icon: 'mdi:track-light'
-              name: Frits' room
-              state_color: false
-              type: 'custom:slider-entity-row'
-            open: false
-            type: 'custom:fold-entity-row'
-          - entities:
-              - entity: sensor.remote_thijs
-                icon: 'mdi:remote-tv'
-                name: Remote
-            head:
-              entity: light.ceiling_thijs
-              icon: 'mdi:rectangle-outline'
-              name: Thijs' room
-              state_color: false
-              type: 'custom:slider-entity-row'
-            type: 'custom:fold-entity-row'
-          - entities:
-              - entity: sensor.remote_computers
-                icon: 'mdi:remote-tv'
-                name: Remote
-            head:
-              entity: light.ceiling_computers
-              icon: 'mdi:desktop-tower-monitor'
-              name: Computers
-              state_color: false
-              type: 'custom:slider-entity-row'
-            type: 'custom:fold-entity-row'
-        show_header_toggle: false
-        title: First floor
-        type: entities
-      - entities:
-          - entities:
-              - entity: sensor.motion_sensor_attic_hall
-                icon: 'mdi:motion-sensor'
-                name: Motion sensor
-            head:
-              entity: light.attic_hall
-              icon: 'mdi:washing-machine'
-              name: Washing hall
-              state_color: false
-              type: 'custom:slider-entity-row'
-            type: 'custom:fold-entity-row'
-          - entities:
-              - entity: sensor.attic_motion_sensor
-                icon: 'mdi:motion-sensor'
-                name: Motion sensor
-            head:
-              entity: switch.standing_lamp
-              icon: 'mdi:floor-lamp'
-              name: Standing lamp
-              state_color: false
-            type: 'custom:fold-entity-row'
-        show_header_toggle: false
-        title: Second floor
-        type: entities
-    icon: 'mdi:lightbulb'
+
+  # Lighting
+  - icon: mdi:lightbulb
     path: lights
+    badges: []
+    cards:
+      - !include features/lighting/ui/floor_0.yaml
+      - !include features/lighting/ui/floor_1.yaml
+      - !include features/lighting/ui/floor_2.yaml

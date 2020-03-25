@@ -1,0 +1,26 @@
+# Second floor lights
+type: entities
+title: Second floor
+show_header_toggle: false
+entities:
+
+  # Hall
+  - type: custom:fold-entity-row
+    head:
+      entity: light.attic_hall
+      name: Washing hall
+      state_color: false
+      type: custom:slider-entity-row
+    entities:
+      - entity: sensor.motion_attic_hall
+        name: Motion sensor
+
+  # Room
+  - type: custom:fold-entity-row
+    head:
+      entity: switch.standing_lamp
+      name: Standing lamp
+      state_color: false
+    entities:
+      - entity: sensor.motion_attic
+        name: Motion sensor

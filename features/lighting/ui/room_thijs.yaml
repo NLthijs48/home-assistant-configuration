@@ -1,0 +1,4 @@
+# Ceiling light card (with dimming)
+type: light
+name: Light
+entity: light.ceiling_thijs

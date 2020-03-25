@@ -1,0 +1,59 @@
+# Controls for all the lights on the ground floor
+type: entities
+title: Ground floor
+show_header_toggle: false
+entities:
+
+  # Living room
+  - type: custom:fold-entity-row
+    head:
+      entity: light.living_room_lights
+      name: Living room
+      state_color: false
+      type: custom:slider-entity-row
+    group_config:
+      type: custom:slider-entity-row
+      state_color: false
+    entities:
+      - entity: light.tv_lights
+        name: TV
+        icon: mdi:television
+      - entity: light.dining_lights
+        name: Dining
+        icon: mdi:table-chair
+      - entity: light.kitchen_lights
+        name: Kitchen
+        icon: mdi:chef-hat
+
+  # Toilet
+  - type: custom:fold-entity-row
+    head:
+      entity: light.toilet
+      state_color: false
+      type: custom:slider-entity-row
+    entities:
+      - entity: sensor.motion_toilet
+        name: Motion sensor
+
+  # Hall
+  - type: custom:fold-entity-row
+    head:
+      entity: light.ground_floor_hall
+      name: Hall
+      state_color: false
+      type: custom:slider-entity-row
+    entities:
+      - entity: sensor.motion_hall_ground_floor
+        name: Motion sensor
+
+  # Closet
+  - type: custom:fold-entity-row
+    head:
+      entity: light.closet
+      name: Closet
+      state_color: false
+      type: custom:slider-entity-row
+    entities:
+      - entity: sensor.motion_closet
+        name: Motion sensor
+
