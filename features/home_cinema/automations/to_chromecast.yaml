@@ -1,0 +1,31 @@
+alias: Home cinema mode to ChromeCast (by checking chromecast state)
+trigger:
+  # ChromeCast changes state
+  - platform: "state"
+    entity_id: "media_player.4k"
+    to: "playing"
+  - platform: "state"
+    entity_id: "media_player.4k"
+    to: "paused"
+condition:
+  # ChromeCast is not off (either 'playing' or 'paused')
+  - condition: template
+    value_template: "{{ not is_state('media_player.4k', 'off') }}"
+action:
+  # Update the mode
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.home_cinema_mode
+      option: "chromecast"
+  - service: "input_boolean.turn_off"
+    data:
+      entity_id: "input_boolean.home_cinema_pending"
+  # LED strip to green
+  - service: light.turn_on
+    entity_id: light.tv_led_strip
+    data:
+      brightness: 254
+      rgb_color:
+        - 0
+        - 255
+        - 0

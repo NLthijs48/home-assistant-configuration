@@ -1,0 +1,31 @@
+alias: Home cinema mode to bluetooth
+trigger:
+  # Receiver changes source or state
+  - platform: "state"
+    entity_id: "media_player.receiver"
+condition:
+  # Receiver is on
+  - condition: "state"
+    entity_id: "media_player.receiver"
+    state: "on"
+  # Receiver is on the bluetooth input
+  - condition: "template"
+    value_template: "{{is_state_attr('media_player.receiver', 'source', 'Bluetooth')}}"
+action:
+  # Update the mode
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.home_cinema_mode
+      option: "bluetooth"
+  - service: "input_boolean.turn_off"
+    data:
+      entity_id: "input_boolean.home_cinema_pending"
+  # LED strip to blue
+  - service: light.turn_on
+    entity_id: light.tv_led_strip
+    data:
+      brightness: 254
+      rgb_color:
+        - 0
+        - 0
+        - 255

@@ -20,7 +20,7 @@ input_boolean:
   home_cinema_pending:
     name: Home cinema changing state
     icon: mdi:loading
-    initial: off # Assume not loading after restart
+    initial: "off" # Assume not loading after restart
 
 # Script for changing between modes
 script:
@@ -30,6 +30,9 @@ script:
   home_cinema_chromecast: !include scripts/chromecast.yaml
   home_cinema_bluetooth: !include scripts/bluetooth.yaml
   home_cinema_tv: !include scripts/tv.yaml
+
+# Automations to switch between states
+automation: !include_dir_list automations
 
 # Onkyo integration
 media_player:

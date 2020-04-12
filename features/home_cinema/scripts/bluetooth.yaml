@@ -18,13 +18,3 @@ sequence:
     data:
       entity_id: media_player.receiver
       source: Bluetooth
-
-  # LED strip to blue TODO move to automation
-#  - service: light.turn_on
-#    entity_id: light.tv_led_strip
-#    data:
-#      brightness: 254
-#      rgb_color:
-#        - 0
-#        - 0
-#        - 255

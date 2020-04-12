@@ -6,12 +6,6 @@ sequence:
     data:
       mode: 'off'
 
-  # Turn off the LED strip
-  - service: light.turn_off
-    data:
-      entity_id: light.tv_led_strip
-      transition: 5
-
   # Turn off the TV (also turns off the receiver)
   - service: media_player.turn_off
     data:

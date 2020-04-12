@@ -21,13 +21,3 @@ sequence:
     data:
       entity_id: media_player.receiver
       source: TV
-
-  # LED strip to green
-  - service: light.turn_on
-    entity_id: light.tv_led_strip
-    data:
-      brightness: 254
-      rgb_color:
-        - 0
-        - 255
-        - 0
