@@ -31,15 +31,9 @@ automation: !include automations.yaml
 
 # Frontend settings
 lovelace:
-  # Keep using storage mode for most dashboards
-  mode: storage
-  dashboards:
-    ui-home:
-      mode: yaml
-      title: Home
-      icon: mdi:home
-      show_in_sidebar: true
-      filename: ui-home.yaml
+  # Set the main dashboard to use the yaml configured UI, this is shown as default
+  mode: yaml
+  resources: !include lovelace_resources.yaml
 
 # Buienradar weather tracker
 weather:

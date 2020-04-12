@@ -1,0 +1,38 @@
+# Lovelace custom cards (from the community store)
+
+# Mini media player: ChromeCastt
+- type: module
+  url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+# Slider entity row: lights
+- type: module
+  url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
+# Fold entity row: fold light groups
+- type: module
+  url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
+# Auto entities: dynamic entity lists
+- type: module
+  url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+# Multiple entity row
+- type: module
+  url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
+# Graph card: sensor graphs
+- type: module
+  url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+# Spotify: playlists
+- type: module
+  url: /hacsfiles/spotify-card/spotify-card.js
+# Vertical stack in card
+- type: module
+  url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
+# Button card: media mode buttons
+- type: module
+  url: /hacsfiles/button-card/button-card.js
+# Button entity row
+- type: module
+  url: /hacsfiles/button-entity-row/button-entity-row.js
+# Custom header: smaller header
+- type: module
+  url: /hacsfiles/custom-header/custom-header.js
+# Stack in card
+- type: module
+  url: /hacsfiles/stack-in-card/stack-in-card.js"
