@@ -69,3 +69,16 @@ glances:
 spotify:
   client_id: a42ebc5a66854bc3985bd7c08c54eaaa
   client_secret: d56538c409be4f1ba29485293140f7b7
+
+# Mailgun email
+notify:
+  - name: email_thijs
+    platform: smtp
+    server: smtp.mailgun.org
+    port: 587
+    timeout: 15
+    sender: homeassistant@wiefferink.me
+    username: homeassistant@wiefferink.me
+    password: 76db3b4c2f93ad140b03980fc2a02380-aa4b0867-8701cba8
+    recipient: thijs@wiefferink.me
+    sender_name: Home Assistant
