@@ -50,9 +50,6 @@ weather:
 camera:
   - platform: buienradar
 
-# Used to turn on the Philips TV
-wake_on_lan:
-
 # REST commands
 rest_command:
   tv_input:
