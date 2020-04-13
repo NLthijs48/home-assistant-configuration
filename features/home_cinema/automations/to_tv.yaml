@@ -10,7 +10,7 @@ condition:
     state: "on"
   # Receiver is on the T-Mobile input
   - condition: "template"
-    value_template: "{{is_state_attr('media_player.receiver', 'source', 'T-mobile')}}"
+    value_template: "{{is_state_attr('media_player.receiver', 'source', 'T-Mobile')}}"
 action:
   # Update the mode
   - service: input_select.select_option
