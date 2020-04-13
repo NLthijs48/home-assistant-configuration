@@ -1,21 +1,13 @@
 alias: Home cinema mode to off
 trigger:
-  # TV turns off
-  - platform: "state"
-    entity_id: "media_player.hdmi_0"
-    to: "off"
   # Receiver turns off
   - platform: "state"
-    entity_id: "media_player.hdmi_5"
+    entity_id: "media_player.receiver"
     to: "off"
 condition:
-  # TV is off
-  - condition: "state"
-    entity_id: "media_player.hdmi_0"
-    state: "off"
   # Receiver is off
   - condition: "state"
-    entity_id: "media_player.hdmi_5"
+    entity_id: "media_player.receiver"
     state: "off"
 action:
   # Update the mode
