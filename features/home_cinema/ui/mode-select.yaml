@@ -1,25 +1,144 @@
-# Button row to set media mode of the living room
-type: glance
-title: TV modes
-show_state: false
-entities:
-  - entity: script.home_cinema_chromecast
+# New fancy mode buttons
+# Uses input_select, defined in the UI
+type: horizontal-stack
+cards:
+  - type: 'custom:button-card'
     name: Chromecast
+    entity: script.home_cinema_chromecast
     tap_action:
       action: call-service
       service: script.home_cinema_chromecast
-  - entity: script.home_cinema_bluetooth
-    name: Bluetooth
+    haptic: light # iOS only
+
+    color_type: card # Change the color of the complete card
+    lock: # Prevent running script again
+      enabled: >-
+        [[[ return states["input_select.home_cinema_mode"].state === "chromecast" ]]]
+      exemptions: []
+    state:
+      # Not active
+      - color: '#BBBBBB'
+        operator: template
+        value: >-
+          [[[ return states["input_select.home_cinema_mode"].state !== "chromecast" ]]]
+      # Pending
+      - operator: template
+        color: orange
+        spin: true
+        icon: 'mdi:loading'
+        value: >-
+          [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
+        lock:
+          enabled: true
+          exemptions: []
+      # Active
+      - color: green
+        operator: default
+    styles:
+      card:
+        - height: 100px
+
+  - type: 'custom:button-card'
+    name: 'Bluetooth'
+    entity: script.home_cinema_bluetooth
     tap_action:
       action: call-service
       service: script.home_cinema_bluetooth
-  - entity: script.home_cinema_tv
-    name: TV
+    haptic: light # iOS only
+    color_type: card
+    lock:
+      enabled: >-
+        [[[ return states["input_select.home_cinema_mode"].state === "bluetooth" ]]]
+      exemptions: []
+    state:
+      # Not active
+      - color: '#BBBBBB'
+        operator: template
+        value: >-
+          [[[ return states["input_select.home_cinema_mode"].state !== "bluetooth" ]]]
+      # Pending
+      - operator: template
+        color: orange
+        spin: true
+        icon: 'mdi:loading'
+        value: >-
+          [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
+        lock:
+          enabled: true
+          exemptions: []
+      # Active
+      - color: green
+        operator: default
+    styles:
+      card:
+        - height: 100px
+
+  - type: 'custom:button-card'
+    name: 'TV'
+    entity: script.home_cinema_tv
     tap_action:
       action: call-service
       service: script.home_cinema_tv
-  - entity: script.home_cinema_off
+    haptic: light # iOS only
+    color_type: card
+    lock:
+      enabled: >-
+        [[[ return states["input_select.home_cinema_mode"].state === "tv" ]]]
+      exemptions: []
+    state:
+      # Not active
+      - color: '#BBBBBB'
+        operator: template
+        value: >-
+          [[[ return states["input_select.home_cinema_mode"].state !== "tv" ]]]
+      # Pending
+      - operator: template
+        color: orange
+        spin: true
+        icon: 'mdi:loading'
+        value: >-
+          [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
+        lock:
+          enabled: true
+          exemptions: []
+      # Active
+      - color: green
+        operator: default
+    styles:
+      card:
+        - height: 100px
+
+  - type: 'custom:button-card'
     name: 'Off'
+    entity: script.home_cinema_off
     tap_action:
       action: call-service
       service: script.home_cinema_off
+    haptic: light # iOS only
+    color_type: card
+    lock:
+      enabled: >-
+        [[[ return states["input_select.home_cinema_mode"].state === "off" ]]]
+      exemptions: []
+    state:
+      # Not active
+      - color: '#BBBBBB'
+        operator: template
+        value: >-
+          [[[ return states["input_select.home_cinema_mode"].state !== "off" ]]]
+      # Pending
+      - operator: template
+        color: orange
+        spin: true
+        icon: 'mdi:loading'
+        value: >-
+          [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
+        lock:
+          enabled: true
+          exemptions: []
+      # Active
+      - color: green
+        operator: default
+    styles:
+      card:
+        - height: 100px

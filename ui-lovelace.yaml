@@ -15,7 +15,6 @@ views:
       - !include features/lighting/ui/living_room.yaml
       - !include features/home_cinema/ui/mode-select.yaml
       - !include features/home_cinema/ui/players.yaml
-      - !include features/home_cinema/ui/mode-select-2.yaml
       #- !include ui/media/plex-status.yaml, not useful yet
 
   # Home
