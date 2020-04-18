@@ -10,20 +10,21 @@ views:
   # Living room
   - icon: 'mdi:theater'
     path: living-room
-    badges: []
+    badges:
+      - entity: person.thijs
+      - entity: person.frits
     cards:
       - !include features/lighting/ui/living_room.yaml
       - !include features/home_cinema/ui/mode-select.yaml
       - !include features/home_cinema/ui/players.yaml
       #- !include ui/media/plex-status.yaml, not useful yet
+      - !include features/weather/ui/forecast.yaml
+      - !include features/weather/ui/buienradar.yaml
+      - !include features/weather/ui/buienalarm.yaml
 
-  # Home
-  - icon: mdi:home
-    path: default_view
-    badges:
-      - entity: person.thijs
-      - entity: person.frits
-      - entity: sun.sun
+  # Stats
+  - icon: mdi:trending-up
+    path: stats
     cards:
       - entities:
           - entity: device_tracker.gm1913
@@ -32,85 +33,10 @@ views:
         refresh_interval: 0
         title: Who was home?
         type: history-graph
-      - cards:
-          - aspect_ratio: 80%
-            type: iframe
-            url: >-
-              https://www.buienalarm.nl/amsterdam-noord-holland-nederland/52.3161,4.9651
-          - entity: weather.br_unknown_station
-            name: Buienradar
-            type: weather-forecast
-        type: vertical-stack
-      - aspect_ratio: 100%
-        camera_image: camera.buienradar_loop
-        camera_view: live
-        entity: camera.buienradar_loop
-        hold_action:
-          action: none
-        name: Buienradar
-        show_name: false
-        show_state: false
-        tap_action:
-          action: none
-        type: picture-entity
-      - cards:
-          - entities:
-              - entity: sensor.netherlands_coronavirus_confirmed
-                name: Confirmed
-                show_fill: false
-              - entity: sensor.netherlands_coronavirus_current
-                name: Current
-                show_fill: false
-              - entity: sensor.netherlands_coronavirus_recovered
-                name: Recovered
-                show_fill: false
-              - entity: sensor.netherlands_coronavirus_deaths
-                name: Deaths
-                show_fill: false
-            height: 200
-            hour24: true
-            hours_to_show: 336
-            icon: 'mdi:thermometer'
-            line_color:
-              - '#0087c7'
-              - orange
-              - green
-              - red
-            lower_bound: 0
-            name: Corona The Netherlands
-            points_per_hour: 0.2
-            show:
-              labels: true
-            type: 'custom:mini-graph-card'
-          - entities:
-              - entity: sensor.worldwide_coronavirus_confirmed
-                name: Confirmed
-                show_fill: false
-              - entity: sensor.worldwide_coronavirus_current
-                name: Current
-                show_fill: false
-              - entity: sensor.worldwide_coronavirus_recovered
-                name: Recovered
-                show_fill: false
-              - entity: sensor.worldwide_coronavirus_deaths
-                name: Deaths
-                show_fill: false
-            height: 200
-            hour24: true
-            hours_to_show: 336
-            icon: 'mdi:thermometer'
-            line_color:
-              - '#0087c7'
-              - orange
-              - green
-              - red
-            lower_bound: 0
-            name: Corona Worldwide
-            points_per_hour: 0.2
-            show:
-              labels: true
-            type: 'custom:mini-graph-card'
-        type: vertical-stack
+      - type: vertical-stack
+        cards:
+          - !include ui/covid_19/netherlands.yaml
+          - !include ui/covid_19/world.yaml
 
   # Thijs
   - title: Thijs

@@ -12,6 +12,7 @@ homeassistant:
   packages:
     home_cinema: !include features/home_cinema/definitions.yaml
     lighting: !include features/lighting/definitions.yaml
+    weather: !include features/weather/definitions.yaml
 
 # Setup SSL
 http:
@@ -34,15 +35,6 @@ lovelace:
   # Set the main dashboard to use the yaml configured UI, this is shown as default
   mode: yaml
   resources: !include lovelace_resources.yaml
-
-# Buienradar weather tracker
-weather:
-  - platform: buienradar
-    forecast: true
-
-# Buienradar radar image
-camera:
-  - platform: buienradar
 
 # REST commands
 rest_command:

@@ -1,0 +1,29 @@
+# Card with Covid-19 stats of The Netherlands
+type: 'custom:mini-graph-card'
+name: Covid-19 Worldwide
+icon: 'mdi:thermometer'
+height: 200
+hour24: true
+hours_to_show: 336
+line_color:
+  - '#0087c7'
+  - orange
+  - green
+  - red
+lower_bound: 0
+points_per_hour: 0.2
+show:
+  labels: true
+entities:
+  - entity: sensor.worldwide_coronavirus_confirmed
+    name: Confirmed
+    show_fill: false
+  - entity: sensor.worldwide_coronavirus_current
+    name: Current
+    show_fill: false
+  - entity: sensor.worldwide_coronavirus_recovered
+    name: Recovered
+    show_fill: false
+  - entity: sensor.worldwide_coronavirus_deaths
+    name: Deaths
+    show_fill: false

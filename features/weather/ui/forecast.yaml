@@ -1,0 +1,4 @@
+# Weather forecast
+entity: weather.buienradar_home
+name: Buienradar
+type: weather-forecast

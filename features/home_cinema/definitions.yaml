@@ -51,9 +51,9 @@ media_player:
     api_version: 6
 
 # HDMI setup as seen from the TV
-hdmi_cec:
-  platform: media_player
-  devices:
-    0: TV
-    1: Receiver
-    3: Chromecast
+#hdmi_cec:
+#  platform: media_player
+#  devices:
+#    0: TV
+#    1: Receiver
+#    3: Chromecast
