@@ -52,7 +52,7 @@ views:
             tts:
               platform: google_translate
             type: 'custom:mini-media-player'
-          - entity: sensor.battery_level
+          - entity: sensor.battery_phone_thijs
           - entity: device_tracker.gm1913
           - entity: sensor.wifi_connection
         type: entities
@@ -70,7 +70,7 @@ views:
       - !include features/lighting/ui/room_frits.yaml
       - entities:
           - sensor.bssid
-          - sensor.battery_level_2
+          - sensor.battery_iphone_frits
           - sensor.battery_state
           - sensor.connection_type
           - sensor.geocoded_location
