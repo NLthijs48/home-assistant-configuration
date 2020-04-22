@@ -1,0 +1,76 @@
+# Ground floor hall
+- alias: Ground floor hall light starts dimmed when turned on at night
+  trigger:
+    - entity_id: light.ground_floor_hall
+      platform: state
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.ground_floor_hall
+        brightness_pct: >-
+          {% if is_state('sun.sun', 'below_horizon') %}
+            20
+          {% else %}
+            100
+          {% endif %}
+
+ # First floor hall
+- alias: First floor hall light starts dimmed when turned on at night
+  trigger:
+    - entity_id: light.hall_first_floor
+      platform: state
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.hall_first_floor
+        brightness_pct: >-
+          {% if is_state('sun.sun', 'below_horizon') %}
+            1
+          {% else %}
+            100
+          {% endif %}
+
+# Computer room light
+# Also updates the color temp + brightness when the sun goes down
+- alias: Computer room light starts dimmed when turned on at night
+  trigger:
+    - entity_id: light.ceiling_computers
+      platform: state
+      to: 'on'
+    - entity_id: sun.sun
+      platform: state
+      to: 'below_horizon'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+    - condition: state
+      entity_id: light.ceiling_computers
+      state: 'on'
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.ceiling_computers
+        brightness_pct: >-
+          {% if is_state('sun.sun', 'below_horizon') %}
+            50
+          {% else %}
+            100
+          {% endif %}
+        # White during the day, yellow-ish at night
+        color_temp: >-
+          {% if is_state('sun.sun', 'below_horizon') %}
+            370
+          {% else %}
+            250
+          {% endif %}
