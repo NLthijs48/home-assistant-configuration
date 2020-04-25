@@ -4,10 +4,6 @@
     - entity_id: light.ground_floor_hall
       platform: state
       to: 'on'
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: below_horizon
   action:
     - service: light.turn_on
       data_template:
@@ -25,10 +21,6 @@
     - entity_id: light.hall_first_floor
       platform: state
       to: 'on'
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: below_horizon
   action:
     - service: light.turn_on
       data_template:
@@ -51,9 +43,6 @@
       platform: state
       to: 'below_horizon'
   condition:
-    - condition: state
-      entity_id: sun.sun
-      state: below_horizon
     - condition: state
       entity_id: light.ceiling_computers
       state: 'on'
