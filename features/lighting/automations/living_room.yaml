@@ -1,5 +1,6 @@
 # Automate living room lights
 
+# Turn on based on presence
 - alias: Turn off the living room lights when we are both upstairs
   trigger:
     - platform: template
@@ -25,6 +26,7 @@
       data:
         entity_id: light.living_room_lights
 
+# Turn off based on presence
 - alias: Turn on the living room lights when at least one of us is downstairs
   trigger:
     # One of us moves to downstairs
@@ -36,3 +38,22 @@
     - service: light.turn_on
       data:
         entity_id: light.living_room_lights
+
+# Set brightness automatically
+- alias: Living room lights turn on brightness
+  trigger:
+    - entity_id: light.living_room_lights
+      platform: state
+      to: 'on'
+    - platform: time
+      at: "18:00:00"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.living_room_lights
+        brightness_pct: >-
+          {% if now().hour >= 18 or now().hour <= 8 %}
+            40
+          {% else %}
+            100
+          {% endif %}
