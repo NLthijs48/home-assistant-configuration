@@ -52,14 +52,14 @@
       data_template:
         entity_id: light.ceiling_computers
         brightness_pct: >-
-          {% if now().hour >= 18 or now().hour <= 8 %}
+          {% if now().hour >= 19 or now().hour <= 8 %}
             50
           {% else %}
             100
           {% endif %}
         # White during the day, yellow-ish at night
         color_temp: >-
-          {% if now().hour >= 18 or now().hour <= 8 %}
+          {% if now().hour >= 19 or now().hour <= 8 %}
             370
           {% else %}
             250
