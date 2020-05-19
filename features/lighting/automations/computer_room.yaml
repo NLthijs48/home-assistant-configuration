@@ -42,7 +42,9 @@
       platform: state
       to: 'on'
     - platform: time
-      at: "18:00:00"
+      at: "19:00:00"
+    - platform: time
+      at: "8:00:01"
   condition:
     - condition: state
       entity_id: light.ceiling_computers
