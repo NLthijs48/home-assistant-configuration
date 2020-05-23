@@ -13,6 +13,7 @@ homeassistant:
     home_cinema: !include features/home_cinema/definitions.yaml
     lighting: !include features/lighting/definitions.yaml
     weather: !include features/weather/definitions.yaml
+    network: !include features/network/definitions.yaml
 
 # Setup SSL
 http:
@@ -89,5 +90,3 @@ script:
         data:
           topic: "iotlink/workgroup/nlthijs48/commands/notify"
           payload: '{ "title": "My Notification Title", "message": "This is an example of notification using IOT Link", "launchParams": "toast://open/https://iotlink.gitlab.io" }'
-
-

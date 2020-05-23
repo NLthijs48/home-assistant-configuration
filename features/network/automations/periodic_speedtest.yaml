@@ -1,0 +1,7 @@
+# Run a speedtest each night (which won't affect internet usage during the day)
+- alias: Nightly internet speedtest
+  trigger:
+    - platform: time
+      at: "5:00:00"
+  action:
+    - service: speedtestdotnet.speedtest

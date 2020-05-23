@@ -1,0 +1,7 @@
+# This feature sets up network monitoring
+
+automation: !include_dir_merge_list automations
+
+# Speedtest.net regular monitoring
+speedtestdotnet:
+  manual: true
