@@ -18,7 +18,6 @@ homeassistant:
 http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
-  base_url: https://home.wiefferink.me
 
 # Setup history database (MariaDB addon)
 recorder:
