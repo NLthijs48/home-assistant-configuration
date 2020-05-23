@@ -74,3 +74,21 @@ notify:
     password: 76db3b4c2f93ad140b03980fc2a02380-aa4b0867-8701cba8
     recipient: thijs@wiefferink.me
     sender_name: Home Assistant
+
+# No ip
+no_ip:
+  domain: wiefferinkhome.ddns.net
+  username: thijs-noip@wiefferink.me
+  password: jm1o21w9yk2n7lg5223r87usho9l3ym3kiaavkeyvwz6o2fp26r5cieijq10qjxb
+
+# TEMP iotlink test
+script:
+  my_computer_notify:
+    alias: "My Computer - Notify"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/workgroup/nlthijs48/commands/notify"
+          payload: '{ "title": "My Notification Title", "message": "This is an example of notification using IOT Link", "launchParams": "toast://open/https://iotlink.gitlab.io" }'
+
+
