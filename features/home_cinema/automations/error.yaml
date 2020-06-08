@@ -1,0 +1,19 @@
+# Detect pending for too long, assume something failed
+alias: Detect too long pending state
+trigger:
+  - entity_id: input_boolean.home_cinema_pending
+    platform: state
+    to: 'on'
+action:
+  # When pending for more than 30 seconds
+  - delay: 00:00:30
+  # Reset pending (allows trying again)
+  - entity_id: input_boolean.home_cinema_pending
+    service: input_boolean.turn_off
+  # Notify phone of Thijs
+  - service: notify.mobile_app_gm1913
+    data_template:
+      message: >-
+        Setting home cinema to {{ states("input_select.home_cinema_mode") }} failed, still pending after 30 seconds!
+      data:
+        tag: battery
