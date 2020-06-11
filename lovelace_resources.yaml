@@ -1,6 +1,6 @@
 # Lovelace custom cards (from the community store)
 
-# Mini media player: ChromeCastt
+# Mini media player: ChromeCast
 - type: module
   url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
 # Slider entity row: lights
