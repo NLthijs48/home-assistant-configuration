@@ -15,6 +15,10 @@ homeassistant:
     weather: !include features/weather/definitions.yaml
     network: !include features/network/definitions.yaml
 
+# Include themes
+frontend:
+  themes: !include_dir_merge_named themes
+
 # Setup SSL
 http:
   ssl_certificate: /ssl/fullchain.pem
