@@ -36,3 +36,6 @@
 # Stack in card
 - type: module
   url: /hacsfiles/stack-in-card/stack-in-card.js
+# Plant picture card
+- type: module
+  url: /hacsfiles/PlantPictureCard/PlantPictureCard.js
