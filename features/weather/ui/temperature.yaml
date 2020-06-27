@@ -1,0 +1,92 @@
+# Temperature of the living room
+type: 'horizontal-stack'
+cards:
+- type: 'custom:mini-graph-card'
+  name: Living room
+  entities:
+    - entity: sensor.netatmo_living_room_temperature
+      name: Living room
+      show_fill: false
+    # Sun is up/down soft-fade
+    - color: '#9a9a9a'
+      entity: sun.sun
+      name: Day/Night
+      show_line: false
+      show_points: false
+      show_legend: false
+      y_axis: secondary
+  height: 250
+  hour24: true
+  hours_to_show: 24
+  points_per_hour: 12
+  lower_bound: 0 # Start y-axis at 0, what to do in winter?
+  decimals: 1
+  color_thresholds:
+    - color: blue
+      value: 0
+    - color: blue
+      value: 15
+    - color: green
+      value: 19
+    - color: green
+      value: 22
+    - color: orange
+      value: 25
+    - color: red
+      value: 30
+    - color: red
+      value: 40
+  line_width: 10
+  animate: true
+  show:
+    icon: false
+  # Secondary axis
+  lower_bound_secondary: 0
+  upper_bound_secondary: 1
+  labels_secondary: false
+
+
+# Temperature of the garden
+- type: 'custom:mini-graph-card'
+  name: Garden
+  entities:
+    - entity: sensor.netatmo_garden_temperature
+      name: Garden
+      show_fill: false
+    # Sun is up/down soft-fade
+    - color: '#9a9a9a'
+      entity: sun.sun
+      name: Day/Night
+      show_line: false
+      show_points: false
+      show_legend: false
+      y_axis: secondary
+  height: 250
+  hour24: true
+  hours_to_show: 24
+  points_per_hour: 12
+  decimals: 1
+  lower_bound: 0 # Start y-axis at 0, what to do in winter?
+  color_thresholds:
+    - color: blue
+      value: 0
+    - color: blue
+      value: 15
+    - color: green
+      value: 19
+    - color: green
+      value: 22
+    - color: orange
+      value: 25
+    - color: red
+      value: 30
+    - color: red
+      value: 40
+  line_width: 10
+  animate: true
+  show:
+    icon: false
+  # Secondary axis
+  lower_bound_secondary: 0
+  upper_bound_secondary: 1
+  labels_secondary: false

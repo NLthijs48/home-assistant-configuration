@@ -1,0 +1,50 @@
+type: 'custom:mini-graph-card'
+name: CO2 inside
+entities:
+  # CO2 level as solid line
+  - entity: sensor.netatmo_living_room_co2
+    show_fill: false
+    name: CO2 inside
+  # Sun is up/down soft-fade
+  - color: '#9a9a9a'
+    entity: sun.sun
+    name: Day/Night
+    show_line: false
+    show_points: false
+    show_legend: false
+    y_axis: secondary
+# Styling
+height: 250
+line_width: 7
+animate: true
+show:
+  icon: false
+# Time configuration
+hours_to_show: 24
+points_per_hour: 12
+hour24: true
+# Primary axis
+lower_bound: 1
+decimals: 0
+# Secondary axis
+lower_bound_secondary: 0
+upper_bound_secondary: 1
+labels_secondary: false
+# Add color to the CO2 line to indicate health
+color_thresholds:
+  - color: green
+    value: 0
+  - color: green
+    value: 300
+  - color: green
+    value: 400
+  - color: green
+    value: 500
+  - color: green
+    value: 600
+  - color: orange
+    value: 1000
+  - color: orange
+    value: 1500
+  - color: red
+    value: 1700
