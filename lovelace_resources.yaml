@@ -39,3 +39,9 @@
 # Plant picture card
 - type: module
   url: /hacsfiles/PlantPictureCard/PlantPictureCard.js
+# Card mod: card CSS
+- type: module
+  url: /hacsfiles/lovelace-card-mod/card-mod.js
+# State switch: show cards depending on user
+- type: module
+  url: /hacsfiles/lovelace-state-switch/state-switch.js
