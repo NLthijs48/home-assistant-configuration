@@ -1,0 +1,3 @@
+type: plant-status
+name: 'Great plant!'
+entity: plant.great_plant

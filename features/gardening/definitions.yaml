@@ -1,0 +1,18 @@
+# Plant monitoring systems
+
+
+# Xiaomi flora plant sensor (also called Vegtrug in the Play Store)
+sensor:
+  - platform: miflora
+    mac: 'C4:7C:8D:67:9F:19'
+
+# Group the flora sensors into 1 plant
+plant:
+  great_plant:
+    sensors:
+      moisture: sensor.mi_flora_moisture
+      battery: sensor.mi_flora_battery
+      temperature: sensor.mi_flora_temperature
+      conductivity: sensor.mi_flora_conductivity
+      brightness: sensor.mi_flora_light_intensity
+    min_moisture: 20

@@ -27,9 +27,6 @@
 # Button card: media mode buttons
 - type: module
   url: /hacsfiles/button-card/button-card.js
-# Button entity row
-- type: module
-  url: /hacsfiles/button-entity-row/button-entity-row.js
 # Custom header: smaller header
 - type: module
   url: /hacsfiles/custom-header/custom-header.js
