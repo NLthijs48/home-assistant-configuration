@@ -9,41 +9,64 @@ cards:
       show_fill: false
     # Sun is up/down soft-fade
     - color: '#9a9a9a'
-      entity: sun.sun
+      entity: binary_sensor.day
       name: Day/Night
-      show_line: false
-      show_points: false
+      show_line: true
+      show_points: true
       show_legend: false
       y_axis: secondary
+      aggregate_func: min
   height: 250
   hour24: true
   hours_to_show: 24
   points_per_hour: 12
-  lower_bound: 0 # Start y-axis at 0, what to do in winter?
   decimals: 1
   color_thresholds:
-    - color: blue
-      value: 0
-    - color: blue
-      value: 15
-    - color: green
-      value: 19
-    - color: green
-      value: 22
-    - color: orange
-      value: 25
-    - color: red
-      value: 30
-    - color: red
-      value: 40
+    - value: -6.7
+      color: "#a55eea"
+    - value: -3.9
+      color: "#8854d0"
+    - color: -1.2
+      value: "#3867d6"
+    - value: 1.6
+      color: "#4b7bec"
+    - value: 4.3
+      color: "#2d98da"
+    - color: 7.1
+      value: "#45aaf2"
+    - value: 9.9
+      color: "#0fb9b1"
+    - value: 12.7
+      color: "#2bcbba"
+    - value: 15.5
+      color: "#20bf6b"
+    - value: 18.2
+      color: "#26de81"
+    - value: 21
+      color: "#fed330"
+    - value: 23.8
+      color: "#f7b731"
+    - value: 26.6
+      color: "#fd9644"
+    - value: 29.3
+      color: "#fa8231"
+    - value: 32.1
+      color: "#fc5c65"
+    - value: 35.9
+      color: "#eb3b5a"
   line_width: 10
   animate: true
   show:
     icon: false
+    labels: true
+  state_map:
+    - value: off
+      label: Night
+    - value: on
+      label: Day
   # Secondary axis
   lower_bound_secondary: 0
   upper_bound_secondary: 1
-  labels_secondary: false
 
 
 # Temperature of the garden
@@ -66,26 +89,44 @@ cards:
   hours_to_show: 24
   points_per_hour: 12
   decimals: 1
-  lower_bound: 0 # Start y-axis at 0, what to do in winter?
   color_thresholds:
-    - color: blue
-      value: 0
-    - color: blue
-      value: 15
-    - color: green
-      value: 19
-    - color: green
-      value: 22
-    - color: orange
-      value: 25
-    - color: red
-      value: 30
-    - color: red
-      value: 40
+    - value: -6.7
+      color: "#a55eea"
+    - value: -3.9
+      color: "#8854d0"
+    - color: -1.2
+      value: "#3867d6"
+    - value: 1.6
+      color: "#4b7bec"
+    - value: 4.3
+      color: "#2d98da"
+    - color: 7.1
+      value: "#45aaf2"
+    - value: 9.9
+      color: "#0fb9b1"
+    - value: 12.7
+      color: "#2bcbba"
+    - value: 15.5
+      color: "#20bf6b"
+    - value: 18.2
+      color: "#26de81"
+    - value: 21
+      color: "#fed330"
+    - value: 23.8
+      color: "#f7b731"
+    - value: 26.6
+      color: "#fd9644"
+    - value: 29.3
+      color: "#fa8231"
+    - value: 32.1
+      color: "#fc5c65"
+    - value: 35.9
+      color: "#eb3b5a"
   line_width: 10
   animate: true
   show:
     icon: false
+    labels: true
   # Secondary axis
   lower_bound_secondary: 0
   upper_bound_secondary: 1
