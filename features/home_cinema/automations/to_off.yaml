@@ -12,7 +12,7 @@ condition:
 action:
   # Update the mode
   - service: input_select.select_option
-    data_template:
+    data:
       entity_id: input_select.home_cinema_mode
       option: "off"
   - service: "input_boolean.turn_off"

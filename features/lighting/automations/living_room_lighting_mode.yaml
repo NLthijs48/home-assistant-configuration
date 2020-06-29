@@ -1,0 +1,84 @@
+# Set the correct living room lighting mode based on the time of day and other sensors
+
+# Day mode
+- alias: 'Living room lighting mode to day at 6:00'
+  trigger:
+    - platform: time
+      at: "06:00"
+  action:
+    - service: script.living_room_lighting_mode
+      data:
+        mode: day
+
+# Cooking mode
+- alias: 'Living room lighting mode to cooking at 18:00'
+  trigger:
+    - platform: time
+      at: "18:00"
+  action:
+    - service: script.living_room_lighting_mode
+      data:
+        mode: cooking
+
+# Evening mode
+- alias: 'Living room lighting mode to evening at 19:30'
+  trigger:
+    - platform: time
+      at: "19:30"
+  action:
+    - service: script.living_room_lighting_mode
+      data:
+        mode: evening
+
+# Night mode
+- alias: 'Living room lighting mode to night at 22:00'
+  trigger:
+    - platform: time
+      at: "22:00"
+  action:
+    - service: script.living_room_lighting_mode
+      data:
+        mode: night
+
+
+
+
+# Set brightness depending on the mode
+- alias: Living room lights turn on brightness
+  trigger:
+    - platform: state
+      entity_id: input_boolean.living_room_in_use
+      to: 'on'
+    - platform: state
+      entity_id: input_select.living_room_lighting_mode
+  condition:
+    - condition: state
+      entity_id: input_boolean.living_room_in_use
+      state: 'on'
+    - condition: template
+      value_template: "{{ not is_state('input_select.living_room_lighting_mode', 'manual') }}"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.living_room_lights
+        brightness_pct: >-
+          {% if is_state("input_select.living_room_lighting_mode", "day") %}
+            0
+          {% elif is_state("input_select.living_room_lighting_mode", "cooking") %}
+            100
+          {% elif is_state("input_select.living_room_lighting_mode", "evening") %}
+            35
+          {% elif is_state("input_select.living_room_lighting_mode", "night") %}
+            5
+          {% endif %}
+
+# Turn off when no-one present
+- alias: Living room lights turn on brightness
+  trigger:
+    - platform: state
+      entity_id: input_boolean.living_room_in_use
+      to: 'off'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.living_room_lights

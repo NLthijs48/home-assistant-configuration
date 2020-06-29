@@ -1,0 +1,17 @@
+alias: Set the living room lighting mode (only when not manual)
+description: Set the living room lighting mode (only when not manual)
+icon: mdi:brightness-4
+fields:
+  mode:
+    description: 'The lighting mode'
+    example: 'day, cooking, evening, ...'
+sequence:
+  # Not set to manual mode
+  - condition: template
+    value_template: "{{ not is_state('input_select.living_room_lighting_mode', 'manual') }}"
+
+  # Update the mode state
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.living_room_lighting_mode
+      option: "{{ mode }}"
