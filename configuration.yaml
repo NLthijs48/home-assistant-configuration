@@ -52,16 +52,6 @@ rest_command:
     url: http://10.0.2.12:8008/apps/ChromeCast
     method: POST
 
-# Machine monitoring
-glances:
-  # Raspberry Pi itself
-  - host: 127.0.0.1
-    port: 61209
-    name: glances_pi
-
-  # Desktop Thijs
-  #- host: 10.0.100.1
-
 # Spotify
 spotify:
   client_id: a42ebc5a66854bc3985bd7c08c54eaaa
