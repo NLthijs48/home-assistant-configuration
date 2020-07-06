@@ -2,10 +2,6 @@
 
 automation: !include_dir_merge_list automations
 
-# Speedtest.net regular monitoring
-speedtestdotnet:
-  manual: true
-
 # UptimeRobot sensors
 binary_sensor:
   - platform: uptimerobot
