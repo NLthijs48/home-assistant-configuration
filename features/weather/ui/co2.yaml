@@ -14,7 +14,7 @@ entities:
     show_legend: false
     y_axis: secondary
 # Styling
-height: 250
+height: 150
 line_width: 7
 animate: true
 show:
