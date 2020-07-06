@@ -45,3 +45,6 @@
 # Template entity row: template text in a row
 - url: /hacsfiles/lovelace-template-entity-row/template-entity-row.js
   type: module
+# Browser mod
+- url: /browser_mod.js
+  type: module
