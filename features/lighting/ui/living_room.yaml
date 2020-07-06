@@ -3,7 +3,6 @@ type: entities
 title: Lights
 show_header_toggle: false
 entities:
-
   # All
   - entity: light.living_room_lights
     name: All of them
@@ -52,7 +51,6 @@ entities:
         name: Large painting
     open: false
 
-
   # Kitchen
   - type: custom:fold-entity-row
     head:
@@ -71,3 +69,9 @@ entities:
       - entity: switch.kitchen_sink
         name: Sink
     open: false
+
+  # Indicate current lighting mode
+  - type: custom:template-entity-row
+    name: "Mode"
+    active: "{{ is_state('input_boolean.living_room_in_use', 'on') }}"
+    entity: input_select.living_room_lighting_mode

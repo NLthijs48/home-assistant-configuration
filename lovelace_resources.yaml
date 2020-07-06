@@ -42,3 +42,6 @@
 # State switch: show cards depending on user
 - type: module
   url: /hacsfiles/lovelace-state-switch/state-switch.js
+# Template entity row: template text in a row
+- url: /hacsfiles/lovelace-template-entity-row/template-entity-row.js
+  type: module
