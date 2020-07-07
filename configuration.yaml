@@ -29,6 +29,10 @@ browser_mod:
 http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
+  trusted_proxies:
+    # Proxies from wiefferink.me -> wiefferinkhome.ddns.net
+    - 178.251.25.134
+  use_x_forwarded_for: true
 
 # Setup history database (MariaDB addon)
 recorder:
