@@ -22,3 +22,12 @@ binary_sensor:
     name: Day
     after: sunrise
     before: sunset
+
+# Sensor for the elevation of the sun
+sensor:
+  - platform: template
+    sensors:
+      solar_elevation:
+        friendly_name: "Sun elevation"
+        unit_of_measurement: '°'
+        value_template: "{{ state_attr('sun.sun', 'elevation') }}"
