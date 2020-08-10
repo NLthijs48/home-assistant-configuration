@@ -58,6 +58,7 @@ cards:
   show:
     icon: false
     labels: true
+  lower_bound_secondary: 0
 
   tap_action:
     action: call-service
@@ -144,6 +145,7 @@ cards:
     icon: false
     labels: true
   labels_secondary: false
+  lower_bound_secondary: 0
   tap_action:
     action: call-service
     service: browser_mod.popup

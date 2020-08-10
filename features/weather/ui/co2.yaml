@@ -27,6 +27,7 @@ hour24: true
 lower_bound: 0
 decimals: 0
 # Secondary axis
+lower_bound_secondary: 0
 labels_secondary: false
 # Add color to the CO2 line to indicate health
 color_thresholds:
