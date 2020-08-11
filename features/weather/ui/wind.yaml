@@ -1,10 +1,16 @@
 type: 'custom:mini-graph-card'
-name: CO2 inside
+name: Wind
 entities:
-  # CO2 level as solid line
-  - entity: sensor.netatmo_living_room_co2
+  # Current wind strength
+  - entity: sensor.netatmo_home_wind_wind_strength
     show_fill: false
-    name: CO2 inside
+    name: Wind
+    color: green
+  # Current wind gust
+  - entity: sensor.netatmo_home_wind_gust_strength
+    show_fill: false
+    name: Gust
+    color: orange
   # Sun is up/down soft-fade
   - color: '#9a9a9a'
     entity: sensor.solar_elevation
@@ -29,21 +35,3 @@ decimals: 0
 # Secondary axis
 lower_bound_secondary: 0
 labels_secondary: false
-# Add color to the CO2 line to indicate health
-color_thresholds:
-  - color: green
-    value: 0
-  - color: green
-    value: 300
-  - color: green
-    value: 400
-  - color: green
-    value: 500
-  - color: green
-    value: 600
-  - color: orange
-    value: 1000
-  - color: orange
-    value: 1500
-  - color: red
-    value: 1700

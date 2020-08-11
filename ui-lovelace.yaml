@@ -19,7 +19,10 @@ views:
       - !include features/home_cinema/ui/players.yaml
       #- !include ui/media/plex-status.yaml, not useful yet
       - !include features/weather/ui/temperature.yaml
-      - !include features/weather/ui/co2.yaml
+      - type: horizontal-stack
+        cards:
+          - !include features/weather/ui/co2.yaml
+          - !include features/weather/ui/wind.yaml
       - !include features/weather/ui/forecast.yaml
       - !include features/weather/ui/buienradar.yaml
       - !include features/weather/ui/buienalarm.yaml
