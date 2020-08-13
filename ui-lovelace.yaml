@@ -18,11 +18,10 @@ views:
       - !include features/home_cinema/ui/mode-select.yaml
       - !include features/home_cinema/ui/players.yaml
       #- !include ui/media/plex-status.yaml, not useful yet
-      - !include features/weather/ui/temperature.yaml
       - type: horizontal-stack
         cards:
-          - !include features/weather/ui/co2.yaml
-          - !include features/weather/ui/wind.yaml
+          - !include features/weather/ui/summary_living_room.yaml
+          - !include features/weather/ui/summary_garden.yaml
       - !include features/weather/ui/forecast.yaml
       - !include features/weather/ui/buienradar.yaml
       - !include features/weather/ui/buienalarm.yaml
@@ -93,3 +92,15 @@ views:
       - !include features/lighting/ui/floor_0.yaml
       - !include features/lighting/ui/floor_1.yaml
       - !include features/lighting/ui/floor_2.yaml
+
+# Templates for type:custom-button
+button_card_templates:
+  header:
+    styles:
+      card:
+        - padding: 24px 16px 8px 16px
+      name:
+        - justify-self: start
+        - font-size: 24px
+      label:
+        - justify-self: start

@@ -1,6 +1,5 @@
 # Living room lights control
 type: entities
-title: Lights
 show_header_toggle: false
 entities:
   # All

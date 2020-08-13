@@ -25,6 +25,9 @@ line_width: 7
 animate: true
 show:
   icon: false
+  labels: true
+  name: false
+  legend: false
 # Time configuration
 hours_to_show: 24
 points_per_hour: 12

@@ -1,6 +1,5 @@
 # Shows status of all media players that are active
 type: entities
-title: Media
 show_header_toggle: false
 entities:
 
@@ -38,17 +37,17 @@ entities:
 
   # Personal Spotify card when playing
   # TODO: try hiding this when state!=playing (conditional card did not work)
-  - type: custom:state-switch
-    entity: user
-    states:
-      Thijs:
-        type: 'custom:mini-media-player'
-        entity: media_player.spotify_thijs
-        artwork: cover
-        hide:
-          source: true
-          icon: true
-          power: true
+  #  - type: custom:state-switch
+  #    entity: user
+  #    states:
+  #      Thijs:
+  #        type: 'custom:mini-media-player'
+  #        entity: media_player.spotify_thijs
+  #        artwork: cover
+  #        hide:
+  #          source: true
+  #          icon: true
+  #          power: true
 
   # Google home (when not off)
   - type: conditional

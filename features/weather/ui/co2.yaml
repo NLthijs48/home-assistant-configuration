@@ -1,5 +1,4 @@
 type: 'custom:mini-graph-card'
-name: CO2 inside
 entities:
   # CO2 level as solid line
   - entity: sensor.netatmo_living_room_co2
@@ -19,6 +18,8 @@ line_width: 7
 animate: true
 show:
   icon: false
+  labels: true
+  name: false
 # Time configuration
 hours_to_show: 24
 points_per_hour: 12

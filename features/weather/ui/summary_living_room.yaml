@@ -1,0 +1,37 @@
+# Summary column for an overview of the inside environment
+type: custom:stack-in-card
+mode: vertical
+cards:
+  - type: custom:button-card
+    name: Living room
+    template: header
+    # Show details popup when clicking the header
+    tap_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        title: Living room
+        deviceID:
+          - this
+        card:
+          type: entities
+          entities:
+            - entity: sensor.netatmo_living_room_temperature
+              name: Temperature
+            - entity: sensor.netatmo_living_room_co2
+              name: CO2
+            - entity: sensor.netatmo_living_room_humidity
+              name: Humidity
+            - entity: sensor.netatmo_living_room_pressure
+              name: Pressure
+            - entity: sensor.netatmo_living_room_noise
+              name: Noise
+            - type: divider
+            - entity: sensor.netatmo_living_room_temperature_min
+              name: "Temperature: min last day"
+            - entity: sensor.netatmo_living_room_temperature_max
+              name: "Temperature: max last day"
+
+  - !include temperature_living_room.yaml
+  - !include co2.yaml
+
