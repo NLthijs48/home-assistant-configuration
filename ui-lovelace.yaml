@@ -84,6 +84,12 @@ views:
           - sensor.ssid
         type: entities
 
+  # Plants
+  - icon: mdi:sprout
+    path: plants
+    cards:
+      - !include features/gardening/ui/plant.yaml
+
   # Lighting
   - icon: mdi:lightbulb
     path: lights

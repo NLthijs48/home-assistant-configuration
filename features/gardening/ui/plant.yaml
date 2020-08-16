@@ -1,3 +1,4 @@
-type: plant-status
-name: 'Great plant!'
-entity: plant.great_plant
+type: 'custom:plant-picture-card'
+title: Beet
+entity: plant.beet
+image: /local/plants/beet.jpg
