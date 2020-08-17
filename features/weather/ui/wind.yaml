@@ -1,16 +1,16 @@
 type: 'custom:mini-graph-card'
 name: Wind
 entities:
-  # Current wind strength
-  - entity: sensor.netatmo_home_wind_wind_strength
-    show_fill: false
-    name: Wind
-    color: green
   # Current wind gust
   - entity: sensor.netatmo_home_wind_gust_strength
     show_fill: false
     name: Gust
     color: orange
+  # Current wind strength
+  - entity: sensor.netatmo_home_wind_wind_strength
+    show_fill: false
+    name: Wind
+    color: green
   # Sun is up/down soft-fade
   - color: '#9a9a9a'
     entity: sensor.solar_elevation
