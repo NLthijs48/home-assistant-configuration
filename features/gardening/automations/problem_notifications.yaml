@@ -1,0 +1,49 @@
+# Detect when there are problems with a plant
+- alias: Detect if the plant is in the problem state
+  trigger:
+    # Trigger on all changes (interested in updated 'problem' details attribute next to the problem state)
+    - entity_id: plant.beet
+      platform: state
+      # TODO: also trigger when the 'problem' attribute changes (some categories might have changed)
+      to: 'problem'
+  condition:
+    - condition: "state"
+      entity_id: "plant.beet"
+      state: "problem"
+  action:
+    # Notify phone of Thijs
+    - service: notify.mobile_app_gm1913
+      data_template:
+        message: >-
+          Beet plant needs attention: {{state_attr("plant.beet", "problem")}}
+        data:
+          tag: plant.beet
+    # Notify phone of Frits
+    - service: notify.mobile_app_iphone99
+      data_template:
+        message: >-
+          Beet plant needs attention: {{state_attr("plant.beet", "problem")}}
+        data:
+          tag: plant.beet
+
+# Detect when the problems are solved
+- alias: Detect if the plant is in a good state
+  trigger:
+    - entity_id: plant.beet
+      platform: state
+      from: 'problem' # TODO find out the 'good' state and use a 'to' trigger?
+  action:
+    # Notify phone of Thijs
+    - service: notify.mobile_app_gm1913
+      data_template:
+        message: >-
+          Beet plant is doing well!
+        data:
+          tag: plant.beet
+    # Notify phone of Frits
+    - service: notify.mobile_app_iphone99
+      data_template:
+        message: >-
+          Beet plant is doing well!
+        data:
+          tag: plant.beet

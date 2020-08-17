@@ -1,5 +1,7 @@
 # Plant monitoring systems
 
+# Automations for notifications
+automation: !include_dir_merge_list automations
 
 # Xiaomi flora plant sensor (also called Vegtrug in the Play Store)
 sensor:
