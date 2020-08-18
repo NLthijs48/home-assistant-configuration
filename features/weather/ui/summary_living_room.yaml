@@ -14,24 +14,23 @@ cards:
         deviceID:
           - this
         card:
-          type: entities
-          entities:
-            - entity: sensor.netatmo_living_room_temperature
-              name: Temperature
-            - entity: sensor.netatmo_living_room_co2
-              name: CO2
-            - entity: sensor.netatmo_living_room_humidity
-              name: Humidity
-            - entity: sensor.netatmo_living_room_pressure
-              name: Pressure
-            - entity: sensor.netatmo_living_room_noise
-              name: Noise
-            - type: divider
-            - entity: sensor.netatmo_living_room_temperature_min
-              name: "Temperature: min last day"
-            - entity: sensor.netatmo_living_room_temperature_max
-              name: "Temperature: max last day"
+          type: vertical-stack
+          cards:
+          - !include living_room_temperature.yaml
+          - !include living_room_co2.yaml
+          - type: entities
+            entities:
+              - entity: sensor.netatmo_living_room_temperature
+                name: Temperature
+              - entity: sensor.netatmo_living_room_co2
+                name: CO2
+              - entity: sensor.netatmo_living_room_humidity
+                name: Humidity
+              - entity: sensor.netatmo_living_room_pressure
+                name: Pressure
+              - entity: sensor.netatmo_living_room_noise
+                name: Noise
 
-  - !include temperature_living_room.yaml
-  - !include co2.yaml
+  - !include living_room_temperature.yaml
+  - !include living_room_co2.yaml
 
