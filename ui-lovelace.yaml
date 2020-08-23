@@ -26,22 +26,6 @@ views:
       - !include features/weather/ui/buienradar.yaml
       - !include features/weather/ui/buienalarm.yaml
 
-  # Stats
-  - icon: mdi:trending-up
-    path: stats
-    cards:
-      - entities:
-          - entity: device_tracker.gm1913
-          - entity: device_tracker.iphone_frits
-        hours_to_show: 24
-        refresh_interval: 0
-        title: Who was home?
-        type: history-graph
-      - type: vertical-stack
-        cards:
-          - !include ui/covid_19/netherlands.yaml
-          - !include ui/covid_19/world.yaml
-
   # Thijs
   - title: Thijs
     path: thijs
@@ -101,6 +85,7 @@ views:
 
 # Templates for type:custom-button
 button_card_templates:
+  # Card header that can be tapped
   header:
     styles:
       card:
@@ -110,3 +95,41 @@ button_card_templates:
         - font-size: 24px
       label:
         - justify-self: start
+
+  # Small button with a statistic
+  statistic_button:
+    show_state: true
+    show_icon: false
+    styles:
+      card:
+        #- height: 70px
+      name:
+        - font-size: 11px
+        - text-transform: uppercase
+        - opacity: 0.5
+      state:
+        - font-size: 20px
+
+  # Humidity state color
+  statistic_button_humidity:
+    template: statistic_button
+    # TODO try this again, broken currently?
+    color_type: card # Use the color as card background
+    state:
+      # Bad states
+      - value: 30
+        operator: '<'
+        color: red
+      - value: 60
+        operator: '>'
+        color: red
+      # Not-ideal states
+      - value: 45
+        operator: '<'
+        color: orange
+      - value: 55
+        operator: '>'
+        color: orange
+      # Good state
+      - operator: 'default'
+        color: green

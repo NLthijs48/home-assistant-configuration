@@ -34,3 +34,29 @@ cards:
   - !include living_room_temperature.yaml
   - !include living_room_co2.yaml
 
+  # Row of tiny living room stats
+  # TODO show a popup with a fancy graph when tapped
+  - type: custom:stack-in-card
+    mode: horizontal
+    cards:
+      # Humidity
+      - type: custom:button-card
+        name: Humidity
+        entity: sensor.netatmo_living_room_humidity
+        template: statistic_button_humidity
+        tap_action:
+          action: more-info
+      # Noise
+      - type: custom:button-card
+        name: Noise
+        entity: sensor.netatmo_living_room_noise
+        template: statistic_button
+        tap_action:
+          action: more-info
+      # Pressure
+      - type: custom:button-card
+        name: Pressure
+        entity: sensor.netatmo_living_room_pressure
+        template: statistic_button
+        tap_action:
+          action: more-info

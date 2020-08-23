@@ -59,3 +59,30 @@ cards:
 
   - !include garden_temperature.yaml
   - !include garden_wind.yaml
+
+  # Row of tiny garden stats
+  # TODO show a popup with a fancy graph when tapped
+  - type: custom:stack-in-card
+    mode: horizontal
+    cards:
+      # Humidity
+      - type: custom:button-card
+        name: Humidity
+        entity: sensor.netatmo_garden_humidity
+        template: statistic_button_humidity
+        tap_action:
+          action: more-info
+      # Rain today
+      - type: custom:button-card
+        name: Rain today
+        entity: sensor.netatmo_rain_sum_rain_24
+        template: statistic_button
+        tap_action:
+          action: more-info
+      # Wind
+      - type: custom:button-card
+        name: Wind
+        entity: sensor.netatmo_home_wind_gust_strength
+        template: statistic_button
+        tap_action:
+          action: more-info
