@@ -10,6 +10,7 @@ homeassistant:
     person.frits:
       entity_picture: "/local/frits.jpg"
   packages:
+    system: !include features/system/definitions.yaml
     home_cinema: !include features/home_cinema/definitions.yaml
     lighting: !include features/lighting/definitions.yaml
     weather: !include features/weather/definitions.yaml
