@@ -15,15 +15,64 @@ entities:
       type: custom:slider-entity-row
       state_color: false
     entities:
-      - entity: light.tv_lights
-        name: TV
-        icon: mdi:television
-      - entity: light.dining_lights
-        name: Dining
-        icon: mdi:table-chair
-      - entity: light.kitchen_lights
-        name: Kitchen
-        icon: mdi:chef-hat
+      # TV
+      - type: custom:fold-entity-row
+        head:
+          entity: light.tv_lights
+          name: TV
+          icon: mdi:television
+          state_color: false
+          type: custom:slider-entity-row
+        group_config:
+          type: custom:slider-entity-row
+        entities:
+          - entity: light.living_room_iceland_1
+            name: 'Iceland #1'
+          - entity: light.living_room_iceland_2
+            name: 'Iceland #2'
+          - entity: light.living_room_standing
+            name: Standing
+          - entity: light.tv_led_strip
+            name: LED strip
+        open: false
+
+      # Dining
+      - type: custom:fold-entity-row
+        head:
+          entity: light.dining_lights
+          name: Dining
+          icon: mdi:table-chair
+          state_color: false
+          type: custom:slider-entity-row
+        group_config:
+          type: custom:slider-entity-row
+        entities:
+          - entity: light.dining_table
+            name: Table
+          - entity: light.dining_duck
+            name: Duck paintings
+          - entity: light.dining_large_painting
+            name: Large painting
+        open: false
+
+      # Kitchen
+      - type: custom:fold-entity-row
+        head:
+          entity: light.kitchen_lights
+          name: Kitchen
+          icon: mdi:chef-hat
+          state_color: false
+          type: custom:slider-entity-row
+        entities:
+          - entity: light.kitchen_cooking
+            name: Cooking area
+            type: custom:slider-entity-row
+          - entity: light.kitchen_kielzogschild
+            name: Kielzogschild
+            type: custom:slider-entity-row
+          - entity: switch.kitchen_sink
+            name: Sink
+        open: false
 
   # Toilet
   - type: custom:fold-entity-row
