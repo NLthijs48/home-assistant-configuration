@@ -36,8 +36,7 @@ cards:
 
   # Row of tiny living room stats
   # TODO show a popup with a fancy graph when tapped
-  - type: custom:stack-in-card
-    mode: horizontal
+  - type: horizontal-stack
     cards:
       # Humidity
       - type: custom:button-card

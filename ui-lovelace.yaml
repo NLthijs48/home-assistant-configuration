@@ -104,11 +104,11 @@ button_card_templates:
       card:
         #- height: 70px
       name:
-        - font-size: 11px
+        - font-size: 10px
         - text-transform: uppercase
         - opacity: 0.5
       state:
-        - font-size: 20px
+        - font-size: 18px
 
   # Humidity state color
   statistic_button_humidity:
