@@ -34,9 +34,7 @@ cards:
       # Active
       - color: green
         operator: default
-    styles:
-      card:
-        - height: 100px
+    aspect_ratio: 1/1
 
   - type: 'custom:button-card'
     name: 'Bluetooth'
@@ -69,9 +67,7 @@ cards:
       # Active
       - color: green
         operator: default
-    styles:
-      card:
-        - height: 100px
+    aspect_ratio: 1/1
 
   - type: 'custom:button-card'
     name: 'TV'
@@ -104,9 +100,7 @@ cards:
       # Active
       - color: green
         operator: default
-    styles:
-      card:
-        - height: 100px
+    aspect_ratio: 1/1
 
   - type: 'custom:button-card'
     name: 'Off'
@@ -139,6 +133,4 @@ cards:
       # Active
       - color: green
         operator: default
-    styles:
-      card:
-        - height: 100px
+    aspect_ratio: 1/1
