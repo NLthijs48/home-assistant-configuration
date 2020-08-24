@@ -101,28 +101,27 @@ button_card_templates:
     show_state: true
     show_icon: false
     styles:
-      card:
-        #- height: 70px
       name:
-        - font-size: 10px
+        - font-size: 0.8rem
         - text-transform: uppercase
-        - opacity: 0.5
+        - opacity: 0.7
       state:
-        - font-size: 18px
+        - font-size: 1.3rem
+      card:
+        - padding-bottom: 0.8rem
 
   # Humidity state color
   statistic_button_humidity:
     template: statistic_button
-    # TODO try this again, broken currently?
     color_type: card # Use the color as card background
     state:
       # Bad states
       - value: 30
         operator: '<'
-        color: red
+        color: '#790000'
       - value: 60
         operator: '>'
-        color: red
+        color: '#790000'
       # Not-ideal states
       - value: 45
         operator: '<'
@@ -132,4 +131,22 @@ button_card_templates:
         color: orange
       # Good state
       - operator: 'default'
-        color: green
+        # TODO: would like to fallback to the default, but that is not possible?!
+        color: '#004800'
+
+  # CO2 state color
+  statistic_button_co2:
+    template: statistic_button
+    color_type: card # Use the color as card background
+    state:
+      # Bad state
+      - value: 1000
+        operator: '>'
+        color: '#790000'
+      # Worrisome state
+      - value: 700
+        operator: '>'
+        color: orange
+      # Good state
+      - operator: 'default'
+        color: '#004800'

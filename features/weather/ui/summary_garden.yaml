@@ -1,66 +1,68 @@
 # Summary column for an overview of the outside environment
-type: custom:stack-in-card
-mode: vertical
+type: vertical-stack
 cards:
-  - type: custom:button-card
-    name: Garden
-    template: header
-    tap_action:
-      action: call-service
-      service: browser_mod.popup
-      service_data:
-        title: Garden
-        deviceID:
-          - this
-        card:
-          type: vertical-stack
-          cards:
-          - !include garden_temperature.yaml
-          - !include garden_wind.yaml
-          - type: entities
-            entities:
-              # Standard
-              - entity: sensor.netatmo_garden_humidity
-                name: Humidity
-              - entity: sensor.netatmo_garden_battery
-                name: Battery main
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:button-card
+        name: Garden
+        template: header
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Garden
+            deviceID:
+              - this
+            card:
+              type: vertical-stack
+              cards:
+              - !include garden_temperature.yaml
+              - !include garden_wind.yaml
+              - type: entities
+                entities:
+                  # Standard
+                  - entity: sensor.netatmo_garden_humidity
+                    name: Humidity
+                  - entity: sensor.netatmo_garden_battery
+                    name: Battery main
 
-              # Rain
-              - type: section
-                label: Rain
-              - entity: sensor.netatmo_rain_rain
-                name: "Rain: now"
-              - entity: sensor.netatmo_rain_sum_rain_1
-                name: "Rain: last hour"
-              - entity: sensor.netatmo_rain_sum_rain_24
-                name: "Rain: last day"
-              - entity: sensor.netatmo_rain_battery
-                name: Battery rain sensor
+                  # Rain
+                  - type: section
+                    label: Rain
+                  - entity: sensor.netatmo_rain_rain
+                    name: "Rain: now"
+                  - entity: sensor.netatmo_rain_sum_rain_1
+                    name: "Rain: last hour"
+                  - entity: sensor.netatmo_rain_sum_rain_24
+                    name: "Rain: last day"
+                  - entity: sensor.netatmo_rain_battery
+                    name: Battery rain sensor
 
-              # Wind
-              - type: section
-                label: Wind
-              - entity: sensor.netatmo_home_wind_gust_strength
-                name: Wind gust
-              - entity: sensor.netatmo_home_wind_gust_angle
-                name: Gust angle
-              - entity: sensor.netatmo_home_wind_wind_strength
-                name: Wind
-              - entity: sensor.netatmo_home_wind_angle
-                name: Wind angle
-              - entity: sensor.netatmo_home_wind_battery_percent
-                name: Battery percent
-              - entity: sensor.netatmo_home_wind_battery
-                name: Battery
-              - entity: sensor.netatmo_home_wind_radio
-                name: Radio
-              - entity: sensor.netatmo_home_wind_reachability
-                name: Reachability
+                  # Wind
+                  - type: section
+                    label: Wind
+                  - entity: sensor.netatmo_home_wind_gust_strength
+                    name: Wind gust
+                  - entity: sensor.netatmo_home_wind_gust_angle
+                    name: Gust angle
+                  - entity: sensor.netatmo_home_wind_wind_strength
+                    name: Wind
+                  - entity: sensor.netatmo_home_wind_angle
+                    name: Wind angle
+                  - entity: sensor.netatmo_home_wind_battery_percent
+                    name: Battery percent
+                  - entity: sensor.netatmo_home_wind_battery
+                    name: Battery
+                  - entity: sensor.netatmo_home_wind_radio
+                    name: Radio
+                  - entity: sensor.netatmo_home_wind_reachability
+                    name: Reachability
 
-  - !include garden_temperature.yaml
-  - !include garden_wind.yaml
+      - !include garden_temperature.yaml
+      - !include garden_wind.yaml
 
-  # Row of tiny garden stats
+  # Rows of tiny garden stats
   # TODO show a popup with a fancy graph when tapped
   - type: horizontal-stack
     cards:
@@ -68,7 +70,7 @@ cards:
       - type: custom:button-card
         name: Humidity
         entity: sensor.netatmo_garden_humidity
-        template: statistic_button_humidity
+        template: statistic_button # Don't use humidity template, for outside it does not matter
         tap_action:
           action: more-info
       # Rain today
@@ -78,10 +80,20 @@ cards:
         template: statistic_button
         tap_action:
           action: more-info
-      # Wind
+
+  - type: horizontal-stack
+    cards:
+      # Wind gust
       - type: custom:button-card
-        name: Wind
+        name: Wind strength
         entity: sensor.netatmo_home_wind_gust_strength
+        template: statistic_button
+        tap_action:
+          action: more-info
+      # Wind gust direction
+      - type: custom:button-card
+        name: Wind direction
+        entity: sensor.netatmo_home_wind_gust_angle
         template: statistic_button
         tap_action:
           action: more-info

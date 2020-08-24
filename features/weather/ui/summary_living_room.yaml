@@ -1,43 +1,52 @@
 # Summary column for an overview of the inside environment
-type: custom:stack-in-card
-mode: vertical
+type: vertical-stack
 cards:
-  - type: custom:button-card
-    name: Living room
-    template: header
-    # Show details popup when clicking the header
-    tap_action:
-      action: call-service
-      service: browser_mod.popup
-      service_data:
-        title: Living room
-        deviceID:
-          - this
-        card:
-          type: vertical-stack
-          cards:
-          - !include living_room_temperature.yaml
-          - !include living_room_co2.yaml
-          - type: entities
-            entities:
-              - entity: sensor.netatmo_living_room_temperature
-                name: Temperature
-              - entity: sensor.netatmo_living_room_co2
-                name: CO2
-              - entity: sensor.netatmo_living_room_humidity
-                name: Humidity
-              - entity: sensor.netatmo_living_room_pressure
-                name: Pressure
-              - entity: sensor.netatmo_living_room_noise
-                name: Noise
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:button-card
+        name: Living room
+        template: header
+        # Show details popup when clicking the header
+        tap_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Living room
+            deviceID:
+              - this
+            card:
+              type: vertical-stack
+              cards:
+              - !include living_room_temperature.yaml
+              - !include living_room_co2.yaml
+              - type: entities
+                entities:
+                  - entity: sensor.netatmo_living_room_temperature
+                    name: Temperature
+                  - entity: sensor.netatmo_living_room_co2
+                    name: CO2
+                  - entity: sensor.netatmo_living_room_humidity
+                    name: Humidity
+                  - entity: sensor.netatmo_living_room_pressure
+                    name: Pressure
+                  - entity: sensor.netatmo_living_room_noise
+                    name: Noise
 
-  - !include living_room_temperature.yaml
-  - !include living_room_co2.yaml
+      - !include living_room_temperature.yaml
+      - !include living_room_co2.yaml
 
-  # Row of tiny living room stats
+  # Rows of tiny living room stats
   # TODO show a popup with a fancy graph when tapped
   - type: horizontal-stack
     cards:
+      # CO2
+      - type: custom:button-card
+        name: CO2
+        entity: sensor.netatmo_living_room_co2
+        template: statistic_button_co2
+        tap_action:
+          action: more-info
       # Humidity
       - type: custom:button-card
         name: Humidity
@@ -45,6 +54,9 @@ cards:
         template: statistic_button_humidity
         tap_action:
           action: more-info
+
+  - type: horizontal-stack
+    cards:
       # Noise
       - type: custom:button-card
         name: Noise
