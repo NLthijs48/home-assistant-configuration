@@ -33,25 +33,25 @@ labels_secondary: false
 # Add color to indicate health
 color_thresholds:
   # Too low
-  - color: red
+  - color: '#ffa500'
     value: 0
-  - color: red
+  - color: '#ffa500'
     value: 28
   # A bit too low
-  - color: orange
+  - color: '#ffa500'
     value: 32
-  - color: orange
+  - color: '#ffa500'
     value: 38
   # Good
-  - color: green
+  - color: '#008000'
     value: 42
-  - color: green
+  - color: '#008000'
     value: 58
   # A bit too high
-  - color: orange
+  - color: '#ffa500'
     value: 62
-  - color: orange
+  - color: '#ffa500'
     value: 68
   # Too high
-  - color: red
+  - color: '#ffa500'
     value: 72

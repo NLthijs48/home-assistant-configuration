@@ -31,19 +31,22 @@ lower_bound_secondary: 0
 labels_secondary: false
 # Add color to the CO2 line to indicate health
 color_thresholds:
-  - color: green
+  # Good state
+  - color: '#008000'
     value: 0
-  - color: green
+  - color: '#008000'
     value: 300
-  - color: green
+  - color: '#008000'
     value: 400
-  - color: green
+  - color: '#008000'
     value: 500
-  - color: green
+  - color: '#008000'
     value: 600
-  - color: orange
+  # Getting-bad state
+  - color: '#ffa500'
     value: 1000
-  - color: orange
+  - color: '#ffa500'
     value: 1500
-  - color: red
+  # Bad state
+  - color: '#790000'
     value: 1700

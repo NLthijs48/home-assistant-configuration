@@ -125,10 +125,10 @@ button_card_templates:
       # Not-ideal states
       - value: 40
         operator: '<'
-        color: orange
+        color: '#ffa500'
       - value: 60
         operator: '>'
-        color: orange
+        color: '#ffa500'
       # Good state
       - operator: 'default'
         # TODO: would like to fallback to the default, but that is not possible?!
@@ -146,7 +146,7 @@ button_card_templates:
       # Worrisome state
       - value: 700
         operator: '>'
-        color: orange
+        color: '#ffa500'
       # Good state
       - operator: 'default'
         color: '#004800'
