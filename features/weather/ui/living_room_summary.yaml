@@ -36,7 +36,6 @@ cards:
       - !include living_room_temperature.yaml
 
   # Rows of tiny living room stats
-  # TODO show a popup with a fancy graph when tapped
   - type: horizontal-stack
     cards:
       # CO2
@@ -58,7 +57,13 @@ cards:
         entity: sensor.netatmo_living_room_humidity
         template: statistic_button_humidity
         tap_action:
-          action: more-info
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Living room humidity
+            card: !include living_room_humidity.yaml
+            deviceID:
+              - this
 
   - type: horizontal-stack
     cards:

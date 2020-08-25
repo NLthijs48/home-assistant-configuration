@@ -119,14 +119,14 @@ button_card_templates:
       - value: 30
         operator: '<'
         color: '#790000'
-      - value: 60
+      - value: 70
         operator: '>'
         color: '#790000'
       # Not-ideal states
-      - value: 45
+      - value: 40
         operator: '<'
         color: orange
-      - value: 55
+      - value: 60
         operator: '>'
         color: orange
       # Good state

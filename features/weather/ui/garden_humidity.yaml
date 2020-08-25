@@ -1,0 +1,39 @@
+type: 'custom:mini-graph-card'
+entities:
+  # Humidity
+  - entity: sensor.netatmo_garden_humidity
+    show_fill: false
+    name: Humidity
+    color: green
+  # Rain
+  # TODO: somehow scale this properly? cannot use secondary axis without losing the sun shade
+  - entity: sensor.netatmo_rain_sum_rain_1
+    show_fill: false
+    name: Rain
+    color: '#03a9f4'
+  # Sun is up/down soft-fade
+  - color: '#9a9a9a'
+    entity: sensor.solar_elevation
+    name: Day/Night
+    show_line: false
+    show_points: false
+    show_legend: false
+    y_axis: secondary
+# Styling
+height: 250
+line_width: 7
+show:
+  icon: false
+  labels: true
+  name: false
+# Time configuration
+hours_to_show: 72 # 3 days
+points_per_hour: 12
+hour24: true
+# Primary axis
+lower_bound: 0
+upper_bound: 100
+decimals: 0
+# Secondary axis
+lower_bound_secondary: 0
+labels_secondary: false
