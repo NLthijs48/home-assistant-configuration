@@ -12,7 +12,7 @@ cards:
           service: browser_mod.popup
           service_data:
             title: Garden
-            deviceID:
+            deviceID: # Only on this device
               - this
             card:
               type: vertical-stack
@@ -60,7 +60,6 @@ cards:
                     name: Reachability
 
       - !include garden_temperature.yaml
-      - !include garden_wind.yaml
 
   # Rows of tiny garden stats
   # TODO show a popup with a fancy graph when tapped
@@ -89,11 +88,23 @@ cards:
         entity: sensor.netatmo_home_wind_gust_strength
         template: statistic_button
         tap_action:
-          action: more-info
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Garden wind
+            card: !include garden_wind.yaml
+            deviceID:
+              - this
       # Wind gust direction
       - type: custom:button-card
         name: Wind direction
         entity: sensor.netatmo_home_wind_gust_angle
         template: statistic_button
         tap_action:
-          action: more-info
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Garden wind
+            card: !include garden_wind.yaml
+            deviceID:
+              - this

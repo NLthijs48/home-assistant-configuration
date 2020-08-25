@@ -13,7 +13,7 @@ cards:
           service: browser_mod.popup
           service_data:
             title: Living room
-            deviceID:
+            deviceID: # Only on this device
               - this
             card:
               type: vertical-stack
@@ -34,7 +34,6 @@ cards:
                     name: Noise
 
       - !include living_room_temperature.yaml
-      - !include living_room_co2.yaml
 
   # Rows of tiny living room stats
   # TODO show a popup with a fancy graph when tapped
@@ -46,7 +45,13 @@ cards:
         entity: sensor.netatmo_living_room_co2
         template: statistic_button_co2
         tap_action:
-          action: more-info
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Living room CO2
+            card: !include living_room_co2.yaml
+            deviceID:
+              - this
       # Humidity
       - type: custom:button-card
         name: Humidity

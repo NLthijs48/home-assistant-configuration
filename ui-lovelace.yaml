@@ -20,8 +20,8 @@ views:
       #- !include ui/media/plex-status.yaml, not useful yet
       - type: horizontal-stack
         cards:
-          - !include features/weather/ui/summary_living_room.yaml
-          - !include features/weather/ui/summary_garden.yaml
+          - !include features/weather/ui/living_room_summary.yaml
+          - !include features/weather/ui/garden_summary.yaml
       - !include features/weather/ui/forecast.yaml
       - !include features/weather/ui/buienradar.yaml
       - !include features/weather/ui/buienalarm.yaml

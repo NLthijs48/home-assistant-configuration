@@ -51,7 +51,6 @@ color_thresholds:
   - value: 35.9
     color: "#eb3b5a"
 line_width: 10
-animate: true
 show:
   icon: false
   labels: true
