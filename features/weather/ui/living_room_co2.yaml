@@ -15,13 +15,12 @@ entities:
 # Styling
 height: 250
 line_width: 7
-animate: true
 show:
   icon: false
   labels: true
   name: false
 # Time configuration
-hours_to_show: 24
+hours_to_show: 72 # 3 days
 points_per_hour: 12
 hour24: true
 # Primary axis
