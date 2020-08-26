@@ -18,20 +18,11 @@ cards:
             card:
               type: vertical-stack
               cards:
-              - !include living_room_temperature.yaml
-              - !include living_room_co2.yaml
-              - type: entities
-                entities:
-                  - entity: sensor.netatmo_living_room_temperature
-                    name: Temperature
-                  - entity: sensor.netatmo_living_room_co2
-                    name: CO2
-                  - entity: sensor.netatmo_living_room_humidity
-                    name: Humidity
-                  - entity: sensor.netatmo_living_room_pressure
-                    name: Pressure
-                  - entity: sensor.netatmo_living_room_noise
-                    name: Noise
+                - !include living_room_temperature.yaml
+                - !include living_room_co2.yaml
+                - !include living_room_noise.yaml
+                - !include living_room_humidity.yaml
+                - !include living_room_pressure.yaml
 
       - !include living_room_temperature.yaml
 
@@ -47,8 +38,9 @@ cards:
           action: call-service
           service: browser_mod.popup
           service_data:
-            title: Living room CO2
             card: !include living_room_co2.yaml
+            title: ' '
+            hide_header: true
             deviceID:
               - this
       # Humidity
@@ -60,8 +52,9 @@ cards:
           action: call-service
           service: browser_mod.popup
           service_data:
-            title: Living room humidity
             card: !include living_room_humidity.yaml
+            title: ' '
+            hide_header: true
             deviceID:
               - this
 
@@ -73,11 +66,25 @@ cards:
         entity: sensor.netatmo_living_room_noise
         template: statistic_button
         tap_action:
-          action: more-info
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            card: !include living_room_noise.yaml
+            title: ' '
+            hide_header: true
+            deviceID:
+              - this
       # Pressure
       - type: custom:button-card
         name: Pressure
         entity: sensor.netatmo_living_room_pressure
         template: statistic_button
         tap_action:
-          action: more-info
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            card: !include living_room_pressure.yaml
+            title: ' '
+            hide_header: true
+            deviceID:
+              - this

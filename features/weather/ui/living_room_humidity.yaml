@@ -13,12 +13,11 @@ entities:
     show_legend: false
     y_axis: secondary
 # Styling
-height: 250
-line_width: 7
+height: 200
+line_width: 4
 show:
   icon: false
   labels: true
-  name: false
 # Time configuration
 hours_to_show: 72 # 3 days
 points_per_hour: 12
