@@ -19,14 +19,9 @@ cards:
               cards:
               - !include garden_temperature.yaml
               - !include garden_wind.yaml
+              - !include garden_humidity.yaml
               - type: entities
                 entities:
-                  # Standard
-                  - entity: sensor.netatmo_garden_humidity
-                    name: Humidity
-                  - entity: sensor.netatmo_garden_battery
-                    name: Battery main
-
                   # Rain
                   - type: section
                     label: Rain
@@ -38,27 +33,6 @@ cards:
                     name: "Rain: last day"
                   - entity: sensor.netatmo_rain_battery
                     name: Battery rain sensor
-
-                  # Wind
-                  - type: section
-                    label: Wind
-                  - entity: sensor.netatmo_home_wind_gust_strength
-                    name: Wind gust
-                  - entity: sensor.netatmo_home_wind_gust_angle
-                    name: Gust angle
-                  - entity: sensor.netatmo_home_wind_wind_strength
-                    name: Wind
-                  - entity: sensor.netatmo_home_wind_angle
-                    name: Wind angle
-                  - entity: sensor.netatmo_home_wind_battery_percent
-                    name: Battery percent
-                  - entity: sensor.netatmo_home_wind_battery
-                    name: Battery
-                  - entity: sensor.netatmo_home_wind_radio
-                    name: Radio
-                  - entity: sensor.netatmo_home_wind_reachability
-                    name: Reachability
-
       - !include garden_temperature.yaml
 
   # Rows of tiny garden stats
@@ -74,8 +48,9 @@ cards:
           action: call-service
           service: browser_mod.popup
           service_data:
-            title: Garden humidity
             card: !include garden_humidity.yaml
+            title: ' '
+            hide_header: true
             deviceID:
               - this
       # Rain today
@@ -97,8 +72,9 @@ cards:
           action: call-service
           service: browser_mod.popup
           service_data:
-            title: Garden wind
             card: !include garden_wind.yaml
+            title: ' '
+            hide_header: true
             deviceID:
               - this
       # Wind gust direction
@@ -110,7 +86,8 @@ cards:
           action: call-service
           service: browser_mod.popup
           service_data:
-            title: Garden wind
             card: !include garden_wind.yaml
+            title: ' '
+            hide_header: true
             deviceID:
               - this

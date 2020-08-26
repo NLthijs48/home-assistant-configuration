@@ -2,7 +2,7 @@ type: vertical-stack
 cards:
   # Wind speeds
   - type: 'custom:mini-graph-card'
-    name: Wind
+    name: Wind speed
     entities:
       # Current wind gust
       - entity: sensor.netatmo_home_wind_gust_strength
@@ -23,12 +23,11 @@ cards:
         show_legend: false
         y_axis: secondary
     # Styling
-    height: 250
-    line_width: 7
+    height: 200
+    line_width: 4
     show:
       icon: false
       labels: true
-      name: false
     # Time configuration
     hours_to_show: 72 # 3 days
     points_per_hour: 12
