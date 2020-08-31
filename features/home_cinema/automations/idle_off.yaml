@@ -1,0 +1,25 @@
+alias: Turn off after being idle for a while
+trigger:
+  # Receiver turns off
+  - platform: "state"
+    entity_id: "media_player.4k"
+    to: "idle"
+  - platform: "state"
+    entity_id: "input_select.home_cinema_mode"
+    to: "chromecast"
+condition:
+  # ChromeCast is idle
+  - condition: "state"
+    entity_id: "media_player.4k"
+    state: "idle"
+  # Mode is set to ChromeCast
+  - condition: "state"
+    entity_id: "input_select.home_cinema_mode"
+    state: "chromecast"
+action:
+  # Wait if it stays idle for a while
+  - delay: '00:15:00'
+  # Turn off everything
+  - service: script.home_cinema_mode
+    data:
+      mode: off
