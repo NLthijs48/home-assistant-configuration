@@ -5,12 +5,12 @@ cards:
     name: Wind speed
     entities:
       # Current wind gust
-      - entity: sensor.netatmo_home_wind_gust_strength
+      - entity: sensor.netatmo_wind_gust_strength
         show_fill: false
         name: Gust speed
         color: orange
       # Current wind strength
-      - entity: sensor.netatmo_home_wind_wind_strength
+      - entity: sensor.netatmo_wind_wind_strength
         show_fill: false
         name: Steady speed
         color: green
@@ -45,16 +45,16 @@ cards:
       # Gust
       - type: custom:compass-card
         name: Gust
-        entity: sensor.netatmo_home_wind_gust_angle
-        secondary_entity: sensor.netatmo_home_wind_gust_strength
+        entity: sensor.netatmo_wind_gust_angle
+        secondary_entity: sensor.netatmo_wind_gust_strength
         compass:
           indicator: arrow_inward
           show_north: true
       # Steady
       - type: custom:compass-card
         name: Steady
-        entity: sensor.netatmo_home_wind_angle
-        secondary_entity: sensor.netatmo_home_wind_wind_strength
+        entity: sensor.netatmo_wind_angle
+        secondary_entity: sensor.netatmo_wind_wind_strength
         compass:
           indicator: arrow_inward
           show_north: true

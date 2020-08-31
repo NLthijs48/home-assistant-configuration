@@ -3,7 +3,7 @@ type: 'custom:mini-graph-card'
 name: Temperature
 entities:
   - entity: sensor.netatmo_garden_temperature
-    name: Garden
+    name: Temperature
     show_fill: false
   # Sun is up/down soft-fade
   - color: '#9a9a9a'

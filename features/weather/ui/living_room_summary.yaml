@@ -18,13 +18,13 @@ cards:
             card:
               type: vertical-stack
               cards:
-                - !include living_room_temperature.yaml
-                - !include living_room_co2.yaml
-                - !include living_room_noise.yaml
-                - !include living_room_humidity.yaml
-                - !include living_room_pressure.yaml
+                - !include living_room/temperature.yaml
+                - !include living_room/co2.yaml
+                - !include living_room/noise.yaml
+                - !include living_room/humidity.yaml
+                - !include living_room/pressure.yaml
 
-      - !include living_room_temperature.yaml
+      - !include living_room/temperature.yaml
 
   # Rows of tiny living room stats
   - type: horizontal-stack
@@ -38,7 +38,7 @@ cards:
           action: call-service
           service: browser_mod.popup
           service_data:
-            card: !include living_room_co2.yaml
+            card: !include living_room/co2.yaml
             title: ' '
             hide_header: true
             deviceID:
@@ -52,7 +52,7 @@ cards:
           action: call-service
           service: browser_mod.popup
           service_data:
-            card: !include living_room_humidity.yaml
+            card: !include living_room/humidity.yaml
             title: ' '
             hide_header: true
             deviceID:
@@ -69,7 +69,7 @@ cards:
           action: call-service
           service: browser_mod.popup
           service_data:
-            card: !include living_room_noise.yaml
+            card: !include living_room/noise.yaml
             title: ' '
             hide_header: true
             deviceID:
@@ -83,7 +83,7 @@ cards:
           action: call-service
           service: browser_mod.popup
           service_data:
-            card: !include living_room_pressure.yaml
+            card: !include living_room/pressure.yaml
             title: ' '
             hide_header: true
             deviceID:

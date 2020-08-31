@@ -22,6 +22,11 @@ views:
         cards:
           - !include features/weather/ui/living_room_summary.yaml
           - !include features/weather/ui/garden_summary.yaml
+      - type: horizontal-stack
+        cards:
+          - !include features/weather/ui/thijs_summary.yaml
+          - !include features/weather/ui/frits_summary.yaml
+          - !include features/weather/ui/computers_summary.yaml
       - !include features/weather/ui/forecast.yaml
       - !include features/weather/ui/buienradar.yaml
       - !include features/weather/ui/buienalarm.yaml
@@ -89,12 +94,20 @@ button_card_templates:
   header:
     styles:
       card:
-        - padding: 24px 16px 8px 16px
+        - padding: 16px 16px 0 16px
       name:
         - justify-self: start
         - font-size: 24px
       label:
         - justify-self: start
+  header_standalone:
+    color: transparent
+    color_type: card
+    styles:
+      card:
+        - padding: 16px 16px 0 16px
+      name:
+        - font-size: 18px
 
   # Small button with a statistic
   statistic_button:

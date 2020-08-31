@@ -17,9 +17,9 @@ cards:
             card:
               type: vertical-stack
               cards:
-              - !include garden_temperature.yaml
-              - !include garden_wind.yaml
-              - !include garden_humidity.yaml
+              - !include garden/temperature.yaml
+              - !include garden/wind.yaml
+              - !include garden/humidity.yaml
               - type: entities
                 entities:
                   # Rain
@@ -33,7 +33,7 @@ cards:
                     name: "Rain: last day"
                   - entity: sensor.netatmo_rain_battery
                     name: Battery rain sensor
-      - !include garden_temperature.yaml
+      - !include garden/temperature.yaml
 
   # Rows of tiny garden stats
   # TODO show a popup with a fancy graph when tapped
@@ -48,7 +48,7 @@ cards:
           action: call-service
           service: browser_mod.popup
           service_data:
-            card: !include garden_humidity.yaml
+            card: !include garden/humidity.yaml
             title: ' '
             hide_header: true
             deviceID:
@@ -66,13 +66,13 @@ cards:
       # Wind gust
       - type: custom:button-card
         name: Wind strength
-        entity: sensor.netatmo_home_wind_gust_strength
+        entity: sensor.netatmo_wind_gust_strength
         template: statistic_button
         tap_action:
           action: call-service
           service: browser_mod.popup
           service_data:
-            card: !include garden_wind.yaml
+            card: !include garden/wind.yaml
             title: ' '
             hide_header: true
             deviceID:
@@ -80,13 +80,13 @@ cards:
       # Wind gust direction
       - type: custom:button-card
         name: Wind direction
-        entity: sensor.netatmo_home_wind_gust_angle
+        entity: sensor.netatmo_wind_gust_angle
         template: statistic_button
         tap_action:
           action: call-service
           service: browser_mod.popup
           service_data:
-            card: !include garden_wind.yaml
+            card: !include garden/wind.yaml
             title: ' '
             hide_header: true
             deviceID:

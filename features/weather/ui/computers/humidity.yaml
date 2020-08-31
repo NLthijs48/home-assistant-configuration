@@ -1,0 +1,56 @@
+type: 'custom:mini-graph-card'
+entities:
+  # Humidity
+  - entity: sensor.netatmo_computers_humidity
+    show_fill: false
+    name: Humidity
+  # Sun is up/down soft-fade
+  - color: '#9a9a9a'
+    entity: sensor.solar_elevation
+    name: Day/Night
+    show_line: false
+    show_points: false
+    show_legend: false
+    y_axis: secondary
+# Styling
+height: 200
+line_width: 4
+show:
+  icon: false
+  labels: true
+# Time configuration
+hours_to_show: 72 # 3 days
+points_per_hour: 12
+hour24: true
+# Primary axis
+lower_bound: 0
+upper_bound: 100
+decimals: 0
+# Secondary axis
+lower_bound_secondary: 0
+labels_secondary: false
+# Add color to indicate health
+color_thresholds:
+  # Too low
+  - color: '#ffa500'
+    value: 0
+  - color: '#ffa500'
+    value: 28
+  # A bit too low
+  - color: '#ffa500'
+    value: 32
+  - color: '#ffa500'
+    value: 38
+  # Good
+  - color: '#008000'
+    value: 42
+  - color: '#008000'
+    value: 58
+  # A bit too high
+  - color: '#ffa500'
+    value: 62
+  - color: '#ffa500'
+    value: 68
+  # Too high
+  - color: '#ffa500'
+    value: 72

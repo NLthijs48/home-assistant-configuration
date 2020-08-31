@@ -1,0 +1,51 @@
+type: 'custom:mini-graph-card'
+entities:
+  # CO2 level as solid line
+  - entity: sensor.netatmo_thijs_co2
+    show_fill: false
+    name: CO2
+  # Sun is up/down soft-fade
+  - color: '#9a9a9a'
+    entity: sensor.solar_elevation
+    name: Day/Night
+    show_line: false
+    show_points: false
+    show_legend: false
+    y_axis: secondary
+# Styling
+height: 200
+line_width: 4
+show:
+  icon: false
+  labels: true
+# Time configuration
+hours_to_show: 72 # 3 days
+points_per_hour: 12
+hour24: true
+# Primary axis
+lower_bound: 0
+decimals: 0
+# Secondary axis
+lower_bound_secondary: 0
+labels_secondary: false
+# Add color to the CO2 line to indicate health
+color_thresholds:
+  # Good state
+  - color: '#008000'
+    value: 0
+  - color: '#008000'
+    value: 300
+  - color: '#008000'
+    value: 400
+  - color: '#008000'
+    value: 500
+  - color: '#008000'
+    value: 600
+  # Getting-bad state
+  - color: '#ffa500'
+    value: 1000
+  - color: '#ffa500'
+    value: 1500
+  # Bad state
+  - color: '#790000'
+    value: 1700

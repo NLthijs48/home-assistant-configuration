@@ -1,8 +1,7 @@
-# Temperature of the living room
 type: 'custom:mini-graph-card'
 entities:
-  - entity: sensor.netatmo_living_room_temperature
-    name: Living room
+  - entity: sensor.netatmo_thijs_temperature
+    name: Temperature
     show_fill: false
   # Sun is up/down soft-fade
   - color: '#9a9a9a'
@@ -14,7 +13,7 @@ entities:
     y_axis: secondary
 height: 200
 hour24: true
-hours_to_show: 24
+hours_to_show: 72
 points_per_hour: 12
 decimals: 1
 color_thresholds:
@@ -54,5 +53,4 @@ line_width: 10
 show:
   icon: false
   labels: true
-  name: false
 lower_bound_secondary: 0
