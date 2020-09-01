@@ -1,24 +1,38 @@
 alias: Turn off after being idle for a while
 trigger:
-  # Receiver turns off
+  # Chromecast is idle/off for a while
+  # Note: when stopping playback it goes to 'off', while it is still showing the photo album
   - platform: "state"
     entity_id: "media_player.4k"
     to: "idle"
+    for:
+      minutes: 15
   - platform: "state"
-    entity_id: "input_select.home_cinema_mode"
-    to: "chromecast"
-condition:
-  # ChromeCast is idle
-  - condition: "state"
     entity_id: "media_player.4k"
-    state: "idle"
+    to: "off"
+    for:
+      minutes: 15
+condition:
+  # ChromeCast is idle or off
+  - condition: or
+    conditions:
+      - condition: "state"
+        entity_id: "media_player.4k"
+        state: "idle"
+      - condition: "state"
+        entity_id: "media_player.4k"
+        state: "off"
   # Mode is set to ChromeCast
   - condition: "state"
     entity_id: "input_select.home_cinema_mode"
     state: "chromecast"
 action:
-  # Wait if it stays idle for a while
-  - delay: '00:15:00'
+  # Notify Thijs (for debugging)
+  - service: notify.mobile_app_gm1913
+    data_template:
+      message: Chromecast was idle for 15 minutes, turned off
+      data:
+        tag: chromecast_idle
   # Turn off everything
   - service: script.home_cinema_mode
     data:
