@@ -47,6 +47,8 @@ views:
               platform: google_translate
             type: 'custom:mini-media-player'
           - entity: device_tracker.phone_thijs
+          - entity: sensor.phone_thijs_battery_level
+          - entity: sensor.phone_thijs_battery_activity
           - entity: sensor.phone_thijs_sim
           - entity: sensor.phone_thijs_audio_setting
           - entity: sensor.phone_thijs_bluetooth_connection
@@ -71,17 +73,18 @@ views:
     badges: []
     cards:
       - !include features/lighting/ui/room_frits.yaml
-      - entities:
-          - sensor.bssid
-          - sensor.battery_iphone_frits
-          - sensor.battery_state
-          - sensor.connection_type
-          - sensor.geocoded_location
-          - sensor.last_update_trigger
-          - device_tracker.unifi_iphone_frits
-          - sensor.sim_1
-          - sensor.ssid
-        type: entities
+      - type: entities
+        entities:
+          - device_tracker.phone_frits
+          - sensor.phone_frits_battery_level
+          - sensor.phone_frits_battery_state
+          - sensor.phone_frits_bssid
+          - sensor.phone_frits_connection_type
+          - sensor.phone_frits_geocoded_location
+          - sensor.phone_frits_last_update_trigger
+          - sensor.phone_frits_sim
+          - sensor.phone_frits_ssid
+          - sensor.phone_frits_storage
 
   # Plants
   - icon: mdi:sprout
