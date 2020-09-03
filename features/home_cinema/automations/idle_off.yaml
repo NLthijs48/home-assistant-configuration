@@ -6,12 +6,12 @@ trigger:
     entity_id: "media_player.4k"
     to: "idle"
     for:
-      minutes: 15
+      minutes: 10
   - platform: "state"
     entity_id: "media_player.4k"
     to: "off"
     for:
-      minutes: 15
+      minutes: 10
 condition:
   # ChromeCast is idle or off
   - condition: or
@@ -30,10 +30,8 @@ action:
   # Notify Thijs (for debugging)
   - service: notify.mobile_app_phone_thijs
     data_template:
-      message: Chromecast was idle for 15 minutes, turned off
+      message: Chromecast was idle for 10 minutes, turned off
       data:
         tag: chromecast_idle
   # Turn off everything
-  - service: script.home_cinema_mode
-    data:
-      mode: off
+  - service: script.home_cinema_off

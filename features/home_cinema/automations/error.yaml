@@ -4,9 +4,10 @@ trigger:
   - entity_id: input_boolean.home_cinema_pending
     platform: state
     to: 'on'
+    # When pending for a while
+    for:
+      seconds: 30
 action:
-  # When pending for more than 15 seconds
-  - delay: 00:00:15
   # Reset pending (allows trying again)
   - condition: state
     entity_id: input_boolean.home_cinema_pending
@@ -17,6 +18,6 @@ action:
   - service: notify.mobile_app_phone_thijs
     data_template:
       message: >-
-        Setting home cinema to {{ states("input_select.home_cinema_mode") }} failed, still pending after 15 seconds!
+        Setting home cinema to {{ states("input_select.home_cinema_mode") }} failed, still pending after 30 seconds!
       data:
         tag: battery
