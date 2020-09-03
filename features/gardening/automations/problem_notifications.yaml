@@ -12,7 +12,7 @@
       state: "problem"
   action:
     # Notify phone of Thijs
-    - service: notify.mobile_app_gm1913
+    - service: notify.mobile_app_phone_thijs
       data_template:
         message: >-
           Beet plant needs attention: {{state_attr("plant.beet", "problem")}}
@@ -34,7 +34,7 @@
       from: 'problem' # TODO find out the 'good' state and use a 'to' trigger?
   action:
     # Notify phone of Thijs
-    - service: notify.mobile_app_gm1913
+    - service: notify.mobile_app_phone_thijs
       data_template:
         message: >-
           Beet plant is doing well!

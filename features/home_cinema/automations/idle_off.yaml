@@ -28,7 +28,7 @@ condition:
     state: "chromecast"
 action:
   # Notify Thijs (for debugging)
-  - service: notify.mobile_app_gm1913
+  - service: notify.mobile_app_phone_thijs
     data_template:
       message: Chromecast was idle for 15 minutes, turned off
       data:

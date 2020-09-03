@@ -37,7 +37,8 @@ views:
     badges: []
     cards:
       - !include features/lighting/ui/room_thijs.yaml
-      - entities:
+      - type: entities
+        entities:
           - entity: media_player.bedroom_speaker
             group: true
             icon: 'mdi:google-home'
@@ -45,10 +46,19 @@ views:
             tts:
               platform: google_translate
             type: 'custom:mini-media-player'
-          - entity: sensor.battery_phone_thijs
-          - entity: device_tracker.gm1913
-          - entity: sensor.wifi_connection
-        type: entities
+          - entity: device_tracker.phone_thijs
+          - entity: sensor.phone_thijs_sim
+          - entity: sensor.phone_thijs_audio_setting
+          - entity: sensor.phone_thijs_bluetooth_connection
+          - entity: sensor.phone_thijs_calling
+          - entity: sensor.phone_thijs_detected_activity
+          - entity: sensor.phone_thijs_do_not_disturb
+          - entity: sensor.phone_thijs_last_reboot
+          - entity: sensor.phone_thijs_light
+          - entity: sensor.phone_thijs_next_alarm
+          - entity: sensor.phone_thijs_proximity
+          - entity: sensor.phone_thijs_storage
+          - entity: sensor.phone_thijs_wifi
       - entity: media_player.spotify_thijs
         type: media-control
       # TODO fix redirect url for new dashboard path (and think about what this card should do)
@@ -68,7 +78,7 @@ views:
           - sensor.connection_type
           - sensor.geocoded_location
           - sensor.last_update_trigger
-          - device_tracker.iphone_frits
+          - device_tracker.unifi_iphone_frits
           - sensor.sim_1
           - sensor.ssid
         type: entities

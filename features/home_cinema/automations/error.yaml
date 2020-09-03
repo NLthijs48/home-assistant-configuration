@@ -14,7 +14,7 @@ action:
   - entity_id: input_boolean.home_cinema_pending
     service: input_boolean.turn_off
   # Notify phone of Thijs
-  - service: notify.mobile_app_gm1913
+  - service: notify.mobile_app_phone_thijs
     data_template:
       message: >-
         Setting home cinema to {{ states("input_select.home_cinema_mode") }} failed, still pending after 15 seconds!
