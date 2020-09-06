@@ -1,6 +1,10 @@
-# Implements lights control
-
 automation: !include_dir_merge_list automations
+
+
+# Script for changing between modes
+script:
+  living_room_lighting_mode: !include scripts/set_living_room_lighting_mode.yaml
+
 
 # Setup all light icons
 homeassistant:
@@ -122,13 +126,6 @@ light:
       - light.frits_room_window
 
 
-## Living room auto-brightness system
-input_boolean:
-  # Tracks in someone is in the living room
-  living_room_in_use:
-    name: Living room in use
-    icon: mdi:sofa
-
 input_select:
   # Living room light mode: determines brightness of all lights
   living_room_lighting_mode:
@@ -140,7 +137,3 @@ input_select:
       - 'cooking'
       - 'evening'
       - 'night'
-
-# Script for changing between modes
-script:
-  living_room_lighting_mode: !include scripts/set_living_room_lighting_mode.yaml

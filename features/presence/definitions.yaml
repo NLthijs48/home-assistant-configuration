@@ -1,0 +1,68 @@
+# Implements lights control
+
+automation: !include_dir_merge_list automations
+
+input_boolean:
+  # Tracks in someone is in the living room
+  living_room_in_use:
+    name: Living room in use
+    icon: mdi:sofa
+
+sensor:
+  - platform: template
+    sensors:
+      # Floor that Thijs is using
+      phone_thijs_wifi_ap:
+        friendly_name: "Phone Thijs Wifi AP"
+        value_template: >-
+          {% if is_state_attr('device_tracker.unifi_phone_thijs', 'ap_mac', '18:e8:29:90:42:42') %}
+            downstairs
+          {% elif is_state_attr('device_tracker.unifi_phone_thijs', 'ap_mac', '18:e8:29:90:45:62') %}
+            upstairs
+          {% else %}
+            away
+          {% endif %}
+        icon_template: >-
+          {% if is_state('sensor.phone_thijs_wifi_ap', 'downstairs') %}
+            mdi:home-floor-0
+          {% elif is_state('sensor.phone_thijs_wifi_ap', 'upstairs') %}
+            mdi:home-floor-1
+          {% else %}
+            mdi:home-remove-outline
+          {% endif %}
+      # Floor that Frits is using
+      phone_frits_wifi_ap:
+        friendly_name: "Phone Frits Wifi AP"
+        value_template: >-
+          {% if is_state_attr('device_tracker.unifi_phone_frits', 'ap_mac', '18:e8:29:90:42:42') %}
+            downstairs
+          {% elif is_state_attr('device_tracker.unifi_phone_frits', 'ap_mac', '18:e8:29:90:45:62') %}
+            upstairs
+          {% else %}
+            away
+          {% endif %}
+        icon_template: >-
+          {% if is_state('sensor.phone_frits_wifi_ap', 'downstairs') %}
+            mdi:home-floor-0
+          {% elif is_state('sensor.phone_frits_wifi_ap', 'upstairs') %}
+            mdi:home-floor-1
+          {% else %}
+            mdi:home-remove-outline
+          {% endif %}
+      # Someone present in the living room
+      living_room_used_wifi:
+        friendly_name: "Living room AP in use"
+        value_template: >-
+          {% if is_state('sensor.phone_thijs_wifi_ap', 'downstairs') or is_state('sensor.phone_frits_wifi_ap', 'downstairs') %}
+            yes
+          {% else %}
+            no
+          {% endif %}
+        icon_template: >-
+          {% if is_state('sensor.phone_thijs_wifi_ap', 'downstairs') and is_state('sensor.phone_frits_wifi_ap', 'downstairs') %}
+            mdi:account-multiple
+          {% elif is_state('sensor.phone_thijs_wifi_ap', 'downstairs') or is_state('sensor.phone_frits_wifi_ap', 'downstairs') %}
+            mdi:account
+          {% else %}
+            mdi:account-off
+          {% endif %}

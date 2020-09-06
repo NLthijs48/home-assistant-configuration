@@ -16,6 +16,7 @@ homeassistant:
     weather: !include features/weather/definitions.yaml
     network: !include features/network/definitions.yaml
     gardening: !include features/gardening/definitions.yaml
+    presence: !include features/presence/definitions.yaml
 
 # Include themes
 frontend:
