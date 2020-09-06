@@ -50,6 +50,7 @@ sensor:
             mdi:home-remove-outline
           {% endif %}
       # Someone present in the living room
+      # Future: use a device class? https://www.home-assistant.io/integrations/binary_sensor/
       living_room_used_wifi:
         friendly_name: "Living room AP in use"
         value_template: >-

@@ -27,11 +27,5 @@ condition:
     entity_id: "input_select.home_cinema_mode"
     state: "chromecast"
 action:
-  # Notify Thijs (for debugging)
-  - service: notify.mobile_app_phone_thijs
-    data_template:
-      message: Chromecast was idle for 10 minutes, turned off
-      data:
-        tag: chromecast_idle
   # Turn off everything
   - service: script.home_cinema_off
