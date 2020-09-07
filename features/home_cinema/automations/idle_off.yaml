@@ -6,12 +6,12 @@ trigger:
     entity_id: "media_player.4k"
     to: "idle"
     for:
-      minutes: 10
+      minutes: 5
   - platform: "state"
     entity_id: "media_player.4k"
     to: "off"
     for:
-      minutes: 10
+      minutes: 5
 condition:
   # ChromeCast is idle or off
   - condition: or
