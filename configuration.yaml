@@ -10,13 +10,14 @@ homeassistant:
     person.frits:
       entity_picture: "/local/frits.jpg"
   packages:
-    system: !include features/system/definitions.yaml
+    computer: !include features/computer/definitions.yaml
+    gardening: !include features/gardening/definitions.yaml
     home_cinema: !include features/home_cinema/definitions.yaml
     lighting: !include features/lighting/definitions.yaml
-    weather: !include features/weather/definitions.yaml
     network: !include features/network/definitions.yaml
-    gardening: !include features/gardening/definitions.yaml
     presence: !include features/presence/definitions.yaml
+    system: !include features/system/definitions.yaml
+    weather: !include features/weather/definitions.yaml
 
 # Include themes
 frontend:
@@ -86,13 +87,3 @@ no_ip:
   domain: wiefferinkhome.ddns.net
   username: thijs-noip@wiefferink.me
   password: jm1o21w9yk2n7lg5223r87usho9l3ym3kiaavkeyvwz6o2fp26r5cieijq10qjxb
-
-# TEMP iotlink test
-script:
-  my_computer_notify:
-    alias: "My Computer - Notify"
-    sequence:
-      - service: mqtt.publish
-        data:
-          topic: "iotlink/workgroup/nlthijs48/commands/notify"
-          payload: '{ "title": "My Notification Title", "message": "This is an example of notification using IOT Link", "launchParams": "toast://open/https://iotlink.gitlab.io" }'

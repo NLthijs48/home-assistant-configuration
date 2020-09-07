@@ -1,0 +1,35 @@
+# Enable wake on lan integration
+wake_on_lan:
+
+switch:
+  - platform: wake_on_lan
+    mac: "74:d0:2b:7f:57:aa"
+    host: "10.0.100.1"
+    broadcast_address: "10.0.100.1"
+    # Future: add a turn_off action here that sends the sleep with iotlink?
+
+script:
+  # Wake my computer
+  computer_thijs_wake:
+    alias: "Computer Thijs: wake up"
+    sequence:
+      - service: wake_on_lan.send_magic_packet
+        data:
+          mac: "74:d0:2b:7f:57:aa"
+          broadcast_address: "10.0.100.1"
+  # iotlink notification test
+  computer_thijs_notify:
+    alias: "Computer Thijs: notification"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/workgroup/nlthijs48/commands/notify"
+          payload: '{ "title": "My Notification Title", "message": "This is an example of notification using IOT Link", "launchParams": "toast://open/https://iotlink.gitlab.io" }'
+  # Put to sleep
+  computer_thijs_suspend:
+    alias: "Computer Thijs: sleep"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "iotlink/workgroup/nlthijs48/commands/suspend"
+          payload: ""
