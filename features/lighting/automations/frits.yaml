@@ -1,5 +1,5 @@
  # Frits room lights turn on brightness
-- alias: Frits room lights turn on dimmed at night
+- alias: "Frits' room lights turn on dimmed at night"
   trigger:
     - entity_id: light.frits_room_lights
       platform: state
@@ -8,10 +8,10 @@
     - service: light.turn_on
       data_template:
         entity_id: light.frits_room_lights
-        brightness_pct: >-
+        brightness: >-
           {% if now().hour >= 18 or (now().hour <= 12 and is_state('sun.sun', 'below_horizon')) %}
             1
           {% else %}
-            100
+            255
           {% endif %}
 
