@@ -27,8 +27,12 @@ views:
           - !include features/weather/ui/thijs_summary.yaml
           - !include features/weather/ui/frits_summary.yaml
           - !include features/weather/ui/computers_summary.yaml
-      - !include features/system/ui/battery_low.yaml
       - !include features/weather/ui/forecast.yaml
+      # Maintenance column
+      - type: vertical-stack
+        cards:
+          - !include features/system/ui/battery_low.yaml
+          - !include features/system/ui/updates.yaml
 
   # Thijs
   - title: Thijs

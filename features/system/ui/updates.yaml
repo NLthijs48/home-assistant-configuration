@@ -1,0 +1,56 @@
+# Hide the whole block when no updates
+type: conditional
+conditions:
+  - entity: binary_sensor.updates_available
+    state: "on"
+card:
+  type: horizontal-stack
+  title: Update available!
+  cards:
+    # HA updates: button to the update page
+    - type: conditional
+      conditions:
+        - entity: binary_sensor.updater
+          state: "on"
+      card:
+        type: custom:button-card
+        entity: binary_sensor.updater
+        name: Home Assistant
+        show_icon: false
+        show_label: true
+        label: "[[[ return states['binary_sensor.updater'].attributes.newest_version; ]]]"
+        color_type: card
+        color: '#005780' # Blue
+        tap_action:
+          action: navigate
+          navigation_path: /hassio/dashboard
+        styles:
+          card:
+            - height: '60px'
+          label:
+            - opacity: 0.7
+              font-size: '80%'
+
+    # Show the HACS updates number when there are any
+    - type: conditional
+      conditions:
+        - entity: sensor.hacs
+          state_not: "0"
+      card:
+        type: custom:button-card
+        entity: sensor.hacs
+        name: HACS
+        show_icon: false
+        show_label: true
+        label: "[[[ return states['sensor.hacs'].state + ' update' + (states['sensor.hacs'].state>1 ? 's' : ''); ]]]"
+        color_type: card
+        color: '#005780' # Blue
+        tap_action:
+          action: navigate
+          navigation_path: /hacs/entry
+        styles:
+          card:
+            - height: '60px'
+          label:
+            - opacity: 0.7
+              font-size: '80%'
