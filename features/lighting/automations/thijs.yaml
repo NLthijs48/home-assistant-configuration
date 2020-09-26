@@ -24,6 +24,16 @@
             250
           {% endif %}
 
+# Turn off the light when going downstairs
+- alias: "Thijs' room turn off when going downstairs"
+  trigger:
+    - entity_id: sensor.phone_thijs_wifi_ap
+      platform: state
+      from: 'upstairs'
+  action:
+    - service: light.turn_off
+      data_template:
+        entity_id: light.ceiling_thijs
 
 # NFC tag test
 - alias: "Light based on NFC tag"
