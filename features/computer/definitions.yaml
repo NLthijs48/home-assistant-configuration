@@ -2,11 +2,22 @@
 wake_on_lan:
 
 switch:
+  # Computer Thijs
   - platform: wake_on_lan
     mac: "74:d0:2b:7f:57:aa"
     host: "10.0.100.1"
     broadcast_address: "10.0.100.1"
-    # Future: add a turn_off action here that sends the sleep with iotlink?
+    turn_off:
+      # Go to sleep instead of doing an actual shutdown
+      service: mqtt.publish
+      data:
+        topic: "iotlink/workgroup/nlthijs48/commands/suspend"
+        payload: ""
+  # Computer Frits
+  - platform: wake_on_lan
+    mac: "04:d9:f5:cd:a9:cd"
+    host: "10.0.100.2"
+    broadcast_address: "10.0.100.2"
 
 script:
   # Wake my computer
