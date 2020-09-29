@@ -1,4 +1,9 @@
 # Ceiling light card (with dimming)
-type: light
-name: Light
-entity: light.ceiling_thijs
+type: horizontal-stack
+cards:
+  - type: light
+    name: Light
+    entity: light.thijs_ceiling
+  - type: light
+    name: Light
+    entity: light.thijs_bed

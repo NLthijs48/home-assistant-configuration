@@ -3,7 +3,7 @@ type: entities
 title: First floor
 show_header_toggle: false
 entities:
-    
+
   # Hall
   - type: custom:fold-entity-row
     head:
@@ -40,11 +40,17 @@ entities:
   # Thijs' room
   - type: custom:fold-entity-row
     head:
-      entity: light.ceiling_thijs
+      entity: light.thijs_room_lights
       name: Thijs' room
       state_color: false
       type: custom:slider-entity-row
     entities:
+      - entity: light.thijs_ceiling
+        name: Ceiling
+        type: custom:slider-entity-row
+      - entity: light.thijs_bed
+        name: Bed
+        type: custom:slider-entity-row
       - entity: sensor.remote_thijs
         name: Remote
 
