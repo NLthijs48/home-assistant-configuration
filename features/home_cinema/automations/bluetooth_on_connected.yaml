@@ -1,0 +1,16 @@
+alias: Set to bluetooth mode when a phone is connected
+trigger:
+  # Receiver changes source or state
+  - platform: "template"
+    # Thijs' phone is connected to 'BoomBoom 100', the bluetooth dongle of the home cinema setup
+    value_template: '{{ is_state_attr("sensor.phone_thijs_bluetooth_connection", "connected_paired_devices", "[88:A9:A7:DF:F9:05]") }}'
+condition:
+  # Not already set to bluetooth mode
+  - condition: not
+    conditions:
+    - condition: "state"
+      entity_id: "input_select.home_cinema_mode"
+      state: "bluetooth"
+action:
+  # Set to bluetooth mode
+  - service: script.home_cinema_bluetooth
