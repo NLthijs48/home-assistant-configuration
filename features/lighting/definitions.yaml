@@ -58,7 +58,7 @@ homeassistant:
     light.hall_first_floor:
       icon: mdi:road
     # Computer room
-    light.ceiling_computers:
+    light.computers_ceiling:
       icon: mdi:desktop-tower-monitor
 
     ##### Second floor

@@ -57,7 +57,7 @@ entities:
   # Computer room
   - type: custom:fold-entity-row
     head:
-      entity: light.ceiling_computers
+      entity: light.computers_ceiling
       name: Computers
       state_color: false
       type: custom:slider-entity-row

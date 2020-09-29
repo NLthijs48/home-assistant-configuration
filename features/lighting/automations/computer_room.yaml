@@ -19,7 +19,7 @@
   action:
     - service: light.turn_off
       data:
-        entity_id: light.ceiling_computers
+        entity_id: light.computers_ceiling
 
 # Turn on
 - alias: Turn on the computer room lights when a computer turns on
@@ -33,12 +33,12 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.ceiling_computers
+        entity_id: light.computers_ceiling
 
 # Brightness and color temperature control when turned on
 - alias: Computer room light starts dimmed when turned on at night
   trigger:
-    - entity_id: light.ceiling_computers
+    - entity_id: light.computers_ceiling
       platform: state
       to: 'on'
     - platform: time
@@ -47,12 +47,12 @@
       at: "8:00:01"
   condition:
     - condition: state
-      entity_id: light.ceiling_computers
+      entity_id: light.computers_ceiling
       state: 'on'
   action:
     - service: light.turn_on
       data_template:
-        entity_id: light.ceiling_computers
+        entity_id: light.computers_ceiling
         brightness_pct: >-
           {% if now().hour >= 19 or now().hour <= 8 %}
             50
