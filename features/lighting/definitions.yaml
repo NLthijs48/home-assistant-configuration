@@ -45,7 +45,7 @@ homeassistant:
 
     ##### First floor
     # Thijs' room
-    light.thijs_ceiling:
+    light.bedroom_thijs_ceiling:
       icon: mdi:rectangle-outline
     # Frits' room
     light.frits_room_cabinet:
@@ -129,7 +129,7 @@ light:
     name: "Thijs' room lights"
     entities:
       - light.thijs_ceilinmg
-      - light.thijs_bed
+      - light.bedroom_thijs_bed
 
 
 input_select:

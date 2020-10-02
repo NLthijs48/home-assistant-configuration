@@ -34,7 +34,7 @@ entities:
       - entity: light.frits_room_window
         name: Window
         type: custom:slider-entity-row
-      - entity: sensor.remote_frits_room
+      - entity: sensor.bedroom_frits_remote
         name: Remote
 
   # Thijs' room
@@ -45,13 +45,13 @@ entities:
       state_color: false
       type: custom:slider-entity-row
     entities:
-      - entity: light.thijs_ceiling
+      - entity: light.bedroom_thijs_ceiling
         name: Ceiling
         type: custom:slider-entity-row
-      - entity: light.thijs_bed
+      - entity: light.bedroom_thijs_bed
         name: Bed
         type: custom:slider-entity-row
-      - entity: sensor.remote_thijs
+      - entity: sensor.bedroom_thijs_remote
         name: Remote
 
   # Computer room
@@ -62,7 +62,7 @@ entities:
       state_color: false
       type: custom:slider-entity-row
     entities:
-      - entity: sensor.remote_computer_room
+      - entity: sensor.computers_remote
         name: Remote
 
 

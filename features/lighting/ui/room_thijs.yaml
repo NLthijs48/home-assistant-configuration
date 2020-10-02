@@ -2,8 +2,8 @@
 type: horizontal-stack
 cards:
   - type: light
-    entity: light.thijs_ceiling
+    entity: light.bedroom_thijs_ceiling
     name: Ceiling
   - type: light
-    entity: light.thijs_bed
+    entity: light.bedroom_thijs_bed
     name: Bed
