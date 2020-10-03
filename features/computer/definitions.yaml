@@ -3,7 +3,8 @@ wake_on_lan:
 
 switch:
   # Computer Thijs
-  - platform: wake_on_lan
+  - name: Computer Thijs wake on lan
+    platform: wake_on_lan
     mac: "74:d0:2b:7f:57:aa"
     host: "10.0.100.1"
     broadcast_address: "10.0.100.1"
@@ -14,10 +15,18 @@ switch:
         topic: "iotlink/workgroup/nlthijs48/commands/suspend"
         payload: ""
   # Computer Frits
-  - platform: wake_on_lan
+  - name: Computer Frits wake on lan
+    platform: wake_on_lan
     mac: "04:d9:f5:cd:a9:cd"
     host: "10.0.100.2"
     broadcast_address: "10.0.100.2"
+
+homeassistant:
+  customize:
+    switch.computer_thijs_wake_on_lan:
+      icon: mdi:desktop-tower-monitor
+    switch.computer_frits_wake_on_lan:
+      icon: mdi:desktop-tower-monitor
 
 script:
   # Wake my computer

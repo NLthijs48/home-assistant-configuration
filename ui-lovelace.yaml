@@ -40,6 +40,7 @@ views:
     badges: []
     cards:
       - !include features/lighting/ui/room_thijs.yaml
+      - !include features/computer/ui/computer_thijs.yaml
       - type: entities
         entities:
           - entity: media_player.bedroom_speaker

@@ -1,0 +1,17 @@
+type: vertical-stack
+cards:
+  # TODO: add 'wake from sleep' and 'go to sleep' button here
+
+  # Show real-time stats when turned on
+  # Future: add tap_action with fancy popup with graphs
+  - type: conditional
+    conditions:
+      - entity: switch.computer_thijs_wake_on_lan
+        state: "on"
+    card:
+      type: 'custom:bar-card'
+      entities:
+        - entity: sensor.nlthijs48_cpu_usage
+          name: CPU
+        - entity: sensor.nlthijs48_memory_usage
+          name: Memory
