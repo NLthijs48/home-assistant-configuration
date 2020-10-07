@@ -35,7 +35,57 @@
       data_template:
         entity_id: light.thijs_room_lights
 
-# NFC tag test
+# Update lighting when changing do-not-disturb
+- alias: "Thijs' room turn off when going into do-not-disturb"
+  trigger:
+    - platform: state
+      entity_id: sensor.phone_thijs_do_not_disturb
+      to: 'priority_only'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.thijs_room_lights
+        transition: 10
+
+- alias: "Thijs' room turn on when going out of do-not-disturb"
+  trigger:
+    - platform: state
+      entity_id: sensor.phone_thijs_do_not_disturb
+      to: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.thijs_room_lights
+        transition: 10
+
+# Turn on the lights when there is motion
+- alias: "Thijs' room turn on when there is motion"
+  trigger:
+     - type: occupied
+       device_id: 398f682c8f2f475185dea14e8c6b89a7
+       domain: binary_sensor
+       entity_id: binary_sensor.thijs_room_motion_sensor_occupancy
+       platform: device
+  action:
+    # Just the led strip for now, also do ceiling depending on the time though
+    - service: light.turn_on
+      data_template:
+        entity_id: light.bedroom_thijs_bed
+        brightness: >-
+          {% if now().hour >= 18 or (now().hour <= 12 and is_state('sun.sun', 'below_horizon')) %}
+            50
+          {% else %}
+            255
+          {% endif %}
+        color_temp: >-
+          {% if now().hour >= 18 or (now().hour <= 12 and is_state('sun.sun', 'below_horizon')) %}
+            495
+          {% else %}
+            155
+          {% endif %}
+
+
+ # NFC tag test
 - alias: "Light based on NFC tag"
   trigger:
     - platform: event
@@ -55,28 +105,3 @@
         message: NFC tag scanned!
         data:
           tag: nfc
-
-# Update lighting when changing do-not-disturb
-- alias: "Turn light off when going into do-not-disturb"
-  trigger:
-    - platform: state
-      entity_id: sensor.phone_thijs_do_not_disturb
-      to: 'priority_only'
-  action:
-    - service: light.turn_off
-      data:
-        entity_id: light.thijs_room_lights
-        transition: 10
-
-- alias: "Turn light on when going out of do-not-disturb"
-  trigger:
-    - platform: state
-      entity_id: sensor.phone_thijs_do_not_disturb
-      to: 'off'
-  action:
-    - service: light.turn_on
-      data:
-        entity_id: light.thijs_room_lights
-        brightness_pct: 100
-        color_temp: 250
-        transition: 10

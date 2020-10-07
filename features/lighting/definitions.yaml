@@ -128,7 +128,7 @@ light:
   - platform: group
     name: "Thijs' room lights"
     entities:
-      - light.thijs_ceilinmg
+      - light.bedroom_thijs_ceiling
       - light.bedroom_thijs_bed
 
 
