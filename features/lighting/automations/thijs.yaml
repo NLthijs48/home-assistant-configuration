@@ -81,7 +81,7 @@
           {% if now().hour >= 18 or (now().hour <= 12 and is_state('sun.sun', 'below_horizon')) %}
             495
           {% else %}
-            155
+            300
           {% endif %}
 
 
