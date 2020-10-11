@@ -33,13 +33,13 @@ http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
   trusted_proxies:
-    # Proxies from wiefferink.me -> wiefferinkhome.ddns.net
-    - 178.251.25.134
+    # Proxies from secrets.domain -> secrets.no_ip_domain
+    - !secret proxy_ip
   use_x_forwarded_for: true
 
 # Setup history database (MariaDB addon)
 recorder:
-  db_url: mysql://homeassistant:n3zhl5kxyeofrgg2yf9pmxtkdv5ubojb6xayvrd68ttgod3szju3qymhti65q9qx@core-mariadb/homeassistant?charset=utf8
+  db_url: !secret mariadb_connection
   commit_interval: 5
   exclude:
     entities:
@@ -83,8 +83,8 @@ rest_command:
 
 # Spotify
 spotify:
-  client_id: a42ebc5a66854bc3985bd7c08c54eaaa
-  client_secret: d56538c409be4f1ba29485293140f7b7
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
 
 # Mailgun email
 notify:
@@ -93,14 +93,14 @@ notify:
     server: smtp.mailgun.org
     port: 587
     timeout: 15
-    sender: homeassistant@wiefferink.me
-    username: homeassistant@wiefferink.me
-    password: 76db3b4c2f93ad140b03980fc2a02380-aa4b0867-8701cba8
-    recipient: thijs@wiefferink.me
+    sender: !secret mailgun_smtp_user
+    username: !secret mailgun_smtp_user
+    password: !secret mailgun_smtp_password
+    recipient: !secret email_thijs
     sender_name: Home Assistant
 
 # No ip
 no_ip:
-  domain: wiefferinkhome.ddns.net
-  username: thijs-noip@wiefferink.me
-  password: jm1o21w9yk2n7lg5223r87usho9l3ym3kiaavkeyvwz6o2fp26r5cieijq10qjxb
+  domain: !secret no_ip_domain
+  username: !secret no_ip_username
+  password: !secret no_ip_password

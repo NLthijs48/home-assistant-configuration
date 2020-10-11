@@ -5,6 +5,6 @@ automation: !include_dir_merge_list automations
 # UptimeRobot sensors
 binary_sensor:
   - platform: uptimerobot
-    api_key: ur371912-552335feef248bdf2ed51d91 # Ready-only api key
+    api_key: !secret uptimerobot_api_key
     entity_namespace: uptime_robot
     scan_interval: 300

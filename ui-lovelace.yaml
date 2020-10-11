@@ -67,9 +67,6 @@ views:
           - entity: sensor.phone_thijs_wifi
       - entity: media_player.spotify_thijs
         type: media-control
-      # TODO fix redirect url for new dashboard path (and think about what this card should do)
-      #- client_id: a42ebc5a66854bc3985bd7c08c54eaaa
-      #  type: 'custom:spotify-card'
 
   # Frits
   - title: Frits

@@ -1,4 +1,4 @@
-- alias: LetsEncrypt certificate renewal for wiefferinkhome.ddns.net
+- alias: LetsEncrypt certificate renewal for secrets.no_ip_domain
   trigger:
     - platform: time
       # An hour before the daily restart
