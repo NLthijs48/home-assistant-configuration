@@ -8,9 +8,12 @@ trigger:
     entity_id: "media_player.4k"
     to: "paused"
 condition:
-  # ChromeCast is not off (either 'playing' or 'paused')
-  - condition: template
-    value_template: "{{ not is_state('media_player.4k', 'off') }}"
+  - condition: not
+    conditions:
+    # ChromeCast is not off (either 'playing' or 'paused')
+    - condition: "state"
+      entity_id: media_player.4k
+      state: "off"
 action:
   # Update the mode
   - service: input_select.select_option

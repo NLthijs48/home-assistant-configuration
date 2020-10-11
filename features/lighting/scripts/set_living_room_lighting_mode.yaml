@@ -12,6 +12,6 @@ sequence:
 
   # Update the mode state
   - service: input_select.select_option
-    data_template:
+    data:
       entity_id: input_select.living_room_lighting_mode
       option: "{{ mode }}"

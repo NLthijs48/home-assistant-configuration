@@ -6,7 +6,7 @@
       to: 'on'
   action:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: light.ground_floor_hall
         brightness_pct: >-
           {% if is_state('sun.sun', 'below_horizon') %}
@@ -23,7 +23,7 @@
       to: 'on'
   action:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: light.hall_first_floor
         brightness: >-
           {% if is_state('sun.sun', 'below_horizon') %}

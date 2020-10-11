@@ -13,14 +13,14 @@
   action:
     # Notify phone of Thijs
     - service: notify.mobile_app_phone_thijs
-      data_template:
+      data:
         message: >-
           Beet plant needs attention: {{state_attr("plant.beet", "problem")}}
         data:
           tag: plant.beet
     # Notify phone of Frits
     - service: notify.mobile_app_iphone99
-      data_template:
+      data:
         message: >-
           Beet plant needs attention: {{state_attr("plant.beet", "problem")}}
         data:
@@ -35,14 +35,14 @@
   action:
     # Notify phone of Thijs
     - service: notify.mobile_app_phone_thijs
-      data_template:
+      data:
         message: >-
           Beet plant is doing well!
         data:
           tag: plant.beet
     # Notify phone of Frits
     - service: notify.mobile_app_iphone99
-      data_template:
+      data:
         message: >-
           Beet plant is doing well!
         data:

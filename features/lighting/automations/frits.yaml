@@ -6,7 +6,7 @@
       to: 'on'
   action:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: light.frits_room_lights
         brightness: >-
           {% if now().hour >= 18 or (now().hour <= 12 and is_state('sun.sun', 'below_horizon')) %}

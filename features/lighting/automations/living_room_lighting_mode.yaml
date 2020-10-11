@@ -42,7 +42,6 @@
 
 
 
-
 # Set brightness depending on the mode
 - alias: Living room lights turn on brightness
   trigger:
@@ -59,7 +58,7 @@
       value_template: "{{ not is_state('input_select.living_room_lighting_mode', 'manual') }}"
   action:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: light.living_room_lights
         brightness_pct: >-
           {% if is_state("input_select.living_room_lighting_mode", "day") %}

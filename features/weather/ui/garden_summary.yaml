@@ -80,7 +80,7 @@ cards:
       # Wind gust direction
       - type: custom:button-card
         name: Wind direction
-        entity: sensor.netatmo_wind_gust_angle
+        entity: sensor.netatmo_wind_gust_direction
         template: statistic_button
         tap_action:
           action: call-service

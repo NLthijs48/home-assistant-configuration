@@ -1,9 +1,11 @@
 alias: Set to bluetooth mode when a phone is connected
 trigger:
   # Receiver changes source or state
-  - platform: "template"
+  - platform: "state"
+    entity_id: sensor.phone_thijs_bluetooth_connection
+    attribute: connected_paired_devices
     # Thijs' phone is connected to 'BoomBoom 100', the bluetooth dongle of the home cinema setup
-    value_template: '{{ is_state_attr("sensor.phone_thijs_bluetooth_connection", "connected_paired_devices", "[88:A9:A7:DF:F9:05]") }}'
+    to: "[88:A9:A7:DF:F9:05]"
 condition:
   # Not already set to bluetooth mode
   - condition: not

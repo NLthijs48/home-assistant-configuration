@@ -16,7 +16,7 @@ action:
     service: input_boolean.turn_off
   # Notify phone of Thijs
   - service: notify.mobile_app_phone_thijs
-    data_template:
+    data:
       message: >-
         Setting home cinema to {{ states("input_select.home_cinema_mode") }} failed, still pending after 30 seconds!
       data:

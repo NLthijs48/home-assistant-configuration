@@ -8,7 +8,7 @@ fields:
 sequence:
   # Update the mode state
   - service: input_select.select_option
-    data_template:
+    data:
       entity_id: input_select.home_cinema_mode
       option: "{{ mode }}"
   # Set pending

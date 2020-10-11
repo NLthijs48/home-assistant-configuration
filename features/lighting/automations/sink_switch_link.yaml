@@ -4,7 +4,7 @@
     - above: 100
       entity_id: light.kitchen_lights
       platform: numeric_state
-      value_template: '{{ state.attributes.brightness }}'
+      attribute: brightness
   action:
     - service: switch.turn_on
       entity_id: switch.kitchen_sink
@@ -13,7 +13,7 @@
     - below: 100
       entity_id: light.kitchen_lights
       platform: numeric_state
-      value_template: '{{ state.attributes.brightness }}'
+      attribute: brightness
   action:
     - service: switch.turn_off
       entity_id: switch.kitchen_sink

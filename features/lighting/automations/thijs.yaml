@@ -6,7 +6,7 @@
       to: 'on'
   action:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: light.bedroom_thijs_ceiling
         # Future: declare this condition once in a variable (HA 0.115+)
         # Full bright during the day, dimmed at night
@@ -32,7 +32,7 @@
       from: 'upstairs'
   action:
     - service: light.turn_off
-      data_template:
+      data:
         entity_id: light.thijs_room_lights
 
 # Update lighting when changing do-not-disturb
@@ -69,7 +69,7 @@
   action:
     # Just the led strip for now, also do ceiling depending on the time though
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: light.bedroom_thijs_bed
         brightness: >-
           {% if now().hour >= 18 or (now().hour <= 12 and is_state('sun.sun', 'below_horizon')) %}
@@ -101,7 +101,7 @@
         color_temp: 250 # Bright white
     # Debugging
     - service: notify.mobile_app_phone_thijs
-      data_template:
+      data:
         message: NFC tag scanned!
         data:
           tag: nfc

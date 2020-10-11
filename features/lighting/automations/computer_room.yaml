@@ -51,7 +51,7 @@
       state: 'on'
   action:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: light.computers_ceiling
         brightness_pct: >-
           {% if now().hour >= 19 or now().hour <= 8 %}

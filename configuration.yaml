@@ -40,6 +40,23 @@ http:
 # Setup history database (MariaDB addon)
 recorder:
   db_url: mysql://homeassistant:n3zhl5kxyeofrgg2yf9pmxtkdv5ubojb6xayvrd68ttgod3szju3qymhti65q9qx@core-mariadb/homeassistant?charset=utf8
+  commit_interval: 5
+  exclude:
+    entities:
+      # Triggers often, no need for history
+      - automation.detect_motion_in_the_living_room
+      # No need for a long history
+      - binary_sensor.motion_living_room
+      # Not using history, updates every few seconds while playing
+      - media_player.4k
+    entity_globs:
+      # Change very often, maybe remove completely?
+      - sensor.glances_*
+  include:
+    entities:
+      # Showing a graph of this, keep history
+      - sensor.glances_cpu_thermal_1_temp
+      - sensor.glances_cpu_used_2
 
 # Text to speech
 tts:
