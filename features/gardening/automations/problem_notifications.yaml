@@ -14,17 +14,17 @@
     # Notify phone of Thijs
     - service: notify.mobile_app_phone_thijs
       data:
+        title: Beet plant needs attention
         message: >-
-          Beet plant needs attention: {{state_attr("plant.beet", "problem")}}
+          {{state_attr("plant.beet", "problem")}}
         data:
           tag: plant.beet
     # Notify phone of Frits
     - service: notify.mobile_app_iphone99
       data:
+        title: Beet plant needs attention
         message: >-
-          Beet plant needs attention: {{state_attr("plant.beet", "problem")}}
-        data:
-          tag: plant.beet
+          {{state_attr("plant.beet", "problem")}}
 
 # Detect when the problems are solved
 - alias: Detect if the plant is in a good state
@@ -36,14 +36,12 @@
     # Notify phone of Thijs
     - service: notify.mobile_app_phone_thijs
       data:
-        message: >-
-          Beet plant is doing well!
+        title: Beet plant is doing well!
+        message: No reported problems anymore
         data:
           tag: plant.beet
     # Notify phone of Frits
     - service: notify.mobile_app_iphone99
       data:
-        message: >-
-          Beet plant is doing well!
-        data:
-          tag: plant.beet
+        title: Beet plant is doing well!
+        message: No reported problems anymore

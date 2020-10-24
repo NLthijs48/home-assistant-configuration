@@ -8,7 +8,7 @@
       entity_id: sensor.netatmo_living_room_co2
       above: '1100'
   action:
-    # Flash the lights in the living room
+    # Flash the lights
     - service: light.turn_on
       data:
         entity_id: light.living_room_lights

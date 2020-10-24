@@ -1,0 +1,21 @@
+alias: Computer Thijs notification
+description: Show a notification on the computer of Thijs
+icon: mdi:bell-ring
+fields:
+  title:
+    description: 'Title of the notification'
+    example: 'The CO2 level is getting high'
+  message:
+    description: 'Body of the notification'
+    example: 'CO2 in the computer room is now at 814 ppm and rising, open a window to fix it'
+  # TODO: support for the other params: https://gitlab.com/iotlink/iotlink/-/wikis/Addons/Commands
+sequence:
+  # Send the MQTT message to IOTlink that is running on my computer
+  - service: mqtt.publish
+    data:
+      topic: "iotlink/workgroup/nlthijs48/commands/notify"
+      payload: >-
+        {
+          "title": "{{ title }}",
+          "message": "{{ message|default('') }}",
+        }

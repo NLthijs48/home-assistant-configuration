@@ -38,13 +38,7 @@ script:
           mac: "74:d0:2b:7f:57:aa"
           broadcast_address: "10.0.100.1"
   # iotlink notification test
-  computer_thijs_notify:
-    alias: "Computer Thijs: notification"
-    sequence:
-      - service: mqtt.publish
-        data:
-          topic: "iotlink/workgroup/nlthijs48/commands/notify"
-          payload: '{ "title": "My Notification Title", "message": "This is an example of notification using IOT Link", "launchParams": "toast://open/https://iotlink.gitlab.io" }'
+  computer_thijs_notify: !include scripts/computer_thijs_notify.yaml
   # Put to sleep
   computer_thijs_suspend:
     alias: "Computer Thijs: sleep"

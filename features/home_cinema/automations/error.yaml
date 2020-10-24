@@ -17,7 +17,8 @@ action:
   # Notify phone of Thijs
   - service: notify.mobile_app_phone_thijs
     data:
-      message: >-
-        Setting home cinema to {{ states("input_select.home_cinema_mode") }} failed, still pending after 30 seconds!
+      title: >-
+        Home cinema switch to {{ states("input_select.home_cinema_mode") }} failed
+      message: It was still pending after 30 seconds, loading state has been reset
       data:
         tag: battery
