@@ -60,5 +60,3 @@ entities:
       icon: 'mdi:google-home'
       entity: media_player.google_home_mini_living_room
       group: true
-      tts:
-        platform: google_translate

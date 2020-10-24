@@ -43,12 +43,10 @@ views:
       - !include features/computer/ui/computer_thijs.yaml
       - type: entities
         entities:
-          - entity: media_player.bedroom_speaker
+          - entity: media_player.thijs_room_google_home_mini
             group: true
             icon: 'mdi:google-home'
             name: Google Home Mini
-            tts:
-              platform: google_translate
             type: 'custom:mini-media-player'
           - entity: device_tracker.phone_thijs
           - entity: sensor.phone_thijs_battery_level

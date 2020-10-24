@@ -60,7 +60,17 @@ recorder:
 
 # Text to speech
 tts:
+  # Baseline tts voice, does not sound great
   - platform: google_translate
+    # It is trying to use the internal IP, but that does not work for the Google Home mini (must be https)
+    base_url: "https://home.wiefferink.me"
+  - platform: google_cloud
+    key_file: credentials/google_cloud_tts.json
+    voice: en-US-Wavenet-D # Male, kinda deep voice
+    encoding: ogg_opus # Other options: linear16, mp3
+    speed: 1.15 # Speed up a bit
+    # pitch: -2.5
+    # gain: -5.0
 
 automation: !include automations.yaml
 

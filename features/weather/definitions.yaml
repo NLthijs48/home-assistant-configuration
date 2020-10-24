@@ -1,5 +1,7 @@
 # Weather tracking components and UI
 
+automation: !include_dir_merge_list automations
+
 # Buienradar weather tracker
 weather:
   - platform: buienradar

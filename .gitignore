@@ -10,6 +10,7 @@
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 secrets.yaml
+credentials
 known_devices.yaml
 # Contains the REST api token
 api/rest-client.env.json

@@ -1,0 +1,23 @@
+- alias: CO2 in the living room is getting high
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.netatmo_living_room_co2
+      above: '800'
+    # Repeat when getting to 1100
+    - platform: numeric_state
+      entity_id: sensor.netatmo_living_room_co2
+      above: '1100'
+  action:
+    # Flash the lights in the living room
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room_lights
+        flash: long
+    # Let the Google Home mini shout
+    - service: tts.google_cloud_say
+      data:
+        entity_id: media_player.living_room_google_home_mini
+        message: >-
+            CO2 is at {{states("sensor.netatmo_living_room_co2")}} ppm, open a window
+        cache: false # Contains a template, caching does not really work
+
