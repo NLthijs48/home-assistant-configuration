@@ -143,3 +143,19 @@ input_select:
       - 'cooking'
       - 'evening'
       - 'night'
+
+
+# A smoothed value for the light intensity in the living room
+sensor:
+  - platform: filter
+    name: "Living room light level (smoothed)"
+    entity_id: sensor.living_room_light_level
+    filters:
+      - filter: outlier
+        window_size: 4
+        radius: 2.0
+      - filter: lowpass
+        time_constant: 10
+      - filter: time_simple_moving_average
+        window_size: "00:03"
+        precision: 2
