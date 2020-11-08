@@ -1,0 +1,28 @@
+- alias: Queue position remember in input text
+  trigger:
+    - platform: state
+      entity_id: sensor.queue_processor
+  condition:
+    # There must be correct data in there
+    - condition: state
+      entity_id: sensor.queue_processor
+      attribute: status
+      state: 'ok'
+    # Only update when different
+    # (triggers of the sensor caused by force_update in the rest sensor definition)
+    - condition: template
+      value_template: "{{ states('sensor.queue_processor') != states('input_text.queue_processor') }}"
+  action:
+    # Copy it to an input_text (which is persistent across restarts)
+    - service: input_text.set_value
+      data:
+        entity_id: input_text.queue_processor
+        value: '{{ states("sensor.queue_processor") }}'
+    # Notify Thijs
+    - service: notify.mobile_app_phone_thijs
+      data:
+        # Future: use the parsed numbers in here (to prevent 'van de' Dutch stuff)
+        title: >-
+          Processor queue position changed to {{ states("sensor.queue_processor") }}
+        data:
+          tag: queue_processor

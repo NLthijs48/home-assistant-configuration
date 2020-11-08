@@ -1,0 +1,102 @@
+# This feature package contains monitoring of my position in the queue at
+# the Megekko.nl webshop for receiving the AMD processor I bought.
+
+# Data flow:
+# 1. The REST sensor sensor.queue_processor checks the megekko.nl website each hour
+#     - it saves the raw result in the status and data attributes
+#     - if it can find "123 van de 456" string in the data, it saves that part to the state
+#       (otherwise the state will become 'unavailable'
+# 2. The 'remember_text.yaml' automation monitors the state from #1, and if not unavailable:
+#     - copies it to the input_text.queue_processor entity
+#       (which is persistent across restarts, while the REST sensor is not)
+#     - notifies my phone
+# 3. The template sensor sensor.queue_processor_position extracts the first number
+#    - indicates my position in the queue
+#    - so (this-1) people get their processor before me
+# 4. The template sensor sensor.queue_processor_total_waiting extracts the second number
+#    - indicates the total number of people in the queue
+# 5. The values from #3 and #4 are used in the UI
+
+automation: !include_dir_merge_list automations
+
+# REST sensors monitoring my position in the Megekko queue for getting my processor
+sensor:
+  - platform: 'rest'
+    name: 'queue_processor'
+    resource: 'https://www.megekko.nl/scripts/wachtrij/wachtrij.php'
+    method: 'POST'
+    # Contains an url-encoded string needed for the lookup:
+    #     - "ajax=lookup&orderid=<orderId>&postcode=<postal>", where:
+    #     - <orderId> is the orderid like "ME12345678"
+    #     - <postal> is the postal code in the Dutch "1234AB" format (casing does not matter)
+    payload: !secret megekko_queue_lookup
+    headers:
+      # Minimal headers required to make sure that MeGekko accepts the request
+      Content-Type: 'application/x-www-form-urlencoded'
+      Origin: 'https://www.megekko.nl'
+      sec-fetch-site: 'same-origin'
+      sec-fetch-mode: 'cors'
+      sec-fetch-dest: 'empty'
+      Referer: 'https://www.megekko.nl/info/RTX-3080'
+    # Response is a JSON object with:
+    # - data: html string
+    # - status: "OK" if all good, 'fout' if incorrect
+    value_template: >-
+      {% set queue_regex = "\d+ van de \d+" %}
+      {% if value_json.status == "ok" and (value_json.data | regex_search(queue_regex)) %}
+        {{ value_json.data | regex_findall_index(queue_regex) }}
+      {% else %}
+        unavailable
+      {% endif %}
+    json_attributes:
+      - status # Either 'ok' or 'fout'
+      - data # HTML block, containing the processor name, SKU, and my position
+    # Update every hour (doing quicker calls will lead to a block anyway)
+    scan_interval: 3600
+    # Force update so that I know that this is still updating correctly
+    force_update: true
+
+  # Template sensors to extract data from the raw result
+  - platform: template
+    sensors:
+      queue_processor_position:
+        friendly_name: "Queue position for receiving the 5950X"
+        value_template: >-
+          {% set number_regex = "^\d+" %}
+          {% if states("input_text.queue_processor") | regex_search(number_regex) %}
+            {{ states("input_text.queue_processor") | regex_findall_index(number_regex) }}
+          {% else %}
+            unavailable
+          {% endif %}
+        availability_template: >-
+          {% if states("input_text.queue_processor") | regex_search("^\d+") %}
+            true
+          {% endif %}
+      queue_processor_total_waiting:
+        friendly_name: "People waiting for the 5950X"
+        value_template: >-
+          {% set number_regex = "\d+$" %}
+          {% if states("input_text.queue_processor") | regex_search(number_regex) %}
+            {{ states("input_text.queue_processor") | regex_findall_index(number_regex) }}
+          {% else %}
+            unavailable
+          {% endif %}
+        availability_template: >-
+          {% if states("input_text.queue_processor") | regex_search("\d+$") %}
+            true
+          {% endif %}
+
+input_text:
+  # In-between storage of the queue position for persistent storage across restarts
+  queue_processor:
+    name: Queue processor extracted text
+    icon: mdi:cpu-64-bit
+
+homeassistant:
+  customize:
+    sensor.queue_processor:
+      icon: mdi:cpu-64-bit
+    sensor.queue_processor_position:
+      icon: mdi:human-queue
+    sensor.queue_processor_total_waiting:
+      icon: mdi:account-group
