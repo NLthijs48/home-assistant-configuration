@@ -27,9 +27,6 @@
 # Button card: media mode buttons
 - type: module
   url: /hacsfiles/button-card/button-card.js
-# Custom header: smaller header
-- type: module
-  url: /hacsfiles/custom-header/custom-header.js
 # Stack in card
 - type: module
   url: /hacsfiles/stack-in-card/stack-in-card.js
