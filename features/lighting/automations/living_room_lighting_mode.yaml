@@ -34,7 +34,7 @@
 - alias: 'Living room lighting mode to night at 22:00'
   trigger:
     - platform: time
-      at: "22:00"
+      at: "23:00"
   action:
     - service: script.living_room_lighting_mode
       data:
@@ -50,6 +50,7 @@
       to: 'on'
     - platform: state
       entity_id: input_select.living_room_lighting_mode
+    # TODO: trigger for lux in living room for day mode
   condition:
     - condition: state
       entity_id: input_boolean.living_room_in_use
