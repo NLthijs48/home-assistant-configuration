@@ -1,6 +1,8 @@
 # Enable wake on lan integration
 wake_on_lan:
 
+# Used to detect which devices are online, and for wake-on-lan
+# (this platform pings these devices each 10s or so)
 switch:
   # Computer Thijs
   - name: Computer Thijs wake on lan
@@ -14,19 +16,35 @@ switch:
       data:
         topic: "iotlink/workgroup/nlthijs48/commands/suspend"
         payload: ""
+  # Laptop Thijs
+  - name: Laptop Thijs wake on lan
+    platform: wake_on_lan
+    mac: "00:28:f8:3e:c6:82"
+    host: "10.0.100.3"
+    broadcast_address: "10.0.100.3"
   # Computer Frits
   - name: Computer Frits wake on lan
     platform: wake_on_lan
     mac: "04:d9:f5:cd:a9:cd"
     host: "10.0.100.2"
     broadcast_address: "10.0.100.2"
+  # Laptop Frits
+  - name: Laptop Frits wake on lan
+    platform: wake_on_lan
+    mac: "f8:ff:c2:5e:5c:b1"
+    host: "10.0.100.4"
+    broadcast_address: "10.0.100.4"
 
 homeassistant:
   customize:
     switch.computer_thijs_wake_on_lan:
       icon: mdi:desktop-tower-monitor
+    switch.laptop_thijs_wake_on_lan:
+      icon: mdi:laptop-windows
     switch.computer_frits_wake_on_lan:
       icon: mdi:desktop-tower-monitor
+    switch.laptop_frits_wake_on_lan:
+      icon: mdi:laptop-mac
 
 script:
   # Wake my computer
