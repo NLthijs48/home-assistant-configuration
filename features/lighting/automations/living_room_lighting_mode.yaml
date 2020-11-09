@@ -31,7 +31,7 @@
         mode: evening
 
 # Night mode
-- alias: 'Living room lighting mode to night at 22:00'
+- alias: 'Living room lighting mode to night at 23:00'
   trigger:
     - platform: time
       at: "23:00"
@@ -50,7 +50,8 @@
       to: 'on'
     - platform: state
       entity_id: input_select.living_room_lighting_mode
-    # TODO: trigger for lux in living room for day mode
+    - platform: state
+      entity_id: input_boolean.light_outside
   condition:
     - condition: state
       entity_id: input_boolean.living_room_in_use
@@ -63,7 +64,11 @@
         entity_id: light.living_room_lights
         brightness_pct: >-
           {% if is_state("input_select.living_room_lighting_mode", "day") %}
-            0
+            {% if is_state("input_boolean.light_outside", "on") %}
+              0
+            {% else %}
+              60
+            {% endif %}
           {% elif is_state("input_select.living_room_lighting_mode", "cooking") %}
             100
           {% elif is_state("input_select.living_room_lighting_mode", "evening") %}
