@@ -33,17 +33,5 @@
           There are {{ states("sensor.queue_processor_total_waiting") }} people waiting in total
         data:
           tag: queue_processor_position
-- alias: Queue total changed
-  trigger:
-    - platform: state
-      entity_id: sensor.queue_processor_total_waiting
-  action:
-    # Notify Thijs
-    - service: notify.mobile_app_phone_thijs
-      data:
-        title: >-
-          There are now {{ states("sensor.queue_processor_total_waiting") }} people in total in the queue for the 3950X!
-        message: >-
-          You are still at position {{ states("sensor.queue_processor_position") }}
-        data:
-          tag: queue_processor_total_waiting
+          channel: Processor queue
+          importance: high
