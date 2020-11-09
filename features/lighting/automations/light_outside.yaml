@@ -1,0 +1,27 @@
+# Update the input_boolean.light_outside based on the outside motion sensor light level reading
+
+# Turn on
+- alias: Turn on 'Light outside' when there is enough light outside
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.garden_light_level
+      above: 1000
+      for:
+        seconds: 30
+  action:
+    - service: "input_boolean.turn_on"
+      data:
+        entity_id: "input_boolean.light_outside"
+
+# Turn off
+- alias: Turn off 'Light outside' when there is not much light outside
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.garden_light_level
+      below: 1000
+      for:
+        seconds: 30
+  action:
+    - service: "input_boolean.turn_off"
+      data:
+        entity_id: "input_boolean.light_outside"

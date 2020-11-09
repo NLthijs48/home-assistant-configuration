@@ -6,6 +6,12 @@ script:
   living_room_lighting_mode: !include scripts/set_living_room_lighting_mode.yaml
 
 
+input_boolean:
+  # Indicates if we consider it light outside
+  light_outside:
+    name: Light outside
+    icon: mdi:theme-light-dark
+
 # Setup all light icons
 homeassistant:
   customize:
