@@ -1,35 +1,22 @@
 # Computer room light automation
 
 # Turn off
-- alias: Turn off the computer room lights when the computers are off
+- alias: Turn off the computer room lights when there are no computers/laptops on
   trigger:
     - platform: state
-      entity_id: device_tracker.computer_thijs
-      to: 'not_home'
-    - platform: state
-      entity_id: device_tracker.computer_frits
-      to: 'not_home'
-  condition:
-    - condition: state
-      entity_id: device_tracker.computer_thijs
-      state: 'not_home'
-    - condition: state
-      entity_id: device_tracker.computer_frits
-      state: 'not_home'
+      entity_id: binary_sensor.computer_room_used_devices
+      to: 'off'
   action:
     - service: light.turn_off
       data:
         entity_id: light.computers_ceiling
 
 # Turn on
-- alias: Turn on the computer room lights when a computer turns on
+- alias: Turn on the computer room lights when a computer/laptop is on
   trigger:
     - platform: state
-      entity_id: device_tracker.computer_thijs
-      to: home
-    - platform: state
-      entity_id: device_tracker.computer_frits
-      to: home
+      entity_id: binary_sensor.computer_room_used_devices
+      to: 'on'
   action:
     - service: light.turn_on
       data:
@@ -42,7 +29,7 @@
       platform: state
       to: 'on'
     - platform: time
-      at: "19:00:00"
+      at: "18:00:00"
     - platform: time
       at: "8:00:01"
   condition:
@@ -61,7 +48,7 @@
           {% endif %}
         # White during the day, yellow-ish at night
         color_temp: >-
-          {% if now().hour >= 19 or now().hour <= 8 %}
+          {% if now().hour >= 18 or now().hour <= 8 %}
             370
           {% else %}
             250
