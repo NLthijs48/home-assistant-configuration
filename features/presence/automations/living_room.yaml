@@ -2,10 +2,10 @@
 - alias: Detect phones downstairs
   trigger:
     - platform: state
-      entity_id: sensor.living_room_used_wifi
+      entity_id: binary_sensor.living_room_used_wifi
   action:
     - service: >
-        {% if is_state('sensor.living_room_used_wifi', 'yes') %}
+        {% if is_state('binary_sensor.living_room_used_wifi', 'on') %}
           input_boolean.turn_on
         {% else %}
           input_boolean.turn_off
@@ -35,8 +35,8 @@
   condition:
     # Don't turn off if there is still someone present
     - condition: state
-      entity_id: sensor.living_room_used_wifi
-      state: 'no'
+      entity_id: binary_sensor.living_room_used_wifi
+      state: 'off'
   action:
     - service: input_boolean.turn_off
       data:

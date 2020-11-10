@@ -11,7 +11,7 @@ input_boolean:
 sensor:
   - platform: template
     sensors:
-      # Floor that Thijs is using
+      # Floor that Thijs' phone is using
       phone_thijs_wifi_ap:
         friendly_name: "Phone Thijs Wifi AP"
         value_template: >-
@@ -30,7 +30,26 @@ sensor:
           {% else %}
             mdi:home-remove-outline
           {% endif %}
-      # Floor that Frits is using
+      # Floor that Thijs' laptop is using
+      laptop_thijs_wifi_ap:
+        friendly_name: "Phone Thijs Wifi AP"
+        value_template: >-
+          {% if is_state_attr('device_tracker.unifi_laptop_thijs', 'ap_mac', '18:e8:29:90:42:42') %}
+            downstairs
+          {% elif is_state_attr('device_tracker.unifi_laptop_thijs', 'ap_mac', '18:e8:29:90:45:62') %}
+            upstairs
+          {% else %}
+            away
+          {% endif %}
+        icon_template: >-
+          {% if is_state('sensor.laptop_thijs_wifi_ap', 'downstairs') %}
+            mdi:home-floor-0
+          {% elif is_state('sensor.laptop_thijs_wifi_ap', 'upstairs') %}
+            mdi:home-floor-1
+          {% else %}
+            mdi:home-remove-outline
+          {% endif %}
+      # Floor that Frits' phone is using
       phone_frits_wifi_ap:
         friendly_name: "Phone Frits Wifi AP"
         value_template: >-
@@ -49,10 +68,33 @@ sensor:
           {% else %}
             mdi:home-remove-outline
           {% endif %}
+      # Floor that Frits' laptop is using
+      laptop_frits_wifi_ap:
+        friendly_name: "Laptop Frits Wifi AP"
+        value_template: >-
+          {% if is_state_attr('device_tracker.unifi_laptop_frits', 'ap_mac', '18:e8:29:90:42:42') %}
+            downstairs
+          {% elif is_state_attr('device_tracker.unifi_laptop_frits', 'ap_mac', '18:e8:29:90:45:62') %}
+            upstairs
+          {% else %}
+            away
+          {% endif %}
+        icon_template: >-
+          {% if is_state('sensor.laptop_frits_wifi_ap', 'downstairs') %}
+            mdi:home-floor-0
+          {% elif is_state('sensor.laptop_frits_wifi_ap', 'upstairs') %}
+            mdi:home-floor-1
+          {% else %}
+            mdi:home-remove-outline
+          {% endif %}
+
+binary_sensor:
+  - platform: template
+    sensors:
       # Someone present in the living room
-      # Future: use a device class? https://www.home-assistant.io/integrations/binary_sensor/
       living_room_used_wifi:
         friendly_name: "Living room AP in use"
+        device_class: occupancy
         value_template: >-
           {% if is_state('sensor.phone_thijs_wifi_ap', 'downstairs') or is_state('sensor.phone_frits_wifi_ap', 'downstairs') %}
             yes
@@ -64,6 +106,23 @@ sensor:
             mdi:account-multiple
           {% elif is_state('sensor.phone_thijs_wifi_ap', 'downstairs') or is_state('sensor.phone_frits_wifi_ap', 'downstairs') %}
             mdi:account
+          {% else %}
+            mdi:account-off
+          {% endif %}
+      # Computer room used based on computer activity
+      # Future: add tracking for Frit's laptop (stays connected while sleeping, so we need activity sensor of the companion app first)
+      computer_room_used_devices:
+        friendly_name: "Computer room in use"
+        device_class: occupancy
+        value_template: >-
+          {% if is_state('switch.computer_thijs_wake_on_lan', 'on') or is_state('switch.computer_frits_wake_on_lan', 'on') or is_state('sensor.laptop_thijs_wifi_ap', 'upstairs') %}
+            yes
+          {% else %}
+            no
+          {% endif %}
+        icon_template: >-
+          {% if is_state('binary_sensor.computer_room_used_devices', 'on') %}
+            mdi:account-multiple
           {% else %}
             mdi:account-off
           {% endif %}
