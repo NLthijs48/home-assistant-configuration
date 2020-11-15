@@ -34,8 +34,8 @@ card:
     # Show the HACS updates number when there are any
     - type: conditional
       conditions:
-        - entity: sensor.hacs
-          state_not: "0"
+        - entity: binary_sensor.updates_available_hacs
+          state: "on"
       card:
         type: custom:button-card
         entity: sensor.hacs

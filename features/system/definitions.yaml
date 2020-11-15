@@ -2,11 +2,18 @@
 
 automation: !include_dir_merge_list automations
 
+# These sensors make it easy for the conditional cards in the UI,
+# which have really limited boolean logic
 binary_sensor:
-  # Indicates if there are any HA or HACS updates
-  # Note: only required because the conditional card does not have 'or' conditions
   - platform: template
     sensors:
+      # Indicates if there are HACS updates
+      updates_available_hacs:
+        friendly_name: "HACS updates available"
+        # Also deals with the 'None' value that is present during startup
+        value_template: "{{ states('sensor.hacs') is not none and not is_state('sensor.hacs', '0') }}"
+
+      # Indicates if there are any HA or HACS updates
       updates_available:
         friendly_name: "Updates available"
-        value_template: "{{ is_state('binary_sensor.updater', 'on') or states('sensor.hacs') > 0 }}"
+        value_template: "{{ is_state('binary_sensor.updater', 'on') or is_state('binary_sensor.updates_available_hacs', 'on') }}"
