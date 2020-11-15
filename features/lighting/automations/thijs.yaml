@@ -62,9 +62,9 @@
 - alias: "Thijs' room turn on when there is motion"
   trigger:
      - type: occupied
-       device_id: 398f682c8f2f475185dea14e8c6b89a7
+       device_id: e14b58e6448964661b60e49c1ed09985
        domain: binary_sensor
-       entity_id: binary_sensor.thijs_room_motion_sensor_occupancy
+       entity_id: binary_sensor.bedroom_thijs_motion_sensor_occupancy
        platform: device
   action:
     # Just the led strip for now, also do ceiling depending on the time though
