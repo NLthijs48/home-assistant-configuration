@@ -1,5 +1,6 @@
 automation: !include_dir_merge_list automations
 
+# Starting to use the Conbee II stick at: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2220048-if00
 
 # Script for changing between modes
 script:

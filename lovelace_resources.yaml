@@ -1,5 +1,6 @@
 # Lovelace custom cards (from the community store)
 
+########## Installed using HACS
 # Mini media player: ChromeCast
 - type: module
   url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
@@ -45,6 +46,8 @@
 # Bar card
 - url: /hacsfiles/bar-card/bar-card.js
   type: module
+
+######### Manually downloaded
 # Browser mod
 - url: /browser_mod.js
   type: module
