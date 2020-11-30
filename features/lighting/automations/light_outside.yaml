@@ -5,7 +5,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.garden_light_level
-      above: 400
+      above: 600
       for:
         seconds: 30
   action:
@@ -18,7 +18,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.garden_light_level
-      below: 400
+      below: 600
       for:
         seconds: 30
   action:
