@@ -7,7 +7,7 @@ switch:
   # Computer Thijs
   - name: Computer Thijs wake on lan
     platform: wake_on_lan
-    mac: "74:d0:2b:7f:57:aa"
+    mac: "f0:2f:74:16:19:9b"
     host: "10.0.100.1"
     broadcast_address: "10.0.100.1"
     turn_off:
@@ -53,7 +53,7 @@ script:
     sequence:
       - service: wake_on_lan.send_magic_packet
         data:
-          mac: "74:d0:2b:7f:57:aa"
+          mac: "f0:2f:74:16:19:9b"
           broadcast_address: "10.0.100.1"
   # iotlink notification test
   computer_thijs_notify: !include scripts/computer_thijs_notify.yaml
