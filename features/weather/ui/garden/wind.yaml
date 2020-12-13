@@ -45,16 +45,24 @@ cards:
       # Gust
       - type: custom:compass-card
         name: Gust
-        entity: sensor.netatmo_wind_gust_angle
-        secondary_entity: sensor.netatmo_wind_gust_strength
+        indicator_sensors:
+          - sensor: sensor.netatmo_wind_gust_angle
+            indicator:
+              type: arrow_inward
+        value_sensors:
+          - sensor: sensor.netatmo_wind_gust_strength
         compass:
-          indicator: arrow_inward
-          show_north: true
+          north:
+            show: true
       # Steady
       - type: custom:compass-card
         name: Steady
-        entity: sensor.netatmo_wind_angle
-        secondary_entity: sensor.netatmo_wind_wind_strength
+        indicator_sensors:
+          - sensor: sensor.netatmo_wind_angle
+            indicator:
+              type: arrow_inward
+        value_sensors:
+          - sensor: sensor.netatmo_wind_wind_strength
         compass:
-          indicator: arrow_inward
-          show_north: true
+          north:
+            show: true
