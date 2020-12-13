@@ -1,7 +1,9 @@
-type: vertical-stack
+type: 'custom:vertical-stack-in-card'
 cards:
-  # TODO: add 'wake from sleep' and 'go to sleep' button here
-
+  - type: entities
+    entities:
+      - entity: switch.computer_thijs_wake_on_lan
+        name: Computer
   # Show real-time stats when turned on
   # Future: add tap_action with fancy popup with graphs
   - type: conditional
