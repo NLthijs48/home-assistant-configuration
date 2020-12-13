@@ -1,0 +1,41 @@
+- alias: Christmas tree timer turn on
+  trigger:
+    - platform: time
+      at: "9:00"
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.tree_timer
+
+- alias: Christmas tree timer turn off
+  trigger:
+    - platform: time
+      at: "22:00"
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.tree_timer
+
+- alias: Christmas tree ligting
+  trigger:
+    - platform: state
+      entity_id: input_boolean.tree_timer
+    - platform: state
+      entity_id: input_boolean.living_room_in_use
+  action:
+    - choose:
+        # If not enabled by a timer, and no-one in the living room
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.tree_timer
+              state: 'off'
+            - condition: state
+              entity_id: input_boolean.living_room_in_use
+              state: 'off'
+          sequence:
+            - service: switch.turn_off
+              entity_id: switch.tree
+      # Else turn on
+      default:
+        - service: switch.turn_on
+          entity_id: switch.tree
