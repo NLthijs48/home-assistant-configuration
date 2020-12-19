@@ -13,7 +13,7 @@ sequence:
   # Send the MQTT message to IOTlink that is running on my computer
   - service: mqtt.publish
     data:
-      topic: "iotlink/workgroup/nlthijs48/commands/notify"
+      topic: "iotlink/workgroup/thijs/commands/notify"
       payload: >-
         {
           "title": "{{ title }}",
