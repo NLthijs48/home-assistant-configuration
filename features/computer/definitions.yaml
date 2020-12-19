@@ -14,26 +14,30 @@ switch:
       # Go to sleep instead of doing an actual shutdown
       service: mqtt.publish
       data:
-        topic: "iotlink/workgroup/nlthijs48/commands/suspend"
+        topic: "iotlink/workgroup/thijs/commands/suspend"
         payload: ""
+    scan_interval: 6
   # Laptop Thijs
   - name: Laptop Thijs wake on lan
     platform: wake_on_lan
     mac: "00:28:f8:3e:c6:82"
     host: "10.0.100.3"
     broadcast_address: "10.0.100.3"
+    scan_interval: 6
   # Computer Frits
   - name: Computer Frits wake on lan
     platform: wake_on_lan
     mac: "04:d9:f5:cd:a9:cd"
     host: "10.0.100.2"
     broadcast_address: "10.0.100.2"
+    scan_interval: 6
   # Laptop Frits
   - name: Laptop Frits wake on lan
     platform: wake_on_lan
     mac: "f8:ff:c2:5e:5c:b1"
     host: "10.0.100.4"
     broadcast_address: "10.0.100.4"
+    scan_interval: 6
 
 homeassistant:
   customize:
@@ -63,5 +67,5 @@ script:
     sequence:
       - service: mqtt.publish
         data:
-          topic: "iotlink/workgroup/nlthijs48/commands/suspend"
+          topic: "iotlink/workgroup/thijs/commands/suspend"
           payload: ""
