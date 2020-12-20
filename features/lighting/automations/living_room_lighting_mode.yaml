@@ -62,6 +62,7 @@
     - service: light.turn_on
       data:
         entity_id: light.living_room_lights
+        transition: 5
         brightness_pct: >-
           {% if is_state("input_select.living_room_lighting_mode", "day") %}
             {% if is_state("input_boolean.light_outside", "on") %}
