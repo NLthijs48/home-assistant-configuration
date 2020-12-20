@@ -1,0 +1,15 @@
+- alias: CO2 in Thijs' room is getting high
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.netatmo_thijs_co2
+      above: '900'
+    # Future: maybe send a more aggressive notification when even higher?
+  action:
+    # Notify phone of Thijs
+    - service: notify.mobile_app_phone_thijs
+      data:
+        title: >-
+          CO2 in your bedroom is at {{ states("sensor.netatmo_thijs_co2") }}
+        message: Open the window!
+        data:
+          tag: co2_thijs
