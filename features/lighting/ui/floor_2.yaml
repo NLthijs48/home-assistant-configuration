@@ -12,7 +12,7 @@ entities:
       state_color: false
       type: custom:slider-entity-row
     entities:
-      - entity: sensor.motion_attic_hall
+      - entity: sensor.attic_hall_motion_sensor_battery
         name: Motion sensor
 
   # Room
@@ -21,6 +21,7 @@ entities:
       name: Standing
       entity: light.attic_standing
       state_color: false
+      type: custom:slider-entity-row
     entities:
-      - entity: sensor.motion_attic
+      - entity: binary_sensor.attic_motion_sensor
         name: Motion sensor

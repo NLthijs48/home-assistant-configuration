@@ -81,10 +81,16 @@ homeassistant:
 
   customize_glob:
     # Motion sensors
-    "sensor.motion_*":
+    "sensor.motion_*": # Legacy, renaming to the one below
+      icon: mdi:motion-sensor
+    "sensor.*_motion_sensor":
+      icon: mdi:motion-sensor
+    "binary_sensor.*_motion_sensor":
       icon: mdi:motion-sensor
     # Remotes
-    "sensor.remote_*":
+    "sensor.remote_*": # Legacy, renaming to the one below
+      icon: mdi:remote-tv
+    "sensor.*_remote":
       icon: mdi:remote-tv
 
 
