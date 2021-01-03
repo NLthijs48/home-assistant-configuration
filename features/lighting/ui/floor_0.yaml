@@ -30,8 +30,6 @@ entities:
             name: 'Iceland #1'
           - entity: light.living_room_iceland_2
             name: 'Iceland #2'
-          - entity: light.living_room_standing
-            name: Standing
           - entity: light.tv_led_strip
             name: LED strip
         open: false

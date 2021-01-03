@@ -18,8 +18,8 @@ entities:
   # Room
   - type: custom:fold-entity-row
     head:
-      entity: switch.standing_lamp
-      name: Standing lamp
+      name: Standing
+      entity: light.attic_standing
       state_color: false
     entities:
       - entity: sensor.motion_attic

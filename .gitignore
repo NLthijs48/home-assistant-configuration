@@ -1,11 +1,31 @@
-# Intellij IDEA
+##### Intellij IDEA
 *.iml
 .idea
 
-# Ignore folders.
+##### Ignore Home Assistant runtime folders
+# UI configuration
 .storage
+# Home Assistant Cloud settings
 .cloud
 .google.token
+# Components installed using the community store
+custom_components
+# Integrations installed using the community store
+www
+# Zigbee network (conbee stick)
+zigbee.db
+# Zigbee network map
+neighbours
+# Version of Home Assistant
+.HA_VERSION
+# Log
+home-assistant.log
+# Cached text-to-speach files
+tts
+# Images uploaded using the UI
+image
+# Glances config file
+glances.conf
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml

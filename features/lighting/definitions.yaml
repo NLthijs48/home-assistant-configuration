@@ -25,7 +25,7 @@ homeassistant:
       icon: mdi:track-light
     light.living_room_iceland_2:
       icon: mdi:track-light
-    light.living_room_standing:
+    light.attic_standing:
       icon: mdi:floor-lamp
     light.tv_led_strip:
       icon: mdi:led-strip-variant
