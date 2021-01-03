@@ -102,7 +102,6 @@ light:
       - light.dining_large_painting
       - light.living_room_iceland_1
       - light.living_room_iceland_2
-      - light.living_room_standing
       - light.tv_led_strip
   # Lights around the TV (light.tv_lights)
   - platform: group
@@ -110,7 +109,6 @@ light:
     entities:
       - light.living_room_iceland_1
       - light.living_room_iceland_2
-      - light.living_room_standing
       - light.tv_led_strip
   # Kitchen lights (light.kitchen_lights)
   - platform: group
@@ -153,19 +151,3 @@ input_select:
       - 'cooking'
       - 'evening'
       - 'night'
-
-
-# A smoothed value for the light intensity in the living room
-sensor:
-  - platform: filter
-    name: "Living room light level (smoothed)"
-    entity_id: sensor.living_room_light_level
-    filters:
-      - filter: outlier
-        window_size: 4
-        radius: 2.0
-      - filter: lowpass
-        time_constant: 10
-      - filter: time_simple_moving_average
-        window_size: "00:03"
-        precision: 2
