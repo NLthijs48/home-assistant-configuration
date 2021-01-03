@@ -1,0 +1,26 @@
+- alias: Attic motion
+  description: 'Turn on the attic light on/off based on the motion sensor'
+  # When it happens again during a run, cancel the other one
+  mode: restart
+  trigger:
+    # Motion sensor triggers
+    - type: motion
+      platform: device
+      device_id: 776b8e2fa119c40a806dfc12309ed61b
+      entity_id: binary_sensor.attic_motion_sensor
+      domain: binary_sensor
+  action:
+    # Turn on the light
+    - type: turn_on
+      device_id: 6ff9edb81d3c4c8ea50bcb38af7e4577
+      entity_id: light.attic_standing
+      domain: light
+      brightness_pct: 100
+    # Wait until it turns off
+    - wait_template: "is_state('binary_sensor.attic_motion_sensor', 'off')"
+    # Turn off the light
+    # (this uses the V2 Ikea motion sensor, which does not clear for a long time)
+    - type: turn_off
+      device_id: 6ff9edb81d3c4c8ea50bcb38af7e4577
+      entity_id: light.attic_standing
+      domain: light
