@@ -60,29 +60,61 @@
 
 # Turn on the lights when there is motion
 - alias: "Thijs' room turn on when there is motion"
+  mode: restart
   trigger:
-     - type: occupied
-       device_id: e14b58e6448964661b60e49c1ed09985
-       domain: binary_sensor
-       entity_id: binary_sensor.bedroom_thijs_motion_sensor_occupancy
-       platform: device
+    - platform: state
+      entity_id: binary_sensor.bedroom_thijs_motion_sensor_occupancy
+      to: 'on'
+  variables:
+    daytime: "{{ now().hour < 18 and is_state('sun.sun', 'above_horizon') }}"
   action:
-    # Just the led strip for now, also do ceiling depending on the time though
+    # Turn on the led strip
     - service: light.turn_on
       data:
         entity_id: light.bedroom_thijs_bed
         brightness: >-
-          {% if now().hour >= 18 or (now().hour <= 12 and is_state('sun.sun', 'below_horizon')) %}
-            50
-          {% else %}
+          {% if daytime %}
             255
+          {% else %}
+            50
           {% endif %}
         color_temp: >-
-          {% if now().hour >= 18 or (now().hour <= 12 and is_state('sun.sun', 'below_horizon')) %}
-            495
-          {% else %}
+          {% if daytime %}
             300
+          {% else %}
+            495
           {% endif %}
+    # Turn on the ceiling light during daytime
+    - choose:
+        # Turn on at daytime
+        - conditions:
+            - "{{ daytime }}"
+          sequence:
+            - service: light.turn_on
+              data:
+                entity_id: light.bedroom_thijs_ceiling
+                brightness: 255
+                color_temp: 250
+      # Turn off at nighttime
+      default:
+        - service: light.turn_off
+          data:
+            entity_id: light.bedroom_thijs_ceiling
+            transition: 5
+
+    # Wait until there is no motion anymore for a while
+    - wait_for_trigger:
+        platform: state
+        entity_id: binary_sensor.bedroom_thijs_motion_sensor_occupancy
+        to: 'off'
+        for:
+          minutes: 1
+
+    # Turn off the light
+    - service: light.turn_off
+      data:
+        entity_id: light.thijs_room_lights
+        transition: 10
 
 
  # NFC tag test

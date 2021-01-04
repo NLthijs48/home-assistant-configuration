@@ -17,7 +17,10 @@
       domain: light
       brightness_pct: 100
     # Wait until it turns off
-    - wait_template: "is_state('binary_sensor.attic_motion_sensor', 'off')"
+    - wait_for_trigger:
+        platform: state
+        entity_id: binary_sensor.attic_motion_sensor
+        to: 'off'
     # Turn off the light
     # (this uses the V2 Ikea motion sensor, which does not clear for a long time)
     - type: turn_off
