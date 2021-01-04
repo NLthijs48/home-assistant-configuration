@@ -1,7 +1,7 @@
 # Set the correct living room lighting mode based on the time of day and other sensors
 
 # Day mode
-- alias: 'Living room lighting mode to day at 6:00'
+- alias: 'Living room lighting mode to day'
   trigger:
     - platform: time
       at: "06:00"
@@ -11,27 +11,27 @@
         mode: day
 
 # Cooking mode
-- alias: 'Living room lighting mode to cooking at 18:00'
-  trigger:
-    - platform: time
-      at: "18:00"
-  action:
-    - service: script.living_room_lighting_mode
-      data:
-        mode: cooking
+#- alias: 'Living room lighting mode to cooking at 18:00'
+#  trigger:
+#    - platform: time
+#      at: "18:00"
+#  action:
+#    - service: script.living_room_lighting_mode
+#      data:
+#        mode: cooking
 
 # Evening mode
-- alias: 'Living room lighting mode to evening at 19:30'
+- alias: 'Living room lighting mode to evening'
   trigger:
     - platform: time
-      at: "19:30"
+      at: "19:00"
   action:
     - service: script.living_room_lighting_mode
       data:
         mode: evening
 
 # Night mode
-- alias: 'Living room lighting mode to night at 23:00'
+- alias: 'Living room lighting mode to night'
   trigger:
     - platform: time
       at: "23:00"
