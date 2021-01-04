@@ -19,6 +19,10 @@ homeassistant:
     system: !include features/system/definitions.yaml
     weather: !include features/weather/definitions.yaml
 
+    ##### DISABLED
+    # party_lighting: !include features/party_lighting/definitions.yaml
+    # queing: !include features/queing/definitions.yaml
+
 # Include themes
 frontend:
   themes: !include_dir_merge_named themes

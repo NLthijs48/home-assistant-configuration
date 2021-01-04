@@ -11,10 +11,6 @@ input_boolean:
   light_outside:
     name: Light outside
     icon: mdi:theme-light-dark
-  # Determines if the tree should be lit based on time
-  tree_timer:
-    name: Tree lighting timer
-    icon: mdi:pine-tree
 
 # Setup all light icons
 homeassistant:

@@ -1,0 +1,9 @@
+# Implements timed Christmas lighting
+
+automation: !include_dir_merge_list automations
+
+input_boolean:
+  # Determines if the tree should be lit based on time
+  tree_timer:
+    name: Tree lighting timer
+    icon: mdi:pine-tree
