@@ -141,17 +141,17 @@ button_card_templates:
     color_type: card # Use the color as card background
     state:
       # Bad states
-      - value: 30
+      - value: 20
         operator: '<'
         color: '#790000'
       - value: 70
         operator: '>'
         color: '#790000'
       # Not-ideal states
-      - value: 40
+      - value: 30
         operator: '<'
         color: '#ffa500'
-      - value: 60
+      - value: 55
         operator: '>'
         color: '#ffa500'
       # Good state
@@ -169,7 +169,7 @@ button_card_templates:
         operator: '>'
         color: '#790000'
       # Worrisome state
-      - value: 700
+      - value: 800
         operator: '>'
         color: '#ffa500'
       # Good state
