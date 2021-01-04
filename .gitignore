@@ -11,7 +11,7 @@
 # Components installed using the community store
 custom_components
 # Integrations installed using the community store
-www
+www/community
 # Zigbee network (conbee stick)
 zigbee.db
 # Zigbee network map

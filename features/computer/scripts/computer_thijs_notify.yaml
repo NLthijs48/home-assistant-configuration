@@ -3,19 +3,26 @@ description: Show a notification on the computer of Thijs
 icon: mdi:bell-ring
 fields:
   title:
-    description: 'Title of the notification'
+    description: 'First line of the notification (in bold)'
     example: 'The CO2 level is getting high'
-  message:
-    description: 'Body of the notification'
-    example: 'CO2 in the computer room is now at 814 ppm and rising, open a window to fix it'
+  body:
+    description: 'Second line of the notification'
+    example: 'It is now at 876 ppm!'
+  # Could not get the iconUrl to work, will just display blank
+  #icon:
+  #  description: 'Icon url (optional)'
+  #  example: 'https://home.wiefferink.me/local/icon.png'
+  
   # TODO: support for the other params: https://gitlab.com/iotlink/iotlink/-/wikis/Addons/Commands
 sequence:
   # Send the MQTT message to IOTlink that is running on my computer
   - service: mqtt.publish
     data:
       topic: "iotlink/workgroup/thijs/commands/notify"
+      # There is an unicode empty space character as default!
+      # (otherwise it does not accept the notification)
       payload: >-
         {
-          "title": "{{ title }}",
-          "message": "{{ message|default('') }}",
+          "title": "{{ title|default('‎') }}",
+          "message": "{{ body|default('‎') }}",
         }
