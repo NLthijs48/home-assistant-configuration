@@ -45,7 +45,7 @@
         brightness_pct: >-
           {% if now().hour < 7 or now().hour >= 19 %}
             50
-          {% if now().hour < 8 or now().hour >= 18 %}
+          {% elif now().hour < 8 or now().hour >= 18 %}
             75
           {% else %}
             100
