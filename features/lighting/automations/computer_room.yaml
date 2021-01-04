@@ -25,13 +25,14 @@
 # Brightness and color temperature control when turned on
 - alias: Computer room light starts dimmed when turned on at night
   trigger:
+    # Trigger when the light turns on (because of computer state for example)
     - entity_id: light.computers_ceiling
       platform: state
       to: 'on'
-    - platform: time
-      at: "18:00:00"
-    - platform: time
-      at: "8:00:01"
+    # Trigger every hour
+    - platform: time_pattern
+      minutes: 0
+      seconds: 1
   condition:
     - condition: state
       entity_id: light.computers_ceiling
@@ -40,15 +41,18 @@
     - service: light.turn_on
       data:
         entity_id: light.computers_ceiling
+        transition: 5
         brightness_pct: >-
-          {% if now().hour >= 19 or now().hour <= 8 %}
+          {% if now().hour < 7 or now().hour >= 19 %}
             50
+          {% if now().hour < 8 or now().hour >= 18 %}
+            75
           {% else %}
             100
           {% endif %}
         # White during the day, yellow-ish at night
         color_temp: >-
-          {% if now().hour >= 18 or now().hour <= 8 %}
+          {% if now().hour < 7 or now().hour >= 18 %}
             370
           {% else %}
             250
