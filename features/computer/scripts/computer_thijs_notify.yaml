@@ -12,7 +12,7 @@ fields:
   #icon:
   #  description: 'Icon url (optional)'
   #  example: 'https://home.wiefferink.me/local/icon.png'
-  
+
   # TODO: support for the other params: https://gitlab.com/iotlink/iotlink/-/wikis/Addons/Commands
 sequence:
   # Send the MQTT message to IOTlink that is running on my computer

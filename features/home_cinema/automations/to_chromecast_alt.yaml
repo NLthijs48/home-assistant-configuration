@@ -22,12 +22,3 @@ action:
   - service: "input_boolean.turn_off"
     data:
       entity_id: "input_boolean.home_cinema_pending"
-  # LED strip to green
-  - service: light.turn_on
-    entity_id: light.tv_led_strip
-    data:
-      brightness: 254
-      rgb_color:
-        - 0
-        - 255
-        - 0

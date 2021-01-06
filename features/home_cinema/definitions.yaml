@@ -14,6 +14,7 @@ input_select:
       - 'chromecast'
       - 'bluetooth'
       - 'tv'
+      - 'unknown'
 
 # Tracks whether we are moving towards a new state
 input_boolean:
