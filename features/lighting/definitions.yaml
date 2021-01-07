@@ -50,10 +50,10 @@ homeassistant:
       icon: mdi:road
 
     ##### First floor
-    # Thijs' room
+    # Bedroom Thijs
     light.bedroom_thijs_ceiling:
       icon: mdi:rectangle-outline
-    # Frits' room
+    # Bedroom Frits
     light.frits_room_cabinet:
       icon: mdi:wardrobe
     light.frits_room_wall:
@@ -127,16 +127,16 @@ light:
       - light.dining_table
       - light.dining_duck
       - light.dining_large_painting
-  # Lights in Frits' room (light.frits_room_lights)
+  # Lights in Frits' bedroom (light.frits_room_lights)
   - platform: group
-    name: "Frits' room lights"
+    name: "Bedroom Frits lights"
     entities:
       - light.frits_room_wall
       - light.frits_room_cabinet
       - light.frits_room_window
-  # Lights in Thijs' room (light.thijs_room_lights)
+  # Lights in Thijs' bedroom (light.thijs_room_lights)
   - platform: group
-    name: "Thijs' room lights"
+    name: "Bedroom Thijs lights"
     entities:
       - light.bedroom_thijs_ceiling
       - light.bedroom_thijs_bed

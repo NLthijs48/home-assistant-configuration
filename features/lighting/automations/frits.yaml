@@ -1,5 +1,5 @@
  # Frits room lights turn on brightness
-- alias: "Frits' room lights turn on dimmed at night"
+- alias: "Bedroom Frits lights turn on dimmed at night"
   trigger:
     - entity_id: light.frits_room_lights
       platform: state

@@ -1,6 +1,6 @@
-# Thijs' room lights turn on brightness
+# Bedroom Thijs lights turn on brightness
 # TODO: replacement for this (use script for turn on, and use correct brightness/color temp in there?)
-# - alias: "Thijs' room lights turn on dimmed at night"
+# - alias: "Bedroom Thijs lights turn on dimmed at night"
 #   trigger:
 #     - entity_id: light.bedroom_thijs_ceiling
 #       platform: state
@@ -26,7 +26,7 @@
 #           {% endif %}
 
 # Turn off the light when going downstairs
-- alias: "Thijs' room turn off when going downstairs"
+- alias: "Bedroom Thijs turn off when going downstairs"
   trigger:
     - entity_id: sensor.phone_thijs_wifi_ap
       platform: state
@@ -37,7 +37,7 @@
         entity_id: light.thijs_room_lights
 
 # Update lighting when changing do-not-disturb
-- alias: "Thijs' room turn off when going into do-not-disturb"
+- alias: "Bedroom Thijs turn off when going into do-not-disturb"
   trigger:
     - platform: state
       entity_id: sensor.phone_thijs_do_not_disturb
@@ -48,7 +48,7 @@
         entity_id: light.thijs_room_lights
         transition: 10
 
-- alias: "Thijs' room turn on when going out of do-not-disturb"
+- alias: "Bedroom Thijs turn on when going out of do-not-disturb"
   trigger:
     - platform: state
       entity_id: sensor.phone_thijs_do_not_disturb
@@ -60,7 +60,7 @@
         transition: 10
 
 # Turn on the lights when there is motion
-- alias: "Thijs' room turn on when there is motion"
+- alias: "Bedroom Thijs turn on when there is motion"
   mode: restart
   trigger:
     - platform: state

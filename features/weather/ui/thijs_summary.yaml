@@ -1,4 +1,4 @@
-# Thijs' room summary
+# Bedroom Thijs summary
 type: vertical-stack
 cards:
   # Header with popup
@@ -9,7 +9,7 @@ cards:
       action: call-service
       service: browser_mod.popup
       service_data:
-        title: "Thijs' room"
+        title: "Bedroom Thijs"
         deviceID:
           - this
         card:

@@ -15,13 +15,13 @@ entities:
       - entity: sensor.motion_hall_first_floor
         name: Motion sensor
 
-  # Frits' room
+  # Bedroom Frits
   - type: custom:fold-entity-row
     open: false
     head:
       entity: light.frits_room_lights
       icon: mdi:track-light
-      name: Frits' room
+      name: Bedroom Frits
       state_color: false
       type: custom:slider-entity-row
     entities:
@@ -37,11 +37,11 @@ entities:
       - entity: sensor.bedroom_frits_remote
         name: Remote
 
-  # Thijs' room
+  # Bedroom Thijs
   - type: custom:fold-entity-row
     head:
       entity: light.thijs_room_lights
-      name: Thijs' room
+      name: Bedroom Thijs
       state_color: false
       type: custom:slider-entity-row
     entities:

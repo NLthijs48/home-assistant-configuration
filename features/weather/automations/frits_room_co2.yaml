@@ -1,4 +1,4 @@
-- alias: CO2 in Frits' room is getting high
+- alias: CO2 in Frits' bedroom is getting high
   trigger:
     - platform: numeric_state
       entity_id: sensor.netatmo_frits_co2
