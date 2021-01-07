@@ -1,1 +1,29 @@
-[]
+- id: '1610024352305'
+  alias: Thijs' room remote
+  description: ''
+  use_blueprint:
+    path: frenck/zha-ikea-five-button-remote-for-lights.yaml
+    input:
+      brightness: '50'
+      remote: c69e1482793081acc4a3f2ac6f5d2999
+      light:
+        area_id: 64895fff14ea48f39a51dc29136c1584
+      force_brightness: false
+      button_left_short:
+      - service: light.turn_on
+        data:
+          color_temp: 500
+        entity_id: light.bedroom_thijs_ceiling
+      - service: light.turn_on
+        data:
+          color_temp: 495
+        entity_id: light.bedroom_thijs_bed
+      button_right_short:
+      - service: light.turn_on
+        data:
+          color_temp: 250
+        entity_id: light.bedroom_thijs_ceiling
+      - service: light.turn_on
+        data:
+          color_temp: 300
+        entity_id: light.bedroom_thijs_bed

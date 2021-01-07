@@ -26,6 +26,8 @@ tts
 image
 # Glances config file
 glances.conf
+# Blueprints added using the UI
+blueprints
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
