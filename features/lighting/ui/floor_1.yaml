@@ -53,6 +53,17 @@ entities:
         type: custom:slider-entity-row
       - entity: sensor.bedroom_thijs_remote
         name: Remote
+      - type: custom:fold-entity-row
+        head:
+          entity: binary_sensor.bedroom_thijs_motion_sensor_occupancy
+          name: Motion sensor
+        entities:
+          - entity: sensor.bedroom_thijs_motion_sensor_illuminance
+            name: Light level
+          - entity: sensor.bedroom_thijs_motion_sensor_temperature
+            name: Temperature
+          - entity: sensor.bedroom_thijs_motion_sensor_power
+            name: Battery
 
   # Computer room
   - type: custom:fold-entity-row

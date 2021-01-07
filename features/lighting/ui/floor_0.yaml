@@ -72,6 +72,18 @@ entities:
             name: Sink
         open: false
 
+      # Motion sensor
+      - type: custom:fold-entity-row
+        head:
+          entity: binary_sensor.motion_living_room
+          name: Motion sensor
+        entities:
+          - entity: sensor.living_room_light_level
+            name: Light level
+          - entity: sensor.temperature_living_room
+            name: Temperature
+          # TODO: add battery
+
   # Toilet
   - type: custom:fold-entity-row
     head:
