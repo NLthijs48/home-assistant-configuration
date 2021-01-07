@@ -1,24 +1,26 @@
 # List of entities with low batteries
-type: 'custom:auto-entities'
-card:
-  type: entities
-  title: Battery low!
-filter:
-  include:
-    # Sensors that declare themselves as a battery
-    - attributes:
-        device_class: battery
-      state: < 25
-      options:
-        secondary_info: last-changed
-    # Manually add this one, not declared as battery
-    - entity_id: sensor.mi_flora_battery
-      state: < 25
-      options:
-        secondary_info: last-changed
-# Lowest battery first
-sort:
-  method: state
-  numeric: true
-# Hide when no devices with low battery
-show_empty: false
+type: vertical-stack
+title: Battery low!
+cards:
+  - type: 'custom:auto-entities'
+    card:
+      type: entities
+    filter:
+      include:
+        # Sensors that declare themselves as a battery
+        - attributes:
+            device_class: battery
+          state: < 25
+          options:
+            secondary_info: last-changed
+        # Manually add this one, not declared as battery
+        - entity_id: sensor.mi_flora_battery
+          state: < 25
+          options:
+            secondary_info: last-changed
+    # Lowest battery first
+    sort:
+      method: state
+      numeric: true
+    # Hide when no devices with low battery
+    show_empty: false
