@@ -19,7 +19,7 @@ entities:
   - type: custom:fold-entity-row
     open: false
     head:
-      entity: light.frits_room_lights
+      entity: light.bedroom_frits_lights
       icon: mdi:track-light
       name: Bedroom Frits
       state_color: false
@@ -40,7 +40,7 @@ entities:
   # Bedroom Thijs
   - type: custom:fold-entity-row
     head:
-      entity: light.thijs_room_lights
+      entity: light.bedroom_thijs_lights
       name: Bedroom Thijs
       state_color: false
       type: custom:slider-entity-row

@@ -50,7 +50,7 @@ recorder:
       # Triggers often, no need for history
       - automation.detect_motion_in_the_living_room
       # No need for a long history
-      - binary_sensor.motion_living_room
+      - binary_sensor.living_room_motion_sensor_occupancy
       # Not using history, updates every few seconds while playing
       - media_player.4k
     entity_globs:

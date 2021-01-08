@@ -75,14 +75,15 @@ entities:
       # Motion sensor
       - type: custom:fold-entity-row
         head:
-          entity: binary_sensor.motion_living_room
+          entity: binary_sensor.living_room_motion_sensor_occupancy
           name: Motion sensor
         entities:
-          - entity: sensor.living_room_light_level
-            name: Light level
-          - entity: sensor.temperature_living_room
+          - entity: sensor.living_room_motion_sensor_illuminance
+            name: Illuminance
+          - entity: sensor.living_room_motion_sensor_temperature
             name: Temperature
-          # TODO: add battery
+          - entity: sensor.living_room_motion_sensor_power
+            name: Battery
 
   # Toilet
   - type: custom:fold-entity-row

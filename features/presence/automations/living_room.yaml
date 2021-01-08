@@ -17,7 +17,7 @@
 - alias: Detect motion in the living room
   trigger:
     - platform: state
-      entity_id: binary_sensor.motion_living_room
+      entity_id: binary_sensor.living_room_motion_sensor_occupancy
       to: 'on'
   action:
     - service: input_boolean.turn_on
@@ -28,7 +28,7 @@
   trigger:
     # Trigger after no motion for a while
     - platform: state
-      entity_id: binary_sensor.motion_living_room
+      entity_id: binary_sensor.living_room_motion_sensor_occupancy
       to: 'off'
       for:
         minutes: 5
