@@ -4,10 +4,24 @@ wake_on_lan:
 # Used to detect which devices are online, and for wake-on-lan
 # (this platform pings these devices each 10s or so)
 switch:
-  # Computer Thijs
+  # Computer Thijs (1Gbps jack)
+  # - name: Computer Thijs wake on lan
+  #   platform: wake_on_lan
+  #   mac: "f0:2f:74:16:19:9b"
+  #   host: "10.0.100.1"
+  #   broadcast_address: "10.0.100.1"
+  #   turn_off:
+  #     # Go to sleep instead of doing an actual shutdown
+  #     service: mqtt.publish
+  #     data:
+  #       topic: "iotlink/workgroup/thijs/commands/suspend"
+  #       payload: ""
+  #   scan_interval: 6
+
+  # Computer Thijs (2.5Gbps jack)
   - name: Computer Thijs wake on lan
     platform: wake_on_lan
-    mac: "f0:2f:74:16:19:9b"
+    mac: "f0:2f:74:16:19:9a"
     host: "10.0.100.1"
     broadcast_address: "10.0.100.1"
     turn_off:
