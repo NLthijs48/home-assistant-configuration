@@ -134,6 +134,7 @@ button_card_templates:
         - font-size: 1.3rem
       card:
         - padding-bottom: 0.8rem
+        - height: 58px
 
   # Humidity state color
   statistic_button_humidity:
