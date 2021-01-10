@@ -13,7 +13,7 @@ cards:
     card:
       type: 'custom:bar-card'
       entities:
-        - entity: sensor.thijs_cpu_usage
+        - entity: sensor.computer_thijs_cpu_usage
           name: CPU
-        - entity: sensor.thijs_memory_usage
+        - entity: sensor.computer_thijs_ram_usage
           name: Memory
