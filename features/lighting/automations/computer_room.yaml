@@ -6,6 +6,9 @@
     - platform: state
       entity_id: binary_sensor.computer_room_used_devices
       to: 'off'
+      # Wait a bit (give time for reboots etc.)
+      for:
+        seconds: 30
   action:
     - service: light.turn_off
       data:
