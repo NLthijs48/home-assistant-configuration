@@ -109,7 +109,7 @@
         entity_id: binary_sensor.bedroom_thijs_motion_sensor_occupancy
         to: 'off'
         for:
-          minutes: 1
+          minutes: 3
 
     # Turn off the light
     - service: light.turn_off
