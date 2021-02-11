@@ -1,4 +1,4 @@
-# Bedroom Frits summary
+# Frits' summary
 type: vertical-stack
 cards:
   # Header with popup
@@ -9,7 +9,7 @@ cards:
       action: call-service
       service: browser_mod.popup
       service_data:
-        title: "Bedroom Frits"
+        title: "Frits' room"
         deviceID:
           - this
         card:

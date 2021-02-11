@@ -50,10 +50,10 @@ homeassistant:
       icon: mdi:road
 
     ##### First floor
-    # Bedroom Thijs
+    # Thijs' room
     light.bedroom_thijs_ceiling:
       icon: mdi:rectangle-outline
-    # Bedroom Frits
+    # Frits' room
     light.frits_room_cabinet:
       icon: mdi:wardrobe
     light.frits_room_wall:
