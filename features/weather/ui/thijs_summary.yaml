@@ -25,12 +25,13 @@ cards:
     entity: sensor.netatmo_thijs_co2
     template: statistic_button_co2
     tap_action:
-      action: fire-dom-event
-      browser_mod:
-        command: toast
-        message: hi
-        #card: !include thijs/co2.yaml
-        #title: 'hi'
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        card: !include thijs/co2.yaml
+        title: ' '
+        deviceID:
+          - this
   # Temperature
   - type: custom:button-card
     name: Temperature
