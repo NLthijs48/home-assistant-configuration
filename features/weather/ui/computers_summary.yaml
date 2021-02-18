@@ -6,12 +6,10 @@ cards:
     name: Game
     template: header_standalone
     tap_action:
-      action: call-service
-      service: browser_mod.popup
-      service_data:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
         title: Computers
-        deviceID:
-          - this
         card:
           type: vertical-stack
           cards:
@@ -25,36 +23,30 @@ cards:
     entity: sensor.netatmo_computers_co2
     template: statistic_button_co2
     tap_action:
-      action: call-service
-      service: browser_mod.popup
-      service_data:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
         card: !include computers/co2.yaml
         title: ' '
-        deviceID:
-          - this
   # Temperature
   - type: custom:button-card
     name: Temperature
     entity: sensor.netatmo_computers_temperature
     template: statistic_button
     tap_action:
-      action: call-service
-      service: browser_mod.popup
-      service_data:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
         card: !include computers/temperature.yaml
         title: ' '
-        deviceID:
-          - this
   # Humidity
   - type: custom:button-card
     name: Humidity
     entity: sensor.netatmo_computers_humidity
     template: statistic_button_humidity
     tap_action:
-      action: call-service
-      service: browser_mod.popup
-      service_data:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
         card: !include computers/humidity.yaml
         title: ' '
-        deviceID:
-          - this

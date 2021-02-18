@@ -9,12 +9,10 @@ cards:
         template: header
         # Show details popup when clicking the header
         tap_action:
-          action: call-service
-          service: browser_mod.popup
-          service_data:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
             title: Living room
-            deviceID: # Only on this device
-              - this
             card:
               type: vertical-stack
               cards:
@@ -35,28 +33,24 @@ cards:
         entity: sensor.netatmo_living_room_co2
         template: statistic_button_co2
         tap_action:
-          action: call-service
-          service: browser_mod.popup
-          service_data:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
             card: !include living_room/co2.yaml
             title: ' '
             hide_header: true
-            deviceID:
-              - this
       # Humidity
       - type: custom:button-card
         name: Humidity
         entity: sensor.netatmo_living_room_humidity
         template: statistic_button_humidity
         tap_action:
-          action: call-service
-          service: browser_mod.popup
-          service_data:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
             card: !include living_room/humidity.yaml
             title: ' '
             hide_header: true
-            deviceID:
-              - this
 
   - type: horizontal-stack
     cards:
@@ -66,25 +60,21 @@ cards:
         entity: sensor.netatmo_living_room_noise
         template: statistic_button
         tap_action:
-          action: call-service
-          service: browser_mod.popup
-          service_data:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
             card: !include living_room/noise.yaml
             title: ' '
             hide_header: true
-            deviceID:
-              - this
       # Pressure
       - type: custom:button-card
         name: Pressure
         entity: sensor.netatmo_living_room_pressure
         template: statistic_button
         tap_action:
-          action: call-service
-          service: browser_mod.popup
-          service_data:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
             card: !include living_room/pressure.yaml
             title: ' '
             hide_header: true
-            deviceID:
-              - this

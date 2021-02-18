@@ -8,12 +8,10 @@ cards:
         name: Garden
         template: header
         tap_action:
-          action: call-service
-          service: browser_mod.popup
-          service_data:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
             title: Garden
-            deviceID: # Only on this device
-              - this
             card:
               type: vertical-stack
               cards:
@@ -45,14 +43,12 @@ cards:
         entity: sensor.netatmo_garden_humidity
         template: statistic_button # Don't use humidity template, for outside it does not matter
         tap_action:
-          action: call-service
-          service: browser_mod.popup
-          service_data:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
             card: !include garden/humidity.yaml
             title: ' '
             hide_header: true
-            deviceID:
-              - this
       # Rain today
       - type: custom:button-card
         name: Rain today
@@ -69,25 +65,21 @@ cards:
         entity: sensor.netatmo_wind_gust_strength
         template: statistic_button
         tap_action:
-          action: call-service
-          service: browser_mod.popup
-          service_data:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
             card: !include garden/wind.yaml
             title: ' '
             hide_header: true
-            deviceID:
-              - this
       # Wind gust direction
       - type: custom:button-card
         name: Wind direction
         entity: sensor.netatmo_wind_gust_direction
         template: statistic_button
         tap_action:
-          action: call-service
-          service: browser_mod.popup
-          service_data:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
             card: !include garden/wind.yaml
             title: ' '
             hide_header: true
-            deviceID:
-              - this
