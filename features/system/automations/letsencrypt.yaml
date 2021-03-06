@@ -3,10 +3,6 @@
     - platform: time
       # An hour before the daily restart
       at: '04:00:00'
-  condition:
-    - condition: time
-      weekday:
-        - sat
   action:
     - service: hassio.addon_start
       data:
