@@ -1,20 +1,3 @@
-# Ground floor hall
-- alias: Ground floor hall light starts dimmed when turned on at night
-  trigger:
-    - entity_id: light.ground_floor_hall
-      platform: state
-      to: 'on'
-  action:
-    - service: light.turn_on
-      data:
-        entity_id: light.ground_floor_hall
-        brightness_pct: >-
-          {% if is_state('sun.sun', 'below_horizon') %}
-            20
-          {% else %}
-            100
-          {% endif %}
-
  # First floor hall
 - alias: First floor hall light starts dimmed when turned on at night
   trigger:

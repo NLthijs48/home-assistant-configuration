@@ -1,0 +1,43 @@
+# Turn on the lights when there is motion
+- alias: "Toilet turn on when there is motion"
+  mode: restart
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.toilet_motion_sensor
+      to: 'on'
+  action:
+    # Turn on the light
+    - service: light.turn_on
+      data:
+        entity_id: light.toilet
+
+    # Wait until there is no motion anymore
+    - wait_for_trigger:
+        platform: state
+        entity_id: binary_sensor.toilet_motion_sensor
+        to: 'off'
+        for:
+          minutes: 2
+
+    # Turn off the light
+    - service: light.turn_off
+      data:
+        entity_id: light.toilet
+        transition: 5
+
+# Dimmed when turned on at night
+- alias: Toilet light starts dimmed when turned on at night
+  trigger:
+    - entity_id: light.toilet
+      platform: state
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.toilet
+        brightness_pct: >-
+          {% if is_state('sun.sun', 'below_horizon') %}
+            30
+          {% else %}
+            100
+          {% endif %}
