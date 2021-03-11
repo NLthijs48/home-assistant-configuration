@@ -8,7 +8,7 @@ entities:
 height: 130
 hour24: true
 hours_to_show: 1
-points_per_hour: 60
+points_per_hour: 120
 decimals: 3
 line_width: 3
 lower_bound: 0
