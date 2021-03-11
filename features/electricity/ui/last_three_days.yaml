@@ -1,0 +1,30 @@
+type: 'custom:mini-graph-card'
+entities:
+  - entity: sensor.power_consumption
+    name: Power usage
+    show_legend: false
+    color: green
+  - color: '#9a9a9a'
+    entity: sensor.solar_elevation
+    name: Day/night
+    show_legend: false
+    show_line: false
+    show_points: false
+    y_axis: secondary
+height: 200
+hour24: true
+hours_to_show: 72
+icon: 'mdi:flash'
+line_width: 3
+lower_bound: 0
+lower_bound_secondary: 0
+name: Last 3 days
+points_per_hour: 6
+show:
+  labels: true
+  state: false
+  icon: false
+state_color: false
+show_header_toggle: false
+update_interval: 300
+cache: true

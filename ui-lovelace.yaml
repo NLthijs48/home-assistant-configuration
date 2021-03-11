@@ -27,7 +27,8 @@ views:
           - !include features/weather/ui/thijs_summary.yaml
           - !include features/weather/ui/frits_summary.yaml
           - !include features/weather/ui/computers_summary.yaml
-      - !include features/weather/ui/forecast.yaml
+      - !include features/electricity/ui/summary.yaml
+      # Not used: - !include features/weather/ui/forecast.yaml
       # Maintenance column
       - type: vertical-stack
         cards:

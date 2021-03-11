@@ -1,0 +1,23 @@
+# Summary column for an overview of the inside environment
+type: custom:stack-in-card
+mode: vertical
+cards:
+  - type: custom:button-card
+    name: Electricity
+    template: header
+    # Show details popup when clicking the header
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
+        title: Electricity
+        card:
+          type: vertical-stack
+          cards:
+            - !include last_hour.yaml
+            - !include last_three_days.yaml
+            - type: entity
+              entity: sensor.energy_consumption_tarif_2
+            - type: entity
+              entity: sensor.energy_consumption_tarif_1
+  - !include last_hour.yaml
