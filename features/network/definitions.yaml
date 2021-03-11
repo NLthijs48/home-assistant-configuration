@@ -3,8 +3,9 @@
 automation: !include_dir_merge_list automations
 
 # UptimeRobot sensors
-binary_sensor:
-  - platform: uptimerobot
-    api_key: !secret uptimerobot_api_key
-    entity_namespace: uptime_robot
-    scan_interval: 300
+# TODO: Might need a new api key, broken currently
+#binary_sensor:
+#  - platform: uptimerobot
+#    api_key: !secret uptimerobot_api_key
+#    entity_namespace: uptime_robot
+#    scan_interval: 300
