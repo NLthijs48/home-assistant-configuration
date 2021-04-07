@@ -46,10 +46,11 @@ media_player:
       video3: Bluetooth
       video2: T-Mobile
       video6: Steam link
-  - platform: philips_js
-    host: 10.0.2.22
-    name: TV
-    api_version: 6
+  # Api is pretty broken after a few calls, and unplugged the cable to get rid of annoying extra ChromeCast device
+  # - platform: philips_js
+  #   host: 10.0.2.22
+  #   name: TV
+  #   api_version: 6
 
 # HDMI setup as seen from the TV
 hdmi_cec:
