@@ -10,6 +10,8 @@ entities:
       entity: light.attic_hall
       name: Washing hall
       state_color: false
+      hide_state: true
+      grow: true
       type: custom:slider-entity-row
     entities:
       - entity: sensor.attic_hall_motion_sensor_battery
@@ -21,6 +23,8 @@ entities:
       name: Standing
       entity: light.attic_standing
       state_color: false
+      hide_state: true
+      grow: true
       type: custom:slider-entity-row
     entities:
       - type: custom:fold-entity-row

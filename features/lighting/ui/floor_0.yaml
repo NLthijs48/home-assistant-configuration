@@ -10,10 +10,14 @@ entities:
       entity: light.living_room_lights
       name: Living room
       state_color: false
+      hide_state: true
+      grow: true
       type: custom:slider-entity-row
     group_config:
       type: custom:slider-entity-row
       state_color: false
+      hide_state: true
+      grow: true
     entities:
       # TV
       - type: custom:fold-entity-row
@@ -22,9 +26,14 @@ entities:
           name: TV
           icon: mdi:television
           state_color: false
+          hide_state: true
+          grow: true
           type: custom:slider-entity-row
         group_config:
           type: custom:slider-entity-row
+          state_color: false
+          hide_state: true
+          grow: true
         entities:
           - entity: light.living_room_iceland_1
             name: 'Iceland #1'
@@ -41,9 +50,14 @@ entities:
           name: Dining
           icon: mdi:table-chair
           state_color: false
+          hide_state: true
+          grow: true
           type: custom:slider-entity-row
         group_config:
           type: custom:slider-entity-row
+          state_color: false
+          hide_state: true
+          grow: true
         entities:
           - entity: light.dining_table
             name: Table
@@ -60,14 +74,22 @@ entities:
           name: Kitchen
           icon: mdi:chef-hat
           state_color: false
+          hide_state: true
+          grow: true
           type: custom:slider-entity-row
         entities:
           - entity: light.kitchen_cooking
             name: Cooking area
             type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
           - entity: light.kitchen_kielzogschild
             name: Kielzogschild
             type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
           - entity: switch.kitchen_sink
             name: Sink
         open: false
@@ -90,6 +112,8 @@ entities:
     head:
       entity: light.toilet
       state_color: false
+      hide_state: true
+      grow: true
       type: custom:slider-entity-row
     entities:
       - entity: sensor.motion_toilet
@@ -101,6 +125,8 @@ entities:
       entity: light.ground_floor_hall
       name: Hall
       state_color: false
+      hide_state: true
+      grow: true
       type: custom:slider-entity-row
     entities:
       - entity: sensor.motion_hall_ground_floor
@@ -112,6 +138,8 @@ entities:
       entity: light.closet
       name: Closet
       state_color: false
+      hide_state: true
+      grow: true
       type: custom:slider-entity-row
     entities:
       - entity: sensor.motion_closet

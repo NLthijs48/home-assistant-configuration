@@ -11,6 +11,7 @@ entities:
       name: Hall
       state_color: false
       type: custom:slider-entity-row
+      hide_state: true
     entities:
       - entity: sensor.motion_hall_first_floor
         name: Motion sensor
@@ -23,17 +24,28 @@ entities:
       icon: mdi:track-light
       name: Frits' room
       state_color: false
+      hide_state: true
+      grow: true
       type: custom:slider-entity-row
     entities:
       - entity: light.frits_room_wall
         name: Wall
         type: custom:slider-entity-row
+        state_color: false
+        hide_state: true
+        grow: true
       - entity: light.frits_room_cabinet
         name: Cabinet
         type: custom:slider-entity-row
+        state_color: false
+        hide_state: true
+        grow: true
       - entity: light.frits_room_window
         name: Window
         type: custom:slider-entity-row
+        state_color: false
+        hide_state: true
+        grow: true
       - entity: sensor.bedroom_frits_remote
         name: Remote
 
@@ -43,14 +55,22 @@ entities:
       entity: light.bedroom_thijs_lights
       name: Thijs' room
       state_color: false
+      hide_state: true
+      grow: true
       type: custom:slider-entity-row
     entities:
       - entity: light.bedroom_thijs_ceiling
         name: Ceiling
         type: custom:slider-entity-row
+        state_color: false
+        hide_state: true
+        grow: true
       - entity: light.bedroom_thijs_bed
         name: Bed
         type: custom:slider-entity-row
+        state_color: false
+        hide_state: true
+        grow: true
       - entity: sensor.bedroom_thijs_remote
         name: Remote
       - type: custom:fold-entity-row
@@ -70,8 +90,10 @@ entities:
     head:
       entity: light.computers_ceiling
       name: Computers
-      state_color: false
       type: custom:slider-entity-row
+      state_color: false
+      hide_state: true
+      grow: true
     entities:
       - entity: sensor.computers_remote
         name: Remote
