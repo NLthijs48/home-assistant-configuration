@@ -25,15 +25,23 @@ entities:
       - entity: media_player.receiver
         state_not: 'off'
     row:
-      type: 'custom:mini-media-player'
-      name: Speakers
-      icon: 'mdi:speaker'
+      # Would like to have a speaker icon in front of this in the future, currently not setting for it
+      type: custom:slider-entity-row
       entity: media_player.receiver
-      group: true
-      hide:
-        controls: true
-        mute: true
-        power: true
+      full_row: true
+      grow: true
+      hide_state: true
+      step: 1
+      # Alternative (has smaller slider though)
+      # type: 'custom:mini-media-player'
+      # name: Speakers
+      # icon: 'mdi:speaker'
+      # entity: media_player.receiver
+      # group: true
+      # hide:
+      #   controls: true
+      #   mute: true
+      #   power: true
 
   # Personal Spotify card when playing
   # TODO: try hiding this when state!=playing (conditional card did not work)
