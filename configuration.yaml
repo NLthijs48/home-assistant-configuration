@@ -113,8 +113,8 @@ notify:
     recipient: !secret email_thijs
     sender_name: Home Assistant
 
-# No ip
-no_ip:
-  domain: !secret no_ip_domain
-  username: !secret no_ip_username
-  password: !secret no_ip_password
+# No ip (disabled, already handled by the Unifi USG)
+#no_ip:
+#  domain: !secret no_ip_domain
+#  username: !secret no_ip_username
+#  password: !secret no_ip_password
