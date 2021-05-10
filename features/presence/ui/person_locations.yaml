@@ -1,0 +1,9 @@
+# Show location of Thijs and Frits
+type: horizontal-stack
+cards:
+  - type: entity
+    entity: sensor.thijs_location
+    name: Thijs
+  - type: entity
+    entity: sensor.frits_location
+    name: Frits

@@ -10,10 +10,8 @@ views:
   # Living room
   - icon: 'mdi:theater'
     path: living-room
-    badges:
-      - entity: person.thijs
-      - entity: person.frits
     cards:
+      - !include features/presence/ui/person_locations.yaml
       - !include features/lighting/ui/living_room.yaml
       - !include features/home_cinema/ui/mode-select.yaml
       - !include features/home_cinema/ui/players.yaml
