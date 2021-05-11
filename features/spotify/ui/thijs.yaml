@@ -1,0 +1,41 @@
+type: vertical-stack
+cards:
+  # Media controls
+  - type: 'custom:state-switch'
+    entity: media_player.spotify_thijs
+    default: default
+    states:
+      default:
+        entity: media_player.spotify_thijs
+        type: media-control
+      # Bad way to render 'nothing'
+      idle:
+        type: conditional
+        conditions:
+          - entity: light.does_not_exist
+            state: 'on'
+        card:
+          type: entities
+          entities: null
+      paused:
+        type: conditional
+        conditions:
+          - entity: light.does_not_exist
+            state: 'on'
+        card:
+          type: entities
+          entities: null
+
+  # List with all my playlists
+  - type: 'custom:spotify-card'
+    account: thijs
+    spotify_entity: media_player.4k
+    playlist_type: default
+    limit: 30
+    name: Music
+    display_style: list
+    hide_playback_controls: true
+    hide_top_header: true
+    filter_devices:
+      - Living Room speaker
+      - Bedroom speaker

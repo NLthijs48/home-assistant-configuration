@@ -40,30 +40,7 @@ views:
     cards:
       - !include features/lighting/ui/room_thijs.yaml
       - !include features/computer/ui/computer_thijs.yaml
-      - type: entities
-        entities:
-          - entity: media_player.thijs_room_google_home_mini
-            group: true
-            icon: 'mdi:google-home'
-            name: Google Home Mini
-            type: 'custom:mini-media-player'
-          - entity: device_tracker.phone_thijs
-          - entity: sensor.phone_thijs_battery_level
-          - entity: sensor.phone_thijs_battery_activity
-          - entity: sensor.phone_thijs_sim
-          - entity: sensor.phone_thijs_audio_setting
-          - entity: sensor.phone_thijs_bluetooth_connection
-          - entity: sensor.phone_thijs_calling
-          - entity: sensor.phone_thijs_detected_activity
-          - entity: sensor.phone_thijs_do_not_disturb
-          - entity: sensor.phone_thijs_last_reboot
-          - entity: sensor.phone_thijs_light
-          - entity: sensor.phone_thijs_next_alarm
-          - entity: sensor.phone_thijs_proximity
-          - entity: sensor.phone_thijs_storage
-          - entity: sensor.phone_thijs_wifi
-      - entity: media_player.spotify_thijs
-        type: media-control
+      - !include features/spotify/ui/thijs.yaml
 
   # Frits
   - title: Frits
@@ -73,14 +50,13 @@ views:
       - !include features/lighting/ui/room_frits.yaml
       - type: entities
         entities:
-          - device_tracker.phone_frits
+          - device_tracker.unifi_phone_frits
           - sensor.phone_frits_battery_level
           - sensor.phone_frits_battery_state
           - sensor.phone_frits_bssid
           - sensor.phone_frits_connection_type
           - sensor.phone_frits_geocoded_location
           - sensor.phone_frits_last_update_trigger
-          - sensor.phone_frits_sim
           - sensor.phone_frits_ssid
           - sensor.phone_frits_storage
 

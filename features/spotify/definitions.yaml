@@ -1,0 +1,8 @@
+# Adds the ability to start spotify on ChromeCast
+spotcast:
+  sp_dc: !secret spotify_thijs_sp_dc
+  sp_key: !secret spotify_thijs_sp_key
+  accounts:
+    thijs:
+      sp_dc: !secret spotify_thijs_sp_dc
+      sp_key: !secret spotify_thijs_sp_key
