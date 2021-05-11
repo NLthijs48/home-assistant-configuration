@@ -1,25 +1,25 @@
 # Turn on the lights when there is motion
-- alias: "Attic hall turn on when there is motion"
+- alias: "Attic turn on when there is motion"
   mode: restart
   trigger:
     - platform: state
-      entity_id: binary_sensor.attic_hall_motion_sensor
+      entity_id: binary_sensor.attic_motion_sensor
       to: 'on'
   action:
     # Turn on the light
     - service: light.turn_on
       data:
-        entity_id: light.attic_hall
+        entity_id: light.attic
         brightness: 255
 
     # Wait until there is no motion anymore
     - wait_for_trigger:
         platform: state
-        entity_id: binary_sensor.attic_hall_motion_sensor
+        entity_id: binary_sensor.attic_motion_sensor
         to: 'off'
 
     # Turn off the light
     - service: light.turn_off
       data:
-        entity_id: light.attic_hall
+        entity_id: light.attic
         transition: 5
