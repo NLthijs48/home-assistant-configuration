@@ -13,8 +13,13 @@ entities:
       type: custom:slider-entity-row
       hide_state: true
     entities:
-      - entity: sensor.motion_hall_first_floor
-        name: Motion sensor
+      - type: custom:fold-entity-row
+        head:
+          entity: binary_sensor.first_floor_hall_motion_sensor
+          name: Motion sensor
+        entities:
+          - entity: sensor.first_floor_hall_motion_sensor_battery
+            name: Battery
 
   # Frits' room
   - type: custom:fold-entity-row
@@ -71,8 +76,8 @@ entities:
         state_color: false
         hide_state: true
         grow: true
-      - entity: sensor.bedroom_thijs_remote
-        name: Remote
+      - entity: sensor.bedroom_thijs_remote_battery
+        name: Remote battery
       - type: custom:fold-entity-row
         head:
           entity: binary_sensor.bedroom_thijs_motion_sensor_occupancy

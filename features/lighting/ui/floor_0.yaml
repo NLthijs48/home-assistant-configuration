@@ -116,8 +116,14 @@ entities:
       grow: true
       type: custom:slider-entity-row
     entities:
-      - entity: sensor.motion_toilet
-        name: Motion sensor
+      - type: custom:fold-entity-row
+        head:
+          entity: binary_sensor.toilet_motion_sensor
+          name: Motion sensor
+        entities:
+          - entity: sensor.toilet_motion_sensor_battery
+            name: Battery
+
 
   # Hall
   - type: custom:fold-entity-row
@@ -142,6 +148,23 @@ entities:
       grow: true
       type: custom:slider-entity-row
     entities:
-      - entity: sensor.motion_closet
-        name: Motion sensor
+      - type: custom:fold-entity-row
+        head:
+          entity: binary_sensor.closet_motion_sensor
+          name: Motion sensor
+        entities:
+          - entity: sensor.closet_motion_sensor_battery
+            name: Battery
 
+  # Garden
+  - type: custom:fold-entity-row
+    head:
+      entity: binary_sensor.garden_motion_sensor
+      name: Garden motion sensor
+    entities:
+      - entity: sensor.garden_motion_sensor_light_level
+        name: Light level
+      - entity: sensor.garden_motion_sensor_temperature
+        name: Temperature
+      - entity: sensor.garden_motion_sensor_power
+        name: Battery
