@@ -7,7 +7,7 @@ entities:
   # Hall
   - type: custom:fold-entity-row
     head:
-      entity: light.hall_first_floor
+      entity: light.first_floor_hall
       name: Hall
       state_color: false
       type: custom:slider-entity-row
@@ -100,7 +100,7 @@ entities:
       hide_state: true
       grow: true
     entities:
-      - entity: sensor.computers_remote
-        name: Remote
+      - entity: sensor.computers_remote_battery
+        name: Remote battery
 
 

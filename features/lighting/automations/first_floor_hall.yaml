@@ -1,0 +1,41 @@
+# Turn on the lights when there is motion
+- alias: "First floor hall turn on when there is motion"
+  mode: restart
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.first_floor_hall_motion_sensor
+      to: 'on'
+  action:
+    # Turn on the light
+    - service: light.turn_on
+      data:
+        entity_id: light.first_floor_hall
+
+    # Wait until there is no motion anymore
+    - wait_for_trigger:
+        platform: state
+        entity_id: binary_sensor.first_floor_hall_motion_sensor
+        to: 'off'
+
+    # Turn off the light
+    - service: light.turn_off
+      data:
+        entity_id: light.first_floor_hall
+        transition: 5
+
+# Dimmed when turned on at night
+- alias: First floor hall light starts dimmed when turned on at night
+  trigger:
+    - entity_id: light.first_floor_hall
+      platform: state
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.first_floor_hall
+        brightness_pct: >-
+          {% if is_state('sun.sun', 'below_horizon') %}
+            1
+          {% else %}
+            100
+          {% endif %}
