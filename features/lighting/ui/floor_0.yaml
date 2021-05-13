@@ -135,8 +135,13 @@ entities:
       grow: true
       type: custom:slider-entity-row
     entities:
-      - entity: sensor.motion_hall_ground_floor
-        name: Motion sensor
+      - type: custom:fold-entity-row
+        head:
+          entity: binary_sensor.ground_floor_hall_motion_sensor
+          name: Motion sensor
+        entities:
+          - entity: sensor.ground_floor_hall_motion_sensor_battery
+            name: Battery
 
   # Closet
   - type: custom:fold-entity-row
