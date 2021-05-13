@@ -47,12 +47,14 @@ homeassistant:
       icon: mdi:wardrobe
     # Hall
     light.ground_floor_hall:
-      icon: mdi:road
+      icon: mdi:road-variant
 
     ##### First floor
     # Thijs' room
     light.bedroom_thijs_ceiling:
       icon: mdi:rectangle-outline
+    light.bedroom_thijs_bed:
+      icon: mdi:bed
     # Frits' room
     light.frits_room_cabinet:
       icon: mdi:wardrobe
@@ -61,8 +63,8 @@ homeassistant:
     light.frits_room_window:
       icon: mdi:window-closed-variant
     # Hall
-    light.hall_first_floor:
-      icon: mdi:road
+    light.first_floor_hall:
+      icon: mdi:stairs
     # Computer room
     light.computers_ceiling:
       icon: mdi:desktop-tower-monitor
