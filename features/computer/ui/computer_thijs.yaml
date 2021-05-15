@@ -19,9 +19,11 @@ cards:
               name: CPU
             - entity: sensor.computer_thijs_ram_usage
               name: Memory
-        - type: entities
-          entities:
-            - entity: binary_sensor.microphone
-              name: Microphone in use
-            - entity: binary_sensor.webcam
-              name: Webcam in use
+        - type: horizontal-stack
+          cards:
+            - type: entity
+              entity: binary_sensor.microphone
+              icon: 'mdi:microphone'
+            - type: entity
+              entity: binary_sensor.webcam
+              icon: 'mdi:cctv'
