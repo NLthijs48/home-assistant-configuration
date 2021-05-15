@@ -26,6 +26,7 @@ views:
           - !include features/weather/ui/frits_summary.yaml
           - !include features/weather/ui/computers_summary.yaml
       - !include features/electricity/ui/summary.yaml
+      - !include features/weather/ui/buienalarm.yaml
       # Not used: - !include features/weather/ui/forecast.yaml
       # Maintenance column
       - type: vertical-stack

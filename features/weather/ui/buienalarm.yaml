@@ -1,4 +1,4 @@
-# Iframe with the buienalarm graph
-aspect_ratio: 101%
-type: iframe
-url: "https://www.buienalarm.nl/amsterdam-noord-holland-nederland/52.3161,4.9651"
+# Buienalarm graph
+type: 'custom:neerslag-card'
+title: Neerslag
+entity: sensor.neerslag_buienalarm_regen_data
