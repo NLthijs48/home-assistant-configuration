@@ -11,9 +11,17 @@ cards:
       - entity: switch.computer_thijs_wake_on_lan
         state: "on"
     card:
-      type: 'custom:bar-card'
-      entities:
-        - entity: sensor.computer_thijs_cpu_usage
-          name: CPU
-        - entity: sensor.computer_thijs_ram_usage
-          name: Memory
+      type: vertical-stack
+      cards:
+        - type: 'custom:bar-card'
+          entities:
+            - entity: sensor.computer_thijs_cpu_usage
+              name: CPU
+            - entity: sensor.computer_thijs_ram_usage
+              name: Memory
+        - type: entities
+          entities:
+            - entity: binary_sensor.microphone
+              name: Microphone in use
+            - entity: binary_sensor.webcam
+              name: Webcam in use
