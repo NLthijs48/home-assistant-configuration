@@ -1,10 +1,9 @@
 # Summary column for an overview of the inside environment
-type: custom:stack-in-card
-mode: vertical
+type: vertical-stack
 cards:
   - type: custom:button-card
     name: Electricity
-    template: header
+    template: header_standalone
     # Show details popup when clicking the header
     tap_action:
       action: fire-dom-event

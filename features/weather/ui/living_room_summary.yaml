@@ -1,28 +1,25 @@
 # Summary column for an overview of the inside environment
 type: vertical-stack
 cards:
-  - type: custom:stack-in-card
-    mode: vertical
-    cards:
-      - type: custom:button-card
-        name: Living room
-        template: header
-        # Show details popup when clicking the header
-        tap_action:
-          action: fire-dom-event
-          browser_mod:
-            command: popup
-            title: Living room
-            card:
-              type: vertical-stack
-              cards:
-                - !include living_room/temperature.yaml
-                - !include living_room/co2.yaml
-                - !include living_room/noise.yaml
-                - !include living_room/humidity.yaml
-                - !include living_room/pressure.yaml
+  - type: custom:button-card
+    name: Living room
+    template: header_standalone
+    # Show details popup when clicking the header
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
+        title: Living room
+        card:
+          type: vertical-stack
+          cards:
+            - !include living_room/temperature.yaml
+            - !include living_room/co2.yaml
+            - !include living_room/noise.yaml
+            - !include living_room/humidity.yaml
+            - !include living_room/pressure.yaml
 
-      - !include living_room/temperature.yaml
+  - !include living_room/temperature.yaml
 
   # Rows of tiny living room stats
   - type: horizontal-stack

@@ -93,24 +93,26 @@ button_card_templates:
     color_type: card
     styles:
       card:
-        - padding: 16px 16px 0 16px
+        - padding: 20px 16px 8px 16px
+        - margin-bottom: -8px
       name:
-        - font-size: 18px
+        - font-size: 20px
 
   # Small button with a statistic
   statistic_button:
     show_state: true
     show_icon: false
     styles:
+      card:
+        - padding-bottom: 0.8rem
+        - height: 58px
       name:
         - font-size: 0.8rem
         - text-transform: uppercase
         - opacity: 0.7
+        - margin-bottom: 2px
       state:
         - font-size: 1.3rem
-      card:
-        - padding-bottom: 0.8rem
-        - height: 58px
 
   # Humidity state color
   statistic_button_humidity:
