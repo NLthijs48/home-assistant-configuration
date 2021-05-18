@@ -50,7 +50,7 @@ color_thresholds:
     color: "#fc5c65"
   - value: 35.9
     color: "#eb3b5a"
-line_width: 10
+line_width: 8
 show:
   icon: false
   labels: true
