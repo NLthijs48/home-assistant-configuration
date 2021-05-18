@@ -99,8 +99,21 @@ sensor:
           {% endif %}
         icon_template: >-
           {% if is_state('sensor.phone_thijs_wifi_ap', 'away') %}
-            {{ state_attr('device_tracker.phone_thijs', 'icon') }}
+            {# Not on wifi, use phone location tracker #}
+            {% if is_state('device_tracker.phone_thijs', 'not_home') %}
+              {# Away #}
+              mdi:run-fast
+            {% else %}
+              {# Get the icon from the active zone (sadly not set as attribute on the device_tracker) #}
+              {{
+                states.zone
+                | selectattr("entity_id", "equalto", "zone." + states("device_tracker.phone_thijs"))
+                | map(attribute="attributes.icon")
+                | first
+              }}
+            {% endif %}
           {% else %}
+            {# On wifi, use icon of that tracker (indicates floor) #}
             {{ state_attr('sensor.phone_thijs_wifi_ap', 'icon') }}
           {% endif %}
 
@@ -115,8 +128,21 @@ sensor:
           {% endif %}
         icon_template: >-
           {% if is_state('sensor.phone_frits_wifi_ap', 'away') %}
-            {{ state_attr('device_tracker.phone_frits', 'icon') }}
+            {# Not on wifi, use phone location tracker #}
+            {% if is_state('device_tracker.phone_frits', 'not_home') %}
+              {# Away #}
+              mdi:run-fast
+            {% else %}
+              {# Get the icon from the active zone (sadly not set as attribute on the device_tracker) #}
+              {{
+                states.zone
+                | selectattr("entity_id", "equalto", "zone." + states("device_tracker.phone_frits"))
+                | map(attribute="attributes.icon")
+                | first
+              }}
+            {% endif %}
           {% else %}
+            {# On wifi, use icon of that tracker (indicates floor) #}
             {{ state_attr('sensor.phone_frits_wifi_ap', 'icon') }}
           {% endif %}
 
