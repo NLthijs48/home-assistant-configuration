@@ -46,6 +46,9 @@
 # Bar card
 - url: /hacsfiles/bar-card/bar-card.js
   type: module
+# Sun card
+- url: /hacsfiles/home-assistant-sun-card/home-assistant-sun-card.js
+  type: module
 
 ######### Manually downloaded
 # Browser mod
