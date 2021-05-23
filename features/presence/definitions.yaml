@@ -107,7 +107,7 @@ sensor:
               {# Get the icon from the active zone (sadly not set as attribute on the device_tracker) #}
               {{
                 states.zone
-                | selectattr("entity_id", "equalto", "zone." + states("device_tracker.phone_thijs"))
+                | selectattr("entity_id", "equalto", "zone." + (states("device_tracker.phone_thijs") | lower | trim('0')))
                 | map(attribute="attributes.icon")
                 | first
               }}
@@ -136,7 +136,7 @@ sensor:
               {# Get the icon from the active zone (sadly not set as attribute on the device_tracker) #}
               {{
                 states.zone
-                | selectattr("entity_id", "equalto", "zone." + states("device_tracker.phone_frits"))
+                | selectattr("entity_id", "equalto", "zone." + (states("device_tracker.phone_frits") | lower | trim('0')))
                 | map(attribute="attributes.icon")
                 | first
               }}
