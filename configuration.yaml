@@ -119,3 +119,9 @@ notify:
 #  domain: !secret no_ip_domain
 #  username: !secret no_ip_username
 #  password: !secret no_ip_password
+
+sensor:
+  - platform: time_date
+    display_options:
+      - 'date'
+      - 'date_time_iso'

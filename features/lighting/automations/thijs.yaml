@@ -53,6 +53,11 @@
     - platform: state
       entity_id: sensor.phone_thijs_do_not_disturb
       to: 'off'
+  condition:
+    # Only do this when Thijs is upstairs
+    - condition: "state"
+      entity_id: "sensor.phone_thijs_wifi_ap"
+      state: "upstairs"
   action:
     - service: light.turn_on
       data:
