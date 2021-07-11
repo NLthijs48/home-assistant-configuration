@@ -1,6 +1,1 @@
-# DSMR (zuidwijk.com ethernet version 3.2)
-sensor:
-  - platform: dsmr
-    host: 10.0.2.37
-    port: 23
-    dsmr_version: 5
+# Sensor added using the integrations UI
