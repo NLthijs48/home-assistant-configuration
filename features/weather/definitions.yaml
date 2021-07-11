@@ -2,18 +2,6 @@
 
 automation: !include_dir_merge_list automations
 
-# Buienradar weather tracker
-weather:
-  - platform: buienradar
-    forecast: true
-    name: buienradar_home
-
-# Buienradar radar image
-camera:
-  - platform: buienradar
-    dimension: 700
-    name: buienradar_home
-
 # Night sensor to use in graphs
 binary_sensor:
   - platform: tod
