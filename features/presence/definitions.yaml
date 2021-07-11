@@ -7,6 +7,9 @@ input_boolean:
   living_room_in_use:
     name: Living room in use
     icon: mdi:sofa
+  thijs_sleepy:
+    name: Thijs is sleepy
+    icon: mdi:sleep
 
 sensor:
   - platform: template
