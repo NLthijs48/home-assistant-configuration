@@ -1,4 +1,4 @@
-title: 'Home'
+title: "Home"
 custom_header:
   compact_mode: true
   footer_mode: false
@@ -6,9 +6,8 @@ custom_header:
   reverse_button_direction: true
   reverse_tab_direction: true
 views:
-
   # Living room
-  - icon: 'mdi:theater'
+  - icon: "mdi:theater"
     path: living-room
     cards:
       - !include features/presence/ui/person_locations.yaml
@@ -26,8 +25,7 @@ views:
           - !include features/weather/ui/frits_summary.yaml
           - !include features/weather/ui/computers_summary.yaml
       - !include features/electricity/ui/summary.yaml
-      - !include features/weather/ui/buienalarm.yaml
-      # Not used: - !include features/weather/ui/forecast.yaml
+      # Constantly broken, look for fix - !include features/weather/ui/buienalarm.yaml
       # Maintenance column
       - type: vertical-stack
         cards:
@@ -121,22 +119,22 @@ button_card_templates:
     state:
       # Bad states
       - value: 20
-        operator: '<'
-        color: '#790000'
+        operator: "<"
+        color: "#790000"
       - value: 70
-        operator: '>'
-        color: '#790000'
+        operator: ">"
+        color: "#790000"
       # Not-ideal states
       - value: 30
-        operator: '<'
-        color: '#ffa500'
+        operator: "<"
+        color: "#ffa500"
       - value: 55
-        operator: '>'
-        color: '#ffa500'
+        operator: ">"
+        color: "#ffa500"
       # Good state
-      - operator: 'default'
+      - operator: "default"
         # TODO: would like to fallback to the default, but that is not possible?!
-        color: '#004800'
+        color: "#004800"
 
   # CO2 state color
   statistic_button_co2:
@@ -145,12 +143,12 @@ button_card_templates:
     state:
       # Bad state
       - value: 1000
-        operator: '>'
-        color: '#790000'
+        operator: ">"
+        color: "#790000"
       # Worrisome state
       - value: 800
-        operator: '>'
-        color: '#ffa500'
+        operator: ">"
+        color: "#ffa500"
       # Good state
-      - operator: 'default'
-        color: '#004800'
+      - operator: "default"
+        color: "#004800"

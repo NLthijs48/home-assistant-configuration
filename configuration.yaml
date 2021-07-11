@@ -21,6 +21,7 @@ homeassistant:
     weather: !include features/weather/definitions.yaml
 
     ##### DISABLED
+    # corona: !include features/corona/definitions.yaml
     # party_lighting: !include features/party_lighting/definitions.yaml
     # queing: !include features/queing/definitions.yaml
 
@@ -91,7 +92,7 @@ rest_command:
     url: http://10.0.2.22:1925/6/input/key
     method: POST
     payload: '{"key": "{{ key }}"'
-    content_type: 'application/json'
+    content_type: "application/json"
   chromecast_boot_tv:
     url: http://10.0.2.12:8008/apps/ChromeCast
     method: POST
@@ -123,5 +124,5 @@ notify:
 sensor:
   - platform: time_date
     display_options:
-      - 'date'
-      - 'date_time_iso'
+      - "date"
+      - "date_time_iso"
