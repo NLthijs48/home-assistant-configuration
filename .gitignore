@@ -16,6 +16,8 @@ www/community
 zigbee.db
 # Zigbee network map
 neighbours
+# Zigbee firmware upgrades
+zigbee_firmware
 # Version of Home Assistant
 .HA_VERSION
 # Log
