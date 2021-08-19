@@ -8,11 +8,29 @@
       entity_id: sensor.netatmo_living_room_co2
       above: '1100'
   action:
+    # Save the current state of the lights
+    - service: scene.create
+      data:
+        scene_id: living_room_lights_before_co2_alert
+        snapshot_entities:
+        # How to specify all light.living_room_lights?
+          - light.living_room_lights
     # Flash the lights
+    # TODO: works great for led strip, but not for the spots, use manual on/off for those?
     - service: light.turn_on
       data:
-        entity_id: light.living_room_lights
         flash: long
+        # Lights that don't support red will just use white
+        color_name: red
+      target:
+        # Living room
+        area_id: 78b5d262f52447289d44580143271ebc
+    # Set the volume of the Google Home mini to 40%
+    - service: media_player.volume_set
+      target:
+        entity_id: media_player.living_room_google_home_mini
+      data:
+        volume_level: 0.4
     # Let the Google Home mini shout
     - service: tts.google_cloud_say
       data:
@@ -20,4 +38,12 @@
         message: >-
             CO2 is at {{states("sensor.netatmo_living_room_co2")}} ppm, open a window
         cache: false # Contains a template, caching does not really work
-
+    # Restore the living room lights after the flashing is done
+    - alias: "Wait until the lights are done flashing"
+      delay:
+        seconds: 13
+    - service: scene.turn_on
+      target:
+        entity_id: scene.living_room_lights_before_co2_alert
+    # Reload scenes, which gets rid of the temporary one created above (scene.create should override, but that does not work currently it looks like)
+    - service: scene.reload
