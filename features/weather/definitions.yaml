@@ -13,11 +13,20 @@ binary_sensor:
     after: sunrise
     before: sunset
 
-# Sensor for the elevation of the sun
 sensor:
+  # Sensor for the elevation of the sun (makes it easy to work with in graphs)
   - platform: template
     sensors:
       solar_elevation:
         friendly_name: "Sun elevation"
         unit_of_measurement: '°'
         value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+  # 'feels like' temperature sensor
+  - platform: temperature_feels_like
+    name: "Outside 'feels like' temperature"
+    unique_id: temperature_feels_like_outside
+    source:
+      - sensor.netatmo_garden_temperature
+      - sensor.netatmo_garden_humidity
+      # Using the 'gust' wind speed (meaning the result will be a worst-case temperature I guess)
+      - sensor.netatmo_wind_gust_strength
