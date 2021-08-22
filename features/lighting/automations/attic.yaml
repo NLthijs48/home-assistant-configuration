@@ -7,13 +7,13 @@
   mode: restart
   trigger:
     - platform: state
-      entity_id: binary_sensor.attic_hall_motion_sensor
+      entity_id: binary_sensor.attic_motion_sensor
       to: 'on'
   action:
     # Turn on the lights
     - service: light.turn_on
       data:
-        entity_id: light.attic_hall
+        entity_id: light.attic_standing
         brightness: 255
     - service: light.turn_on
       data:
@@ -27,13 +27,13 @@
     # Wait until there is no motion anymore
     - wait_for_trigger:
         platform: state
-        entity_id: binary_sensor.attic_hall_motion_sensor
+        entity_id: binary_sensor.attic_motion_sensor
         to: 'off'
 
     # Turn off the light
     - service: light.turn_off
       data:
-        entity_id: light.attic_hall
+        entity_id: light.attic_standing
         transition: 5
     - service: light.turn_off
       data:
