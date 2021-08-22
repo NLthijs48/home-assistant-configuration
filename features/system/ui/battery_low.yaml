@@ -1,21 +1,20 @@
 # List of entities with low batteries
-type: vertical-stack
-title: Battery low!
-cards:
-  - type: 'custom:auto-entities'
-    card:
-      type: entities
-    filter:
-      include:
-        # Sensors that declare themselves as a battery
-        - attributes:
-            device_class: battery
-          state: < 25
-          options:
-            secondary_info: last-changed
-    # Lowest battery first
-    sort:
-      method: state
-      numeric: true
-    # Hide when no devices with low battery
-    show_empty: false
+type: 'custom:auto-entities'
+card:
+  type: entities
+  # Future: would like a 'floating' title here, but that means it cannot be hidden when zero entities
+  title: Battery low!
+filter:
+  include:
+    # Sensors that declare themselves as a battery
+    - attributes:
+        device_class: battery
+      state: < 25
+      options:
+        secondary_info: last-changed
+# Lowest battery first
+sort:
+  method: state
+  numeric: true
+# Hide when no devices with low battery
+show_empty: false

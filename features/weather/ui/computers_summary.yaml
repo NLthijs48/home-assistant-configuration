@@ -3,7 +3,7 @@ type: vertical-stack
 cards:
   # Header with popup
   - type: custom:button-card
-    name: Game
+    name: 🖱️ Game
     template: header_standalone
     tap_action:
       action: fire-dom-event

@@ -2,7 +2,7 @@
 type: vertical-stack
 cards:
   - type: custom:button-card
-    name: Garden
+    name: 🌴 Garden
     template: header_standalone
     tap_action:
       action: fire-dom-event

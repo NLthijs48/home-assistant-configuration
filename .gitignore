@@ -40,3 +40,5 @@ credentials
 known_devices.yaml
 # Contains the REST api token
 api/rest-client.env.json
+# Storage of the shopping list
+.shopping_list.json

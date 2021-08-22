@@ -2,7 +2,7 @@
 type: vertical-stack
 cards:
   - type: custom:button-card
-    name: Electricity
+    name: ⚡ Electricity
     template: header_standalone
     # Show details popup when clicking the header
     tap_action:

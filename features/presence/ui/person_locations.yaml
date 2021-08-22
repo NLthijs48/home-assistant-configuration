@@ -3,7 +3,7 @@ type: horizontal-stack
 cards:
   - type: entity
     entity: sensor.thijs_location
-    name: Thijs
+    name: 🧍 Thijs
   - type: entity
     entity: sensor.frits_location
-    name: Frits
+    name: 🧍 Frits
