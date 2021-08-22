@@ -96,7 +96,11 @@ sensor:
         friendly_name: "Thijs' location"
         value_template: >-
           {% if is_state('sensor.phone_thijs_wifi_ap', 'away') %}
-            {{ states('device_tracker.phone_thijs').capitalize() }}
+            {% if is_state('device_tracker.phone_thijs', 'not_home') %}
+              Away
+            {% else %}
+              {{ states('device_tracker.phone_thijs').capitalize() }}
+            {% endif %}
           {% else %}
             {{ states('sensor.phone_thijs_wifi_ap').capitalize() }}
           {% endif %}
@@ -113,6 +117,7 @@ sensor:
                 | selectattr("entity_id", "equalto", "zone." + (states("device_tracker.phone_thijs") | lower | trim('0')))
                 | map(attribute="attributes.icon")
                 | first
+                | default('mdi:alert')
               }}
             {% endif %}
           {% else %}
@@ -125,7 +130,11 @@ sensor:
         friendly_name: "Frits' location"
         value_template: >-
           {% if is_state('sensor.phone_frits_wifi_ap', 'away') %}
-            {{ states('device_tracker.phone_frits').capitalize() }}
+            {% if is_state('device_tracker.phone_frits', 'not_home') %}
+              Away
+            {% else %}
+              {{ states('device_tracker.phone_frits').capitalize() }}
+            {% endif %}
           {% else %}
             {{ states('sensor.phone_frits_wifi_ap').capitalize() }}
           {% endif %}
@@ -142,6 +151,7 @@ sensor:
                 | selectattr("entity_id", "equalto", "zone." + (states("device_tracker.phone_frits") | lower | trim('0')))
                 | map(attribute="attributes.icon")
                 | first
+                | default('mdi:alert')
               }}
             {% endif %}
           {% else %}
