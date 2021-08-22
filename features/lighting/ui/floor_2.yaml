@@ -24,13 +24,31 @@ entities:
   # Room
   - type: custom:fold-entity-row
     head:
-      name: Standing
-      entity: light.attic_standing
+      name: Room
+      entity: light.attic_room_lights
       state_color: false
       hide_state: true
       grow: true
       type: custom:slider-entity-row
     entities:
+      - entity: light.attic_standing
+        name: Standing
+        type: custom:slider-entity-row
+        state_color: false
+        hide_state: true
+        grow: true
+      - entity: light.attic_couch
+        name: Couch
+        type: custom:slider-entity-row
+        state_color: false
+        hide_state: true
+        grow: true
+      - entity: light.attic_beds
+        name: Beds
+        type: custom:slider-entity-row
+        state_color: false
+        hide_state: true
+        grow: true
       - type: custom:fold-entity-row
         head:
           entity: binary_sensor.attic_motion_sensor

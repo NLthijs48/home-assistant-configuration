@@ -90,6 +90,11 @@ homeassistant:
     # Room
     switch.standing_lamp:
       icon: mdi:floor-lamp
+    # Beds
+    light.attic_beds:
+      icon: mdi:bed
+    light.attic_couch:
+      icon: mdi:sofa
 
   customize_glob:
     # Motion sensors
@@ -109,7 +114,7 @@ homeassistant:
 # Light groups
 # Note: for some reason these don't support an 'icon' prop, hopefully in newer versions though
 light:
-  # Lights in the complete living room (light.living_room_lights)
+  # Living room lights, all of them (light.living_room_lights)
   - platform: group
     name: Living room lights
     entities:
@@ -121,7 +126,7 @@ light:
       - light.living_room_iceland_1
       - light.living_room_iceland_2
       - light.tv_led_strip
-  # Lights around the TV (light.tv_lights)
+  # TV lights (light.tv_lights)
   - platform: group
     name: TV lights
     entities:
@@ -136,27 +141,33 @@ light:
       - light.kitchen_kielzogschild
       # Cannot add switch.kitchen_sink to this light group,
       # is linked to light.kitchen_lights using automations
-  # Lights for dining
+  # Dining room lights
   - platform: group
     name: Dining lights
     entities:
       - light.dining_table
       - light.dining_duck
       - light.dining_large_painting
-  # Lights in Frits' bedroom (light.bedroom_frits_lights)
+  # Frits' bedroom lights (light.bedroom_frits_lights)
   - platform: group
     name: "Bedroom Frits lights"
     entities:
       - light.frits_room_wall
       - light.frits_room_cabinet
       - light.frits_room_window
-  # Lights in Thijs' bedroom (light.bedroom_thijs_lights)
+  # Thijs' bedroom lights (light.bedroom_thijs_lights)
   - platform: group
     name: "Bedroom Thijs lights"
     entities:
       - light.bedroom_thijs_ceiling
       - light.bedroom_thijs_bed
-
+  # Attic room lights (light.attic_room_lights)
+  - platform: group
+    name: "Attic room lights"
+    entities:
+      - light.attic_beds
+      - light.attic_couch
+      - light.attic_standing
 
 input_select:
   # Living room light mode: determines brightness of all lights
