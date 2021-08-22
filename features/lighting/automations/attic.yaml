@@ -1,3 +1,7 @@
+# TODO: brightness based on time of day
+# TODO: different behavior in guest mode
+# TODO: integrate a button for guests
+
 # Turn on the lights when there is motion
 - alias: "Attic hall turn on when there is motion"
   mode: restart
@@ -6,10 +10,18 @@
       entity_id: binary_sensor.attic_hall_motion_sensor
       to: 'on'
   action:
-    # Turn on the light
+    # Turn on the lights
     - service: light.turn_on
       data:
         entity_id: light.attic_hall
+        brightness: 255
+    - service: light.turn_on
+      data:
+        entity_id: light.attic_beds
+        brightness: 255
+    - service: light.turn_on
+      data:
+        entity_id: light.attic_couch
         brightness: 255
 
     # Wait until there is no motion anymore
@@ -22,4 +34,12 @@
     - service: light.turn_off
       data:
         entity_id: light.attic_hall
+        transition: 5
+    - service: light.turn_off
+      data:
+        entity_id: light.attic_beds
+        transition: 5
+    - service: light.turn_off
+      data:
+        entity_id: light.attic_couch
         transition: 5
