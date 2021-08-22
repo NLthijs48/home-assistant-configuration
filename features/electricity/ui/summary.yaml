@@ -13,10 +13,33 @@ cards:
         card:
           type: vertical-stack
           cards:
-            - !include last_hour.yaml
-            - !include last_three_days.yaml
-            - type: entity
-              entity: sensor.energy_consumption_tarif_2
-            - type: entity
-              entity: sensor.energy_consumption_tarif_1
+            # Most recent data
+            - type: vertical-stack
+              title: Last hour
+              cards:
+                - !include last_hour.yaml
+            # Last day
+            - type: vertical-stack
+              title: Daily
+              cards:
+                - type: energy-date-selection
+                - type: energy-distribution
+                - type: energy-usage-graph
+                - type: energy-sources-table
+            # Last 3 days
+            - type: vertical-stack
+              title: Last 3 days
+              cards:
+                - !include last_three_days.yaml
+            # Future: list of devices (after Shelly plugs have been installed)
+            #- type: energy-devices-graph
+            # Total usage
+            - type: vertical-stack
+              title: Totals
+              cards:
+                - type: entity
+                  entity: sensor.energy_consumption_tarif_2
+                - type: entity
+                  entity: sensor.energy_consumption_tarif_1
   - !include last_hour.yaml
+  - type: energy-distribution

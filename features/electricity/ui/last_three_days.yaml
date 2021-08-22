@@ -18,12 +18,12 @@ icon: 'mdi:flash'
 line_width: 3
 lower_bound: 0
 lower_bound_secondary: 0
-name: Last 3 days
 points_per_hour: 6
 show:
   labels: true
   state: false
   icon: false
+  name: false
 state_color: false
 show_header_toggle: false
 update_interval: 300
