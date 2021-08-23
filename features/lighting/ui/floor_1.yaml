@@ -51,8 +51,8 @@ entities:
         state_color: false
         hide_state: true
         grow: true
-      - entity: sensor.bedroom_frits_remote
-        name: Remote
+      - entity: sensor.bedroom_frits_remote_battery
+        name: Remote battery
 
   # Thijs' room
   - type: custom:fold-entity-row
