@@ -46,9 +46,15 @@
 # Bar card
 - url: /hacsfiles/bar-card/bar-card.js
   type: module
-# Sun card
-- url: /hacsfiles/home-assistant-sun-card/home-assistant-sun-card.js
+# Slider button card (fancy sliders)
+- url: /hacsfiles/slider-button-card/slider-button-card.js
   type: module
+# Sun card (unused)
+#- url: /hacsfiles/home-assistant-sun-card/home-assistant-sun-card.js
+#  type: module
+# Uptime card (unused)
+#- url: /hacsfiles/uptime-card/uptime-card.js
+#  type: module
 
 ######### Manually downloaded
 # Browser mod

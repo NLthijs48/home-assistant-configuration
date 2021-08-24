@@ -1,35 +1,33 @@
 # Living room lights control
 type: vertical-stack
-#mode: vertical
 cards:
-- type: entities
-  show_header_toggle: false
-  entities:
-    # All
-    - type: custom:fold-entity-row
-      head:
-        entity: light.living_room_lights
-        name: Living room
-        state_color: false
-        type: custom:slider-entity-row
-        hide_state: true
-        grow: true
-      group_config:
-        type: custom:slider-entity-row
-        state_color: false
-        hide_state: true
-        grow: true
-      entities:
-        - entity: light.tv_lights
-          name: TV
-          icon: mdi:television
-        - entity: light.dining_lights
-          name: Dining
-          icon: mdi:table-chair
-        - entity: light.kitchen_lights
-          name: Kitchen
-          icon: mdi:chef-hat
-      open: false
+- type: custom:slider-button-card
+  entity: light.living_room_lights
+  slider:
+    direction: left-right
+    background: gradient
+    use_state_color: false
+    use_percentage_bg_opacity: false
+    show_track: true
+    force_square: false
+  icon:
+    tap_action:
+      action: more-info
+    icon: ''
+    show: true
+    use_state_color: true
+  action_button:
+    mode: toggle
+    show: false
+  name: Living room
+  show_name: true
+  show_state: true
+  compact: true
+  style: |
+    ha-card {
+      z-index: 1;
+      background-color: red;
+    }
 
 # Indicate current lighting mode
 - type: horizontal-stack
@@ -48,7 +46,8 @@ cards:
       #active: "{{ is_state('input_boolean.living_room_in_use', 'on') }}"
       styles:
         card:
-          - margin-top: -16px
+          - margin-top: -8px
+          - border-radius: 0 0 4px 4px
         label:
           - font-size: 1rem
           - opacity: 0.7
@@ -59,7 +58,8 @@ cards:
         navigation_path: /lovelace/lights
       styles:
         card:
-          - margin-top: -16px
+          - margin-top: -8px
+          - border-radius: 0 0 4px 4px
         name:
           - font-size: 1rem
           - opacity: 0.7
