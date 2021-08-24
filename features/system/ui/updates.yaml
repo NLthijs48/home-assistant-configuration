@@ -1,3 +1,7 @@
+# TODO:
+# - monitor Shelly binary_sensor.*_firmware_update sensors
+# - HA OS update: binary_sensor.home_assistant_operating_system_update_available, sensor.home_assistant_operating_system_newest_version
+# - Supervisor addon updates: binary_sensor.*_update_available, sensor.*_newest_version
 # Hide the whole block when no updates
 type: conditional
 conditions:

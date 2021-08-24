@@ -26,6 +26,7 @@ cards:
                 - type: energy-distribution
                 - type: energy-usage-graph
                 - type: energy-sources-table
+                - type: energy-devices-graph
             # Last 3 days
             - type: vertical-stack
               title: Last 3 days
