@@ -31,6 +31,7 @@ sensor:
     manufacturer: ikea
     model: LED1650R5
 
+  # TODO: use new configuration format as described here: https://www.home-assistant.io/integrations/template/
   - platform: template
     sensors:
       # Note: tv led strip and kitchen counter lights are currently missing (don't have energy sensors yet)
@@ -49,6 +50,6 @@ sensor:
           }}
         attribute_templates:
           last_reset: "1970-01-01T00:00:00+00:00"
-          state_class: measurement
+          state_class: total_increasing
           device_class: energy
           icon: mdi:counter
