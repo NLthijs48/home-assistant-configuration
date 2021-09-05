@@ -20,8 +20,9 @@ neighbours
 zigbee_firmware
 # Version of Home Assistant
 .HA_VERSION
-# Log
+# Log files (current and historic)
 home-assistant.log
+home-assistant.log.*
 # Cached text-to-speach files
 tts
 # Images uploaded using the UI
