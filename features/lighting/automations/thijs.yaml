@@ -82,7 +82,7 @@
           {% if daytime %}
             255
           {% else %}
-            50
+            38
           {% endif %}
         color_temp: >-
           {% if daytime %}
