@@ -1,6 +1,5 @@
-# Nightly reboot
-# This seems to fix the HDMI CEC connection with the TV
-- alias: Nightly reboot
+# This seems to fix the HDMI CEC connection with the TV (which still broken in another way currently)
+- alias: Weekly reboot
   trigger:
     - platform: time
       at: "05:00:00"

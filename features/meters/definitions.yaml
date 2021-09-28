@@ -3,6 +3,7 @@
 # - this controls individual LED ranges using the REST api
 # - TODO: set brightness based on time of day and such
 # - last LED on the strip is dead, so 143 are usable
+# - TODO: get payload as input, move template to an automation (easier to update and debug)
 rest_command:
   wled_update:
     url: http://10.0.2.46/json
@@ -38,7 +39,7 @@ rest_command:
         {% set block_start_leds = (block.start / max_value * led_count) | round %}
         {% set block_end_leds = (block.end / max_value * led_count) | round %}
         {# When this segment has any active LEDS #}
-        {% if on_leds >= block.start %}
+        {% if on_leds >= block_start_leds %}
           {# Turn on the segment until a maximum of on_leds #}
           {%
             set result.segments = result.segments + [
@@ -49,7 +50,7 @@ rest_command:
           %}
         {% endif %}
         {# When there is a part of this block that is inactive #}
-        {% if on_leds < block.end %}
+        {% if on_leds < block_end_leds %}
           {%
             set result.segments = result.segments + [
               [on_leds, block_start_leds] | max,
