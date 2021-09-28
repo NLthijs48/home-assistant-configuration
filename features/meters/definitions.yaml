@@ -1,0 +1,50 @@
+# WLED update command
+# - you can only define 16 segments, so that is not an option for exact control
+# - this controls individual LED ranges using the REST api
+# - TODO: set brightness?
+rest_command:
+  wled_update:
+    url: http://10.0.2.46/json
+    method: POST
+    content_type:  'application/json'
+    # Requires:
+    # - sensor_entity_id
+    payload: >-
+      {##### INPUTS #####}
+      {# Value that should fill the complete meter #}
+      {% set max_value = 1000 %}
+      {# Number of leds in the strip #}
+      {% set led_count = 144 %}
+
+      {##### CALCULATION #####}
+      {# Fraction of the meter that should be on #}
+      {% set fraction = states(sensor_entity_id)|float / max_value %}
+      {# Number of leds to turn on #}
+      {% set on_leds = (fraction * led_count) | int %}
+      {# Resulting segments to send to WLED #}
+      {# - Start with turning everything off #}
+      {% set result = namespace(segments=[0, led_count, [0,0,0]]) %}
+      {# List of color blocks #}
+      {%
+        set blocks = [
+          {"start": 0, "end": 48, "color": [0, 255, 0]},
+          {"start": 48, "end": 96, "color": [245, 167, 66]},
+          {"start": 96, "end": 144, "color": [255, 0, 0]},
+        ]
+      %}
+      {% for block in blocks %}
+        {# When this segment has any active LEDS #}
+        {% if on_leds > block.start %}
+          {# Turn on the segment until a maximum of on_leds #}
+          {% set result.segments = result.segments + [block.start, [block.end, on_leds]|min, block.color] %}
+        {% endif %}
+      {% endfor %}
+
+      {# Print results #}
+      {{
+        {
+          "seg": {
+            "i": result.segments
+          }
+        }
+      }}
