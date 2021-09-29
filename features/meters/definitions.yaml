@@ -1,77 +1,14 @@
+automation: !include_dir_merge_list automations
+
 # WLED update command
 # - you can only define 16 segments, so that is not an option for exact control
-# - this controls individual LED ranges using the REST api
-# - TODO: set brightness based on time of day and such
-# - last LED on the strip is dead, so 143 are usable
-# - TODO: get payload as input, move template to an automation (easier to update and debug)
+# - use the 'i' field of the 'seg' field to do individual LED range control
+# - LED strip has 143 leds
 rest_command:
   wled_update:
     url: http://10.0.2.46/json
     method: POST
     content_type: 'application/json'
     # Requires:
-    # - sensor_entity_id
-    payload: >-
-      {##### INPUTS #####}
-      {# Value that should fill the complete meter #}
-      {% set max_value = 1200 %}
-      {# Number of leds in the strip #}
-      {% set led_count = 143 %}
-
-      {##### CALCULATION #####}
-      {# Fraction of the meter that should be on #}
-      {% set fraction = states(sensor_entity_id)|float / max_value %}
-      {# Number of leds to turn on #}
-      {% set on_leds = (fraction * led_count) | int %}
-      {# Resulting segments to send to WLED #}
-      {# - Start with turning everything off #}
-      {% set result = namespace(segments=[0, led_count, [0,0,0]]) %}
-      {# List of color blocks, references sensor values #}
-      {%
-        set blocks = [
-          {"start": 0, "end": 800, "color": [0, 255, 0]},
-          {"start": 800, "end": 1000, "color": [255, 255, 0]},
-          {"start": 1000, "end": 1200, "color": [255, 0, 0]},
-        ]
-      %}
-      {% for block in blocks %}
-        {# Convert sensor values of the block to led counts #}
-        {% set block_start_leds = (block.start / max_value * led_count) | round %}
-        {% set block_end_leds = (block.end / max_value * led_count) | round %}
-        {# When this segment has any active LEDS #}
-        {% if on_leds >= block_start_leds %}
-          {# Turn on the segment until a maximum of on_leds #}
-          {%
-            set result.segments = result.segments + [
-              block_start_leds,
-              [block_end_leds, on_leds] | min,
-              block.color
-            ]
-          %}
-        {% endif %}
-        {# When there is a part of this block that is inactive #}
-        {% if on_leds < block_end_leds %}
-          {%
-            set result.segments = result.segments + [
-              [on_leds, block_start_leds] | max,
-              block_end_leds,
-              [
-                (block.color[0]/5) | round,
-                (block.color[1]/5) | round,
-                (block.color[2]/5) | round
-              ]
-            ]
-          %}
-        {% endif %}
-      {% endfor %}
-
-      {# Print results #}
-      {{
-        {
-          "bri": 30,
-          "seg": {
-            "bri": 255,
-            "i": result.segments
-          }
-        }
-      }}
+    # - payload, following the WLED JSON api: https://kno.wled.ge/interfaces/json-api/
+    payload: '{{ payload }}'
