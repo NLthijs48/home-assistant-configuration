@@ -1,112 +1,135 @@
-# TODO: turn on/off strip based on living room in use
-# TODO: dynamic brightness based on severity? (don't affect lowlight parts though)
+# TODO: dynamic brightness based on part of the day (check how low the low priority part can go though)
 - alias: Living room CO2 to WLED
   description: Display a meter bar for the living room CO2
   mode: single
+  id: living_room_co2_to_wled # To enable debug
   trigger:
+    # Update when the living room CO2 level changes
     - platform: state
       entity_id: sensor.netatmo_living_room_co2
+    # Update when the living room usage updates
+    - platform: state
+      entity_id: input_boolean.living_room_in_use
+    # Update when the CO2 override changes (debugging)
     - platform: state
       entity_id: input_number.co2_override
   action:
-    - service: rest_command.wled_update
-      data:
-        payload: >-
-          {##### INPUTS #####}
-          {# Use the value of the entity that has triggered the automation #}
-          {% set sensor_entity_id = trigger.entity_id %}
-          {# Value that should fill the complete meter #}
-          {% set max_value = 1500 %}
-          {# Number of leds in the strip #}
-          {% set led_count = 143 %}
+    - alias: "Turn on when living room in use, else turn off"
+      choose:
+        - alias: "Living room in use"
+          conditions: '{{ is_state("input_boolean.living_room_in_use", "on") }}'
+          sequence:
+            - service: rest_command.wled_update
+              data:
+                payload: '{"on": true}'
+            - service: rest_command.wled_update
+              data:
+                payload: >-
+                  {##### INPUTS #####}
+                  {# Use the value of the entity that has triggered the automation #}
+                  {% set sensor_entity_id = trigger.entity_id %}
+                  {% if sensor_entity_id != "sensor.netatmo_living_room_co2" and sensory_entity_id != "input_number.co2_override" %}
+                    {% set sensor_entity_id = "sensor.netatmo_living_room_co2" %}
+                  {% endif %}
+                  {# Value that should fill the complete meter #}
+                  {% set max_value = 1500 %}
+                  {# Number of leds in the strip #}
+                  {% set led_count = 143 %}
 
-          {##### CALCULATION #####}
-          {# Fraction of the meter that should be on #}
-          {% set sensor_value = states(sensor_entity_id)|float %}
-          {% set fraction = sensor_value / max_value %}
-          {% set brightness = 50 %}
-          {# LED parts: normal for the active bar, then highlight the exact value, then lowlight the inactive part #}
-          {% set highlight_end_leds = (fraction * led_count) | int %}
-          {% set normal_end_leds = highlight_end_leds - 3 %}
-          {% set lowlight_start_leds = highlight_end_leds + 3 %}
-          {# Resulting segments to send to WLED #}
-          {# - Start with turning everything off #}
-          {% set result = namespace(segments=[0, led_count, [0,0,0]]) %}
+                  {##### CALCULATION #####}
+                  {# Fraction of the meter that should be on #}
+                  {% set sensor_value = states(sensor_entity_id)|float %}
+                  {% set fraction = sensor_value / max_value %}
+                  {% set brightness = 50 %}
+                  {# LED parts: normal for the active bar, then highlight the exact value, then lowlight the inactive part #}
+                  {% set highlight_end_leds = (fraction * led_count) | int %}
+                  {% set normal_end_leds = highlight_end_leds - 3 %}
+                  {% set lowlight_start_leds = highlight_end_leds + 3 %}
+                  {# Resulting segments to send to WLED #}
+                  {# - Start with turning everything off #}
+                  {% set result = namespace(segments=[0, led_count, [0,0,0]]) %}
 
-          {##### HELPERS #####}
-          {# Add a segment, while a possible scaledown in brightness #}
-          {% macro segment(start_led, end_led, color, scaledown=1) -%}
-              {%
-                set result.segments = result.segments + [
-                  start_led,
-                  end_led,
-                  [
-                    (color[0] / scaledown) | round(0, 'ceil'),
-                    (color[1] / scaledown) | round(0, 'ceil'),
-                    (color[2] / scaledown) | round(0, 'ceil'),
-                  ]
-                ]
-              %}
-          {%- endmacro %}
+                  {##### HELPERS #####}
+                  {# Add a segment, while a possible scaledown in brightness #}
+                  {# - Reversed start/end because strip is upside down #}
+                  {% macro segment(start_led, end_led, color, scaledown=1) -%}
+                    {%
+                      set result.segments = result.segments + [
+                        led_count - end_led,
+                        led_count - start_led,
+                        [
+                          (color[0] / scaledown) | round(0, 'ceil'),
+                          (color[1] / scaledown) | round(0, 'ceil'),
+                          (color[2] / scaledown) | round(0, 'ceil'),
+                        ]
+                      ]
+                    %}
+                  {%- endmacro %}
 
-          {# List of color blocks, references sensor values #}
-          {%
-            set blocks = [
-              {"start": 0, "end": 800, "color": [0, 255, 0]},
-              {"start": 800, "end": 1000, "color": [255, 255, 0]},
-              {"start": 1000, "end": max_value, "color": [255, 0, 0]},
-            ]
-          %}
+                  {# List of color blocks, references sensor values #}
+                  {%
+                    set blocks = [
+                      {"start": 0, "end": 800, "color": [0, 255, 0]},
+                      {"start": 800, "end": 1000, "color": [255, 255, 0]},
+                      {"start": 1000, "end": max_value, "color": [255, 0, 0]},
+                    ]
+                  %}
 
-          {% for block in blocks %}
-            {# Convert sensor values of the block to led counts #}
-            {% set block_start_leds = (block.start / max_value * led_count) | round %}
-            {% set block_end_leds = (block.end / max_value * led_count) | round %}
+                  {% for block in blocks %}
+                    {# Convert sensor values of the block to led counts #}
+                    {% set block_start_leds = (block.start / max_value * led_count) | round %}
+                    {% set block_end_leds = (block.end / max_value * led_count) | round %}
 
-            {# NORMAL segment #}
-            {% if normal_end_leds >= block_start_leds %}
-              {{
-                segment(
-                  [block_start_leds, 0] | max,
-                  [block_end_leds, normal_end_leds] | min,
-                  block.color,
-                  scaledown=2
-                )
-              }}
-            {% endif %}
+                    {# NORMAL segment #}
+                    {% if normal_end_leds >= block_start_leds %}
+                      {{
+                        segment(
+                          [block_start_leds, 0] | max,
+                          [block_end_leds, normal_end_leds] | min,
+                          block.color,
+                          scaledown=2
+                        )
+                      }}
+                    {% endif %}
 
-            {# HIGHLIGHT segment: If the highlight overlaps this block, add a highlight #}
-            {% if ([block_start_leds, normal_end_leds] | max) <= ([block_end_leds, highlight_end_leds] | min) %}
-            {{
-              segment(
-                [block_start_leds, normal_end_leds] | max,
-                [block_end_leds, highlight_end_leds] | min,
-                block.color
-              )
-            }}
-            {% endif %}
+                    {# HIGHLIGHT segment: If the highlight overlaps this block, add a highlight #}
+                    {% if ([block_start_leds, normal_end_leds] | max) <= ([block_end_leds, highlight_end_leds] | min) %}
+                    {{
+                      segment(
+                        [block_start_leds, normal_end_leds] | max,
+                        [block_end_leds, highlight_end_leds] | min,
+                        block.color
+                      )
+                    }}
+                    {% endif %}
 
-            {# LOWLIGHT segment: when a part of this block is inactive #}
-            {% if lowlight_start_leds <= block_end_leds %}
-              {{
-                segment(
-                  [block_start_leds, lowlight_start_leds] | max,
-                  [block_end_leds, led_count] | min,
-                  block.color,
-                  scaledown=8
-                )
-              }}
-            {% endif %}
-          {% endfor %}
+                    {# LOWLIGHT segment: when a part of this block is inactive #}
+                    {% if lowlight_start_leds <= block_end_leds %}
+                      {{
+                        segment(
+                          [block_start_leds, lowlight_start_leds] | max,
+                          [block_end_leds, led_count] | min,
+                          block.color,
+                          scaledown=8
+                        )
+                      }}
+                    {% endif %}
+                  {% endfor %}
 
-          {# Print results, passing it to the rest command #}
-          {# - Use full segment brightness, but lower strip brightness #}
-          {{
-            {
-              "bri": brightness,
-              "seg": {
-                "bri": 255,
-                "i": result.segments
-              }
-            }
-          }}
+                  {# Print results, passing it to the rest command #}
+                  {# - Use full segment brightness, but lower strip brightness #}
+                  {# - Turn on/off based on living room usage #}
+                  {{
+                    {
+                      "bri": brightness,
+                      "seg": {
+                        "bri": 255,
+                        "i": result.segments
+                      }
+                    }
+                  }}
+      # Living room not in use
+      default:
+        - service: rest_command.wled_update
+          data:
+            payload: '{"on": false}'
