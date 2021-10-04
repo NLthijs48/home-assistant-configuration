@@ -28,11 +28,11 @@
                   {##### INPUTS #####}
                   {# Use the value of the entity that has triggered the automation #}
                   {% set sensor_entity_id = trigger.entity_id %}
-                  {% if sensor_entity_id != "sensor.netatmo_living_room_co2" and sensory_entity_id != "input_number.co2_override" %}
+                  {% if sensor_entity_id != "sensor.netatmo_living_room_co2" and sensor_entity_id != "input_number.co2_override" %}
                     {% set sensor_entity_id = "sensor.netatmo_living_room_co2" %}
                   {% endif %}
                   {# Value that should fill the complete meter #}
-                  {% set max_value = 1500 %}
+                  {% set max_value = 1600 %}
                   {# Number of leds in the strip #}
                   {% set led_count = 143 %}
 
@@ -70,8 +70,8 @@
                   {%
                     set blocks = [
                       {"start": 0, "end": 800, "color": [0, 255, 0]},
-                      {"start": 800, "end": 1000, "color": [255, 255, 0]},
-                      {"start": 1000, "end": max_value, "color": [255, 0, 0]},
+                      {"start": 800, "end": 1200, "color": [255, 255, 0]},
+                      {"start": 1200, "end": max_value, "color": [255, 0, 0]},
                     ]
                   %}
 
