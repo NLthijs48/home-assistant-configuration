@@ -87,7 +87,7 @@
                           [block_start_leds, 0] | max,
                           [block_end_leds, normal_end_leds] | min,
                           block.color,
-                          scaledown=2
+                          scaledown = 2 if is_state('input_boolean.light_outside', 'on') else 6
                         )
                       }}
                     {% endif %}
@@ -98,7 +98,8 @@
                       segment(
                         [block_start_leds, normal_end_leds] | max,
                         [block_end_leds, highlight_end_leds] | min,
-                        block.color
+                        block.color,
+                        scaledown = 1 if is_state('input_boolean.light_outside', 'on') else 3
                       )
                     }}
                     {% endif %}
@@ -110,7 +111,7 @@
                           [block_start_leds, lowlight_start_leds] | max,
                           [block_end_leds, led_count] | min,
                           block.color,
-                          scaledown=8
+                          scaledown = 4 if is_state('input_boolean.light_outside', 'on') else 12
                         )
                       }}
                     {% endif %}
