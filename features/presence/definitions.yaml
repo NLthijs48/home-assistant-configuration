@@ -197,3 +197,12 @@ binary_sensor:
           {% else %}
             mdi:account-off
           {% endif %}
+      thijs_home:
+        friendly_name: "Thijs is home"
+        device_class: presence
+        value_template: >-
+          {% if not is_state('sensor.phone_thijs_wifi_ap', 'away') or is_state('device_tracker.phone_thijs', 'home') %}
+            yes
+          {% else %}
+            no
+          {% endif %}
