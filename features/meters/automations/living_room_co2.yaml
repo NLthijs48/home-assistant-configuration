@@ -44,7 +44,7 @@
                   {# LED parts: normal for the active bar, then highlight the exact value, then lowlight the inactive part #}
                   {% set highlight_end_leds = (fraction * led_count) | int %}
                   {% set normal_end_leds = highlight_end_leds - 3 %}
-                  {% set lowlight_start_leds = highlight_end_leds + 3 %}
+                  {% set lowlight_start_leds = highlight_end_leds %}
                   {# Resulting segments to send to WLED #}
                   {# - Start with turning everything off #}
                   {% set result = namespace(segments=[0, led_count, [0,0,0]]) %}
@@ -111,7 +111,7 @@
                           [block_start_leds, lowlight_start_leds] | max,
                           [block_end_leds, led_count] | min,
                           block.color,
-                          scaledown = 4 if is_state('input_boolean.light_outside', 'on') else 12
+                          scaledown = 6 if is_state('input_boolean.light_outside', 'on') else 12
                         )
                       }}
                     {% endif %}
