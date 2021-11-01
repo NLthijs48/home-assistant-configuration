@@ -1,26 +1,27 @@
 # Turn on the lights when there is motion
 - alias: "Hall ground floor turn on when there is motion"
   mode: restart
+  id: lighting_ground_floor_hall
   trigger:
     - platform: state
-      entity_id: binary_sensor.hall_ground_floor_motion_sensor
+      entity_id: binary_sensor.ground_floor_hall_motion_sensor_occupancy
       to: 'on'
   action:
     # Turn on the light
     - service: light.turn_on
       data:
-        entity_id: light.hall_ground_floor
+        entity_id: light.ground_floor_hall
 
     # Wait until there is no motion anymore
     - wait_for_trigger:
         platform: state
-        entity_id: binary_sensor.hall_ground_floor_motion_sensor
+        entity_id: binary_sensor.ground_floor_hall_motion_sensor_occupancy
         to: 'off'
 
     # Turn off the light
     - service: light.turn_off
       data:
-        entity_id: light.hall_ground_floor
+        entity_id: light.ground_floor_hall
         transition: 5
 
 # Dimmed when turned on at night
