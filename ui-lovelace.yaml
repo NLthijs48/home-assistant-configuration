@@ -30,7 +30,8 @@ views:
       - type: vertical-stack
         cards:
           - !include features/system/ui/battery_low.yaml
-          - !include features/system/ui/updates.yaml
+          - !include features/system/ui/primary_updates.yaml
+          - !include features/system/ui/secondary_updates.yaml
 
   # Thijs
   - title: Thijs

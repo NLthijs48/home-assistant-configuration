@@ -1,0 +1,21 @@
+# Updates of all other update sensors
+# - Supervisor (OS and addons): binary_sensor.*_update_available
+# - Shelly: binary_sensor.*_firmware_update
+type: custom:auto-entities
+card:
+  type: entities
+filter:
+  include:
+    - attributes:
+        device_class: update
+  exclude:
+    - state: unavailable
+    - state: 'off'
+
+    # HA update: already in primary_updates.yaml
+    - entity_id: binary_sensor.updater
+    # HACS updates: already in primary_updates.yaml
+    - entity_id: binary_sensor.updates_available_hacs
+show_empty: false
+sort:
+  method: friendly_name
