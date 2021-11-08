@@ -39,6 +39,7 @@ views:
     badges: []
     cards:
       - !include features/lighting/ui/room_thijs.yaml
+      - !include features/presence/ui/thijs_sleepy.yaml
       - !include features/computer/ui/computer_thijs.yaml
       - !include features/spotify/ui/thijs.yaml
 

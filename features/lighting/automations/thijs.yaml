@@ -79,7 +79,7 @@
       entity_id: binary_sensor.bedroom_thijs_motion_sensor_occupancy
       to: 'on'
   variables:
-    daytime: "{{ now().hour < 18 and is_state('sun.sun', 'above_horizon') }}"
+    daytime: "{{ is_state('input_boolean.thijs_sleepy', 'off') }}"
   action:
     # Turn on the led strip
     - service: light.turn_on
