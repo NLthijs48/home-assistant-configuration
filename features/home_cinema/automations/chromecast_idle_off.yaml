@@ -1,37 +1,37 @@
-alias: Turn off after being idle for a while
-trigger:
-  # Chromecast is idle/off for a while
-  # Note: when stopping playback it goes to 'off', while it is still showing the photo album
-  - platform: "state"
-    entity_id: "media_player.4k"
-    to: "idle"
-    for:
-      minutes: 3
-  - platform: "state"
-    entity_id: "media_player.4k"
-    to: "off"
-    for:
-      minutes: 3
-  # Leaving the living room and chromecast is idle? quickly turn off
-  - platform: "state"
-    entity_id: "input_boolean.living_room_in_use"
-    to: "off"
-    for:
-      minutes: 1
-condition:
-  # ChromeCast is idle or off
-  - condition: or
-    conditions:
-      - condition: "state"
-        entity_id: "media_player.4k"
-        state: "idle"
-      - condition: "state"
-        entity_id: "media_player.4k"
-        state: "off"
-  # Mode is set to ChromeCast
-  - condition: "state"
-    entity_id: "input_select.home_cinema_mode"
-    state: "chromecast"
-action:
-  # Turn off everything
-  - service: script.home_cinema_off
+- alias: Turn off after being idle for a while
+  trigger:
+    # Chromecast is idle/off for a while
+    # Note: when stopping playback it goes to 'off', while it is still showing the photo album
+    - platform: "state"
+      entity_id: "media_player.4k"
+      to: "idle"
+      for:
+        minutes: 3
+    - platform: "state"
+      entity_id: "media_player.4k"
+      to: "off"
+      for:
+        minutes: 3
+    # Leaving the living room and chromecast is idle? quickly turn off
+    - platform: "state"
+      entity_id: "input_boolean.living_room_in_use"
+      to: "off"
+      for:
+        minutes: 1
+  condition:
+    # ChromeCast is idle or off
+    - condition: or
+      conditions:
+        - condition: "state"
+          entity_id: "media_player.4k"
+          state: "idle"
+        - condition: "state"
+          entity_id: "media_player.4k"
+          state: "off"
+    # Mode is set to ChromeCast
+    - condition: "state"
+      entity_id: "input_select.home_cinema_mode"
+      state: "chromecast"
+  action:
+    # Turn off everything
+    - service: script.home_cinema_off

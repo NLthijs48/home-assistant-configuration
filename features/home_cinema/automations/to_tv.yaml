@@ -1,24 +1,24 @@
-alias: Home cinema mode to ChromeCast (by checking receiver state)
-trigger:
-  # Receiver changes source or state
-  - platform: "state"
-    entity_id: "media_player.receiver"
-condition:
-  # Receiver is on
-  - condition: "state"
-    entity_id: "media_player.receiver"
-    state: "on"
-  # Receiver is on the T-Mobile input
-  - condition: "state"
-    entity_id: media_player.receiver
-    attribute: source
-    state: "T-Mobile"
-action:
-  # Update the mode
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.home_cinema_mode
-      option: "tv"
-  - service: "input_boolean.turn_off"
-    data:
-      entity_id: "input_boolean.home_cinema_pending"
+- alias: Home cinema mode to ChromeCast (by checking receiver state)
+  trigger:
+    # Receiver changes source or state
+    - platform: "state"
+      entity_id: "media_player.receiver"
+  condition:
+    # Receiver is on
+    - condition: "state"
+      entity_id: "media_player.receiver"
+      state: "on"
+    # Receiver is on the T-Mobile input
+    - condition: "state"
+      entity_id: media_player.receiver
+      attribute: source
+      state: "T-Mobile"
+  action:
+    # Update the mode
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.home_cinema_mode
+        option: "tv"
+    - service: "input_boolean.turn_off"
+      data:
+        entity_id: "input_boolean.home_cinema_pending"

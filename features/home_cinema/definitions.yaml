@@ -1,3 +1,6 @@
+# Automations to switch between states
+automation: !include_dir_merge_list automations
+
 # Implements home cinema modes:
 # - Off: tv/receiver/etc are off
 # - Chromecast: view/listen to chromecast content
@@ -31,9 +34,6 @@ script:
   home_cinema_chromecast: !include scripts/chromecast.yaml
   home_cinema_bluetooth: !include scripts/bluetooth.yaml
   home_cinema_tv: !include scripts/tv.yaml
-
-# Automations to switch between states
-automation: !include_dir_list automations
 
 # Onkyo integration
 media_player:
