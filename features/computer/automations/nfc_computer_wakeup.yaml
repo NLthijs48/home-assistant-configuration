@@ -1,0 +1,23 @@
+# NFC tag test
+- alias: "Wakeup computer with NFC sticker on laptop"
+  trigger:
+    - platform: event
+      event_type: tag_scanned
+      event_data:
+        device_id: 12945536d161848a
+        tag_id: a5d1420c-898c-4f29-85f5-57a12f6e0868
+  action:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.computer_thijs_wake_on_lan
+    # Feedback as notification
+    - service: notify.mobile_app_phone_thijs
+      data:
+        title: Waking up computer
+        message: Should be available in a bit
+        data:
+          tag: nfc_computer_wakeup
+          # Should be turned on at this point, dismiss notification
+          timeout: 20
+          # Should work in the next app version
+          notification_icon: "mdi:desktop-tower-monitor"
