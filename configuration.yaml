@@ -10,6 +10,7 @@ homeassistant:
       entity_picture: "/local/frits.jpg"
   packages:
     computer: !include features/computer/definitions.yaml
+    crisp: !include features/crisp/definitions.yaml
     electricity: !include features/electricity/definitions.yaml
     # Disabled for now, battery empty and not reliable
     #gardening: !include features/gardening/definitions.yaml

@@ -11,7 +11,7 @@ fields:
   # Could not get the iconUrl to work, will just display blank
   #icon:
   #  description: 'Icon url (optional)'
-  #  example: 'https://home.wiefferink.me/local/icon.png'
+  #  example: '<home assistant domain>/local/icon.png'
 
   # TODO: support for the other params: https://gitlab.com/iotlink/iotlink/-/wikis/Addons/Commands
 sequence:

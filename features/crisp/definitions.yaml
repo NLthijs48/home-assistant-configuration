@@ -1,0 +1,141 @@
+automation: !include_dir_merge_list automations
+
+rest:
+  # Next order REST sensor
+  - resource: "https://crisp.nl/v1/order/history?limit=1"
+    scan_interval: 600
+    headers:
+      # Logged in as Thijs
+      "Authorization": !secret crisp_authorization
+      # Identify as android app from around 2021-11-13
+      "X-Crisp-Agent": "crisp/e514fb23c2/app/android/385"
+      "User-Agent": "Home Assistant"
+    sensor:
+      - name: "Crisp next order raw"
+        value_template: >-
+          {% if value_json.data[0] != None %}
+            available
+          {% else %}
+            unavailable
+          {% endif %}
+        json_attributes_path: "$.data[0]"
+        json_attributes:
+          - "id"
+          - "fulfillStatus"
+          - "deliveryLink"
+          - "editable"
+          - "finalPrice"
+      # Delivery day like "Saturday"
+      - name: "Crisp next order day"
+        value_template: "{{ as_timestamp(strptime(value_json.data[0].deliverySlot.date, '%Y-%m-%d')) | default('unavailable') | timestamp_custom('%A') }}"
+      # Selected time slot like "between 18:00 and 22:00"
+      - name: "Crisp next order selected timeslot"
+        value_template: "between {{ value_json.data[0].deliverySlot.start }} and {{ value_json.data[0].deliverySlot.end }}"
+      # Number of products and recipes
+      - name: "Crisp next order contents"
+        # TODO: hide parts when zero
+        value_template: "{{ value_json.data[0].products | length }} products, {{ value_json.data[0].recipes | length }} recipes"
+
+  # Tracking link REST sensor
+  - resource_template: >-
+      {# Get the data from the actual tracking link (and convert the public link to the data url) #}
+      {% if state_attr('sensor.crisp_next_order_raw', 'deliveryLink') != None %}
+        https://tracking.routigo.com/api/customer/tracking/{{ state_attr('sensor.crisp_next_order_raw', 'deliveryLink') | replace("https://tracking.routigo.com/?trackingCode=", '') }}
+
+      {# Fallback to dummy file (otherwise it will keep retrying a dead link) #}
+      {% else %}
+        {{ states('input_text.crisp_tracking_fallback_url') }}
+      {% endif %}
+    # Never trigger automatically, automation will request updates (note: still does a request on boot)
+    scan_interval: 99999999
+    headers:
+      # Identify as Home Assistant
+      "User-Agent": "Home Assistant"
+    sensor:
+      - name: "Crisp next order tracking"
+        # Indicates if the fallback url has been queried
+        value_template: >-
+          {% if value_json.unavailable %}
+            unavailable
+          {% else %}
+            available
+          {% endif %}
+        json_attributes_path: "$.deliveryInformation"
+        json_attributes:
+          - "courierName"
+          - "latitude"
+          - "longitude"
+          - "stopsTillArrival"
+          - "windowBeforeETA"
+          - "windowAfterETA"
+          - "eta"
+          - "doneTime"
+      # Number of products and recipes
+      - name: "Crisp next order tracking details"
+        # TODO: hide parts taht are missing?
+        value_template: >-
+          {% if value_json.unavailable %}
+            Unavailable
+          {% else %}
+            Expected at {{ as_timestamp(value_json.deliveryInformation.eta) | default('unavailable') | timestamp_custom('%H:%M') }} (by {{ value_json.deliveryInformation.courierName }})
+          {% endif %}
+
+# Parse the next order time into a nice string
+template:
+  # TODO: implement availability based on the fact that there is an order
+  - sensor:
+      - name: Crisp next order
+        unique_id: crisp_next_order
+        state: "{{ states('sensor.crisp_next_order_day') }} {{ states('sensor.crisp_next_order_selected_timeslot') }}"
+        # Future: detect editing state by polling basket as well?
+        icon: >-
+          {% set fulfill_status = state_attr('sensor.crisp_next_order_raw', 'fulfillStatus') %}
+          {% set editable = state_attr('sensor.crisp_next_order_raw', 'editable') %}
+          {% set deliveryLink = state_attr('sensor.crisp_next_order_raw', 'deliveryLink') %}
+
+          {# Cancelled, end state #}
+          {% if fulfill_status == 'cancel' %}
+            mdi:cancel
+
+          {# Delivered, end state #}
+          {% elif fulfill_status == 'done' %}
+            mdi:check-outline
+
+          {# Delivery is ongoing, link available #}
+          {% elif deliveryLink != None %}
+            mdi:truck
+
+          {# Editable, before cutoff #}
+          {% elif editable %}
+            mdi:pencil
+
+          {# Not editable, not picked yet either #}
+          {% elif fulfill_status == 'ready' %}
+            mdi:clock
+
+          {# Picked, but not getting delivered yet #}
+          {% elif fulfill_status == 'picked' %}
+            mdi:pickaxe
+
+          {# Generic fallback #}
+          {% else %}
+            mdi:basket
+          {% endif %}
+        attributes:
+          details: >-
+            {% set deliveryLink = state_attr('sensor.crisp_next_order_raw', 'deliveryLink') %}
+
+            {# Show tracking details while there is a tracking link #}
+            {% if deliveryLink != None %}
+              {{ states('sensor.crisp_next_order_tracking_details') }}
+
+            {# Show order content before/after delivery #}
+            {% else %}
+              {{ states('sensor.crisp_next_order_contents') }}
+            {% endif %}
+
+# Cannot use secrets directly in templates, so use this helper to get around that
+input_text:
+  crisp_tracking_fallback_url:
+    name: Fallback url
+    initial: !secret crisp_tracking_fallback_url

@@ -1,0 +1,19 @@
+# While there is a tracking link, update the REST sensor regularly
+- alias: Tracking link data updates
+  id: crisp.tracking_update
+  trigger:
+    # Every minute
+    - platform: time_pattern
+      minutes: "/1"
+  condition:
+    - alias: Delivery link available
+      condition: template
+      value_template: "{{ state_attr('sensor.crisp_next_order_raw', 'deliveryLink') != None }}"
+    - alias: Order is not yet delivered
+      condition: template
+      value_template: "{{ state_attr('sensor.crisp_next_order_raw', 'fulfillStatus') != 'done' }}"
+  action:
+    - alias: Update tracking link REST sensor
+      service: homeassistant.update_entity
+      target:
+        entity_id: sensor.crisp_next_order_tracking
