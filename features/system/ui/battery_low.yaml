@@ -3,7 +3,8 @@ type: 'custom:auto-entities'
 card:
   type: entities
   # Future: would like a 'floating' title here, but that means it cannot be hidden when zero entities
-  title: Battery low!
+  # Could use a template with the same filter to indicate if there are low battery devices + conditional card
+  title: 🔋 Battery low!
 filter:
   include:
     # Sensors that declare themselves as a battery
