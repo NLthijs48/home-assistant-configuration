@@ -131,14 +131,13 @@ button_card_templates:
       # Not-ideal states
       - value: 30
         operator: "<"
-        color: "#ffa500"
-      - value: 55
+        color: "#ab6300"
+      - value: 60
         operator: ">"
-        color: "#ffa500"
+        color: "#ab6300"
       # Good state
       - operator: "default"
-        # TODO: would like to fallback to the default, but that is not possible?!
-        color: "#004800"
+        color: "var( --ha-card-background, var(--card-background-color, white) )"
 
   # CO2 state color
   statistic_button_co2:
@@ -152,7 +151,7 @@ button_card_templates:
       # Worrisome state
       - value: 800
         operator: ">"
-        color: "#ffa500"
+        color: "#ab6300"
       # Good state
       - operator: "default"
-        color: "#004800"
+        color: "var( --ha-card-background, var(--card-background-color, white) )"
