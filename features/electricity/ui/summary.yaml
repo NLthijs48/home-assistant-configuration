@@ -43,4 +43,3 @@ cards:
                 - type: entity
                   entity: sensor.energy_consumption_tarif_1
   - !include last_hour.yaml
-  - type: energy-distribution
