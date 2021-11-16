@@ -1,4 +1,8 @@
 # Summary column for an overview of the inside environment
+# TODO: split this up into a few buttons:
+# - Current usage
+# - Last day
+# - Long term
 type: vertical-stack
 cards:
   - type: custom:button-card
@@ -27,6 +31,26 @@ cards:
                 - type: energy-usage-graph
                 - type: energy-sources-table
                 - type: energy-devices-graph
+                # Current power usage of devices
+                - type: custom:auto-entities
+                  card:
+                    type: entities
+                    title: Power usage
+                  filter:
+                    include:
+                      - attributes:
+                          device_class: power
+                        options:
+                          secondary_info: last-changed
+                        state: "> 0"
+                    exclude:
+                      - state: unavailable
+                      - attributes:
+                          unit_of_measurement: kW
+                  sort:
+                    method: state
+                    numeric: true
+                    reverse: true
             # Last 3 days
             - type: vertical-stack
               title: Last 3 days

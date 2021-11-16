@@ -38,7 +38,7 @@
 
                   {##### CALCULATION #####}
                   {# Fraction of the meter that should be on #}
-                  {% set sensor_value = states(sensor_entity_id)|float %}
+                  {% set sensor_value = states(sensor_entity_id) | float(default=0) %}
                   {% set fraction = sensor_value / max_value %}
                   {% set brightness = 50 %}
                   {# LED parts: normal for the active bar, then highlight the exact value, then lowlight the inactive part #}
