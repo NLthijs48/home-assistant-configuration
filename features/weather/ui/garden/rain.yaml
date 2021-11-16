@@ -1,0 +1,24 @@
+type: vertical-stack
+cards:
+
+  # Statistisc graph, because that shows a nice summed thing
+  - type: statistics-graph
+    days_to_show: 14
+    chart_type: line
+    stat_types:
+      - sum
+    entities:
+      - entity: sensor.netatmo_rain_sum_rain_24
+        name: Rain in millimeter
+
+  # Current entity states
+  - type: entities
+    entities:
+      - entity: sensor.netatmo_rain_rain
+        name: "Rain: now"
+      - entity: sensor.netatmo_rain_sum_rain_1
+        name: "Rain: last hour"
+      - entity: sensor.netatmo_rain_sum_rain_24
+        name: "Rain: last day"
+      - entity: sensor.netatmo_rain_battery_percent
+        name: Battery level

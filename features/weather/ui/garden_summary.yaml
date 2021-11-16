@@ -15,19 +15,7 @@ cards:
           - !include garden/temperature.yaml
           - !include garden/wind.yaml
           - !include garden/humidity.yaml
-          - type: entities
-            entities:
-              # Rain
-              - type: section
-                label: Rain
-              - entity: sensor.netatmo_rain_rain
-                name: "Rain: now"
-              - entity: sensor.netatmo_rain_sum_rain_1
-                name: "Rain: last hour"
-              - entity: sensor.netatmo_rain_sum_rain_24
-                name: "Rain: last day"
-              - entity: sensor.netatmo_rain_battery
-                name: Battery rain sensor
+          - !include garden/rain.yaml
   - !include garden/temperature.yaml
 
   # Rows of tiny garden stats
@@ -52,7 +40,12 @@ cards:
         entity: sensor.netatmo_rain_sum_rain_24
         template: statistic_button
         tap_action:
-          action: more-info
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            card: !include garden/rain.yaml
+            title: ' '
+            hide_header: true
 
   - type: horizontal-stack
     cards:
