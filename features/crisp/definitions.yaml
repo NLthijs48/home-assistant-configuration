@@ -27,7 +27,7 @@ rest:
           - "finalPrice"
       # Delivery day like "Saturday"
       - name: "Crisp next order day"
-        value_template: "{{ as_timestamp(strptime(value_json.data[0].deliverySlot.date, '%Y-%m-%d')) | default('unavailable') | timestamp_custom('%A') }}"
+        value_template: "{{ as_timestamp(strptime(value_json.data[0].deliverySlot.date, '%Y-%m-%d'), default=None) | timestamp_custom('%A') }}"
       # Selected time slot like "between 18:00 and 22:00"
       - name: "Crisp next order selected timeslot"
         value_template: "between {{ value_json.data[0].deliverySlot.start }} and {{ value_json.data[0].deliverySlot.end }}"
@@ -77,7 +77,7 @@ rest:
           {% if value_json.unavailable %}
             Unavailable
           {% else %}
-            Expected at {{ as_timestamp(value_json.deliveryInformation.eta) | default('unavailable') | timestamp_custom('%H:%M') }} (by {{ value_json.deliveryInformation.courierName }})
+            Expected at {{ as_timestamp(value_json.deliveryInformation.eta, default=None) | timestamp_custom('%H:%M') }} (by {{ value_json.deliveryInformation.courierName }})
           {% endif %}
 
 # Parse the next order time into a nice string
