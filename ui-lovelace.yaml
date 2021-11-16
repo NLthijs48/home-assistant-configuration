@@ -6,7 +6,7 @@ custom_header:
   reverse_button_direction: true
   reverse_tab_direction: true
 views:
-  # Living room
+  # Home screen
   - icon: "mdi:theater"
     path: living-room
     cards:
@@ -34,6 +34,12 @@ views:
 
       # - !include features/weather/ui/buienalarm.yaml, Constantly broken, look for fix
       # - !include ui/media/plex-status.yaml, not useful yet
+
+    # More info popup replacements
+    popup_cards:
+      sensor.thijs_location: !include features/presence/ui/thijs_location_popup.yaml
+      sensor.frits_location: !include features/presence/ui/frits_location_popup.yaml
+
 
   # Thijs
   - title: Thijs
