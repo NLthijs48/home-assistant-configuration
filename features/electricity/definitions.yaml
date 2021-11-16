@@ -27,12 +27,24 @@ template:
         unit_of_measurement: kWh
         state: >
           {{
-            states('sensor.living_room_spots_energy') | float
-            + states('sensor.tv_led_strip_energy') | float
-            + states('sensor.kitchen_sink_energy') | float
+            states('sensor.living_room_spots_energy') | float(default=0)
+            + states('sensor.tv_led_strip_energy') | float(default=0)
+            + states('sensor.kitchen_sink_energy') | float(default=0)
           }}
         attributes:
           last_reset: "1970-01-01T00:00:00+00:00"
           state_class: total_increasing
           device_class: energy
           icon: mdi:counter
+  - sensor:
+      - name: "Living room lights power"
+        unit_of_measurement: W
+        state: >
+          {{
+            states('sensor.living_room_spots_power') | float(default=0)
+            + states('sensor.tv_led_strip_power') | float(default=0)
+            + states('sensor.kitchen_sink_power') | float(default=0)
+          }}
+        device_class: power
+        state_class: measurement
+        icon: mdi:transmission-tower
