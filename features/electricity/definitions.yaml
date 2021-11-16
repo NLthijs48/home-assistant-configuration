@@ -13,7 +13,7 @@ sensor:
     manufacturer: ikea
     model: LED1650R5
     multiply_factor: 7
-    multiply_factor_standby: 7
+    multiply_factor_standby: true
   # TV LED strip
   - platform: powercalc
     entity_id: light.tv_led_strip
