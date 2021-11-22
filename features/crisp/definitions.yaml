@@ -168,3 +168,13 @@ input_text:
   crisp_tracking_fallback_url:
     name: Fallback url
     initial: !secret crisp_tracking_fallback_url
+
+# Track the direction and distance of the Crisp van
+# TODO: show this on the home screen
+proximity:
+  crisp_van:
+    zone: home
+    devices:
+      - device_tracker.crisp_van
+    unit_of_measurement: m
+    tolerance: 10
