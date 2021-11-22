@@ -9,10 +9,10 @@
   condition:
     - alias: Delivery link available
       condition: template
-      value_template: "{{ state_attr('sensor.crisp_next_order_raw', 'deliveryLink') != None }}"
-    - alias: Order is not yet delivered
+      value_template: "{{ not is_state_attr('sensor.crisp_next_order_raw', 'deliveryLink', None) }}"
+    - alias: Order is not yet delivered/cancelled
       condition: template
-      value_template: "{{ state_attr('sensor.crisp_next_order_raw', 'fulfillStatus') != 'done' }}"
+      value_template: "{{ not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'done') and not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'cancel') }}"
   action:
     - alias: Update tracking link REST sensor
       service: homeassistant.update_entity

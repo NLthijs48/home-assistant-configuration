@@ -46,7 +46,7 @@ rest:
   # Tracking link REST sensor
   - resource_template: >-
       {# Get the data from the actual tracking link (and convert the public link to the data url) #}
-      {% if state_attr('sensor.crisp_next_order_raw', 'deliveryLink') != None %}
+      {% if not is_state_attr('sensor.crisp_next_order_raw', 'deliveryLink', None) %}
         https://tracking.routigo.com/api/customer/tracking/{{ state_attr('sensor.crisp_next_order_raw', 'deliveryLink') | replace("https://tracking.routigo.com/?trackingCode=", '') }}
 
       {# Fallback to dummy file (otherwise it will keep retrying a dead link) #}
