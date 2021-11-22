@@ -89,16 +89,16 @@ template:
         state: "{{ states('sensor.crisp_next_order_day') }} {{ states('sensor.crisp_next_order_selected_timeslot') }}"
         # Future: detect editing state by polling basket as well?
         icon: >-
-          {% set fulfill_status = state_attr('sensor.crisp_next_order_raw', 'fulfillStatus') %}
+          {% set fulfillStatus = state_attr('sensor.crisp_next_order_raw', 'fulfillStatus') %}
           {% set editable = state_attr('sensor.crisp_next_order_raw', 'editable') %}
           {% set deliveryLink = state_attr('sensor.crisp_next_order_raw', 'deliveryLink') %}
 
           {# Cancelled, end state #}
-          {% if fulfill_status == 'cancel' %}
+          {% if fulfillStatus == 'cancel' %}
             mdi:cancel
 
           {# Delivered, end state #}
-          {% elif fulfill_status == 'done' %}
+          {% elif fulfillStatus == 'done' %}
             mdi:check-outline
 
           {# Delivery is ongoing, link available #}
@@ -110,11 +110,11 @@ template:
             mdi:pencil
 
           {# Not editable, not picked yet either #}
-          {% elif fulfill_status == 'ready' %}
+          {% elif fulfillStatus == 'ready' %}
             mdi:clock
 
           {# Picked, but not getting delivered yet #}
-          {% elif fulfill_status == 'picked' %}
+          {% elif fulfillStatus == 'picked' %}
             mdi:pickaxe
 
           {# Generic fallback #}
@@ -124,9 +124,18 @@ template:
         attributes:
           details: >-
             {% set deliveryLink = state_attr('sensor.crisp_next_order_raw', 'deliveryLink') %}
+            {% set fulfillStatus = state_attr('sensor.crisp_next_order_raw', 'fulfillStatus') %}
+
+            {# Delivered #}
+            {% if fulfillStatus == 'done' %}
+              Delivered, enjoy!
+
+            {# Cancelled #}
+            {% elif fulfillStatus == 'cancel' %}
+              Cancelled
 
             {# Show tracking details while there is a tracking link #}
-            {% if deliveryLink != None %}
+            {% elif deliveryLink != None %}
               {{ states('sensor.crisp_next_order_tracking_details') }}
 
             {# Show order content before/after delivery #}
