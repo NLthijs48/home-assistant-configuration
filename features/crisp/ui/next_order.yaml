@@ -60,3 +60,16 @@ cards:
           icon:
             - height: 25px
             - width: 25px
+  # Map with a Crisp van tracker
+  - type: conditional
+    conditions:
+      - entity: sensor.crisp_next_order_tracking_location
+        state: "available"
+    card:
+      type: map
+      entities:
+        - entity: device_tracker.crisp_van
+        - entity: zone.home
+      dark_mode: true
+      aspect_ratio: '2:1'
+      hours_to_show: 2

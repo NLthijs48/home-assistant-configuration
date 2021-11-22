@@ -1,5 +1,11 @@
 automation: !include_dir_merge_list automations
 
+# Setup Crisp icon as picture for the van tracker
+homeassistant:
+  customize:
+    device_tracker.crisp_van:
+      entity_picture: "/local/crisp-128.jpg"
+
 rest:
   # Next order REST sensor
   - resource: "https://crisp.nl/v1/order/history?limit=1"
@@ -27,6 +33,7 @@ rest:
           - "finalPrice"
       # Delivery day like "Saturday"
       - name: "Crisp next order day"
+        # TODO: add relative dates like 'today' and 'tomorrow'
         value_template: "{{ as_timestamp(strptime(value_json.data[0].deliverySlot.date, '%Y-%m-%d'), default=None) | timestamp_custom('%A') }}"
       # Selected time slot like "between 18:00 and 22:00"
       - name: "Crisp next order selected timeslot"
@@ -70,9 +77,22 @@ rest:
           - "windowAfterETA"
           - "eta"
           - "doneTime"
+      - name: "Crisp next order tracking location"
+        # Indicates if the fallback url has been queried
+        value_template: >-
+          {% if value_json.unavailable or value_json.courierLocation.latitude == None %}
+            unavailable
+          {% else %}
+            available
+          {% endif %}
+        json_attributes_path: "$.courierLocation"
+        json_attributes:
+          - "latitude"
+          - "longitude"
+          - "course"
       # Number of products and recipes
       - name: "Crisp next order tracking details"
-        # TODO: hide parts taht are missing?
+        # TODO: hide parts that are missing?
         value_template: >-
           {% if value_json.unavailable %}
             Unavailable

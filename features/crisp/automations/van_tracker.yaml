@@ -1,0 +1,18 @@
+- alias: "Device tracker based on the Crisp van"
+  id: crisp_van_tracker
+  trigger:
+    platform: state
+    entity_id: sensor.crisp_next_order_tracking_location
+  condition:
+    - alias: Tracking location sensor is available
+      condition: state
+      entity_id: sensor.crisp_next_order_tracking_location
+      state: 'available'
+  action:
+    service: device_tracker.see
+    data_template:
+      dev_id: crisp_van
+      host_name: Crisp van
+      gps:
+        - "{{ state_attr('sensor.crisp_next_order_tracking_location', 'latitude') }}"
+        - "{{ state_attr('sensor.crisp_next_order_tracking_location', 'longitude') }}"

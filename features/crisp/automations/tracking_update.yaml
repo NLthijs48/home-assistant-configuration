@@ -1,4 +1,5 @@
 # While there is a tracking link, update the REST sensor regularly
+# TODO: dynamically enable disable this whole automation? Can increase update rate as well
 - alias: Tracking link data updates
   id: crisp.tracking_update
   trigger:
