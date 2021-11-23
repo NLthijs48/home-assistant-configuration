@@ -19,3 +19,6 @@ filter:
 show_empty: false
 sort:
   method: friendly_name
+
+
+# TODO: list of device_class: problem entities (overheating/overpowering/powersupply) + notifications

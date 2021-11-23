@@ -18,6 +18,7 @@ rest:
       "User-Agent": "Home Assistant"
     sensor:
       - name: "Crisp next order raw"
+        # TODO: Mark unavailable when cancel/done and after day of delivery, then hide in UI
         value_template: >-
           {% if value_json.data[0] != None %}
             available

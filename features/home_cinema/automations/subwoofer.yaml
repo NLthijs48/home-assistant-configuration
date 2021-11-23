@@ -21,4 +21,4 @@
     - service: switch.turn_off
       target:
         entity_id: switch.subwoofer
-  mode: singlez
+  mode: single
