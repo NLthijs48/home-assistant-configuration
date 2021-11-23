@@ -1,5 +1,6 @@
 There is something wrong with my Onkyo receiver which causes it to lose its settings when it is disconnected from
 electricity.
+Would be cool to use the network control commands to setup all these settings: https://github.com/miracle2k/onkyo-eiscp
 
 The following settings needs to be entered again:
 1. Input output
