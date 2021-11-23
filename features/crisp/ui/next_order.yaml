@@ -3,6 +3,42 @@ cards:
   - type: custom:button-card
     name: 🥐 Crisp
     template: header_standalone
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
+        title: Crisp order
+        card:
+          type: entities
+          entities:
+            - entity: sensor.crisp_next_order_raw
+              name: Order
+            - entity: sensor.crisp_next_order_day
+              name: Day
+              icon: mdi:calendar
+            - entity: sensor.crisp_next_order_selected_timeslot
+              name: Timeslot
+              icon: mdi:clock-outline
+            - type: attribute
+              entity: sensor.crisp_next_order
+              attribute: details
+              name: Details
+            - entity: sensor.crisp_next_order_contents
+              name: Content
+              icon: mdi:food-croissant
+            - entity: sensor.crisp_next_order_tracking
+              name: Tracking
+              icon: mdi:map
+            - entity: sensor.crisp_next_order_tracking_details
+              name: Expected and driver
+              icon: mdi:account
+            - entity: sensor.crisp_next_order_tracking_location
+              name: Location
+              icon: mdi:map-marker
+            - entity: device_tracker.crisp_van
+              name: Van location
+            - entity: proximity.crisp_van
+              name: Van proximity
   - type: horizontal-stack
     cards:
       # Information button
@@ -18,11 +54,7 @@ cards:
           # When there is a delivery link: open that
           # Otherwise link to the order in the app (easy to start edit after that)
           url_path: >-
-            [[[ return states['sensor.crisp_next_order_raw'].attributes.deliveryLink ? states['sensor.crisp_next_order_raw'].attributes.deliveryLink : 'com.freshfoodventures.crisp:///order/' + states['sensor.crisp_next_order_raw'].attributes.id; ]]]
-        hold_action:
-          # TODO: show custom popup with more order info
-          action: more-info
-          entity: sensor.crisp_next_order_raw
+            [[[ return states['sensor.crisp_next_order_raw'].attributes.deliveryLink && states['sensor.crisp_next_order_raw'].attributes.fulfillStatus != 'done' ? states['sensor.crisp_next_order_raw'].attributes.deliveryLink : 'com.freshfoodventures.crisp:///order/' + states['sensor.crisp_next_order_raw'].attributes.id; ]]]
         styles:
           card:
             - height: 70px
