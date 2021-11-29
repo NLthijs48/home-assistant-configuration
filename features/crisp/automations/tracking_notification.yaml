@@ -33,6 +33,10 @@
           persistent: true
           alert_once: true
           notification_icon: "mdi:food-croissant"
+          # Timer that counts down the minutes+seconds we are away from the ETA
+          chronometer: true
+          when: >-
+            {{ as_timestamp(state_attr('sensor.crisp_next_order_tracking', 'eta'), default=None) | round }}
 
 # Order delivered
 - alias: Crisp order delivered notification
