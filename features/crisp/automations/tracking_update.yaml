@@ -1,20 +1,33 @@
 # While there is a tracking link, update the REST sensor regularly
-# TODO: dynamically enable disable this whole automation? Can increase update rate as well
-- alias: Tracking link data updates
+- alias: Crisp order tracking data updates
   id: crisp.tracking_update
   trigger:
-    # Every minute
+    # Trigger quite often, web page of Routigo does it even more often
     - platform: time_pattern
-      minutes: "/1"
-  condition:
-    - alias: Delivery link available
-      condition: template
-      value_template: "{{ not is_state_attr('sensor.crisp_next_order_raw', 'deliveryLink', None) }}"
-    - alias: Order is not yet delivered/cancelled
-      condition: template
-      value_template: "{{ not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'done') and not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'cancel') }}"
+      seconds: "/20"
   action:
     - alias: Update tracking link REST sensor
       service: homeassistant.update_entity
       target:
         entity_id: sensor.crisp_next_order_tracking
+
+# Dynamically turn on/off the above update automation
+- alias: Crisp order tracking automation enable/disable
+  id: crisp.tracking_update_automation_toggle
+  trigger:
+    - platform: state
+      entity_id: sensor.crisp_next_order_raw
+      attribute: deliveryLink
+    - platform: state
+      entity_id: sensor.crisp_next_order_raw
+      attribute: fulfillStatus
+  action:
+    - alias: Turn on/off tracking link automation
+      service: >-
+        {% if state_attr('sensor.crisp_next_order_raw', 'deliveryLink') is not none and not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'done') and not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'cancel') %}
+          automation.turn_on
+        {% else %}
+          automation.turn_off
+        {% endif %}
+      target:
+        entity_id: automation.tracking_link_data_updates
