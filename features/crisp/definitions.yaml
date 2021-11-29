@@ -47,7 +47,7 @@ rest:
   # Tracking link REST sensor
   - resource_template: >-
       {# Get the data from the actual tracking link (and convert the public link to the data url) #}
-      {% if not is_state_attr('sensor.crisp_next_order_raw', 'deliveryLink', None) %}
+      {% if is_state('sensor.crisp_next_order_raw', 'deliveryLink') is not none %}
         https://tracking.routigo.com/api/customer/tracking/{{ state_attr('sensor.crisp_next_order_raw', 'deliveryLink') | replace("https://tracking.routigo.com/?trackingCode=", '') }}
 
       {# Fallback to dummy file (otherwise it will keep retrying a dead link) #}
@@ -81,7 +81,7 @@ rest:
       - name: "Crisp next order tracking location"
         # Indicates if the fallback url has been queried
         value_template: >-
-          {% if value_json.unavailable or value_json.courierLocation.latitude == None %}
+          {% if value_json.unavailable or value_json.courierLocation.latitude is none %}
             unavailable
           {% else %}
             available
@@ -91,7 +91,6 @@ rest:
           - "latitude"
           - "longitude"
           - "course"
-      # Number of products and recipes
       - name: "Crisp next order tracking details"
         # TODO: hide parts that are missing?
         value_template: >-
@@ -123,7 +122,7 @@ template:
             mdi:check-outline
 
           {# Delivery is ongoing, link available #}
-          {% elif deliveryLink != None %}
+          {% elif deliveryLink is not none %}
             mdi:truck
 
           {# Editable, before cutoff #}
@@ -156,7 +155,7 @@ template:
               Cancelled
 
             {# Show tracking details while there is a tracking link #}
-            {% elif deliveryLink != None %}
+            {% elif deliveryLink is not none %}
               {{ states('sensor.crisp_next_order_tracking_details') }}
 
             {# Show order content before/after delivery #}

@@ -19,5 +19,4 @@
           tag: nfc_computer_wakeup
           # Should be turned on at this point, dismiss notification
           timeout: 20
-          # Should work in the next app version
           notification_icon: "mdi:desktop-tower-monitor"
