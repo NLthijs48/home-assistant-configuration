@@ -8,6 +8,9 @@
       entity_id: sensor.crisp_next_order
       attribute: details
     - platform: state
+      entity_id: sensor.crisp_next_order_tracking
+      attribute: eta
+    - platform: state
       entity_id: sensor.crisp_next_order_raw
       attribute: fulfillStatus
   condition:

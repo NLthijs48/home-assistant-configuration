@@ -31,3 +31,4 @@
         {% endif %}
       target:
         entity_id: automation.tracking_link_data_updates
+    # TODO: trigger tracking link thing one last time to make sure it will get unavailable (to fix UI)
