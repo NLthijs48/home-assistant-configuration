@@ -8,6 +8,7 @@ filter:
   include:
     - attributes:
         device_class: update
+      entity_id: binary_sensor.*
   exclude:
     - state: unavailable
     - state: 'off'
