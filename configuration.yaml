@@ -22,10 +22,10 @@ homeassistant:
     system: !include features/system/definitions.yaml
     spotify: !include features/spotify/definitions.yaml
     weather: !include features/weather/definitions.yaml
+    party_lighting: !include features/party_lighting/definitions.yaml
 
     ##### DISABLED
     # corona: !include features/corona/definitions.yaml
-    # party_lighting: !include features/party_lighting/definitions.yaml
     # queing: !include features/queing/definitions.yaml
 
 # Include themes
