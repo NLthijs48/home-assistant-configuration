@@ -11,7 +11,7 @@ binary_sensor:
       updates_available_hacs:
         friendly_name: "HACS updates available"
         # Also deals with the 'None' value that is present during startup
-        value_template: "{{ not is_state('sensor.hacs', 'unavailable') and state('sensor.hacs') is not none and not is_state('sensor.hacs', '0') }}"
+        value_template: "{{ not is_state('sensor.hacs', 'unavailable') and states('sensor.hacs') is not none and not is_state('sensor.hacs', '0') }}"
 
       # Indicates if there are any HA or HACS updates
       updates_available:
