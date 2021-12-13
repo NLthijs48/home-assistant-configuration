@@ -63,7 +63,7 @@ rest:
       - name: "Crisp next order tracking"
         # Indicates if the fallback url has been queried
         value_template: >-
-          {% if value_json.unavailable %}
+          {% if 'unavailable' in value_json %}
             unavailable
           {% else %}
             available
@@ -81,7 +81,7 @@ rest:
       - name: "Crisp next order tracking location"
         # Indicates if the fallback url has been queried
         value_template: >-
-          {% if value_json.unavailable or value_json.courierLocation is none or value_json.courierLocation.latitude is none %}
+          {% if 'unavailable' in value_json or value_json.courierLocation is none or value_json.courierLocation.latitude is none %}
             unavailable
           {% else %}
             available
