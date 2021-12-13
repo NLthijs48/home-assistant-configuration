@@ -4,8 +4,6 @@
   trigger:
     - platform: state
       entity_id: sensor.crisp_next_order
-    - platform: state
-      entity_id: sensor.crisp_next_order
       attribute: details
     - platform: state
       entity_id: sensor.crisp_next_order_tracking
@@ -16,7 +14,7 @@
   condition:
     - alias: Delivery link available
       condition: template
-      value_template: "{{ is_state_attr('sensor.crisp_next_order_raw', 'deliveryLink') is not none }}"
+      value_template: "{{ state_attr('sensor.crisp_next_order_raw', 'deliveryLink') is not none }}"
     - alias: Order is not yet delivered/cancelled
       condition: template
       value_template: "{{ not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'done') and not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'cancel') }}"
@@ -25,7 +23,7 @@
       service: notify.mobile_app_phone_thijs
       data:
         title: >-
-          {{ states("sensor.crisp_next_order") }}
+          Crisp order
         message: >-
           {{ state_attr("sensor.crisp_next_order", "details") }}
         data:
