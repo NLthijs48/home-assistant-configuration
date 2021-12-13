@@ -91,14 +91,6 @@ rest:
           - "latitude"
           - "longitude"
           - "course"
-      - name: "Crisp next order tracking details"
-        # TODO: hide parts that are missing?
-        value_template: >-
-          {% if value_json.unavailable %}
-            Unavailable
-          {% else %}
-            Expected at {{ as_timestamp(value_json.deliveryInformation.eta, default=None) | timestamp_custom('%H:%M') }} (by {{ value_json.deliveryInformation.courierName }})
-          {% endif %}
 
 # Parse the next order time into a nice string
 template:
@@ -162,6 +154,58 @@ template:
             {% else %}
               {{ states('sensor.crisp_next_order_contents') }}
             {% endif %}
+
+      # TODO: set available state?
+      - name: Crisp next order tracking details
+        unique_id: crisp_next_order_tracking_details
+        state: >-
+          {# Collector for list of extra parts of info #}
+          {% set extras = namespace(parts=[]) %}
+
+          {# Add driver name #}
+          {% set courier = state_attr('sensor.crisp_next_order_tracking', 'courierName') %}
+          {% if courier is not none %}
+            {% set extras.parts = extras.parts + ['driver '+courier] %}
+          {% endif %}
+
+          {# Add distance #}
+          {% set van_meters = states('proximity.crisp_van') | int %}
+          {% if van_meters is not none %}
+            {% set van_meters = van_meters | int %}
+            {% if van_meters > 0 %}
+              {% if van_meters > 2000 %}
+                {% set van_meters = ((van_meters/1000) | round(1)) | string + ' km' %}
+              {% else %}
+                {% set van_meters = van_meters | string + ' m' %}
+              {% endif %}
+              {% set extras.parts = extras.parts + [van_meters + ' away'] %}
+            {% endif %}
+          {% endif %}
+
+          {# Stops left #}
+          {% set stops_left = state_attr('sensor.crisp_next_order_tracking', 'stopsTillArrival') %}
+          {% if stops_left is not none and stops_left > 0 %}
+            {% if stops_left == 0 %}
+              {% set extras.parts = extras.parts + ['next stop'] %}
+            {% elif stops_left == 1 %}
+              {% set extras.parts = extras.parts + ['1 stop left'] %}
+            {% else %}
+              {% set extras.parts = extras.parts + [stops_left | string + ' stops left'] %}
+            {% endif %}
+          {% endif %}
+
+          {# Built expected at line #}
+          {% set result = 'Expected at ' + as_timestamp(state_attr('sensor.crisp_next_order_tracking', 'eta'), default=None) | timestamp_custom('%H:%M') %}
+          {% if result is not none %}
+            {% if extras.parts|length > 0 %}
+              {% set result = result + ' (' + (extras.parts | join(', ')) + ')' %}
+            {% endif %}
+
+            {# Return result #}
+            {{ result }}
+          {% else %}
+          Unavailable
+          {% endif %}
 
 # Cannot use secrets directly in templates, so use this helper to get around that
 input_text:
