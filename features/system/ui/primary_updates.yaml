@@ -29,7 +29,7 @@ card:
             label: "[[[ return states['binary_sensor.updater'].attributes.newest_version; ]]]"
             tap_action:
               action: navigate
-              navigation_path: /hassio/dashboard
+              navigation_path: /hassio/update-available/core
             styles:
               card:
                 - height: '60px'
