@@ -19,6 +19,11 @@ sensor:
     entity_id: light.tv_led_strip
     manufacturer: signify
     model: LST002
+  # WLED CO2 LED strip
+  - platform: powercalc
+    entity_id: sensor.quinled_dig_uno_estimated_current
+    wled:
+      voltage: 12
 
 # Sensor for all living room lights summed together
 template:
