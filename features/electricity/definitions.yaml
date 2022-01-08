@@ -26,6 +26,14 @@ sensor:
     entity_id: sensor.quinled_dig_uno_estimated_current
     wled:
       voltage: 12
+  # Frits' room
+  - platform: powercalc
+    entity_id: light.frits_room_wall # Random entity id, to base default ids on
+    name: Frits' room spots
+    manufacturer: ikea
+    model: LED1650R5
+    multiply_factor: 3
+    multiply_factor_standby: true
 
 # Sensor for all living room lights summed together
 template:
