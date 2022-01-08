@@ -3,6 +3,8 @@
 # TODO: measure power usage of missing lights, contribute to the repo?
 
 powercalc:
+  # I don't need a sensor for each light, just a couple of aggregated ones defined below
+  enable_autodiscovery: false
   scan_interval: 00:05:00 # Each 5 minutes (prevent spammy updates)
 
 sensor:
