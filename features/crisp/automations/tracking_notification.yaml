@@ -1,6 +1,7 @@
 # Persistent tracking notification
 - alias: Crisp order tracking status notification
   id: crisp.tracking_status_notification
+  mode: restart # When triggered another time, cancel and send notification with the latest info
   trigger:
     - platform: state
       entity_id: sensor.crisp_next_order
@@ -15,10 +16,16 @@
     - alias: Delivery link available
       condition: template
       value_template: "{{ state_attr('sensor.crisp_next_order_raw', 'deliveryLink') is not none }}"
+    - alias: Details line is available
+      condition: template
+      value_template: "{{ state_attr('sensor.crisp_next_order', 'details') is not none }}"
     - alias: Order is not yet delivered/cancelled
       condition: template
       value_template: "{{ not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'done') and not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'cancel') }}"
   action:
+    # Wait a bit to see if more triggers come in (which will restart the automation)
+    - delay: 1
+    # Send notification
     - alias: Send persistent notification
       service: notify.mobile_app_phone_thijs
       data:
@@ -38,6 +45,13 @@
           chronometer: true
           when: >-
             {{ as_timestamp(state_attr('sensor.crisp_next_order_tracking', 'eta'), default=None) | round }}
+          actions:
+            - action: URI
+              title: Crisp app
+              uri: "app://com.freshfoodventures.crisp"
+            - action: URI
+              title: Routigo Tracker
+              uri: "{{ state_attr('sensor.crisp_next_order_raw', 'deliveryLink') }}"
 
 # Order delivered
 - alias: Crisp order delivered notification

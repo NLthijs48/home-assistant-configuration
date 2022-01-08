@@ -54,7 +54,7 @@ cards:
           # When there is a delivery link: open that
           # Otherwise link to the order in the app (easy to start edit after that)
           url_path: >-
-            [[[ return states['sensor.crisp_next_order_raw'].attributes.deliveryLink && states['sensor.crisp_next_order_raw'].attributes.fulfillStatus != 'done' ? states['sensor.crisp_next_order_raw'].attributes.deliveryLink : 'com.freshfoodventures.crisp:///order/' + states['sensor.crisp_next_order_raw'].attributes.id; ]]]
+            [[[ return states['sensor.crisp_next_order_raw'].attributes.deliveryLink && states['sensor.crisp_next_order_raw'].attributes.fulfillStatus != 'done' ? states['sensor.crisp_next_order_raw'].attributes.deliveryLink : states['sensor.crisp_next_order'].attributes.app_link; ]]]
         styles:
           card:
             - height: 70px

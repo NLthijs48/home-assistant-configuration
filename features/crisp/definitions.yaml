@@ -134,6 +134,7 @@ template:
             mdi:basket
           {% endif %}
         attributes:
+          app_link: "com.freshfoodventures.crisp:///order/{{ state_attr('sensor.crisp_next_order_raw', 'id') }}"
           details: >-
             {% set deliveryLink = state_attr('sensor.crisp_next_order_raw', 'deliveryLink') %}
             {% set fulfillStatus = state_attr('sensor.crisp_next_order_raw', 'fulfillStatus') %}
@@ -214,7 +215,6 @@ input_text:
     initial: !secret crisp_tracking_fallback_url
 
 # Track the direction and distance of the Crisp van
-# TODO: show this on the home screen
 proximity:
   crisp_van:
     zone: home
