@@ -25,6 +25,7 @@ views:
           - !include features/weather/ui/computers_summary.yaml
       - !include features/crisp/ui/next_order.yaml
       - !include features/electricity/ui/summary.yaml
+      - !include features/washing_machine/ui/summary.yaml
       # Maintenance column
       - type: vertical-stack
         cards:

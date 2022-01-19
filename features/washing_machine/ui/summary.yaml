@@ -1,0 +1,8 @@
+type: conditional
+conditions:
+  - entity: input_select.washing_machine
+    state_not: 'Off'
+card:
+  type: entity
+  entity: input_select.washing_machine
+  state_color: false
