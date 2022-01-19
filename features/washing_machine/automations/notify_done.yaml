@@ -1,0 +1,51 @@
+- alias: Washing machine done notification
+  description: Indicate the washing machine is done, and allow setting marking as empty
+  mode: single
+  trigger:
+    # State to Done
+    - platform: state
+      entity_id: input_select.washing_machine
+      to: "Done"
+  action:
+    - alias: "Set up action variable"
+      variables:
+        action_emptied: "{{ 'EMPTIED_' ~ context.id }}"
+    # TODO: track person that started the washing machine and notify correct one
+    - alias: "Notify done, ask to empty it"
+      service: notify.mobile_app_phone_thijs
+      data:
+        title: Washing machine done!
+        message: Empty it and hang it to dry
+        data:
+          tag: washing_machine
+          notification_icon: mdi:washing-machine
+          actions:
+            # TODO: input_select.washing_machine to Off or Idle (or maybe track full/empty as bool)
+            - action: "{{ action_emptied }}"
+              title: Emptied it
+    - alias: "Wait for the action (clicking the button in the notification)"
+      wait_for_trigger:
+        - platform: event
+          event_type: mobile_app_notification_action
+          event_data:
+            action: "{{ action_emptied }}"
+    - alias: "Check that the washing machine is still in the Done state"
+      condition: state
+      entity_id: input_select.washing_machine
+      state: "Done"
+    - alias: "Set the washing machine to Off"
+      service: input_select.select_option
+      target:
+        entity_id: input_select.washing_machine
+      data:
+        # Note: it might already be turned on again for another round, power sensor triggers will take care of that though
+        option: "Off"
+    - alias: "Great work notification"
+      service: notify.mobile_app_phone_thijs
+      data:
+        message: Great work doing the laundry!
+        data:
+          tag: washing_machine
+          notification_icon: mdi:washing-machine
+          timeout: 10 # Remove after 10 seconds
+          alert_once: true

@@ -1,0 +1,22 @@
+- alias: "Washing machine: Running to Done"
+  description: 'From Running to Done when it stops using power'
+  mode: single
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.washing_machine_power
+      below: '7'
+      for:
+        # TODO: ideally get rid of this or make it lower
+        seconds: 10
+  condition:
+    # Only allow from Running
+    - condition: state
+      entity_id: input_select.washing_machine
+      state: 'Running'
+  action:
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.washing_machine
+      data:
+        option: "Done"
+

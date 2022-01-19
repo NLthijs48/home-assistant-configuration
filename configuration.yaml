@@ -22,6 +22,7 @@ homeassistant:
     system: !include features/system/definitions.yaml
     spotify: !include features/spotify/definitions.yaml
     weather: !include features/weather/definitions.yaml
+    washing_machine: !include features/washing_machine/definitions.yaml
 
     ##### DISABLED
     # party_lighting: !include features/party_lighting/definitions.yaml

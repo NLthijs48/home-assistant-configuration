@@ -1,0 +1,19 @@
+- alias: "Washing machine: Off to Idle"
+  description: 'From Off to Idle when it starts using a bit of power'
+  mode: single
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.washing_machine_power
+      above: '2'
+  condition:
+    # Only allow from Off
+    - condition: state
+      entity_id: input_select.washing_machine
+      state: 'Off'
+  action:
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.washing_machine
+      data:
+        option: "Idle"
+

@@ -1,0 +1,20 @@
+- alias: "Washing machine: Idle to Running"
+  description: 'From Idle to Running when it starts to use more power'
+  mode: single
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.washing_machine_power
+      # TODO: goes to ~1800-1900w when heating up water, add that as extra state?
+      above: '25'
+  condition:
+    # Only allow from Idle
+    - condition: state
+      entity_id: input_select.washing_machine
+      state: 'Idle'
+  action:
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.washing_machine
+      data:
+        option: "Running"
+
