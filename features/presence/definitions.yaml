@@ -206,3 +206,12 @@ binary_sensor:
           {% else %}
             no
           {% endif %}
+      frits_home:
+        friendly_name: "Frits is home"
+        device_class: presence
+        value_template: >-
+          {% if not is_state('sensor.phone_frits_wifi_ap', 'away') or is_state('device_tracker.phone_frits', 'home') %}
+            yes
+          {% else %}
+            no
+          {% endif %}
