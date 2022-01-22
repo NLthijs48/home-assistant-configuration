@@ -14,6 +14,8 @@ views:
       - !include features/lighting/ui/living_room.yaml
       - !include features/home_cinema/ui/mode-select.yaml
       - !include features/home_cinema/ui/players.yaml
+      - !include features/crisp/ui/next_order.yaml
+      - !include features/washing_machine/ui/summary.yaml
       - type: horizontal-stack
         cards:
           - !include features/weather/ui/living_room_summary.yaml
@@ -23,9 +25,7 @@ views:
           - !include features/weather/ui/thijs_summary.yaml
           - !include features/weather/ui/frits_summary.yaml
           - !include features/weather/ui/computers_summary.yaml
-      - !include features/crisp/ui/next_order.yaml
       - !include features/electricity/ui/summary.yaml
-      - !include features/washing_machine/ui/summary.yaml
       # Maintenance column
       - type: vertical-stack
         cards:

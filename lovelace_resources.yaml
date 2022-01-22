@@ -49,6 +49,10 @@
 # Slider button card (fancy sliders)
 - url: /hacsfiles/slider-button-card/slider-button-card.js
   type: module
+# Check button cart (tasks/chores)
+- type: module
+  url: /hacsfiles/check-button-card/check-button-card.js
+
 # Sun card (unused)
 #- url: /hacsfiles/home-assistant-sun-card/home-assistant-sun-card.js
 #  type: module

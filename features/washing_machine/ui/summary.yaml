@@ -3,6 +3,19 @@ conditions:
   - entity: input_select.washing_machine
     state_not: 'Off'
 card:
-  type: entity
-  entity: input_select.washing_machine
-  state_color: false
+  type: vertical-stack
+  cards:
+    - type: custom:button-card
+      name: 👕 Washing machine
+      template: header_standalone
+    - type: horizontal-stack
+      cards:
+        - type: entity
+          entity: input_select.washing_machine
+          name: State
+          state_color: false
+        - type: entity
+          entity: input_select.washing_machine_user
+          name: User
+          state_color: false
+

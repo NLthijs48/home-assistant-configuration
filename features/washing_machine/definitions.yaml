@@ -1,7 +1,7 @@
 automation: !include_dir_merge_list automations
 
-# State tracker
 input_select:
+  # State tracker
   washing_machine:
     name: Washing machine
     initial: "Off"
@@ -19,3 +19,13 @@ input_select:
       # Meaning it still needs to be emptied (power usage might be Off/Idle, or actually Running when already started a new round before marking emptied)
       - "Done"
     icon: mdi:washing-machine
+
+  # Track person the current washing cycle is for
+  washing_machine_user:
+    name: Washing machine user
+    initial: "-"
+    options:
+      - "-"
+      - "Thijs"
+      - "Frits"
+    icon: mdi:account

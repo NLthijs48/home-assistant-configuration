@@ -20,3 +20,19 @@
       data:
         option: "Off"
 
+
+- alias: Washing machine turned off, clear notification
+  mode: single
+  trigger:
+    - platform: state
+      entity_id: input_select.washing_machine
+      from: "Idle"
+      to: "Off"
+  action:
+    - alias: "Clear notification"
+      # TODO: phone based on input_select.washing_machine_user
+      service: notify.mobile_app_phone_thijs
+      data:
+        message: "clear_notification"
+        data:
+          tag: washing_machine

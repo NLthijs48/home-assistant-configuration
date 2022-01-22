@@ -11,9 +11,120 @@
       entity_id: input_select.washing_machine
       state: 'Off'
   action:
+    - alias: Guess which person turned it on
+      service: input_select.select_option
+      target:
+        entity_id: input_select.washing_machine_user
+      data:
+        option: >-
+          {% if is_state("binary_sensor.thijs_home", "on") and is_state("binary_sensor.frits_home", "on") %}
+            {# Both home, try checking the floor #}
+            {% if is_state('sensor.phone_thijs_wifi_ap', 'upstairs') and is_state('sensor.phone_frits_wifi_ap', 'upstairs') %}
+              {# Both upstairs, don't know #}
+              -
+            {% elif is_state('sensor.phone_thijs_wifi_ap', 'upstairs') %}
+              {# Only Thijs is upstairs #}
+              Thijs
+            {% elif is_state('sensor.phone_frits_wifi_ap', 'upstairs') %}
+              {# Only Frits is upstairs #}
+              Frits
+            {% endif %}
+          {% elif is_state("binary_sensor.thijs_home", "on") %}
+            {# Only Thijs is home #}
+            Thijs
+          {% elif is_state("binary_sensor.frits_home", "on") %}
+            {# Only Frits is home #}
+            Frits
+          {% else %}
+            {# Nobody home?! #}
+            -
+          {% endif %}
     - service: input_select.select_option
       target:
         entity_id: input_select.washing_machine
       data:
         option: "Idle"
 
+
+- alias: Washing machine turned on notification
+  description: Indicate the washing machine is turned on
+  mode: parallel # Need to trigger the next one while this one is finishing
+  trigger:
+    - platform: state
+      entity_id: input_select.washing_machine
+      from: "Off"
+      to: "Idle"
+    - platform: state
+      entity_id: input_select.washing_machine_user
+  condition:
+    - alias: "Check that the washing machine is not off already"
+      condition: state
+      entity_id: input_select.washing_machine
+      state:
+        - "Idle"
+        - "Running"
+        - "Done"
+  action:
+    - alias: "Set up action variable"
+      variables:
+        action_not_mine: "{{ 'NOT_MINE_' ~ context.id }}"
+    - alias: "Notify turned on"
+      # TODO: phone based on input_select.washing_machine_user
+      service: notify.mobile_app_phone_thijs
+      data:
+        # TODO: indicate 'running' when in that state
+        title: Washing machine turned on!
+        message: You'll get notified when it is done
+        data:
+          tag: washing_machine
+          notification_icon: mdi:washing-machine
+          actions:
+            - title: Not mine
+              action: "{{ action_not_mine }}"
+    - alias: "Wait for the action (clicking the button in the notification)"
+      wait_for_trigger:
+        - platform: event
+          event_type: mobile_app_notification_action
+          event_data:
+            action: "{{ action_not_mine }}"
+      timeout:
+        # Assume the cycle is done after 5 hours and this notification is removed anyway
+        minutes: 300
+      continue_on_timeout: false
+    - alias: "Check that the washing machine is not off already"
+      condition: state
+      entity_id: input_select.washing_machine
+      state:
+        - "Idle"
+        - "Running"
+        - "Done"
+    - alias: "Determine other user"
+      variables:
+        previous_user: "{{ states('input_select.washing_machine_user') }}"
+        other_user: >-
+          {% if is_state('input_select.washing_machine_user', 'Thijs') %}
+            Frits
+          {% else %}
+            Thijs
+          {% endif %}
+    - alias: "Confirmation notification"
+      # TODO: correct phone
+      service: notify.mobile_app_phone_thijs
+      data:
+        title: "Assigned this cycle to {{ other_user }}"
+        message: They will get a notification when the cycle is complete
+        data:
+          tag: washing_machine
+          notification_icon: mdi:washing-machine
+          timeout: 10 # Remove after 10 seconds
+          alert_once: true
+    # TODO: remove this, testing only
+    - delay:
+        seconds: 10
+    - alias: "Move the cycle to the other user"
+      service: input_select.select_option
+      target:
+        entity_id: input_select.washing_machine_user
+      data:
+        # Note: it might already be turned on again for another round, power sensor triggers will take care of that though
+        option: "{{ other_user }}"
