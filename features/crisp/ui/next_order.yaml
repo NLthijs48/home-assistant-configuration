@@ -7,7 +7,7 @@ cards:
       action: fire-dom-event
       browser_mod:
         command: popup
-        title: Crisp order
+        title: 🥐 Crisp
         card:
           type: entities
           entities:

@@ -9,7 +9,7 @@ cards:
       action: fire-dom-event
       browser_mod:
         command: popup
-        title: "Frits' room"
+        title: "🛌 Frits' room"
         card:
           type: vertical-stack
           cards:

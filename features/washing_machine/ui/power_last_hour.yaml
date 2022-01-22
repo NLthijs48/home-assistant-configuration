@@ -1,18 +1,17 @@
 # Electricity usage of the last hour
 type: 'custom:mini-graph-card'
 entities:
-  - entity: sensor.power_consumption
+  - entity: sensor.washing_machine_power
     name: Power usage
     show_fill: false
     color: green
 height: 130
 hour24: true
 hours_to_show: 1
-points_per_hour: 180
+points_per_hour: 360
 decimals: 3
 line_width: 5
 lower_bound: 0
 show:
   icon: false
   labels: true
-  name: false

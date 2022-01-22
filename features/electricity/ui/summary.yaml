@@ -13,7 +13,7 @@ cards:
       action: fire-dom-event
       browser_mod:
         command: popup
-        title: Electricity
+        title: ⚡ Electricity
         card:
           type: vertical-stack
           cards:

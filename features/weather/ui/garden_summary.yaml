@@ -8,7 +8,7 @@ cards:
       action: fire-dom-event
       browser_mod:
         command: popup
-        title: Garden
+        title: 🌴 Garden
         card:
           type: vertical-stack
           cards:

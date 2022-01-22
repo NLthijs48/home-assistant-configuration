@@ -9,7 +9,7 @@ cards:
       action: fire-dom-event
       browser_mod:
         command: popup
-        title: Living room
+        title: 📺 Living room
         card:
           type: vertical-stack
           cards:
