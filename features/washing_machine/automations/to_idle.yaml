@@ -118,9 +118,6 @@
           notification_icon: mdi:washing-machine
           timeout: 10 # Remove after 10 seconds
           alert_once: true
-    # TODO: remove this, testing only
-    - delay:
-        seconds: 10
     - alias: "Move the cycle to the other user"
       service: input_select.select_option
       target:
