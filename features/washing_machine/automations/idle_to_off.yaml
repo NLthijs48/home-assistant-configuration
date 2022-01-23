@@ -36,3 +36,5 @@
         message: "clear_notification"
         data:
           tag: washing_machine
+          channel: Washing machine
+          importance: high

@@ -18,6 +18,8 @@
         message: Empty it and hang it to dry
         data:
           tag: washing_machine
+          channel: Washing machine
+          importance: high
           notification_icon: mdi:washing-machine
           actions:
             # TODO: input_select.washing_machine to Off or Idle (or maybe track full/empty as bool)
@@ -46,6 +48,8 @@
         message: Great work doing the laundry!
         data:
           tag: washing_machine
+          channel: Washing machine
+          importance: high
           notification_icon: mdi:washing-machine
           timeout: 10 # Remove after 10 seconds
           alert_once: true
