@@ -1,5 +1,6 @@
 - alias: "Washing machine: Idle to Off"
   description: 'From Idle to Off when it stops using power'
+  id: washing_machine_idle_to_off
   mode: single
   trigger:
     - platform: numeric_state
@@ -22,6 +23,7 @@
 
 
 - alias: Washing machine turned off, clear notification
+  id: washing_machine_idle_to_off_clear_notification
   mode: single
   trigger:
     - platform: state

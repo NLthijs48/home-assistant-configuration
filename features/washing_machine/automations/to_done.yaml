@@ -1,10 +1,11 @@
 - alias: "Washing machine: Running to Done"
   description: 'From Running to Done when it stops using power'
+  id: washing_machine_running_to_done
   mode: single
   trigger:
     - platform: numeric_state
       entity_id: sensor.washing_machine_power
-      below: '4'
+      below: '2'
       for:
         # TODO: ideally get rid of this or make it lower
         seconds: 10

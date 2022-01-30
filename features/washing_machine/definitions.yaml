@@ -17,6 +17,8 @@ input_select:
       # - ~250 watt for centrifuge at 1400 rpm
       - "Running"
       # Meaning it still needs to be emptied (power usage might be Off/Idle, or actually Running when already started a new round before marking emptied)
+      # - ~5.2 watt for a minute when done, but not yet turned off fully
+      # - ~0-0.5 watt after that, fully turned off
       - "Done"
     icon: mdi:washing-machine
 

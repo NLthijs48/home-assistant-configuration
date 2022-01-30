@@ -1,5 +1,6 @@
 - alias: "Washing machine: Off to Idle"
   description: 'From Off to Idle when it starts using a bit of power'
+  id: washing_machine_off_to_idle
   mode: single
   trigger:
     - platform: numeric_state
@@ -48,6 +49,7 @@
 
 - alias: Washing machine turned on notification
   description: Indicate the washing machine is turned on
+  id: washing_machine_idle_to_off_notification
   mode: parallel # Need to trigger the next one while this one is finishing
   trigger:
     - platform: state

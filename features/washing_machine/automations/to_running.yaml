@@ -1,5 +1,6 @@
 - alias: "Washing machine: Idle to Running"
   description: 'From Idle to Running when it starts to use more power'
+  id: washing_machine_idle_to_running
   mode: single
   trigger:
     - platform: numeric_state
