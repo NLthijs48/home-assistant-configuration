@@ -4,7 +4,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.washing_machine_power
-      below: '7'
+      below: '4'
       for:
         # TODO: ideally get rid of this or make it lower
         seconds: 10
