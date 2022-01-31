@@ -29,6 +29,7 @@
           actions:
             - action: "{{ action_emptied }}"
               title: Emptied it
+              icon: sfsymbols:checkmark
     - alias: "Wait for the action (clicking the button in the notification)"
       wait_for_trigger:
         - platform: event

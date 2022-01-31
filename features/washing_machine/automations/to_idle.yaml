@@ -89,6 +89,7 @@
           actions:
             - title: Not mine
               action: "{{ action_not_mine }}"
+              icon: sfsymbols:person.badge.minus.fill
     - alias: "Wait for the action (clicking the button in the notification)"
       wait_for_trigger:
         - platform: event
