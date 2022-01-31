@@ -71,8 +71,12 @@
       variables:
         action_not_mine: "{{ 'NOT_MINE_' ~ context.id }}"
     - alias: "Notify turned on"
-      # TODO: phone based on input_select.washing_machine_user
-      service: notify.mobile_app_phone_thijs
+      service: >-
+        {% if is_state('input_select.washing_machine_user', 'Thijs') %}
+          notify.mobile_app_phone_thijs
+        {% else %}
+          notify.mobile_app_frits
+        {% endif %}
       data:
         # TODO: indicate 'running' when in that state
         title: Washing machine turned on!
@@ -112,8 +116,12 @@
             Thijs
           {% endif %}
     - alias: "Confirmation notification"
-      # TODO: correct phone
-      service: notify.mobile_app_phone_thijs
+      service: >-
+        {% if is_state('input_select.washing_machine_user', 'Thijs') %}
+          notify.mobile_app_phone_thijs
+        {% else %}
+          notify.mobile_app_frits
+        {% endif %}
       data:
         title: "Assigned this cycle to {{ other_user }}"
         message: They will get a notification when the cycle is complete

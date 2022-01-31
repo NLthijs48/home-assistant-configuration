@@ -11,9 +11,13 @@
     - alias: "Set up action variable"
       variables:
         action_emptied: "{{ 'EMPTIED_' ~ context.id }}"
-    # TODO: track person that started the washing machine and notify correct one
     - alias: "Notify done, ask to empty it"
-      service: notify.mobile_app_phone_thijs
+      service: >-
+        {% if is_state('input_select.washing_machine_user', 'Thijs') %}
+          notify.mobile_app_phone_thijs
+        {% else %}
+          notify.mobile_app_frits
+        {% endif %}
       data:
         title: Washing machine done!
         message: Empty it and hang it to dry
@@ -23,7 +27,6 @@
           importance: high
           notification_icon: mdi:washing-machine
           actions:
-            # TODO: input_select.washing_machine to Off or Idle (or maybe track full/empty as bool)
             - action: "{{ action_emptied }}"
               title: Emptied it
     - alias: "Wait for the action (clicking the button in the notification)"
@@ -44,7 +47,12 @@
         # Note: it might already be turned on again for another round, power sensor triggers will take care of that though
         option: "Off"
     - alias: "Great work notification"
-      service: notify.mobile_app_phone_thijs
+      service: >-
+        {% if is_state('input_select.washing_machine_user', 'Thijs') %}
+          notify.mobile_app_phone_thijs
+        {% else %}
+          notify.mobile_app_frits
+        {% endif %}
       data:
         message: Great work doing the laundry!
         data:
@@ -54,3 +62,9 @@
           notification_icon: mdi:washing-machine
           timeout: 10 # Remove after 10 seconds
           alert_once: true
+    - alias: "Clear the washing machine user"
+      service: input_select.select_option
+      target:
+        entity_id: input_select.washing_machine_user
+      data:
+        option: "-"
