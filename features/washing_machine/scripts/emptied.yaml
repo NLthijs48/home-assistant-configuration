@@ -1,0 +1,40 @@
+alias: Mark that the washing machine has been emptied
+icon: mdi:check-bold
+sequence:
+  - alias: "Check that the washing machine is still in the Done state"
+    condition: state
+    entity_id: input_select.washing_machine
+    state: "Done"
+  - alias: "Set the washing machine to Off"
+    service: input_select.select_option
+    target:
+      entity_id: input_select.washing_machine
+    data:
+      # Note: it might already be turned on again for another round, power sensor triggers will take care of that though
+      option: "Off"
+  - alias: "Great work notification"
+    service: >-
+      {% if is_state('input_select.washing_machine_user', 'Thijs') %}
+        notify.mobile_app_phone_thijs
+      {% else %}
+        notify.mobile_app_frits
+      {% endif %}
+    data:
+      message: Great work doing the laundry!
+      data:
+        tag: washing_machine
+        channel: Washing machine
+        importance: high
+        notification_icon: mdi:washing-machine
+        timeout: 10 # Remove after 10 seconds
+        alert_once: true
+  - alias: "Clear the washing machine user"
+    service: input_select.select_option
+    target:
+      entity_id: input_select.washing_machine_user
+    data:
+      option: "-"
+  - alias: "Show a done toast"
+    service: browser_mod.toast
+    data:
+      message: Great work doing the laundry!

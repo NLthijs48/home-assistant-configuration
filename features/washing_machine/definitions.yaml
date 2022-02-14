@@ -1,5 +1,8 @@
 automation: !include_dir_merge_list automations
 
+script:
+  washing_machine_emptied: !include scripts/emptied.yaml
+
 input_select:
   # State tracker
   washing_machine:

@@ -5,6 +5,7 @@ conditions:
 card:
   type: vertical-stack
   cards:
+    # Show the current state and user
     - type: custom:button-card
       name: 👕 Washing machine
       template: header_standalone
@@ -33,4 +34,54 @@ card:
           entity: input_select.washing_machine_user
           name: User
           state_color: false
+    # Button to mark it emptied when Done
+    - type: conditional
+      conditions:
+        - entity: input_select.washing_machine
+          state: 'Done'
+      card:
+        type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            name: Resets the state and user
+            label: I emptied it!
+            show_state: true
+            show_icon: false
+            show_name: true
+            show_label: true
+            tap_action:
+              action: call-service
+              service: script.washing_machine_emptied
+            styles:
+              card:
+                - height: 70px
+                - marginRight: 0
+              label:
+                - gridArea: n / n / n / n
+                - placeSelf: flex-start
+                - paddingLeft: 20px
+              name:
+                - opacity: 0.6
+                - fontSize: 85%
+                - paddingTop: 5px
+                - placeSelf: flex-start
+                - paddingLeft: 20px
+                - gridArea: l / l / l / l
+          - type: custom:button-card
+            icon: mdi:check-bold
+            name: Details line
+            show_state: false
+            show_icon: true
+            show_name: false
+            styles:
+              card:
+                - height: 70px
+                - width: 70px
+                - marginLeft: '-78px'
+                - boxShadow: none
+                - background: transparent
+                - pointerEvents: none
+              icon:
+                - height: 40px
+                - width: 40px
 
