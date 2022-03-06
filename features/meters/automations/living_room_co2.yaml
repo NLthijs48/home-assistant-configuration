@@ -1,4 +1,3 @@
-# TODO: dynamic brightness based on part of the day (check how low the low priority part can go though)
 - alias: Living room CO2 to WLED
   description: Display a meter bar for the living room CO2
   mode: single
@@ -13,6 +12,9 @@
     # Update when the CO2 override changes (debugging)
     - platform: state
       entity_id: input_number.co2_override
+    # Update when it gets light or dark outside
+    - platform: state
+      entity_id: input_boolean.light_outside
   action:
     - alias: "Turn on when living room in use, else turn off"
       choose:
