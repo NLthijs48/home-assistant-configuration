@@ -71,10 +71,10 @@ views:
           - sensor.phone_frits_storage
 
   # Plants
-  - icon: mdi:sprout
-    path: plants
-    cards:
-      - !include features/gardening/ui/plant.yaml
+  #- icon: mdi:sprout
+  #  path: plants
+  #  cards:
+  #    - !include features/gardening/ui/plant.yaml
 
   # Lighting
   - icon: mdi:lightbulb
