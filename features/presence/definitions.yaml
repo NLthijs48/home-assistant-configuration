@@ -180,23 +180,7 @@ binary_sensor:
           {% else %}
             mdi:account-off
           {% endif %}
-      # Computer room used based on computer activity
-      # Future: add tracking for Frit's laptop (stays connected while sleeping, so we need activity sensor of the companion app first)
-      computer_room_used_devices:
-        friendly_name: "Computer room in use"
-        device_class: occupancy
-        value_template: >-
-          {% if is_state('switch.computer_thijs_wake_on_lan', 'on') or is_state('switch.computer_frits_wake_on_lan', 'on') or is_state('sensor.laptop_thijs_wifi_ap', 'upstairs') %}
-            yes
-          {% else %}
-            no
-          {% endif %}
-        icon_template: >-
-          {% if is_state('binary_sensor.computer_room_used_devices', 'on') %}
-            mdi:account-multiple
-          {% else %}
-            mdi:account-off
-          {% endif %}
+
       thijs_home:
         friendly_name: "Thijs is home"
         device_class: presence
@@ -214,4 +198,46 @@ binary_sensor:
             yes
           {% else %}
             no
+          {% endif %}
+
+# New-style template sensor format (the sensors above need to be converted as well)
+template:
+  - binary_sensor:
+      # Computer Thijs turned on
+      - name: "Computer Thijs used"
+        device_class: running
+        # Prevent a small power dip turning it off
+        delay_off: 0:00:10
+        state: >-
+          {% if states('sensor.computer_thijs_power')|int > 25 %}
+            yes
+          {% else %}
+            no
+          {% endif %}
+      # Computer Frits turned on
+      - name: "Computer Frits used"
+        device_class: running
+        # Prevent a small power dip turning it off
+        delay_off: 0:00:10
+        state: >-
+          {% if states('sensor.computer_frits_power')|int > 10 %}
+            yes
+          {% else %}
+            no
+          {% endif %}
+      # Computer room used based on computer activity
+      # - deals with remote work of Thijs by checking if home
+      - name: "Computer room used devices"
+        device_class: occupancy
+        state: >-
+          {% if (is_state('binary_sensor.computer_thijs_used', 'on') and is_state("binary_sensor.thijs_home", "on")) or is_state('binary_sensor.computer_frits_used', 'on') %}
+            yes
+          {% else %}
+            no
+          {% endif %}
+        icon: >-
+          {% if is_state('binary_sensor.computer_room_used_devices', 'on') %}
+            mdi:account-multiple
+          {% else %}
+            mdi:account-off
           {% endif %}
