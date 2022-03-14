@@ -1,0 +1,6 @@
+type: horizontal-stack
+cards:
+  - type: entity
+    entity: sensor.computer_thijs_power
+  - type: entity
+    entity: sensor.monitor_thijs_power
