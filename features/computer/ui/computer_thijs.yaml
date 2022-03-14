@@ -4,6 +4,8 @@ cards:
     entities:
       - entity: switch.computer_thijs_wake_on_lan
         name: Computer
+      - entity: switch.monitor_thijs
+        name: Monitor
   # Show real-time stats when turned on
   # Future: add tap_action with fancy popup with graphs
   - type: conditional
