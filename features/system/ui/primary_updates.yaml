@@ -18,15 +18,15 @@ card:
         # HA updates: button to the update page
         - type: conditional
           conditions:
-            - entity: binary_sensor.updater
+            - entity: binary_sensor.home_assistant_update_available
               state: "on"
           card:
             type: custom:button-card
-            entity: binary_sensor.updater
+            entity: binary_sensor.home_assistant_update_available
             name: Home Assistant
             show_icon: false
             show_label: true
-            label: "[[[ return states['binary_sensor.updater'].attributes.newest_version; ]]]"
+            label: "[[[ return states['binary_sensor.home_assistant_update_available'].attributes.newest_version; ]]]"
             tap_action:
               action: navigate
               navigation_path: /hassio/update-available/core

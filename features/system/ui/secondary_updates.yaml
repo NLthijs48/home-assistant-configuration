@@ -14,7 +14,7 @@ filter:
     - state: 'off'
 
     # HA update: already in primary_updates.yaml
-    - entity_id: binary_sensor.updater
+    - entity_id: binary_sensor.home_assistant_update_available
     # HACS updates: already in primary_updates.yaml
     - entity_id: binary_sensor.updates_available_hacs
 show_empty: false
