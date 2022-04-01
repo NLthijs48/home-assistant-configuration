@@ -12,6 +12,9 @@ cards:
         card:
           type: vertical-stack
           cards:
+          - type: entities
+            entities:
+              - entity: switch.water_pump
           - !include garden/temperature.yaml
           - !include garden/wind.yaml
           - !include garden/humidity.yaml
