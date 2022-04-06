@@ -1,0 +1,20 @@
+# Current power usage of devices
+type: custom:auto-entities
+card:
+  type: entities
+  title: By device
+filter:
+  include:
+    - attributes:
+        device_class: power
+      options:
+        secondary_info: last-changed
+      state: "> 0"
+  exclude:
+    - state: unavailable
+    - attributes:
+        unit_of_measurement: kW
+sort:
+  method: state
+  numeric: true
+  reverse: true
