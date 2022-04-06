@@ -7,7 +7,9 @@ powercalc:
   enable_autodiscovery: false
   scan_interval: 00:05:00 # Each 5 minutes (prevent spammy updates)
 
+# Device reference list: https://github.com/bramstroker/homeassistant-powercalc/blob/master/docs/supported_models.md
 sensor:
+  ########## LIGHTS
   # Sensor for all spots in the living room
   - platform: powercalc
     entity_id: light.dining_duck # Random entity id, to base default ids on
@@ -21,6 +23,21 @@ sensor:
     entity_id: light.tv_led_strip
     manufacturer: signify
     model: LST002
+  # Room Thijs: FLOALT panel WS 30x90
+  - platform: powercalc
+    entity_id: light.bedroom_thijs_ceiling
+    manufacturer: ikea
+    model: L1528
+  # Computer Room: FLOALT panel WS 30x30
+  - platform: powercalc
+    entity_id: light.computers_ceiling
+    manufacturer: ikea
+    model: L1527
+  # Attic color-changing light: TRADFRI bulb E27 CWS opal 600lm
+  - platform: powercalc
+    entity_id: light.attic_standing
+    manufacturer: ikea
+    model: LED1624G9
   # WLED CO2 LED strip
   - platform: powercalc
     entity_id: sensor.quinled_dig_uno_estimated_current
@@ -34,6 +51,13 @@ sensor:
     model: LED1650R5
     multiply_factor: 3
     multiply_factor_standby: true
+  ######### DEVICES
+  - platform: powercalc
+    name: T-mobile TV
+    daily_fixed_energy:
+      # 3 watt standby, around 4 watt when in-use (just always use standby since it is rarely on)
+      value: 3
+      unit_of_measurement: W
 
 # Sensor for all living room lights summed together
 template:
