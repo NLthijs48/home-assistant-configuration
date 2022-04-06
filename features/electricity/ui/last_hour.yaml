@@ -1,15 +1,23 @@
 # Electricity usage of the last hour
 type: 'custom:mini-graph-card'
 entities:
-  - entity: sensor.power_consumption
-    name: Power usage
+  - entity: sensor.power_consumption_watt
+    name: Whole house
     show_fill: false
     color: green
+  - entity: sensor.computer_thijs_power
+    name: 🖥️ Thijs
+    show_fill: false
+    color: '#EC623D44'
+  - entity: sensor.computer_frits_power
+    name: 🖥️ Frits
+    show_fill: false
+    color: '#02A4EA55'
 height: 130
 hour24: true
 hours_to_show: 1
 points_per_hour: 180
-decimals: 3
+decimals: 0
 line_width: 5
 lower_bound: 0
 show:
