@@ -87,3 +87,13 @@ template:
         device_class: power
         state_class: measurement
         icon: mdi:transmission-tower
+  - sensor:
+      - name: "Power consumption (watt)"
+        unit_of_measurement: W
+        state: >
+          {{
+            states('sensor.power_consumption') | float(default=0) * 1000
+          }}
+        device_class: power
+        state_class: measurement
+        icon: mdi:lightning-bolt-circle
