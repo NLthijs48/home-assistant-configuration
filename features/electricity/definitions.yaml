@@ -53,10 +53,22 @@ sensor:
     multiply_factor_standby: true
   ######### DEVICES
   - platform: powercalc
-    name: T-mobile TV
+    name: T-mobile TV energy
     daily_fixed_energy:
-      # 3 watt standby, around 4 watt when in-use (just always use standby since it is rarely on)
+      # Measured standby usage (around 4 watt when in-use), just always use standby since it is rarely on
       value: 3
+      unit_of_measurement: W
+  - platform: powercalc
+    name: Living Room Google Home energy
+    daily_fixed_energy:
+      # Measured standby usage
+      value: 1.6
+      unit_of_measurement: W
+  - platform: powercalc
+    name: Steam link energy
+    daily_fixed_energy:
+      # Measured standby usage
+      value: 0.9
       unit_of_measurement: W
 
 # Sensor for all living room lights summed together
