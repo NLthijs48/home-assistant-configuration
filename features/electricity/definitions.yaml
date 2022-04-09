@@ -59,6 +59,12 @@ sensor:
       value: 3
       unit_of_measurement: W
   - platform: powercalc
+    name: Powerline adapters energy
+    daily_fixed_energy:
+      # Measured standby usage, multiplied by 2
+      value: 4.2
+      unit_of_measurement: W
+  - platform: powercalc
     name: Living Room Google Home energy
     daily_fixed_energy:
       # Measured standby usage
