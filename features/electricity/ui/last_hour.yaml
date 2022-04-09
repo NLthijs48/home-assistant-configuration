@@ -13,7 +13,7 @@ entities:
     name: 🖥️ Frits
     show_fill: false
     color: '#02A4EA55'
-height: 130
+height: 150
 hour24: true
 hours_to_show: 1
 points_per_hour: 180
