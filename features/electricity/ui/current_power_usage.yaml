@@ -14,6 +14,7 @@ filter:
     - state: unavailable
     - attributes:
         unit_of_measurement: kW
+    - entity_id: sensor.power_consumption_watt
 sort:
   method: state
   numeric: true
