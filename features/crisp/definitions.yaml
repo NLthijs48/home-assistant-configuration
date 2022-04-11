@@ -43,6 +43,9 @@ rest:
       - name: "Crisp next order contents"
         # TODO: hide parts when zero
         value_template: "{{ value_json.data[0].products | length }} products, {{ value_json.data[0].recipes | length }} recipes"
+      # Feedback givven
+      - name: "Crisp next order feedback given"
+        value_template: "{{ value_json.data[0].feedback.rating }}"
 
   # Tracking link REST sensor
   - resource_template: >-
@@ -207,6 +210,14 @@ template:
           {% else %}
           Unavailable
           {% endif %}
+  - binary_sensor:
+      - name: Crisp next order show on home
+        unique_id: crisp_next_order_show_on_home
+        # Only hide when done and feedback is given
+        state: >-
+          {{ not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'done') or is_state('sensor.crisp_next_order_feedback_given', '') }}
+        availability: >-
+          {{ state_attr('sensor.crisp_next_order_raw', 'fulfillStatus') is not none }}
 
 # Cannot use secrets directly in templates, so use this helper to get around that
 input_text:

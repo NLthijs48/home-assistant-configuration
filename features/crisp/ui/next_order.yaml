@@ -1,107 +1,112 @@
-type: vertical-stack
-cards:
-  - type: custom:button-card
-    name: 🥐 Crisp
-    template: header_standalone
-    tap_action:
-      action: fire-dom-event
-      browser_mod:
-        command: popup
-        title: 🥐 Crisp
-        card:
-          type: entities
-          entities:
-            - entity: sensor.crisp_next_order_raw
-              name: Order
-            - entity: sensor.crisp_next_order_day
-              name: Day
-              icon: mdi:calendar
-            - entity: sensor.crisp_next_order_selected_timeslot
-              name: Timeslot
-              icon: mdi:clock-outline
-            - type: attribute
-              entity: sensor.crisp_next_order
-              attribute: details
-              name: Details
-            - entity: sensor.crisp_next_order_contents
-              name: Content
-              icon: mdi:food-croissant
-            - entity: sensor.crisp_next_order_tracking
-              name: Tracking
-              icon: mdi:map
-            - entity: sensor.crisp_next_order_tracking_details
-              name: Expected and driver
-              icon: mdi:account
-            - entity: sensor.crisp_next_order_tracking_location
-              name: Location
-              icon: mdi:map-marker
-            - entity: device_tracker.crisp_van
-              name: Van location
-            - entity: proximity.crisp_van
-              name: Van proximity
-  - type: horizontal-stack
-    cards:
-      # Information button
-      - type: custom:button-card
-        entity: sensor.crisp_next_order
-        name: >-
-          [[[ return states['sensor.crisp_next_order'].attributes.details; ]]]
-        show_state: true
-        show_icon: false
-        show_name: true
-        tap_action:
-          action: url
-          # When there is a delivery link: open that
-          # Otherwise link to the order in the app (easy to start edit after that)
-          url_path: >-
-            [[[ return states['sensor.crisp_next_order_raw'].attributes.deliveryLink && states['sensor.crisp_next_order_raw'].attributes.fulfillStatus != 'done' ? states['sensor.crisp_next_order_raw'].attributes.deliveryLink : states['sensor.crisp_next_order'].attributes.app_link; ]]]
-        styles:
+type: conditional
+conditions:
+  - entity: binary_sensor.crisp_next_order_show_on_home
+    state: on
+card:
+  type: vertical-stack
+  cards:
+    - type: custom:button-card
+      name: 🥐 Crisp
+      template: header_standalone
+      tap_action:
+        action: fire-dom-event
+        browser_mod:
+          command: popup
+          title: 🥐 Crisp
           card:
-            - height: 70px
-            - marginRight: 0
-          state:
-            - placeSelf: flex-start
-            - paddingLeft: 20px
-            # Move it into the 'name' slot
-            - gridArea: n / n / n / n
-          name:
-            - opacity: 0.6
-            - fontSize: 85%
-            - paddingTop: 3px
-            - placeSelf: flex-start
-            - paddingLeft: 20px
-            # Move it into the 'state' slot
-            - gridArea: s / s / s / s
-      # Icon button
-      - type: custom:button-card
-        entity: sensor.crisp_next_order
-        name: Details line
-        show_state: false
-        show_icon: true
-        show_name: false
-        styles:
-          card:
-            - height: 50px
-            - width: 50px
-            # Overlap it with the information button
-            - marginLeft: "-58px"
-            - boxShadow: 'none'
-            - background: 'transparent'
-            # Passthrough taps to the information button instead
-            - pointerEvents: 'none'
-          icon:
-            - height: 25px
-            - width: 25px
-  # Map with a Crisp van tracker
-  - type: conditional
-    conditions:
-      - entity: sensor.crisp_next_order_tracking_location
-        state: "available"
-    card:
-      type: map
-      entities:
-        - entity: device_tracker.crisp_van
-        - entity: zone.home
-      dark_mode: true
-      aspect_ratio: '2:1'
-      hours_to_show: 2
+            type: entities
+            entities:
+              - entity: sensor.crisp_next_order_raw
+                name: Order
+              - entity: sensor.crisp_next_order_day
+                name: Day
+                icon: mdi:calendar
+              - entity: sensor.crisp_next_order_selected_timeslot
+                name: Timeslot
+                icon: mdi:clock-outline
+              - type: attribute
+                entity: sensor.crisp_next_order
+                attribute: details
+                name: Details
+              - entity: sensor.crisp_next_order_contents
+                name: Content
+                icon: mdi:food-croissant
+              - entity: sensor.crisp_next_order_tracking
+                name: Tracking
+                icon: mdi:map
+              - entity: sensor.crisp_next_order_tracking_details
+                name: Expected and driver
+                icon: mdi:account
+              - entity: sensor.crisp_next_order_tracking_location
+                name: Location
+                icon: mdi:map-marker
+              - entity: device_tracker.crisp_van
+                name: Van location
+              - entity: proximity.crisp_van
+                name: Van proximity
+    - type: horizontal-stack
+      cards:
+        # Information button
+        - type: custom:button-card
+          entity: sensor.crisp_next_order
+          name: >-
+            [[[ return states['sensor.crisp_next_order'].attributes.details; ]]]
+          show_state: true
+          show_icon: false
+          show_name: true
+          tap_action:
+            action: url
+            # When there is a delivery link: open that
+            # Otherwise link to the order in the app (easy to start edit after that)
+            url_path: >-
+              [[[ return states['sensor.crisp_next_order_raw'].attributes.deliveryLink && states['sensor.crisp_next_order_raw'].attributes.fulfillStatus != 'done' ? states['sensor.crisp_next_order_raw'].attributes.deliveryLink : states['sensor.crisp_next_order'].attributes.app_link; ]]]
+          styles:
+            card:
+              - height: 70px
+              - marginRight: 0
+            state:
+              - placeSelf: flex-start
+              - paddingLeft: 20px
+              # Move it into the 'name' slot
+              - gridArea: n / n / n / n
+            name:
+              - opacity: 0.6
+              - fontSize: 85%
+              - paddingTop: 3px
+              - placeSelf: flex-start
+              - paddingLeft: 20px
+              # Move it into the 'state' slot
+              - gridArea: s / s / s / s
+        # Icon button
+        - type: custom:button-card
+          entity: sensor.crisp_next_order
+          name: Details line
+          show_state: false
+          show_icon: true
+          show_name: false
+          styles:
+            card:
+              - height: 50px
+              - width: 50px
+              # Overlap it with the information button
+              - marginLeft: "-58px"
+              - boxShadow: 'none'
+              - background: 'transparent'
+              # Passthrough taps to the information button instead
+              - pointerEvents: 'none'
+            icon:
+              - height: 25px
+              - width: 25px
+    # Map with a Crisp van tracker
+    - type: conditional
+      conditions:
+        - entity: sensor.crisp_next_order_tracking_location
+          state: "available"
+      card:
+        type: map
+        entities:
+          - entity: device_tracker.crisp_van
+          - entity: zone.home
+        dark_mode: true
+        aspect_ratio: '2:1'
+        hours_to_show: 2
