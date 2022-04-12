@@ -1,3 +1,20 @@
+# Home cinema
+
+This feature sets up integration with my TV (Philips 65PUS6503) and receiver (Onkyo TX-NR709).
+It offers easy to use buttons to switch between sources, which in turn updates the input of the TV and input of the receiver.
+
+### HDM-CEC setup
+
+Home Assistant does not support using the [HDMI-CEC plugin](https://www.home-assistant.io/integrations/hdmi_cec/) directly on the Raspberry Pi 4 anymore, since they don't want to maintain custom drivers for it.
+
+But I'm using a workaround for that:
+1. Added an extra supervisor addon repository: https://github.com/samueltardieu/homeassistant-addons
+2. Installed the HDMI-CEC addon: https://github.com/samueltardieu/homeassistant-addon-pi-cec
+3. Started the addon
+4. Configured the HDMI-CEC plugin to use the local hostname of the addon as host, which means it talks to it using TCP locally 
+
+### Receiver settings
+
 There is something wrong with my Onkyo receiver which causes it to lose its settings when it is disconnected from
 electricity.
 Would be cool to use the network control commands to setup all these settings: https://github.com/miracle2k/onkyo-eiscp
@@ -37,7 +54,7 @@ The following settings needs to be entered again:
 4. Source setup:
     1. Names
 5. Presets
-6. Misselanious:
+6. Miscellaneous:
     1. Volume setup
         1. Absolute
         2. Power on volume 40

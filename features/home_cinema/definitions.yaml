@@ -52,12 +52,20 @@ media_player:
   #   name: TV
   #   api_version: 6
 
-# HDMI setup as seen from the TV
-# Does not init properly currently...
-#hdmi_cec:
-#  platform: media_player
-#  devices:
-#    0: TV
-#    1: Receiver
-#    3: Chromecast
+# HDMI-CEC plugin to control connected devices
+# - Raspberry pi is connected to the Receiver using HDMI
+# - Host points to a supervisor addon, see readme.md
+hdmi_cec:
+  host: 58c14403-pi-cec
+  platform: media_player
+  # HDMI network layout as seen from the TV
+  devices:
+    TV: 0.0.0.0
+    Receiver: 1.0.0.0
+    # Connected to the receiver
+    T-Mobile: 1.3.0.0
+    Steam link: 1.4.0.0
+    Raspberry Pi: 1.7.0.0
 
+    Laptop: 2.0.0.0
+    Chromecast: 3.0.0.0
