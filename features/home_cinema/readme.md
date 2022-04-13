@@ -13,6 +13,18 @@ But I'm using a workaround for that:
 3. Started the addon
 4. Configured the HDMI-CEC plugin to use the local hostname of the addon as host, which means it talks to it using TCP locally 
 
+### Receiver cables
+- Power cable
+- `HDMI Out main` to the TV (supports ARC)
+- `HDMI 1 BD/DVD` to the Steam Link
+- `HDMI 3 CBL/SAT` to the T-Mobile TV box
+- `HDMI 5 PC` 
+- `HDMI 7` to the Raspberry Pi (for HDMI CEC and log messages)
+- `Optical 1 Game` to the bluetooth receiver (Marmitek BoomBoom 100)
+- `Pre out Front` to the bluetooth sender (Marmitek BoomBoom 100)
+- `Pre out subwoofer` to the active subwoofer
+- `Front R` + `Front L` to the speakers
+
 ### Receiver settings
 
 There is something wrong with my Onkyo receiver which causes it to lose its settings when it is disconnected from
