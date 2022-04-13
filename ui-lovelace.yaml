@@ -163,3 +163,28 @@ button_card_templates:
       # Good state
       - operator: "default"
         color: "var( --ha-card-background, var(--card-background-color, white) )"
+
+  # Home Cinema mode buttons
+  home_cinema_mode:
+    # Use color as card background instead of state text color
+    color_type: card
+    # iOS only feedback when pressing
+    haptic: light
+    # Square buttons
+    aspect_ratio: 1/1
+    # Custom styling
+    styles:
+      name:
+        # Smaller names to fit more buttons
+        - font-size: 0.9rem
+
+  # Tiny button for switching to less-used sources
+  home_cinema_mode_tiny:
+    template: home_cinema_mode
+    show_name: false
+    size: 65%
+    styles:
+      overlay:
+        - display: 'none'
+      lock:
+        - display: 'none'
