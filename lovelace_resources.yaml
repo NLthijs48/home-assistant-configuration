@@ -52,6 +52,9 @@
 # Check button cart (tasks/chores)
 - type: module
   url: /hacsfiles/check-button-card/check-button-card.js
+# Vacuum map card
+- type: module
+  url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
 
 # Sun card (unused)
 #- url: /hacsfiles/home-assistant-sun-card/home-assistant-sun-card.js
