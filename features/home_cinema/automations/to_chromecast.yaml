@@ -40,6 +40,7 @@
       entity_id: media_player.receiver
       attribute: source
       state: "TV"
+    # TODO: this is not compatible with the laptop source: in both cases the receiver is set to TV, but no clue what the TV itself is on
   action:
     # Update the mode
     - service: input_select.select_option

@@ -1,0 +1,37 @@
+alias: Home cinema - Laptop
+description: Use HDMI cable connected to the TV, probably connected to a laptop
+icon: mdi:laptop
+sequence:
+  - service: script.home_cinema_mode
+    data:
+      mode: laptop
+
+  # Turn on the TV (turns on the receiver as well)
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.hdmi_0
+
+  # TV to the Laptop input
+  - service: hdmi_cec.select_device
+    data:
+      device: 2.0.0.0
+
+  # Receiver to the TV input
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.receiver
+      source: TV
+
+  # Wait a bit, should be switched after that
+  - delay:
+      seconds: 3
+
+  # Force set the modoe again, and reset the pending state
+  # - unable to detect that the conditions are met for this mode, so just do an assumption
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.home_cinema_mode
+      option: "laptop"
+  - service: "input_boolean.turn_off"
+    data:
+      entity_id: "input_boolean.home_cinema_pending"

@@ -1,4 +1,4 @@
-- alias: Home cinema mode to TV (by checking receiver state)
+- alias: Home cinema mode to Steam link
   trigger:
     # Receiver changes source or state
     - platform: "state"
@@ -8,17 +8,17 @@
     - condition: "state"
       entity_id: "media_player.receiver"
       state: "on"
-    # Receiver is on the T-Mobile input
+    # Receiver is on the Steam link input
     - condition: "state"
       entity_id: media_player.receiver
       attribute: source
-      state: "T-Mobile"
+      state: "Steam link"
   action:
     # Update the mode
     - service: input_select.select_option
       data:
         entity_id: input_select.home_cinema_mode
-        option: "tv"
+        option: "steamLink"
     - service: "input_boolean.turn_off"
       data:
         entity_id: "input_boolean.home_cinema_pending"
