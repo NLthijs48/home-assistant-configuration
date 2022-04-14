@@ -1,7 +1,7 @@
 type: conditional
 conditions:
   - entity: binary_sensor.crisp_next_order_show_on_home
-    state: on
+    state: 'on'
 card:
   type: vertical-stack
   cards:
