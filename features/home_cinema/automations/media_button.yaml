@@ -1,0 +1,51 @@
+- alias: Home cinema media button determine icon and uri
+  id: home_cinema_button_icon_uri
+  trigger:
+    # Chromecast app changes
+    - platform: state
+      entity_id: media_player.4k
+      attribute: app_name
+  action:
+    - alias: Determine icon and uri
+      variables:
+        app_name: >-
+          {{ state_attr('media_player.4k', 'app_name') }}
+        icon_and_uri: >-
+          {% set icon = '-' %}
+          {% set uri = '-' %}
+
+          {% if app_name == 'Spotify' %}
+            {% set icon = 'mdi:spotify' %}
+            {# Alternative using url schemes on Android: spotify: #}
+            {# - Could use the 'media_content_id' attribute of the Chromecast, but that means playing that song again when clicking it (and is Android-only) #}
+            {% set uri = 'https://spotify.com' %}
+
+          {% elif app_name == 'YouTube' %}
+            {% set icon = 'mdi:youtube' %}
+            {# Alternative using url schemes on Android: vnd.youtube: #}
+            {% set uri = 'https://youtube.com' %}
+
+          {% elif app_name == 'Viaplay' %}
+            {% set icon = 'mdi:go-cart-track' %}
+            {# Open the Viaplay app to the sport section, homepage not connected to the app #}
+            {% set uri = 'https://viaplay.com/sport' %}
+
+          {% elif app_name == 'Netflix' %}
+            {% set icon = 'mdi:netflix' %}
+            {# Open the browse path, homepage not connected to the app #}
+            {% set uri = 'https://www.netflix.com/browse' %}
+
+          {% endif %}
+
+          {{ [icon, uri] }}
+        icon: '{{ icon_and_uri[0] }}'
+        uri: '{{ icon_and_uri[1] }}'
+    # Update the helpers
+    - service: input_text.set_value
+      data:
+        entity_id: input_text.home_cinema_media_icon
+        value: '{{ icon }}'
+    - service: input_text.set_value
+      data:
+        entity_id: input_text.home_cinema_media_uri
+        value: '{{ uri }}'

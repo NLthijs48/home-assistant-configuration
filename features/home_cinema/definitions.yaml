@@ -79,3 +79,13 @@ hdmi_cec:
 
     Laptop: 2.0.0.0
     Chromecast: 3.0.0.0
+
+
+# Data fields for button that goes to the currently playing media content
+input_text:
+  home_cinema_media_icon:
+    name: Home cinema media icon
+    icon: mdi:video-4k-box
+  home_cinema_media_uri:
+    name: Home cinema media uri
+    icon: mdi:link
