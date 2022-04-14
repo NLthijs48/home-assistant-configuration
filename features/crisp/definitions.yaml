@@ -141,10 +141,15 @@ template:
           details: >-
             {% set deliveryLink = state_attr('sensor.crisp_next_order_raw', 'deliveryLink') %}
             {% set fulfillStatus = state_attr('sensor.crisp_next_order_raw', 'fulfillStatus') %}
+            {% set feedback_given = not is_state('sensor.crisp_next_order_feedback_given', '') %}
 
             {# Delivered #}
             {% if fulfillStatus == 'done' %}
-              Delivered, enjoy!
+              {% if feedback_given %}
+                Delivered, and rated as {{ states('sensor.crisp_next_order_feedback_given') }}
+              {% else %}
+                Delivered, tap to give feedback
+              {% endif %}
 
             {# Cancelled #}
             {% elif fulfillStatus == 'cancel' %}
