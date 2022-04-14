@@ -1,13 +1,18 @@
 # Toggle monitor Thijs based on computer usage and being home
 - alias: Computer monitor Thijs toggle based on presence
+  id: presence_computer_monitor_thijs
   trigger:
     - platform: state
       entity_id: binary_sensor.computer_thijs_used
     - platform: state
       entity_id: binary_sensor.thijs_home
+      # Delay a bits
+      for:
+        seconds: 10
   action:
+    # When one of the sensors is unavailable: keep monitor turned on
     - service: >
-        {% if is_state('binary_sensor.computer_thijs_used', 'on') and is_state('binary_sensor.thijs_home', 'on') %}
+        {% if not is_state('binary_sensor.computer_thijs_used', 'off') and not is_state('binary_sensor.thijs_home', 'off') %}
           switch.turn_on
         {% else %}
           switch.turn_off
