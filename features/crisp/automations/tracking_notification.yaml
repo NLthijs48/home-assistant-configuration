@@ -60,6 +60,7 @@
     - platform: state
       entity_id: sensor.crisp_next_order_raw
       attribute: fulfillStatus
+      from: picked # Added to prevent unavailable -> done triggering notifications again
       to: done
   action:
     - alias: Send delivered notification
