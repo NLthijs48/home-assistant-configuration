@@ -17,3 +17,10 @@ binary_sensor:
       updates_available:
         friendly_name: "Updates available"
         value_template: "{{ is_state('update.home_assistant_core_update', 'on') or is_state('binary_sensor.updates_available_hacs', 'on') }}"
+
+input_boolean:
+  # Tracks if there are devices with low batteries
+  batteries_low:
+    name: Batteries low
+    icon: mdi:battery-charging-20
+    initial: off

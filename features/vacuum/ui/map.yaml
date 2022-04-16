@@ -6,3 +6,9 @@ calibration_source:
   camera: true
 entity: vacuum.roborock_s7
 vacuum_platform: default
+# TODO: use this for short-term info and move all other stuff to details.yaml?
+append_tiles:
+  - label: Current area
+    entity: sensor.roborock_s7_current_clean_area
+  - label: Current duration
+    entity: sensor.roborock_s7_current_clean_duration
