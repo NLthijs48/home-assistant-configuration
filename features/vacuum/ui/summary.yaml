@@ -1,0 +1,20 @@
+type: vertical-stack
+cards:
+  # Header with popup
+  - type: custom:button-card
+    name: 🧹 Vacuum
+    template: header_standalone
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
+        title: 🧹 Vacuum
+        card:
+          type: vertical-stack
+          cards:
+            - !include map.yaml
+            - !include details.yaml
+
+  # Summary (just the entity for now)
+  - type: entity
+    entity: vacuum.roborock_s7

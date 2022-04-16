@@ -1,0 +1,36 @@
+type: entities
+title: Details
+entities:
+  - device_tracker.roborock_s7
+
+  - type: section
+    label: Current/last round
+  - entity: sensor.roborock_s7_current_clean_area
+    name: Clean Area
+  - entity: sensor.roborock_s7_current_clean_duration
+    name: Clean Duration
+
+  - type: section
+    label: Statistics
+  - entity: sensor.roborock_s7_total_clean_area
+    name: Total Clean Area
+  - entity: sensor.roborock_s7_total_dust_collection_count
+    name: Total Dust Collection Count
+  - entity: sensor.roborock_s7_total_duration
+    name: Total duration
+
+  - type: section
+    label: Mopping
+  - entity: binary_sensor.roborock_s7_mop_attached
+    name: Mop Attached
+  - entity: binary_sensor.roborock_s7_water_box_attached
+    name: Water Box Attached
+  - entity: binary_sensor.roborock_s7_water_shortage
+    name: Water Shortage
+
+  - type: section
+    label: Do not disturb
+  - entity: sensor.roborock_s7_dnd_start
+    name: DnD Start
+  - entity: sensor.roborock_s7_dnd_end
+    name: DnD End
