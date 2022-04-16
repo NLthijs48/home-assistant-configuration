@@ -46,8 +46,9 @@ cards:
       #active: "{{ is_state('input_boolean.living_room_in_use', 'on') }}"
       styles:
         card:
-          - margin-top: -8px
+          - margin-top: -16px
           - border-radius: 0 0 4px 4px
+          - box-shadow: none
         label:
           - font-size: 1rem
           - opacity: 0.7
@@ -58,8 +59,9 @@ cards:
         navigation_path: /lovelace/lights
       styles:
         card:
-          - margin-top: -8px
+          - margin-top: -16px
           - border-radius: 0 0 4px 4px
+          - box-shadow: none
         name:
           - font-size: 1rem
           - opacity: 0.7
