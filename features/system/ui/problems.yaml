@@ -1,0 +1,15 @@
+# List of problem sensors that are active
+type: custom:auto-entities
+card:
+  type: entities
+  title: 🟥 Problems
+filter:
+  include:
+    - attributes:
+        device_class: problem
+  exclude:
+    - state: unavailable
+    - state: 'off'
+show_empty: false
+sort:
+  method: friendly_name

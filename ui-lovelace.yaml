@@ -29,7 +29,11 @@ views:
       # Maintenance column
       - type: vertical-stack
         cards:
+          # Might be an immediate thing
+          - !include features/system/ui/problems.yaml
+          # Kinda short-term: might get unavailable later
           - !include features/system/ui/battery_low.yaml
+          # Longer term, can wait
           - !include features/system/ui/primary_updates.yaml
           - !include features/system/ui/secondary_updates.yaml
 
