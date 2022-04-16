@@ -10,6 +10,8 @@
 .google.token
 # Components installed using the community store
 custom_components
+# Themes installed using the community store
+themes
 # Integrations installed using the community store
 www/community
 # Zigbee network (conbee stick)
