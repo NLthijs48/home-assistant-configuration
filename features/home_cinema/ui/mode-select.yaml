@@ -4,6 +4,38 @@ type: grid
 columns: 5
 cards:
 
+  # Off
+  - type: 'custom:button-card'
+    name: 'Off'
+    entity: script.home_cinema_off
+    template: home_cinema_mode
+    tap_action:
+      action: call-service
+      service: script.home_cinema_off
+    lock:
+      enabled: >-
+        [[[ return states["input_select.home_cinema_mode"].state === "off" ]]]
+      exemptions: []
+    state:
+      # Not active
+      - color: 'var( --ha-card-background, var(--card-background-color, white) )'
+        operator: template
+        value: >-
+          [[[ return states["input_select.home_cinema_mode"].state !== "off" ]]]
+      # Pending
+      - operator: template
+        color: orange
+        spin: true
+        icon: 'mdi:loading'
+        value: >-
+          [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
+        lock:
+          enabled: true
+          exemptions: []
+      # Active
+      - color: green
+        operator: default
+
   # Chromecast
   - type: 'custom:button-card'
     name: Chromecast
@@ -99,39 +131,6 @@ cards:
       # Active
       - color: green
         operator: default
-
-  # Off
-  - type: 'custom:button-card'
-    name: 'Off'
-    entity: script.home_cinema_off
-    template: home_cinema_mode
-    tap_action:
-      action: call-service
-      service: script.home_cinema_off
-    lock:
-      enabled: >-
-        [[[ return states["input_select.home_cinema_mode"].state === "off" ]]]
-      exemptions: []
-    state:
-      # Not active
-      - color: 'var( --ha-card-background, var(--card-background-color, white) )'
-        operator: template
-        value: >-
-          [[[ return states["input_select.home_cinema_mode"].state !== "off" ]]]
-      # Pending
-      - operator: template
-        color: orange
-        spin: true
-        icon: 'mdi:loading'
-        value: >-
-          [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
-        lock:
-          enabled: true
-          exemptions: []
-      # Active
-      - color: green
-        operator: default
-
 
   - type: grid
     columns: 2
