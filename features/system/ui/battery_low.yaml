@@ -7,7 +7,7 @@ card:
   cards:
     - type: custom:button-card
       name: 🔋 Battery low
-      template: header_standalone
+      template: header
 
     # List of entities with low batteries
     - type: 'custom:auto-entities'

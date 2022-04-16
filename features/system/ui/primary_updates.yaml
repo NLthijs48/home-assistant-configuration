@@ -14,7 +14,7 @@ card:
   cards:
     - type: custom:button-card
       name: ⬇️ Updates
-      template: header_standalone
+      template: header
     - type: horizontal-stack
       cards:
         # HA updates: button to the update page

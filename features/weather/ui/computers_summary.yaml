@@ -4,7 +4,7 @@ cards:
   # Header with popup
   - type: custom:button-card
     name: 🖱️ Game
-    template: header_standalone
+    template: header
     tap_action:
       action: fire-dom-event
       browser_mod:

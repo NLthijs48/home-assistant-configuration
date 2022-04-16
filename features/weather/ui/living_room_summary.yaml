@@ -3,7 +3,7 @@ type: vertical-stack
 cards:
   - type: custom:button-card
     name: 📺 Living room
-    template: header_standalone
+    template: header
     # Show details popup when clicking the header
     tap_action:
       action: fire-dom-event

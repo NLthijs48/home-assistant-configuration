@@ -7,7 +7,7 @@ card:
   cards:
     - type: custom:button-card
       name: 🥐 Crisp
-      template: header_standalone
+      template: header
       tap_action:
         action: fire-dom-event
         browser_mod:

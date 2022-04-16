@@ -8,7 +8,7 @@ card:
     # Show the current state and user
     - type: custom:button-card
       name: 👕 Washing machine
-      template: header_standalone
+      template: header
       tap_action:
         action: fire-dom-event
         browser_mod:

@@ -95,16 +95,6 @@ views:
 button_card_templates:
   # Card header that can be tapped
   header:
-    styles:
-      card:
-        - padding: 16px 16px 0 16px
-        - box-shadow: 'none'
-      name:
-        - justify-self: start
-        - font-size: 24px
-      label:
-        - justify-self: start
-  header_standalone:
     color: transparent
     color_type: card
     styles:

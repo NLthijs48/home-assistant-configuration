@@ -3,7 +3,7 @@ cards:
   # Header with popup
   - type: custom:button-card
     name: 🧹 Vacuum
-    template: header_standalone
+    template: header
     tap_action:
       action: fire-dom-event
       browser_mod:

@@ -4,7 +4,7 @@ cards:
   # Header with popup
   - type: custom:button-card
     name: 🛌 Thijs
-    template: header_standalone
+    template: header
     tap_action:
       action: fire-dom-event
       browser_mod:
