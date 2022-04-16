@@ -179,6 +179,9 @@ button_card_templates:
       name:
         # Smaller names to fit more buttons
         - font-size: 0.9rem
+      lock:
+        # Smaller lock (from 24px)
+        - width: 16px
 
   # Tiny button for switching to less-used sources
   home_cinema_mode_tiny:

@@ -35,19 +35,22 @@ cards:
               - height: 88px
               - width: 88px
 
-  # Shows status of all media players that are active
-  - type: entities
-    show_header_toggle: false
-    entities:
-
-      # Show receiver when not off
-      - type: conditional
-        conditions:
-          - entity: media_player.receiver
-            state_not: 'off'
-        row:
-          # Would like to have a speaker icon in front of this in the future, currently not setting for it
-          type: custom:slider-entity-row
+  # Show receiver when not off
+  - type: conditional
+    conditions:
+      - entity: media_player.receiver
+        state_not: 'off'
+    card:
+      type: entities
+      show_header_toggle: false
+      card_mod:
+        style: |
+          #states {
+            padding: 0;
+          }
+      entities:
+        # Would like to have a speaker icon in front of this in the future, currently not setting for it
+        - type: custom:slider-entity-row
           entity: media_player.receiver
           full_row: true
           grow: true
@@ -65,28 +68,27 @@ cards:
           #   mute: true
           #   power: true
 
-      # Personal Spotify card when playing
-      # TODO: try hiding this when state!=playing (conditional card did not work)
-      #  - type: custom:state-switch
-      #    entity: user
-      #    states:
-      #      Thijs:
-      #        type: 'custom:mini-media-player'
-      #        entity: media_player.spotify_thijs
-      #        artwork: cover
-      #        hide:
-      #          source: true
-      #          icon: true
-      #          power: true
+  # Google home (when not off)
+  - type: conditional
+    conditions:
+      - entity: media_player.google_home_mini_living_room
+        state_not: 'off'
+    card:
+      type: 'custom:mini-media-player'
+      name: Google Home Mini
+      icon: 'mdi:google-home'
+      entity: media_player.google_home_mini_living_room
 
-      # Google home (when not off)
-      - type: conditional
-        conditions:
-          - entity: media_player.google_home_mini_living_room
-            state_not: 'off'
-        row:
-          type: 'custom:mini-media-player'
-          name: Google Home Mini
-          icon: 'mdi:google-home'
-          entity: media_player.google_home_mini_living_room
-          group: true
+  # Personal Spotify card when playing
+  # TODO: try hiding this when state!=playing (conditional card did not work)
+  #  - type: custom:state-switch
+  #    entity: user
+  #    states:
+  #      Thijs:
+  #        type: 'custom:mini-media-player'
+  #        entity: media_player.spotify_thijs
+  #        artwork: cover
+  #        hide:
+  #          source: true
+  #          icon: true
+  #          power: true
