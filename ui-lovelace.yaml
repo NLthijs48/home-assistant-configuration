@@ -93,6 +93,7 @@ button_card_templates:
     styles:
       card:
         - padding: 16px 16px 0 16px
+        - box-shadow: 'none'
       name:
         - justify-self: start
         - font-size: 24px
@@ -105,6 +106,7 @@ button_card_templates:
       card:
         - padding: 20px 16px 8px 16px
         - margin-bottom: -8px
+        - box-shadow: 'none'
       name:
         - font-size: 20px
 
