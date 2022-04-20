@@ -76,6 +76,36 @@ sensor:
       # Measured standby usage
       value: 0.9
       unit_of_measurement: W
+  - platform: powercalc
+    name: Switch # Meterkast
+    daily_fixed_energy:
+      # Measured standby usage
+      value: 4,7
+      unit_of_measurement: W
+  - platform: powercalc
+    name: Unifi Security Gateway
+    daily_fixed_energy:
+      # Measured standby usage
+      value: 8
+      unit_of_measurement: W
+  - platform: powercalc
+    name: POE access point living room
+    daily_fixed_energy:
+      # Measured standby usage
+      value: 3.7
+      unit_of_measurement: W
+  - platform: powercalc
+    name: POE access point room Thijs
+    daily_fixed_energy:
+      # Measured standby usage
+      value: 3.7
+      unit_of_measurement: W
+  - platform: powercalc
+    name: T-Mobile modem
+    daily_fixed_energy:
+      # Measured standby usage, varies a bit by usage, but not much
+      value: 6.6
+      unit_of_measurement: W
 
 # Sensor for all living room lights summed together
 template:
