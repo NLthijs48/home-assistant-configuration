@@ -11,9 +11,26 @@ camera:
     attributes:
       - calibration_points
     map_transformation:
-      scale: 2
+      # Add a lot more pixels
+      scale: 3
+      # Trim useless parts around the map
       trim:
         top: 30
         right: 24
         bottom: 33
         left: 25
+    colors:
+      # Transparent color for 'outside'
+      color_map_outside: [0, 0, 0, 0]
+      # Transparent white for areas outside walls
+      color_grey_wall: [240, 240, 240, 64] # Maybe do this one full transparent?
+      # White for walls/obstacles
+      color_map_wall_v2: [240, 240, 240]
+      # Bright path color
+      color_path: [255, 255, 255]
+      # Color of the vacuum in nice orange
+      color_robo: [236, 98, 61]
+    # TODO: room colors
+    sizes:
+      charger_radius: 6
+      vacuum_radius: 8
