@@ -54,54 +54,63 @@ sensor:
   ######### DEVICES
   - platform: powercalc
     name: T-mobile TV energy
+    unique_id: 6093f88e-608d-4cba-b842-99acb4a1ddc9
     daily_fixed_energy:
       # Measured standby usage (around 4 watt when in-use), just always use standby since it is rarely on
       value: 3
       unit_of_measurement: W
   - platform: powercalc
     name: Powerline adapters energy
+    unique_id: e6e5a0f6-ac44-4e48-9dd5-2b9cdfb2f850
     daily_fixed_energy:
       # Measured standby usage, multiplied by 2
       value: 4.2
       unit_of_measurement: W
   - platform: powercalc
     name: Living Room Google Home energy
+    unique_id: 660f2329-3889-4c55-92a9-0eb1ff3eb94b
     daily_fixed_energy:
       # Measured standby usage
       value: 1.6
       unit_of_measurement: W
   - platform: powercalc
     name: Steam link energy
+    unique_id: f71009cb-3dcb-49b6-bfec-3732d78397cb
     daily_fixed_energy:
       # Measured standby usage
       value: 0.9
       unit_of_measurement: W
   - platform: powercalc
-    name: Switch # Meterkast
+    name: Switch energy # Meterkast
+    unique_id: 3ce299cc-3f28-422d-b35b-48533c1d9342
     daily_fixed_energy:
       # Measured standby usage
       value: 4,7
       unit_of_measurement: W
   - platform: powercalc
-    name: Unifi Security Gateway
+    name: Unifi Security Gateway energy
+    unique_id: acfa404f-cd76-4f60-9b57-81199b5a8478
     daily_fixed_energy:
       # Measured standby usage
       value: 8
       unit_of_measurement: W
   - platform: powercalc
-    name: POE access point living room
+    name: POE access point living room energy
+    unique_id: 95936c3d-9a7b-44d1-a930-98f17d65f920
     daily_fixed_energy:
       # Measured standby usage
       value: 3.7
       unit_of_measurement: W
   - platform: powercalc
-    name: POE access point room Thijs
+    name: POE access point room Thijs energy
+    unique_id: ae62bb42-ffab-4748-a37e-3fdc567a1c46
     daily_fixed_energy:
       # Measured standby usage
       value: 3.7
       unit_of_measurement: W
   - platform: powercalc
-    name: T-Mobile modem
+    name: T-Mobile modem energy
+    unique_id: b3e60978-da9c-4a61-8e1e-599b01682507
     daily_fixed_energy:
       # Measured standby usage, varies a bit by usage, but not much
       value: 6.6
