@@ -1,0 +1,33 @@
+alias: "Set Roborock scrub intensity"
+mode: single
+fields:
+  scrub_intensity:
+    description: "Scrub intensity, can be: off|low|medium|high|customized"
+    example: "off"
+sequence:
+  - alias: "Lookup variables"
+    variables:
+      scrub_intensity_options:
+        'off': 200
+        low: 201
+        medium: 202
+        high: 203
+        customized: 204
+      scrub_intensity_code: "{{ scrub_intensity_options[scrub_intensity] }}"
+  - choose:
+      - alias: "Invalid scrub_intensity value"
+        conditions: "{{ scrub_intensity not in scrub_intensity_options|list }}"
+        sequence:
+          - service: system_log.write
+            data:
+              message: "Invalid scrub_intensity value '{{ scrub_intensity }}'. Valid values are {{ scrub_intensity_options|list|join(', ') }}"
+              level: warning
+              logger: roborock
+    default:
+      - alias: "Set vacuum scrub intensityy"
+        service: vacuum.send_command
+        target:
+          entity_id: vacuum.roborock
+        data:
+          command: set_water_box_custom_mode
+          params: "[{{ scrub_intensity_code }}]"

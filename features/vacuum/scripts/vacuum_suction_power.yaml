@@ -1,0 +1,33 @@
+alias: "Set Roborock vacuum suction power"
+mode: single
+fields:
+  suction_power:
+    description: "Suction power, can be: silent|balanced|turbo|max|customized"
+    example: "max"
+sequence:
+  - alias: "Lookup variables"
+    variables:
+      suction_power_options:
+        silent: 101
+        balanced: 102
+        turbo: 103
+        max: 104
+        customized: 106 # Follow the individual room settings
+      suction_power_code: "{{ suction_power_options[suction_power] }}"
+  - choose:
+      - alias: "Invalid suction_power value"
+        conditions: "{{ suction_power not in suction_power_options|list }}"
+        sequence:
+          - service: system_log.write
+            data:
+              message: "Invalid suction_power value '{{ suction_power }}'. Valid values are {{ suction_power_options|list|join(', ') }}"
+              level: warning
+              logger: roborock
+    default:
+      - alias: "Set vacuum suction power mode"
+        service: vacuum.send_command
+        target:
+          entity_id: vacuum.roborock
+        data:
+          command: set_custom_mode
+          params: "[{{ suction_power_code }}]"
