@@ -15,6 +15,16 @@ cards:
             - !include map.yaml
             - !include details.yaml
 
-  # Summary (just the entity for now)
+  # Entity state
   - type: entity
     entity: vacuum.roborock_s7
+  # Map
+  - type: conditional
+    conditions:
+      - entity: vacuum.roborock_s7
+        state_not: docked
+    card:
+      type: picture-glance
+      camera_view: auto
+      entities: []
+      camera_image: camera.roborock_s7_map
