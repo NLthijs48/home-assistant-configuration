@@ -14,13 +14,13 @@ filter:
     - state: unavailable
     - state: 'off'
 
-    # HA update: already in primary_updates.yaml
-    - entity_id: binary_sensor.home_assistant_update_available
     - entity_id: update.home_assistant_core_update
     # HACS updates: already in primary_updates.yaml
     - entity_id: binary_sensor.updates_available_hacs
     # Already available as update.* sensor
     - entity_id: binary_sensor.co2_living_room_firmware
+    # Old sensors for Home assistant itself and all supervisor addons
+    - entity_id: binary_sensor.*_update_available
 show_empty: false
 sort:
   method: friendly_name
