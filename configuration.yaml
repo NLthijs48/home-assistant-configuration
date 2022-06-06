@@ -43,10 +43,6 @@ browser_mod:
 http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
-  trusted_proxies:
-    # Proxies from secrets.domain -> secrets.no_ip_domain
-    - !secret proxy_ip
-  use_x_forwarded_for: true
 
 # Setup history database (MariaDB addon)
 recorder:
