@@ -19,3 +19,9 @@ Sets up network related monitoring and automations.
     - SSH into devices and use `set-inform http://10.0.2.28:8880/inform` to connect them
 - [Unifi integration](https://www.home-assistant.io/integrations/unifi/)
     - Creates device trackers to know which devices are home, and on which floor 
+- [LetsEncrypt add-on](https://github.com/home-assistant/addons/tree/master/letsencrypt)
+  - Creates certificates for the in-between dynamic DNS domain and the actually used custom domain
+- [samba add-on](https://github.com/home-assistant/addons/tree/master/samba)
+  - Used to make configuration changes easy from another computer on the network
+- [ssh add-on](https://github.com/home-assistant/addons/tree/master/ssh)
+  - Used to access home assistant in case the UI is unavailable

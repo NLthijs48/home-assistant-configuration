@@ -15,4 +15,11 @@ This repository contains all automations and UI that makes my house smart, as we
     - Only does high-level layouting, just including cards from one of the `features/` folders
     - Contains some templates for the button-card component, apparently that can only be defined here
     
-
+# Hardware
+- Raspberry Pi 4 Model B - 4GB
+- [Samsung 850 EVO 500gb](https://www.samsung.com/nl/business/memory-storage/sata-ssd/850-evo-sata-3-2-5-inch-ssd-mz-75e500b-eu/) ssd
+  - The database is stored on here, the HA operating system is on the SD card 
+- [Sitecom USB 3.0 hub 4 port](https://www.sitecom.com/nl/usb-30-hub-4-port/cn-083/p/1721)
+  - Used to connect the SSD, actively powered to prevent overloading the power supply of the Raspberry pi itself
+- [Ewent USB 3.2 to 2.5 inch SATA Hard Drive Adapter Cable for SSD / HDD](https://www.ewent.com/en-us/2-5-sata-hdd-ssd-to-usb-adapter-cable-ew7017)
+  - Used to connect the SSD to the USB hub

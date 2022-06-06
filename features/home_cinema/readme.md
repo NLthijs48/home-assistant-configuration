@@ -3,6 +3,22 @@
 This feature sets up integration with my TV (Philips 65PUS6503) and receiver (Onkyo TX-NR709).
 It offers easy to use buttons to switch between sources, which in turn updates the input of the TV and input of the receiver.
 
+### Hardware
+- [Onkyo TX-NR709](https://tweakers.net/pricewatch/286763/onkyo-tx-nr709/specificaties/) receiver
+- Set of [Hepta](https://www.hepta.nl/) Street Gold speakers 
+- [Marmitek BoomBoom 100](https://marmitek.com/products/boomboom-100-bluetooth-transmitter-receiver-in-1) bluetooth receiver
+  - Connected to the receiver to connected devices over bluetooth
+- [Philips 65PUS6503](https://www.philips.nl/c-p/65PUS6503_12/6500-series-ultraslanke-4k-uhd-led-smart-tv) TV
+  - Has an api that breaks after ~10 calls, pretty useless (HDMI control works though)
+- [Chromecast 4K](https://store.google.com/product/chromecast)
+
+### Software
+- [Onkyo](https://www.home-assistant.io/integrations/onkyo/) integration
+- HA phone app to detect connected bluetooth device and select that input on the receiver
+- [Chromecast integration](https://www.home-assistant.io/integrations/cast/)
+- [Spotify integration](https://www.home-assistant.io/integrations/spotify)
+  - Play music, and show playlist UI
+
 ### HDM-CEC setup
 
 Home Assistant does not support using the [HDMI-CEC plugin](https://www.home-assistant.io/integrations/hdmi_cec/) directly on the Raspberry Pi 4 anymore, since they don't want to maintain custom drivers for it.
