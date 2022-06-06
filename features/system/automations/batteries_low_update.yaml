@@ -9,6 +9,7 @@
           {{
             states
             | selectattr("attributes.device_class", 'equalto', 'battery')
+            | selectattr("attributes.unit_of_measurement", 'equalto', '%')
             | selectattr("state", '!=', 'unavailable')
             | selectattr("state", '!=', none)
             | map(attribute="state")
