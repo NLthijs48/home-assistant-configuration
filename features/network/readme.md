@@ -16,5 +16,6 @@ Sets up network related monitoring and automations.
 ### Software
 - [Unifi network application Add-on](https://github.com/hassio-addons/addon-unifi) as the Unifi controller
     - Runs on the Raspberry Pi like HASS OS
+    - SSH into devices and use `set-inform http://10.0.2.28:8880/inform` to connect them
 - [Unifi integration](https://www.home-assistant.io/integrations/unifi/)
     - Creates device trackers to know which devices are home, and on which floor 
