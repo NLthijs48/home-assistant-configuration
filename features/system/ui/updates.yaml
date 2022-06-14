@@ -1,0 +1,115 @@
+type: vertical-stack
+cards:
+  # Home Assistant core+supervisor+OS
+  - type: 'custom:auto-entities'
+    card:
+      type: entities
+      title: Home Assistant
+    filter:
+      include:
+        - entity_id: update.home_assistant_core_update
+        - entity_id: update.home_assistant_supervisor_update
+        - entity_id: update.home_assistant_operating_system_update
+      exclude:
+        - state: unavailable
+        - state: 'off'
+    show_empty: false
+    sort:
+      method: friendly_name
+
+  # HACS
+  - type: 'custom:auto-entities'
+    card:
+      type: entities
+      title: HACS
+    filter:
+      include:
+        - entity_id: update.*
+          integration: hacs
+      exclude:
+        - state: unavailable
+        - state: 'off'
+    show_empty: false
+    sort:
+      method: friendly_name
+
+  # Addons
+  - type: 'custom:auto-entities'
+    card:
+      type: entities
+      title: Add-ons
+    filter:
+      include:
+        - entity_id: update.*
+          attributes:
+            entity_picture: '*addons*'
+          # Ideally use this, but that does not work yet: integration: supervisor
+      exclude:
+        - state: unavailable
+        - state: 'off'
+    show_empty: false
+    sort:
+      method: friendly_name
+
+  # WLED
+  - type: 'custom:auto-entities'
+    card:
+      type: entities
+      title: WLED
+    filter:
+      include:
+        - entity_id: update.*
+          integration: wled
+      exclude:
+        - state: unavailable
+        - state: 'off'
+    show_empty: false
+    sort:
+      method: friendly_name
+
+  # Unifi
+  - type: 'custom:auto-entities'
+    card:
+      type: entities
+      title: Unifi
+    filter:
+      include:
+        - entity_id: update.*
+          integration: unifi
+      exclude:
+        - state: unavailable
+        - state: 'off'
+    show_empty: false
+    sort:
+      method: friendly_name
+
+  # Other
+  - type: 'custom:auto-entities'
+    card:
+      type: entities
+      title: Other
+    filter:
+      include:
+        # New update sensors
+        - entity_id: update.*
+        # Old sensors, will be phased out
+        - entity_id: binary_sensor.*
+          attributes:
+            device_class: update
+        - entity_id: binary_sensor.*
+          attributes:
+            device_class: firmware
+      exclude:
+        - state: unavailable
+        - state: 'off'
+        - entity_id: update.home_assistant_core_update
+        - entity_id: update.home_assistant_supervisor_update
+        - entity_id: update.home_assistant_operating_system_update
+        - attributes:
+            entity_picture: '*addons*'
+        - integration: unifi
+        - integration: wled
+        - integration: hacs
+    show_empty: false
+    sort:
+      method: friendly_name

@@ -34,9 +34,6 @@ views:
           - !include features/system/ui/problems.yaml
           # Kinda short-term: might get unavailable later
           - !include features/system/ui/battery_low.yaml
-          # Longer term, can wait
-          - !include features/system/ui/primary_updates.yaml
-          - !include features/system/ui/secondary_updates.yaml
 
       # - !include features/weather/ui/buienalarm.yaml, Constantly broken, look for fix
       # - !include ui/media/plex-status.yaml, not useful yet
@@ -90,6 +87,13 @@ views:
       - !include features/lighting/ui/floor_0.yaml
       - !include features/lighting/ui/floor_1.yaml
       - !include features/lighting/ui/floor_2.yaml
+
+  # Updates
+  - icon: mdi:download
+    path: updates
+    badges: []
+    cards:
+      - !include features/system/ui/updates.yaml
 
 # Templates for type:custom-button
 button_card_templates:
