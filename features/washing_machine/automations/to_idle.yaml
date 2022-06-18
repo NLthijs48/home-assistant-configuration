@@ -21,8 +21,14 @@
           {% if is_state("binary_sensor.thijs_home", "on") and is_state("binary_sensor.frits_home", "on") %}
             {# Both home, try checking the floor #}
             {% if is_state('sensor.phone_thijs_wifi_ap', 'upstairs') and is_state('sensor.phone_frits_wifi_ap', 'upstairs') %}
-              {# Both upstairs, don't know #}
-              -
+              {# Both upstairs #}
+              {% if is_state('input_boolean.thijs_sleepy', 'on') %}
+                {# Frits did it, Thijs is still sleeping #}
+                Frits
+              {% else %}
+                {# Don't know: guess Thijs #}
+                Thijs
+              {% endif %}
             {% elif is_state('sensor.phone_thijs_wifi_ap', 'upstairs') %}
               {# Only Thijs is upstairs #}
               Thijs
@@ -37,8 +43,8 @@
             {# Only Frits is home #}
             Frits
           {% else %}
-            {# Nobody home?! #}
-            -
+            {# Nobody home?! guess Thijs #}
+            Thijs
           {% endif %}
     - service: input_select.select_option
       target:
