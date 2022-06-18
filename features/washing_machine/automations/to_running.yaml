@@ -12,6 +12,11 @@
     - condition: state
       entity_id: input_select.washing_machine
       state: 'Idle'
+    # Allow from Done (restarting while not marked as done)
+    # - Ideally this would detect the person that activated it again, don't want to duplicate that though
+    - condition: state
+      entity_id: input_select.washing_machine
+      state: 'Done'
   action:
     - service: input_select.select_option
       target:
