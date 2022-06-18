@@ -53,6 +53,27 @@
               title: Routigo Tracker
               uri: "{{ state_attr('sensor.crisp_next_order_raw', 'deliveryLink') }}"
 
+# Driver is close
+- alias: Crisp order driver is close
+  id: crisp.driver_is_close
+  trigger:
+    - platform: numeric_state
+      entity_id: proximity.crisp_van
+      below: 150 # Meters
+  action:
+    - alias: Send driver is close notification
+      service: notify.mobile_app_phone_thijs
+      data:
+        title: Crisp van is around the block!
+        message: >-
+          {{ states("sensor.crisp_next_order_contents") }}
+        data:
+          tag: crisp_next_order_close
+          channel: Crisp next order
+          importance: high
+          notification_icon: "mdi:food-croissant"
+          timeout: 60 # Remove pretty quick, persistent order notification keeps showing anyway
+
 # Order delivered
 - alias: Crisp order delivered notification
   id: crisp.delivered_notification
