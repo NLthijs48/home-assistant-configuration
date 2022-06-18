@@ -100,15 +100,18 @@ homeassistant:
     # Motion sensors
     "sensor.motion_*": # Legacy, renaming to the one below
       icon: mdi:motion-sensor
-    "sensor.*_motion_sensor":
+    "sensor.*_motion_sensor*":
       icon: mdi:motion-sensor
-    "binary_sensor.*_motion_sensor":
+    "binary_sensor.*_motion_sensor*":
       icon: mdi:motion-sensor
     # Remotes
     "sensor.remote_*": # Legacy, renaming to the one below
       icon: mdi:remote-tv
     "sensor.*_remote":
       icon: mdi:remote-tv
+    # Identify buttons
+    "button.*_identify":
+      icon: mdi:card-account-details
 
 
 # Light groups
