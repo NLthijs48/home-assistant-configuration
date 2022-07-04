@@ -26,7 +26,7 @@
             {% set uri = 'https://youtube.com' %}
 
           {% elif app_name == 'Viaplay' %}
-            {% set icon = 'mdi:go-cart-track' %}
+            {% set icon = 'mdi:go-kart-track' %}
             {# Open the Viaplay app to the sport section, homepage not connected to the app #}
             {% set uri = 'https://viaplay.com/sport' %}
 
