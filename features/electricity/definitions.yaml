@@ -108,13 +108,14 @@ sensor:
       # Measured standby usage
       value: 3.7
       unit_of_measurement: W
-  - platform: powercalc
-    name: T-Mobile modem energy
-    unique_id: b3e60978-da9c-4a61-8e1e-599b01682507
-    daily_fixed_energy:
-      # Measured standby usage, varies a bit by usage, but not much
-      value: 6.6
-      unit_of_measurement: W
+  # Disabled now, directly using the Ubiquiti USG
+  #- platform: powercalc
+  #  name: T-Mobile modem energy
+  #  unique_id: b3e60978-da9c-4a61-8e1e-599b01682507
+  #  daily_fixed_energy:
+  #    # Measured standby usage, varies a bit by usage, but not much
+  #    value: 6.6
+  #    unit_of_measurement: W
 
 # Sensor for all living room lights summed together
 template:
