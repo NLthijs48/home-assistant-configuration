@@ -27,10 +27,3 @@ entities:
     name: Water Box Attached
   - entity: binary_sensor.roborock_s7_water_shortage
     name: Water Shortage
-
-  - type: section
-    label: Do not disturb
-  - entity: sensor.roborock_s7_dnd_start
-    name: DnD Start
-  - entity: sensor.roborock_s7_dnd_end
-    name: DnD End
