@@ -24,6 +24,10 @@ camera:
     draw: ['all']
     attributes:
       - calibration_points
+      #- rooms (only for setup of rooms for the card)
+      - map_name
+      - vacuum_room_name
+      - vacuum_room
     map_transformation:
       # Add a lot more pixels
       scale: 3
