@@ -1,0 +1,27 @@
+alias: Start vacuum route
+mode: single
+sequence:
+  - alias: Variables
+    variables:
+      suction_power: turbo
+
+  # Disable mopping
+  - alias: Disable mopping
+    service: script.roborock_mop_scrub_intensity
+    target:
+      entity_id: vacuum.roborock_s7
+    data:
+      scrub_intensity: 'off'
+  # Enable vacuum with correct power
+  - alias: Set vacuum suction power
+    service: script.roborock_vacuum_suction_power
+    target:
+      entity_id: vacuum.roborock_s7
+    data:
+      suction_power: '{{ suction_power }}'
+
+  # Start
+  - alias: Start
+    service: vacuum.start
+    target:
+      entity_id: vacuum.roborock_s7

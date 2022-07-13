@@ -2,6 +2,10 @@
 # - Based on community thread: https://community.home-assistant.io/t/s7-mop-control/317393/26
 # - Github discussion about adding this to vacuum by default: https://github.com/home-assistant/architecture/discussions/684
 script:
+  # Do a thing
+  roborock_mop: !include scripts/mop.yaml
+  roborock_vacuum: !include scripts/vacuum.yaml
+  # Update settings
   roborock_vacuum_suction_power: !include scripts/vacuum_suction_power.yaml
   roborock_mop_scrub_intensity: !include scripts/mop_scrub_intensity.yaml
   roborock_mop_route: !include scripts/mop_route.yaml

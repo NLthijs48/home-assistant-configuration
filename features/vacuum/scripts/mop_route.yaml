@@ -28,7 +28,7 @@ sequence:
       - alias: Set mopping route
         service: vacuum.send_command
         target:
-          entity_id: vacuum.roborock_vacuum_a15
+          entity_id: vacuum.roborock_s7
         data:
           command: set_mop_mode
           params: '[{{ mopping_route }}]'
