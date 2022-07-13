@@ -7,6 +7,7 @@ calibration_source:
 entity: vacuum.roborock_s7
 vacuum_platform: default
 # TODO: preset for other floors
+#- https://github.com/PiotrMachowski/Home-Assistant-custom-components-Xiaomi-Cloud-Map-Extractor/issues/67
 # Define map modes
 # - room setup done using: https://github.com/PiotrMachowski/lovelace-xiaomi-vacuum-map-card/discussions/317
 # - TODO: add go to point for the bin?
