@@ -28,7 +28,7 @@ cards:
   - type: conditional
     conditions:
       - entity: vacuum.roborock_s7
-        state_not: cleaning
+        state: docked
     card:
       type: horizontal-stack
       cards:
