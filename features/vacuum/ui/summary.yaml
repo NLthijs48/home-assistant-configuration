@@ -15,9 +15,14 @@ cards:
             - !include map.yaml
             - !include details.yaml
 
-  # Entity state
-  - type: entity
-    entity: vacuum.roborock_s7
+  # Entity state (when not docked)
+  - type: conditional
+    conditions:
+      - entity: vacuum.roborock_s7
+        state_not: docked
+    card:
+      type: entity
+      entity: vacuum.roborock_s7
 
   # Start buttons (when not cleaning)
   - type: conditional
