@@ -29,9 +29,6 @@ cards:
         icon: 'mdi:loading'
         value: >-
           [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
-        lock:
-          enabled: true
-          exemptions: []
       # Active
       - color: green
         operator: default
@@ -61,9 +58,6 @@ cards:
         icon: 'mdi:loading'
         value: >-
           [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
-        lock:
-          enabled: true
-          exemptions: []
       # Active
       - color: green
         operator: default
@@ -93,9 +87,6 @@ cards:
         icon: 'mdi:loading'
         value: >-
           [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
-        lock:
-          enabled: true
-          exemptions: []
       # Active
       - color: green
         operator: default
@@ -125,9 +116,6 @@ cards:
         icon: 'mdi:loading'
         value: >-
           [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
-        lock:
-          enabled: true
-          exemptions: []
       # Active
       - color: green
         operator: default
