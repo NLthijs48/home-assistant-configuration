@@ -15,11 +15,15 @@ cards:
             - !include map.yaml
             - !include details.yaml
 
-  # Entity state (when not docked)
+  # Entity state (when not docked or idle)
   - type: conditional
     conditions:
+      # On the dock/charger
       - entity: vacuum.roborock_s7
         state_not: docked
+      # Idle (happens when placing it on another floor)
+      - entity: vacuum.roborock_s7
+        state_not: idle
     card:
       type: entity
       entity: vacuum.roborock_s7
@@ -28,7 +32,13 @@ cards:
   - type: conditional
     conditions:
       - entity: vacuum.roborock_s7
-        state: docked
+        state_not: cleaning
+      - entity: vacuum.roborock_s7
+        state_not: returning
+      - entity: vacuum.roborock_s7
+        state_not: paused
+      - entity: vacuum.roborock_s7
+        state_not: error
     card:
       type: horizontal-stack
       cards:
