@@ -1,4 +1,4 @@
-- alias: Turn off after being idle for a while
+- alias: Home cinema turn off after being idle for a while
   trigger:
     # Chromecast is idle/off for a while
     # Note: when stopping playback it goes to 'off', while it is still showing the photo album
