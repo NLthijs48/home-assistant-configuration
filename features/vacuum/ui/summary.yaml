@@ -12,6 +12,8 @@ cards:
         card:
           type: vertical-stack
           cards:
+            - type: entity
+              entity: vacuum.roborock_s7
             - !include map.yaml
             - !include details.yaml
             # To start anyway when already running
