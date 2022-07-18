@@ -7,6 +7,7 @@ calibration_source:
 entity: vacuum.roborock_s7
 vacuum_platform: default
 # TODO: preset for other floors
+# - ground floor map_name in the camera entity: roboroommap%2F506250889%2F0
 #- https://github.com/PiotrMachowski/Home-Assistant-custom-components-Xiaomi-Cloud-Map-Extractor/issues/67
 # Define map modes
 # - room setup done using: https://github.com/PiotrMachowski/lovelace-xiaomi-vacuum-map-card/discussions/317

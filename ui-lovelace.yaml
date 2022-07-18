@@ -192,3 +192,51 @@ button_card_templates:
         - display: 'none'
       lock:
         - display: 'none'
+
+  # Vacuum start buttons
+  icon_button:
+    # iOS only feedback when pressing
+    haptic: light
+    # Icon size
+    size: 30px
+    # Custom styling
+    styles:
+      card:
+        - height: 80px
+      name:
+        - font-size: 1rem
+
+  mop_button:
+    template: icon_button
+    variables:
+      # Error message if starting is blocked by something
+      error: >-
+        [[[
+          if (states["binary_sensor.roborock_s7_mop_attached"].state === 'off') {
+            return "Missing mop";
+          } else if (states["binary_sensor.roborock_s7_water_box_attached"].state === 'off') {
+            return "Missing water box";
+          } else if (states["binary_sensor.roborock_s7_water_shortage"].state === 'on') {
+            return "Water low";
+          } else {
+            return "";
+          }
+        ]]]
+    # Show the error
+    label: >-
+      [[[ return variables.error ]]]
+    show_label: >-
+      [[[ return variables.error !== "" ]]]
+    # Lock when there is an error
+    lock:
+      enabled: >-
+        [[[ return variables.error !== "" ]]]
+      exemptions: [ ]
+    styles:
+      card:
+        - opacity: >-
+            [[[ return variables.error ? 0.6 : 1 ]]]
+      label:
+        # Small font size for the status label
+        - font-size: 0.7rem
+        - color: orange

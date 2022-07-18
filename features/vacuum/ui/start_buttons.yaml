@@ -1,0 +1,29 @@
+type: horizontal-stack
+cards:
+  # Vacuum
+  - type: custom:button-card
+    template: icon_button
+    name: Vacuum
+    entity: vacuum.roborock_s7
+    icon: mdi:vacuum
+    tap_action:
+      action: call-service
+      service: script.roborock_start_vacuum
+  # Mop+vacuum
+  - type: custom:button-card
+    template: mop_button
+    name: Mop + vacuum
+    entity: vacuum.roborock_s7
+    icon: mdi:silverware-clean
+    tap_action:
+      action: call-service
+      service: script.roborock_start_mop_vacuum
+  # Mop
+  - type: custom:button-card
+    template: mop_button
+    name: Mop
+    entity: vacuum.roborock_s7
+    icon: mdi:water
+    tap_action:
+      action: call-service
+      service: script.roborock_start_mop

@@ -2,12 +2,13 @@ alias: "Set Roborock vacuum suction power"
 mode: single
 fields:
   suction_power:
-    description: "Suction power, can be: silent|balanced|turbo|max|customized"
+    description: "Suction power, can be: gentle|silent|balanced|turbo|max|customized"
     example: "max"
 sequence:
   - alias: "Lookup variables"
     variables:
       suction_power_options:
+        gentle: 100 # Only used when only mopping
         silent: 101
         balanced: 102
         turbo: 103

@@ -14,6 +14,8 @@ cards:
           cards:
             - !include map.yaml
             - !include details.yaml
+            # To start anyway when already running
+            - !include start_buttons.yaml
 
   # Entity state (when not docked or idle)
   - type: conditional
@@ -39,40 +41,7 @@ cards:
         state_not: paused
       - entity: vacuum.roborock_s7
         state_not: error
-    card:
-      type: horizontal-stack
-      cards:
-        # Vacuum
-        - type: custom:button-card
-          name: Vacuum
-          entity: vacuum.roborock_s7
-          icon: mdi:broom
-          tap_action:
-            action: call-service
-            service: script.roborock_vacuum
-          styles:
-            card:
-              - height: 80px
-        # Mop+vacuum
-        - type: custom:button-card
-          name: Mop + vacuum
-          entity: vacuum.roborock_s7
-          icon: mdi:water
-          tap_action:
-            action: call-service
-            service: script.roborock_mop
-          styles:
-            card:
-              - height: 80px
-          # Lock when either: no mop attached, no water box attached, water shortage
-          lock:
-            enabled: >-
-              [[[
-                return states["binary_sensor.roborock_s7_mop_attached"].state === 'off'
-                || states["binary_sensor.roborock_s7_water_box_attached"].state === 'off'
-                || states["binary_sensor.roborock_s7_water_shortage"].state === 'on'
-              ]]]
-            exemptions: []
+    card: !include start_buttons.yaml
 
   # Map (during cleaning)
   - type: conditional
