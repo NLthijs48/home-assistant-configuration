@@ -5,6 +5,14 @@ entities:
   - entity: sensor.netatmo_garden_temperature
     name: Temperature
     show_fill: false
+  # Comparison with the Living room
+  - entity: sensor.netatmo_living_room_temperature
+    name: Living room
+    show_fill: false
+    show_legend: false
+    show_points: false
+    line_width: 4
+    color: '#666'
   # Sun is up/down soft-fade
   - color: '#9a9a9a'
     entity: sensor.solar_elevation
@@ -56,5 +64,5 @@ show:
   icon: false
   labels: true
   name: false
-labels_secondary: false
+  labels_secondary: false
 lower_bound_secondary: 0
