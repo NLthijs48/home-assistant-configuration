@@ -16,6 +16,7 @@ themes
 www/community
 # Zigbee network (conbee stick)
 zigbee.db
+zigbee.db-journal
 # Zigbee network map
 neighbours
 # Zigbee firmware upgrades
