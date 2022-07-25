@@ -1,8 +1,14 @@
 # This seems to fix the HDMI CEC connection with the TV (which still broken in another way currently)
 - alias: Batteries low update
   trigger:
+    # For slow-updating things
     - platform: time_pattern
-      minutes: 2
+      minutes: 5
+    # Couple triggers for more important ones
+    - platform: state
+      entity_id: sensor.phone_thijs_battery_level
+    - platform: state
+      entity_id: sensor.frits_battery_level
   action:
     - variables:
         batteries_low: >-
