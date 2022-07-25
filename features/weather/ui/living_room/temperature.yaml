@@ -55,4 +55,5 @@ show:
   icon: false
   labels: true
   name: false
+  labels_secondary: false
 lower_bound_secondary: 0

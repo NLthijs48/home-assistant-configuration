@@ -53,4 +53,5 @@ line_width: 4
 show:
   icon: false
   labels: true
+  labels_secondary: false
 lower_bound_secondary: 0

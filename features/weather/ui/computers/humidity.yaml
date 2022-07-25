@@ -18,6 +18,7 @@ line_width: 4
 show:
   icon: false
   labels: true
+  labels_secondary: false
 # Time configuration
 hours_to_show: 72 # 3 days
 points_per_hour: 12
@@ -28,7 +29,6 @@ upper_bound: 100
 decimals: 0
 # Secondary axis
 lower_bound_secondary: 0
-labels_secondary: false
 # Add color to indicate health
 color_thresholds:
   # Too low
