@@ -126,6 +126,13 @@ button_card_templates:
       state:
         - font-size: 1.3rem
 
+  statistic_button_graph:
+    template: statistic_button
+    styles:
+      card:
+        - padding-bottom: 0.4rem
+        - height: auto
+
   # Humidity state color
   statistic_button_humidity:
     template: statistic_button
