@@ -58,6 +58,9 @@
 # Datetime card (for chores)
 - type: module
   url: /hacsfiles/datetime-card/datetime-card.js
+# Hourly weather card
+- type: module
+  url: /hacsfiles/lovelace-hourly-weather/hourly-weather.js
 
 # Sun card (unused)
 #- url: /hacsfiles/home-assistant-sun-card/home-assistant-sun-card.js

@@ -1,0 +1,15 @@
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    name: ☀️ Forecast
+    template: header
+  # TODO: graph of temperature is more readable below weather type
+  - type: custom:hourly-weather
+    entity: weather.152_hourly
+    num_segments: 24
+    label_spacing: 4
+    icons: true
+    # Hides the name
+    name: null
+
+# TODO: add rain as well?
