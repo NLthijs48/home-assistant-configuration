@@ -16,39 +16,7 @@ hour24: true
 hours_to_show: 72
 points_per_hour: 12
 decimals: 1
-color_thresholds:
-  - value: -6.7
-    color: "#a55eea"
-  - value: -3.9
-    color: "#8854d0"
-  - color: -1.2
-    value: "#3867d6"
-  - value: 1.6
-    color: "#4b7bec"
-  - value: 4.3
-    color: "#2d98da"
-  - color: 7.1
-    value: "#45aaf2"
-  - value: 9.9
-    color: "#0fb9b1"
-  - value: 12.7
-    color: "#2bcbba"
-  - value: 15.5
-    color: "#20bf6b"
-  - value: 18.2
-    color: "#26de81"
-  - value: 21
-    color: "#fed330"
-  - value: 23.8
-    color: "#f7b731"
-  - value: 26.6
-    color: "#fd9644"
-  - value: 29.3
-    color: "#fa8231"
-  - value: 32.1
-    color: "#fc5c65"
-  - value: 35.9
-    color: "#eb3b5a"
+color_thresholds: !include ../color_thresholds_temperature.yaml
 line_width: 4
 show:
   icon: false

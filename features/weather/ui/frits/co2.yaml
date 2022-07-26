@@ -29,23 +29,4 @@ decimals: 0
 # Secondary axis
 lower_bound_secondary: 0
 # Add color to the CO2 line to indicate health
-color_thresholds:
-  # Good state
-  - color: '#008000'
-    value: 0
-  - color: '#008000'
-    value: 300
-  - color: '#008000'
-    value: 400
-  - color: '#008000'
-    value: 500
-  - color: '#008000'
-    value: 600
-  # Getting-bad state
-  - color: '#ffa500'
-    value: 1000
-  - color: '#ffa500'
-    value: 1500
-  # Bad state
-  - color: '#790000'
-    value: 1700
+color_thresholds: !include ../color_thresholds_co2.yaml

@@ -1,0 +1,25 @@
+# For usage with the color_thresholds of mini-graph-card showing (indoor) humidity values
+
+# Too low
+- color: '#ffa500'
+  value: 0
+- color: '#ffa500'
+  value: 28
+# A bit too low
+- color: '#ffa500'
+  value: 32
+- color: '#ffa500'
+  value: 38
+# Good
+- color: '#008000'
+  value: 42
+- color: '#008000'
+  value: 58
+# A bit too high
+- color: '#ffa500'
+  value: 62
+- color: '#ffa500'
+  value: 68
+# Too high
+- color: '#ffa500'
+  value: 72

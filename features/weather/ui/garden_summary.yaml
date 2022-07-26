@@ -22,7 +22,6 @@ cards:
   - !include garden/temperature.yaml
 
   # Rows of tiny garden stats
-  # TODO show a popup with a fancy graph when tapped
   - type: horizontal-stack
     cards:
       # Humidity
