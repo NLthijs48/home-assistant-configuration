@@ -23,6 +23,7 @@ cards:
     cards:
       - type: custom:button-card
         name: Temperature
+        show_name: false
         entity: sensor.netatmo_thijs_temperature
         template: statistic_button_graph
         tap_action:

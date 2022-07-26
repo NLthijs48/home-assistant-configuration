@@ -23,8 +23,9 @@ cards:
     cards:
       - type: custom:button-card
         name: Temperature
+        show_name: false
         entity: sensor.netatmo_computers_temperature
-        template: statistic_button
+        template: statistic_button_graph
         tap_action:
           action: fire-dom-event
           browser_mod:
