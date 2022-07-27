@@ -8,6 +8,8 @@ cards:
     icon: mdi:vacuum
     tap_action:
       action: call-service
+      confirmation:
+        text: Start vacuuming?
       service: script.roborock_start_vacuum
   # Mop+vacuum
   - type: custom:button-card
@@ -17,6 +19,8 @@ cards:
     icon: mdi:silverware-clean
     tap_action:
       action: call-service
+      confirmation:
+        text: Start mopping and vacuuming?
       service: script.roborock_start_mop_vacuum
   # Mop
   - type: custom:button-card
@@ -26,4 +30,6 @@ cards:
     icon: mdi:water
     tap_action:
       action: call-service
+      confirmation:
+        text: Start mopping?
       service: script.roborock_start_mop
