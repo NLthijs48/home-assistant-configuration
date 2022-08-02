@@ -14,7 +14,7 @@ entities:
 height: 200
 hour24: true
 hours_to_show: 72
-points_per_hour: 12
+points_per_hour: 6
 decimals: 1
 color_thresholds: !include ../color_thresholds_temperature.yaml
 line_width: 4

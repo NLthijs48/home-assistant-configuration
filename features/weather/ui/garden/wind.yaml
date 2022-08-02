@@ -31,7 +31,7 @@ cards:
       labels_secondary: false
     # Time configuration
     hours_to_show: 72 # 3 days
-    points_per_hour: 12
+    points_per_hour: 6
     hour24: true
     # Primary axis
     lower_bound: 0
