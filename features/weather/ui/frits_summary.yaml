@@ -46,6 +46,7 @@ cards:
             y_axis: secondary
         height: 100
         hour24: true
+        min_bound_range: 3
         hours_to_show: 24
         points_per_hour: 6
         decimals: 1

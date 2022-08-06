@@ -48,6 +48,7 @@ cards:
         hour24: true
         hours_to_show: 24
         points_per_hour: 6
+        min_bound_range: 3
         decimals: 1
         color_thresholds: !include color_thresholds_temperature.yaml
         line_width: 4
