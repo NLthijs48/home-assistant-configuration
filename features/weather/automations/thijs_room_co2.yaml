@@ -2,8 +2,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.netatmo_thijs_co2
-      above: '900'
-    # Future: maybe send a more aggressive notification when even higher?
+      above: 1000
   action:
     # Notify phone of Thijs
     - service: notify.mobile_app_phone_thijs
