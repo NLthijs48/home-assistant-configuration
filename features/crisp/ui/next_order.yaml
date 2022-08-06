@@ -108,5 +108,6 @@ card:
           - entity: device_tracker.crisp_van
           - entity: zone.home
         dark_mode: true
+        auto_fit: true
         aspect_ratio: '2:1'
         hours_to_show: 2
