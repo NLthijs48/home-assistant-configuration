@@ -99,11 +99,6 @@ rest_command:
     url: http://10.0.2.12:8008/apps/ChromeCast
     method: POST
 
-# Spotify
-spotify:
-  client_id: !secret spotify_client_id
-  client_secret: !secret spotify_client_secret
-
 # Mailgun email
 notify:
   - name: email_thijs
