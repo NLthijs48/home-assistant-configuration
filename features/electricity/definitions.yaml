@@ -5,7 +5,6 @@
 powercalc:
   # I don't need a sensor for each light, just a couple of aggregated ones defined below
   enable_autodiscovery: false
-  scan_interval: 00:05:00 # Each 5 minutes (prevent spammy updates)
 
 # Device reference list: https://github.com/bramstroker/homeassistant-powercalc/blob/master/docs/supported_models.md
 sensor:
