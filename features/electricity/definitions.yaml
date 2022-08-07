@@ -1,6 +1,4 @@
 # Virtual power sensors (based on time that lights are on)
-# Note: there is no built-in profile for the Ikea light panels yet, see: https://github.com/bramstroker/homeassistant-powercalc/blob/master/docs/supported_models.md#supported-models
-# TODO: measure power usage of missing lights, contribute to the repo?
 
 powercalc:
   # I don't need a sensor for each light, just a couple of aggregated ones defined below
@@ -22,6 +20,26 @@ sensor:
     entity_id: light.tv_led_strip
     manufacturer: signify
     model: LST002
+  # Living room closet
+  - platform: powercalc
+    entity_id: light.closet
+    manufacturer: ikea
+    model: LED1623G12
+  # Ground floor hall
+  - platform: powercalc
+    entity_id: light.ground_floor_hall
+    manufacturer: ikea
+    model: LED1623G12
+  # Toilet
+  - platform: powercalc
+    entity_id: light.toilet
+    manufacturer: ikea
+    model: LED1623G12
+  # First floor hall
+  - platform: powercalc
+    entity_id: light.first_floor_hall
+    manufacturer: ikea
+    model: LED1623G12
   # Room Thijs: FLOALT panel WS 30x90
   - platform: powercalc
     entity_id: light.bedroom_thijs_ceiling
@@ -50,6 +68,21 @@ sensor:
     model: LED1650R5
     multiply_factor: 3
     multiply_factor_standby: true
+  # Attic beds
+  - platform: powercalc
+    entity_id: light.attic_beds
+    manufacturer: ikea
+    model: LED1935C3
+  # Attic couch
+  - platform: powercalc
+    entity_id: light.attic_couch
+    manufacturer: ikea
+    model: LED1935C3
+  # Attic hall
+  - platform: powercalc
+    entity_id: light.attic_hall
+    manufacturer: ikea
+    model: LED1623G12
   ######### DEVICES
   - platform: powercalc
     name: T-mobile TV energy
@@ -117,6 +150,7 @@ sensor:
   #    unit_of_measurement: W
 
 # Sensor for all living room lights summed together
+# TODO: use grouping of powercalc instead?
 template:
   - sensor:
       - name: "Living room lights energy"
