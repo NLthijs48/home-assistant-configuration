@@ -1,0 +1,42 @@
+alias: Thijs' bedroom light turn on
+description: Turns on the right lights for the time of day
+icon: mdi:brightness-4
+sequence:
+  - alias: Set daytime variable
+    variables:
+      daytime: "{{ is_state('input_boolean.thijs_sleepy', 'off') }}"
+
+  - alias: Turn on the LED strip
+    service: light.turn_on
+    data:
+      entity_id: light.bedroom_thijs_bed
+      brightness: >-
+        {% if daytime %}
+          255
+        {% else %}
+          38
+        {% endif %}
+      color_temp: >-
+        {% if daytime %}
+          300
+        {% else %}
+          495
+        {% endif %}
+
+  # Turn on the ceiling light during daytime
+  - choose:
+      # Turn on at daytime
+      - conditions:
+          - "{{ daytime }}"
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: light.bedroom_thijs_ceiling
+              brightness: 255
+              color_temp: 250
+    # Turn off at nighttime
+    default:
+      - service: light.turn_off
+        data:
+          entity_id: light.bedroom_thijs_ceiling
+          transition: 5

@@ -46,6 +46,10 @@
     - condition: "state"
       entity_id: "binary_sensor.thijs_home"
       state: "on"
+    # Only when still on, otherwise they will turn on and transition off because of the transition
+    - condition: "state"
+      entity_id: "light.bedroom_thijs_lights"
+      state: "on"
   action:
     - service: light.turn_off
       data:
@@ -71,49 +75,14 @@
         entity_id: light.bedroom_thijs_lights
         transition: 10
 
-# Turn on the lights when there is motion
-- alias: "Thijs' room turn on when there is motion"
+- alias: "Thijs' room turn on when there is motion next to the bed"
   mode: restart
   trigger:
     - platform: state
       entity_id: binary_sensor.bedroom_thijs_motion_sensor_occupancy
       to: 'on'
-  variables:
-    daytime: "{{ is_state('input_boolean.thijs_sleepy', 'off') }}"
   action:
-    # Turn on the led strip
-    - service: light.turn_on
-      data:
-        entity_id: light.bedroom_thijs_bed
-        brightness: >-
-          {% if daytime %}
-            255
-          {% else %}
-            38
-          {% endif %}
-        color_temp: >-
-          {% if daytime %}
-            300
-          {% else %}
-            495
-          {% endif %}
-    # Turn on the ceiling light during daytime
-    - choose:
-        # Turn on at daytime
-        - conditions:
-            - "{{ daytime }}"
-          sequence:
-            - service: light.turn_on
-              data:
-                entity_id: light.bedroom_thijs_ceiling
-                brightness: 255
-                color_temp: 250
-      # Turn off at nighttime
-      default:
-        - service: light.turn_off
-          data:
-            entity_id: light.bedroom_thijs_ceiling
-            transition: 5
+    - service: script.thijs_bedroom_lights_turn_on
 
     # Wait until there is no motion anymore for a while
     - wait_for_trigger:
@@ -121,7 +90,44 @@
         entity_id: binary_sensor.bedroom_thijs_motion_sensor_occupancy
         to: 'off'
         for:
-          minutes: 3
+          minutes: 1
+
+    - alias: "Check that wide motion sensor is inactive"
+      condition: state
+      entity_id: binary_sensor.bedroom_thijs_motion_sensor_wide_occupancy
+      state: "off"
+
+    # Turn off the light
+    - service: light.turn_off
+      data:
+        entity_id: light.bedroom_thijs_lights
+
+- alias: "Thijs' room turn on when there is motion anywhere in the room"
+  mode: restart
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_thijs_motion_sensor_wide_occupancy
+      to: 'on'
+  condition:
+    # Do not disturb is off: Thijs is not sleeping yet
+    - condition: 'state'
+      entity_id: sensor.phone_thijs_do_not_disturb
+      state: 'off'
+  action:
+    - service: script.thijs_bedroom_lights_turn_on
+
+    # Wait until there is no motion anymore for a while
+    - wait_for_trigger:
+        platform: state
+        entity_id: binary_sensor.bedroom_thijs_motion_sensor_occupancy
+        to: 'off'
+        for:
+          minutes: 1
+
+    - alias: "Check that floor motion sensor is inactive"
+      condition: state
+      entity_id: binary_sensor.bedroom_thijs_motion_sensor_occupancy
+      state: "off"
 
     # Turn off the light
     - service: light.turn_off
