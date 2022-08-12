@@ -35,6 +35,9 @@
             {% elif is_state('sensor.phone_frits_wifi_ap', 'upstairs') %}
               {# Only Frits is upstairs #}
               Frits
+            {% else %}
+              {# Both downstairs somehow, assign Thijs to have someone #}
+              Thijs
             {% endif %}
           {% elif is_state("binary_sensor.thijs_home", "on") %}
             {# Only Thijs is home #}
