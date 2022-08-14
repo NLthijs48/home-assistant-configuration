@@ -119,7 +119,7 @@
     # Wait until there is no motion anymore for a while
     - wait_for_trigger:
         platform: state
-        entity_id: binary_sensor.bedroom_thijs_motion_sensor_occupancy
+        entity_id: binary_sensor.bedroom_thijs_motion_sensor_wide_occupancy
         to: 'off'
         for:
           minutes: 1
