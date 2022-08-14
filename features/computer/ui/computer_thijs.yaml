@@ -1,17 +1,32 @@
-type: 'custom:vertical-stack-in-card'
+type: vertical-stack
 cards:
-  - type: entities
-    entities:
-      - entity: switch.computer_thijs_wake_on_lan
-        name: Computer
-      - entity: switch.monitor_thijs
-        name: Monitor
+  - type: custom:button-card
+    name: 🖥️ Computer
+    template: header
+  - type: 'custom:stack-in-card'
+    cards:
+      # Maybe switch this to custom button card with "turn on" or "sleep"
+      - type: entities
+        entities:
+          - entity: switch.computer_thijs_wake_on_lan
+            name: Switch
+      - type: horizontal-stack
+        cards:
+          - type: entity
+            entity: sensor.computer_thijs_power
+            name: Computer power
+          - type: entity
+            entity: sensor.monitor_thijs_power
+            name: Monitor power
+
   # Show real-time stats when turned on
   # Future: add tap_action with fancy popup with graphs
   - type: conditional
     conditions:
       - entity: switch.computer_thijs_wake_on_lan
         state: "on"
+      - entity: sensor.computer_thijs_cpu_usage
+        state_not: "unavailable"
     card:
       type: vertical-stack
       cards:
