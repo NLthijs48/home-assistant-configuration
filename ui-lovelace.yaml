@@ -61,17 +61,22 @@ views:
     badges: []
     cards:
       - !include features/lighting/ui/room_frits.yaml
-      - type: entities
-        entities:
-          - device_tracker.unifi_phone_frits
-          - sensor.phone_frits_battery_level
-          - sensor.phone_frits_battery_state
-          - sensor.phone_frits_bssid
-          - sensor.phone_frits_connection_type
-          - sensor.phone_frits_geocoded_location
-          - sensor.phone_frits_last_update_trigger
-          - sensor.phone_frits_ssid
-          - sensor.phone_frits_storage
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            template: header
+            name: 📱 Phone
+          - type: entities
+            entities:
+              - device_tracker.unifi_phone_frits
+              - sensor.frits_battery_level
+              - sensor.frits_battery_state
+              - sensor.frits_bssid
+              - sensor.frits_connection_type
+              - sensor.frits_geocoded_location
+              - sensor.frits_last_update_trigger
+              - sensor.frits_ssid
+              - sensor.frits_storage
 
   # Plants
   #- icon: mdi:sprout

@@ -1,26 +1,31 @@
 # Lights for Frits' bedroom
-type: custom:slider-button-card
-entity: light.bedroom_frits_lights
-slider:
-  direction: left-right
-  background: gradient
-  use_state_color: false
-  use_percentage_bg_opacity: false
-  show_track: true
-  force_square: false
-icon:
-  tap_action:
-    action: more-info
-  icon: ''
-  show: true
-  use_state_color: true
-action_button:
-  mode: custom
-  icon: ''
-  show: true
-  tap_action:
-    action: toggle
-  show_spinner: false
-show_name: true
-show_state: true
-compact: true
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: header
+    name: 💡 Lights
+  - type: custom:slider-button-card
+    entity: light.bedroom_frits_lights
+    slider:
+      direction: left-right
+      background: gradient
+      use_state_color: false
+      use_percentage_bg_opacity: false
+      show_track: true
+      force_square: false
+    icon:
+      tap_action:
+        action: more-info
+      icon: ''
+      show: true
+      use_state_color: true
+    action_button:
+      mode: custom
+      icon: ''
+      show: true
+      tap_action:
+        action: toggle
+      show_spinner: false
+    show_name: true
+    show_state: false
+    compact: true
