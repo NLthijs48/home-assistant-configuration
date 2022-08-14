@@ -186,7 +186,7 @@ template:
           {# Add distance #}
           {% set van_meters = states('proximity.crisp_van') %}
           {% if van_meters is not none and van_meters != 'not set' %}
-            {% set van_meters = van_meters | int %}
+            {% set van_meters = van_meters | int(default=0) %}
             {% if van_meters > 0 %}
               {% if van_meters > 2000 %}
                 {% set van_meters = ((van_meters/1000) | round(1)) | string + ' km' %}

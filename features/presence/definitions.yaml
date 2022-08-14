@@ -209,7 +209,7 @@ template:
         # Prevent a small power dip turning it off
         delay_off: 0:00:10
         state: >-
-          {% if states('sensor.computer_thijs_power')|int > 25 %}
+          {% if states('sensor.computer_thijs_power') | float(default=0) > 25 %}
             yes
           {% else %}
             no
@@ -220,7 +220,7 @@ template:
         # Prevent a small power dip turning it off
         delay_off: 0:00:10
         state: >-
-          {% if states('sensor.computer_frits_power')|int > 10 %}
+          {% if states('sensor.computer_frits_power')  | float(default=0) > 10 %}
             yes
           {% else %}
             no
