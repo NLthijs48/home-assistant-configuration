@@ -1,58 +1,62 @@
 # Second floor lights
-type: entities
-title: Second floor
-show_header_toggle: false
-entities:
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: header
+    name: 👕 Second floor
+  - type: entities
+    show_header_toggle: false
+    entities:
 
-  # Hall
-  - type: custom:fold-entity-row
-    head:
-      entity: light.attic_hall
-      name: Washing hall
-      state_color: false
-      hide_state: true
-      grow: true
-      type: custom:slider-entity-row
-    entities:
+      # Hall
       - type: custom:fold-entity-row
         head:
-          entity: binary_sensor.attic_hall_motion_sensor
-          name: Motion sensor
+          entity: light.attic_hall
+          name: Washing hall
+          state_color: false
+          hide_state: true
+          grow: true
+          type: custom:slider-entity-row
         entities:
-          - entity: sensor.attic_hall_motion_sensor_battery
-            name: Battery
-  # Room
-  - type: custom:fold-entity-row
-    head:
-      name: Room
-      entity: light.attic_room_lights
-      state_color: false
-      hide_state: true
-      grow: true
-      type: custom:slider-entity-row
-    entities:
-      - entity: light.attic_standing
-        name: Standing
-        type: custom:slider-entity-row
-        state_color: false
-        hide_state: true
-        grow: true
-      - entity: light.attic_couch
-        name: Couch
-        type: custom:slider-entity-row
-        state_color: false
-        hide_state: true
-        grow: true
-      - entity: light.attic_beds
-        name: Beds
-        type: custom:slider-entity-row
-        state_color: false
-        hide_state: true
-        grow: true
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.attic_hall_motion_sensor
+              name: Motion sensor
+            entities:
+              - entity: sensor.attic_hall_motion_sensor_battery
+                name: Battery
+      # Room
       - type: custom:fold-entity-row
         head:
-          entity: binary_sensor.attic_motion_sensor
-          name: Motion sensor
+          name: Room
+          entity: light.attic_room_lights
+          state_color: false
+          hide_state: true
+          grow: true
+          type: custom:slider-entity-row
         entities:
-          - entity: sensor.attic_motion_sensor_battery
-            name: Battery
+          - entity: light.attic_standing
+            name: Standing
+            type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
+          - entity: light.attic_couch
+            name: Couch
+            type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
+          - entity: light.attic_beds
+            name: Beds
+            type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.attic_motion_sensor
+              name: Motion sensor
+            entities:
+              - entity: sensor.attic_motion_sensor_battery
+                name: Battery

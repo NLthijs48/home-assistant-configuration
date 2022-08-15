@@ -1,30 +1,18 @@
 # Controls for all the lights on the ground floor
-type: entities
-title: Ground floor
-show_header_toggle: false
-entities:
-
-  # Living room
-  - type: custom:fold-entity-row
-    head:
-      entity: light.living_room_lights
-      name: Living room
-      state_color: false
-      hide_state: true
-      grow: true
-      type: custom:slider-entity-row
-    group_config:
-      type: custom:slider-entity-row
-      state_color: false
-      hide_state: true
-      grow: true
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: header
+    name: 📺 Ground floor
+  - type: entities
+    show_header_toggle: false
     entities:
-      # TV
+
+      # Living room
       - type: custom:fold-entity-row
         head:
-          entity: light.tv_lights
-          name: TV
-          icon: mdi:television
+          entity: light.living_room_lights
+          name: Living room
           state_color: false
           hide_state: true
           grow: true
@@ -35,141 +23,157 @@ entities:
           hide_state: true
           grow: true
         entities:
-          - entity: light.living_room_iceland_1
-            name: 'Iceland #1'
-          - entity: light.living_room_iceland_2
-            name: 'Iceland #2'
-          - entity: light.tv_led_strip
-            name: LED strip
-        open: false
+          # TV
+          - type: custom:fold-entity-row
+            head:
+              entity: light.tv_lights
+              name: TV
+              icon: mdi:television
+              state_color: false
+              hide_state: true
+              grow: true
+              type: custom:slider-entity-row
+            group_config:
+              type: custom:slider-entity-row
+              state_color: false
+              hide_state: true
+              grow: true
+            entities:
+              - entity: light.living_room_iceland_1
+                name: 'Iceland #1'
+              - entity: light.living_room_iceland_2
+                name: 'Iceland #2'
+              - entity: light.tv_led_strip
+                name: LED strip
+            open: false
 
-      # Dining
+          # Dining
+          - type: custom:fold-entity-row
+            head:
+              entity: light.dining_lights
+              name: Dining
+              icon: mdi:table-chair
+              state_color: false
+              hide_state: true
+              grow: true
+              type: custom:slider-entity-row
+            group_config:
+              type: custom:slider-entity-row
+              state_color: false
+              hide_state: true
+              grow: true
+            entities:
+              - entity: light.dining_table
+                name: Table
+              - entity: light.dining_duck
+                name: Duck paintings
+              - entity: light.dining_large_painting
+                name: Large painting
+            open: false
+
+          # Kitchen
+          - type: custom:fold-entity-row
+            head:
+              entity: light.kitchen_lights
+              name: Kitchen
+              icon: mdi:chef-hat
+              state_color: false
+              hide_state: true
+              grow: true
+              type: custom:slider-entity-row
+            entities:
+              - entity: light.kitchen_cooking
+                name: Cooking area
+                type: custom:slider-entity-row
+                state_color: false
+                hide_state: true
+                grow: true
+              - entity: light.kitchen_kielzogschild
+                name: Kielzogschild
+                type: custom:slider-entity-row
+                state_color: false
+                hide_state: true
+                grow: true
+              - entity: switch.kitchen_sink
+                name: Sink
+            open: false
+
+          # Motion sensor
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.living_room_motion_sensor_occupancy
+              name: Motion sensor
+            entities:
+              - entity: sensor.living_room_motion_sensor_illuminance
+                name: Illuminance
+              - entity: sensor.living_room_motion_sensor_temperature
+                name: Temperature
+              - entity: sensor.living_room_motion_sensor_power
+                name: Battery
+
+      # Toilet
       - type: custom:fold-entity-row
         head:
-          entity: light.dining_lights
-          name: Dining
-          icon: mdi:table-chair
+          entity: light.toilet
           state_color: false
           hide_state: true
           grow: true
           type: custom:slider-entity-row
-        group_config:
-          type: custom:slider-entity-row
-          state_color: false
-          hide_state: true
-          grow: true
         entities:
-          - entity: light.dining_table
-            name: Table
-          - entity: light.dining_duck
-            name: Duck paintings
-          - entity: light.dining_large_painting
-            name: Large painting
-        open: false
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.toilet_motion_sensor
+              name: Motion sensor
+            entities:
+              - entity: sensor.toilet_motion_sensor_battery
+                name: Battery
 
-      # Kitchen
+
+      # Hall
       - type: custom:fold-entity-row
         head:
-          entity: light.kitchen_lights
-          name: Kitchen
-          icon: mdi:chef-hat
+          entity: light.ground_floor_hall
+          name: Hall
           state_color: false
           hide_state: true
           grow: true
           type: custom:slider-entity-row
         entities:
-          - entity: light.kitchen_cooking
-            name: Cooking area
-            type: custom:slider-entity-row
-            state_color: false
-            hide_state: true
-            grow: true
-          - entity: light.kitchen_kielzogschild
-            name: Kielzogschild
-            type: custom:slider-entity-row
-            state_color: false
-            hide_state: true
-            grow: true
-          - entity: switch.kitchen_sink
-            name: Sink
-        open: false
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.ground_floor_hall_motion_sensor
+              name: Motion sensor
+            entities:
+              - entity: sensor.ground_floor_hall_motion_sensor_battery
+                name: Battery
 
-      # Motion sensor
+      # Closet
       - type: custom:fold-entity-row
         head:
-          entity: binary_sensor.living_room_motion_sensor_occupancy
-          name: Motion sensor
+          entity: light.closet
+          name: Closet
+          state_color: false
+          hide_state: true
+          grow: true
+          type: custom:slider-entity-row
         entities:
-          - entity: sensor.living_room_motion_sensor_illuminance
-            name: Illuminance
-          - entity: sensor.living_room_motion_sensor_temperature
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.closet_motion_sensor
+              name: Motion sensor
+            entities:
+              - entity: sensor.closet_motion_sensor_battery
+                name: Battery
+
+      # Garden
+      - type: custom:fold-entity-row
+        head:
+          entity: binary_sensor.garden_motion_sensor
+          name: Garden motion sensor
+        entities:
+          - entity: sensor.garden_motion_sensor_light_level
+            name: Light level
+          - entity: sensor.garden_motion_sensor_temperature
             name: Temperature
-          - entity: sensor.living_room_motion_sensor_power
+          - entity: sensor.garden_motion_sensor_power
             name: Battery
-
-  # Toilet
-  - type: custom:fold-entity-row
-    head:
-      entity: light.toilet
-      state_color: false
-      hide_state: true
-      grow: true
-      type: custom:slider-entity-row
-    entities:
-      - type: custom:fold-entity-row
-        head:
-          entity: binary_sensor.toilet_motion_sensor
-          name: Motion sensor
-        entities:
-          - entity: sensor.toilet_motion_sensor_battery
-            name: Battery
-
-
-  # Hall
-  - type: custom:fold-entity-row
-    head:
-      entity: light.ground_floor_hall
-      name: Hall
-      state_color: false
-      hide_state: true
-      grow: true
-      type: custom:slider-entity-row
-    entities:
-      - type: custom:fold-entity-row
-        head:
-          entity: binary_sensor.ground_floor_hall_motion_sensor
-          name: Motion sensor
-        entities:
-          - entity: sensor.ground_floor_hall_motion_sensor_battery
-            name: Battery
-
-  # Closet
-  - type: custom:fold-entity-row
-    head:
-      entity: light.closet
-      name: Closet
-      state_color: false
-      hide_state: true
-      grow: true
-      type: custom:slider-entity-row
-    entities:
-      - type: custom:fold-entity-row
-        head:
-          entity: binary_sensor.closet_motion_sensor
-          name: Motion sensor
-        entities:
-          - entity: sensor.closet_motion_sensor_battery
-            name: Battery
-
-  # Garden
-  - type: custom:fold-entity-row
-    head:
-      entity: binary_sensor.garden_motion_sensor
-      name: Garden motion sensor
-    entities:
-      - entity: sensor.garden_motion_sensor_light_level
-        name: Light level
-      - entity: sensor.garden_motion_sensor_temperature
-        name: Temperature
-      - entity: sensor.garden_motion_sensor_power
-        name: Battery

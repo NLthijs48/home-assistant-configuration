@@ -1,106 +1,110 @@
 # Lights of the first floor
-type: entities
-title: First floor
-show_header_toggle: false
-entities:
-
-  # Hall
-  - type: custom:fold-entity-row
-    head:
-      entity: light.first_floor_hall
-      name: Hall
-      state_color: false
-      type: custom:slider-entity-row
-      hide_state: true
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: header
+    name: 🛏️ First floor
+  - type: entities
+    show_header_toggle: false
     entities:
+
+      # Hall
       - type: custom:fold-entity-row
         head:
-          entity: binary_sensor.first_floor_hall_motion_sensor
-          name: Motion sensor
+          entity: light.first_floor_hall
+          name: Hall
+          state_color: false
+          type: custom:slider-entity-row
+          hide_state: true
         entities:
-          - entity: sensor.first_floor_hall_motion_sensor_battery
-            name: Battery
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.first_floor_hall_motion_sensor
+              name: Motion sensor
+            entities:
+              - entity: sensor.first_floor_hall_motion_sensor_battery
+                name: Battery
 
-  # Frits' room
-  - type: custom:fold-entity-row
-    open: false
-    head:
-      entity: light.bedroom_frits_lights
-      icon: mdi:track-light
-      name: Frits' room
-      state_color: false
-      hide_state: true
-      grow: true
-      type: custom:slider-entity-row
-    entities:
-      - entity: light.frits_room_wall
-        name: Wall
-        type: custom:slider-entity-row
-        state_color: false
-        hide_state: true
-        grow: true
-      - entity: light.frits_room_cabinet
-        name: Cabinet
-        type: custom:slider-entity-row
-        state_color: false
-        hide_state: true
-        grow: true
-      - entity: light.frits_room_window
-        name: Window
-        type: custom:slider-entity-row
-        state_color: false
-        hide_state: true
-        grow: true
-      - entity: sensor.bedroom_frits_remote_battery
-        name: Remote battery
+      # Frits' room
+      - type: custom:fold-entity-row
+        open: false
+        head:
+          entity: light.bedroom_frits_lights
+          icon: mdi:track-light
+          name: Frits' room
+          state_color: false
+          hide_state: true
+          grow: true
+          type: custom:slider-entity-row
+        entities:
+          - entity: light.frits_room_wall
+            name: Wall
+            type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
+          - entity: light.frits_room_cabinet
+            name: Cabinet
+            type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
+          - entity: light.frits_room_window
+            name: Window
+            type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
+          - entity: sensor.bedroom_frits_remote_battery
+            name: Remote battery
 
-  # Thijs' room
-  - type: custom:fold-entity-row
-    head:
-      entity: light.bedroom_thijs_lights
-      name: Thijs' room
-      state_color: false
-      hide_state: true
-      grow: true
-      type: custom:slider-entity-row
-    entities:
-      - entity: light.bedroom_thijs_ceiling
-        name: Ceiling
-        type: custom:slider-entity-row
-        state_color: false
-        hide_state: true
-        grow: true
-      - entity: light.bedroom_thijs_bed
-        name: Bed
-        type: custom:slider-entity-row
-        state_color: false
-        hide_state: true
-        grow: true
-      - entity: sensor.bedroom_thijs_remote_battery
-        name: Remote battery
+      # Thijs' room
       - type: custom:fold-entity-row
         head:
-          entity: binary_sensor.bedroom_thijs_motion_sensor_occupancy
-          name: Motion sensor
+          entity: light.bedroom_thijs_lights
+          name: Thijs' room
+          state_color: false
+          hide_state: true
+          grow: true
+          type: custom:slider-entity-row
         entities:
-          - entity: sensor.bedroom_thijs_motion_sensor_illuminance
-            name: Light level
-          - entity: sensor.bedroom_thijs_motion_sensor_temperature
-            name: Temperature
-          - entity: sensor.bedroom_thijs_motion_sensor_power
-            name: Battery
+          - entity: light.bedroom_thijs_ceiling
+            name: Ceiling
+            type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
+          - entity: light.bedroom_thijs_bed
+            name: Bed
+            type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
+          - entity: sensor.bedroom_thijs_remote_battery
+            name: Remote battery
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.bedroom_thijs_motion_sensor_occupancy
+              name: Motion sensor
+            entities:
+              - entity: sensor.bedroom_thijs_motion_sensor_illuminance
+                name: Light level
+              - entity: sensor.bedroom_thijs_motion_sensor_temperature
+                name: Temperature
+              - entity: sensor.bedroom_thijs_motion_sensor_power
+                name: Battery
 
-  # Computer room
-  - type: custom:fold-entity-row
-    head:
-      entity: light.computers_ceiling
-      name: Computers
-      type: custom:slider-entity-row
-      state_color: false
-      hide_state: true
-      grow: true
-    entities:
-      - entity: sensor.computers_remote_battery
-        name: Remote battery
+      # Computer room
+      - type: custom:fold-entity-row
+        head:
+          entity: light.computers_ceiling
+          name: Computers
+          type: custom:slider-entity-row
+          state_color: false
+          hide_state: true
+          grow: true
+        entities:
+          - entity: sensor.computers_remote_battery
+            name: Remote battery
 
 
