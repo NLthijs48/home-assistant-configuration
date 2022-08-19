@@ -1,30 +1,3 @@
-# Bedroom Thijs lights turn on brightness
-# TODO: replacement for this (use script for turn on, and use correct brightness/color temp in there?)
-# - alias: "Thijs' room lights turn on dimmed at night"
-#   trigger:
-#     - entity_id: light.bedroom_thijs_ceiling
-#       platform: state
-#       to: 'on'
-#   action:
-#     - service: light.turn_on
-#       data:
-#         entity_id: light.bedroom_thijs_ceiling
-#         # Future: declare this condition once in a variable (HA 0.115+)
-#         # Full bright during the day, dimmed at night
-#         brightness: >-
-#           {% if now().hour >= 18 or (now().hour <= 12 and is_state('sun.sun', 'below_horizon')) %}
-#             1
-#           {% else %}
-#             255
-#           {% endif %}
-#         # Warm white during night, bright white during the day
-#         color_temp: >-
-#           {% if now().hour >= 18 or (now().hour <= 12 and is_state('sun.sun', 'below_horizon')) %}
-#             500
-#           {% else %}
-#             250
-#           {% endif %}
-
 # Turn off the light when going downstairs
 - alias: "Thijs' room turn off when going downstairs"
   trigger:
@@ -70,10 +43,7 @@
       entity_id: "binary_sensor.thijs_home"
       state: "on"
   action:
-    - service: light.turn_on
-      data:
-        entity_id: light.bedroom_thijs_lights
-        transition: 10
+    - service: script.thijs_bedroom_lights_turn_on
 
 - alias: "Thijs' room turn on when there is motion next to the bed"
   mode: restart
