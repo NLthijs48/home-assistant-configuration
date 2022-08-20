@@ -25,9 +25,6 @@ views:
           - !include features/weather/ui/thijs_summary.yaml
           - !include features/weather/ui/frits_summary.yaml
           - !include features/weather/ui/computers_summary.yaml
-      - !include features/electricity/ui/summary.yaml
-      - !include features/vacuum/ui/summary.yaml
-      - !include features/weather/ui/outside_summary.yaml
       # Maintenance column
       - type: vertical-stack
         cards:
@@ -35,6 +32,9 @@ views:
           - !include features/system/ui/problems.yaml
           # Kinda short-term: might get unavailable later
           - !include features/system/ui/battery_low.yaml
+      - !include features/electricity/ui/summary.yaml
+      - !include features/weather/ui/outside_summary.yaml
+      - !include features/vacuum/ui/summary.yaml
 
       # - !include features/weather/ui/buienalarm.yaml, Constantly broken, look for fix
       # - !include ui/media/plex-status.yaml, not useful yet
