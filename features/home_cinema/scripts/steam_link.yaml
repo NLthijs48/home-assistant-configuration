@@ -1,6 +1,6 @@
 alias: Home cinema - Steam link
 description: Use the Steam link that is connected to the Receiver
-icon: mdi:google-controller
+icon: mdi:controller
 sequence:
   - service: script.home_cinema_mode
     data:
