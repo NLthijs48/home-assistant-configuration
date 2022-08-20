@@ -55,7 +55,7 @@ cards:
       - type: custom:button-card
         name: Wind strength
         entity: sensor.netatmo_wind_gust_strength
-        template: statistic_button
+        template: statistic_button_wind
         tap_action:
           action: fire-dom-event
           browser_mod:

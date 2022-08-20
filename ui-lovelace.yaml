@@ -184,19 +184,36 @@ button_card_templates:
     template: statistic_button
     color_type: card # Use the color as card background
     state:
-      # Bit of rain
-      - value: 1
-        operator: ">"
-        color: "#00466e"
-      # More rain
-      - value: 5
-        operator: ">"
-        color: "#0066a1"
       # Stormy
       - value: 10
         operator: ">"
         color: "#0084d1"
+      # More rain
+      - value: 5
+        operator: ">"
+        color: "#0066a1"
+      # Bit of rain
+      - value: 1
+        operator: ">"
+        color: "#00466e"
       # No rain
+      - operator: "default"
+        color: "var( --ha-card-background, var(--card-background-color, white) )"
+
+  # Wind state color
+  statistic_button_wind:
+    template: statistic_button
+    color_type: card # Use the color as card background
+    state:
+      # Stormy wind
+      - value: 40
+        operator: ">"
+        color: "#790000"
+      # Hard wind
+      - value: 25
+        operator: ">"
+        color: "#ab6300"
+      # Calm
       - operator: "default"
         color: "var( --ha-card-background, var(--card-background-color, white) )"
 
