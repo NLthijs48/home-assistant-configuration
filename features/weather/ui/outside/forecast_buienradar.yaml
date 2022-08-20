@@ -1,0 +1,6 @@
+type: custom:weather-chart-card
+entity: weather.buienradar
+show_main: false
+show_attributes: false
+forecast:
+  labels_font_size: 14

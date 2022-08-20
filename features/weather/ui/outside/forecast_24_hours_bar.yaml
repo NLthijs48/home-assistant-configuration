@@ -1,0 +1,7 @@
+type: custom:hourly-weather
+entity: weather.152_hourly
+num_segments: 24
+label_spacing: 4
+icons: true
+name: 24 hours
+colors: !include hourly_weather_colors.yaml

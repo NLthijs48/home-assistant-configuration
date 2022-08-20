@@ -1,0 +1,5 @@
+sunny: '#a19504' # Dark yellow (keep white icon visible)
+rainy: '#2e70ab' # Deep blue
+pouring: '#024785' # Darker than rainy
+cloudy: '#626262' # Dark grey
+partlycloudy: '#7a7532' # Darker variant of sunny

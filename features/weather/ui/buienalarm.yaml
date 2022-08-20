@@ -1,4 +1,0 @@
-# Buienalarm graph
-type: 'custom:neerslag-card'
-title: Neerslag
-entity: sensor.neerslag_buienalarm_regen_data

@@ -22,9 +22,6 @@
 # Spotify: playlists
 - type: module
   url: /hacsfiles/spotify-card/spotify-card.js
-# Vertical stack in card
-- type: module
-  url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
 # Button card: media mode buttons
 - type: module
   url: /hacsfiles/button-card/button-card.js
@@ -61,6 +58,9 @@
 # Hourly weather card
 - type: module
   url: /hacsfiles/lovelace-hourly-weather/hourly-weather.js
+# Weather chart card
+- type: module
+  url: /hacsfiles/weather-chart-card/weather-chart-card.js
 
 # Sun card (unused)
 #- url: /hacsfiles/home-assistant-sun-card/home-assistant-sun-card.js

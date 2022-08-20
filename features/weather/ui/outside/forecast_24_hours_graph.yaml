@@ -1,0 +1,8 @@
+type: custom:weather-chart-card
+entity: weather.152_hourly
+show_main: false
+show_attributes: false
+forecast:
+  # Smaller font size means showing more hours
+  # - ideally UI would just show more without smaller font size though
+  labels_font_size: 6
