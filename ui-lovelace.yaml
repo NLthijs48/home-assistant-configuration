@@ -179,6 +179,27 @@ button_card_templates:
       - operator: "default"
         color: "var( --ha-card-background, var(--card-background-color, white) )"
 
+  # Rain state color
+  statistic_button_rain:
+    template: statistic_button
+    color_type: card # Use the color as card background
+    state:
+      # Bit of rain
+      - value: 1
+        operator: ">"
+        color: "#00466e"
+      # More rain
+      - value: 5
+        operator: ">"
+        color: "#0066a1"
+      # Stormy
+      - value: 10
+        operator: ">"
+        color: "#0084d1"
+      # No rain
+      - operator: "default"
+        color: "var( --ha-card-background, var(--card-background-color, white) )"
+
   # Home Cinema mode buttons
   home_cinema_mode:
     # Use color as card background instead of state text color

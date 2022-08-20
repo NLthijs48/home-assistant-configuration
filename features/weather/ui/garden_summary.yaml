@@ -40,7 +40,7 @@ cards:
       - type: custom:button-card
         name: Rain today
         entity: sensor.netatmo_rain_sum_rain_24
-        template: statistic_button
+        template: statistic_button_rain
         tap_action:
           action: fire-dom-event
           browser_mod:
