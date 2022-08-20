@@ -13,7 +13,7 @@ cards:
           cards:
             - !include outside/forecast_24_hours_bar.yaml
             - !include outside/forecast_24_hours_graph.yaml
-            - !include outside/forecast_buienradar.yaml
+            - !include outside/forecast_days.yaml
             # TODO: try showing this in the summary when not all-zero?
             - !include outside/buienalarm.yaml
             #- !include outside/buienradar.yaml
@@ -41,4 +41,4 @@ cards:
           # - ideally UI would just show more without smaller font size though
           labels_font_size: 3
           condition_icons: false
-  - !include outside/forecast_buienradar.yaml
+  - !include outside/forecast_days.yaml
