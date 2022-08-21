@@ -4,6 +4,18 @@ cards:
   - type: entity
     entity: sensor.thijs_location
     name: 🧍 Thijs
+    footer:
+      type: buttons
+      entities:
+        - entity: sensor.phone_thijs_battery_level
+          tap_action: more-info
+        - entity: input_boolean.thijs_sleepy
+          tap_action: more-info
   - type: entity
     entity: sensor.frits_location
     name: 🧍 Frits
+    footer:
+      type: buttons
+      entities:
+        - entity: sensor.frits_battery_level
+          tap_action: more-info

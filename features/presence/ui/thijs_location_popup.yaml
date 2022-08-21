@@ -7,6 +7,10 @@ card:
       entities:
         - entity: sensor.thijs_location
         - entity: binary_sensor.thijs_home
+        - entity: sensor.phone_thijs_battery_level
+          name: Phone battery
+        - entity: input_boolean.thijs_sleepy
+          name: Sleepy
     # History
     - type: logbook
       title: History

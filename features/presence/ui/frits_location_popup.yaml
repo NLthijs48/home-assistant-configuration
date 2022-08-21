@@ -6,6 +6,8 @@ card:
     - type: entities
       entities:
         - entity: sensor.frits_location
+        - entity: sensor.frits_battery_level
+          name: Phone battery
     # History
     - type: logbook
       title: History
