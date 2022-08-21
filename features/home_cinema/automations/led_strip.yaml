@@ -1,5 +1,6 @@
 # Future: think about how this should integrate with the living room lighting
 - alias: Home cinema state reflected in the tv led strip color
+  mode: restart
   trigger:
     # Home cinema state changes
     - platform: state
