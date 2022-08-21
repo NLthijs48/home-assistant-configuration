@@ -61,6 +61,9 @@
 # Weather chart card
 - type: module
   url: /hacsfiles/weather-chart-card/weather-chart-card.js
+# Weather radar card
+- type: module
+  url: /hacsfiles/weather-radar-card/weather-radar-card.js
 
 # Sun card (unused)
 #- url: /hacsfiles/home-assistant-sun-card/home-assistant-sun-card.js
