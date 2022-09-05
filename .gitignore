@@ -17,6 +17,8 @@ www/community
 # Zigbee network (conbee stick)
 zigbee.db
 zigbee.db-journal
+zigbee.db-shm
+zigbee.db-wal
 # Zigbee network map
 neighbours
 # Zigbee firmware upgrades
