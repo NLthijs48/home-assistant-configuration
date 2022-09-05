@@ -85,20 +85,6 @@ sensor:
     model: LED1623G12
   ######### DEVICES
   - platform: powercalc
-    name: T-mobile TV
-    unique_id: 6093f88e-608d-4cba-b842-99acb4a1ddc9
-    daily_fixed_energy:
-      # Measured standby usage (around 4 watt when in-use), just always use standby since it is rarely on
-      value: 3
-      unit_of_measurement: W
-  - platform: powercalc
-    name: Powerline adapters
-    unique_id: e6e5a0f6-ac44-4e48-9dd5-2b9cdfb2f850
-    daily_fixed_energy:
-      # Measured standby usage, multiplied by 2
-      value: 4.2
-      unit_of_measurement: W
-  - platform: powercalc
     name: Living Room Google Home
     unique_id: 660f2329-3889-4c55-92a9-0eb1ff3eb94b
     daily_fixed_energy:
@@ -140,13 +126,28 @@ sensor:
       # Measured standby usage
       value: 3.7
       unit_of_measurement: W
-  # Disabled now, directly using the Ubiquiti USG
+  # Disabled: directly using the Ubiquiti USG
   #- platform: powercalc
   #  name: T-Mobile modem energy
   #  unique_id: b3e60978-da9c-4a61-8e1e-599b01682507
   #  daily_fixed_energy:
   #    # Measured standby usage, varies a bit by usage, but not much
   #    value: 6.6
+  #    unit_of_measurement: W
+  # Disabled: using chromecast for TV
+  #- platform: powercalc
+  #  name: T-mobile TV
+  #  unique_id: 6093f88e-608d-4cba-b842-99acb4a1ddc9
+  #  daily_fixed_energy:
+  #    # Measured standby usage (around 4 watt when in-use), just always use standby since it is rarely on
+  #    value: 3
+  #    unit_of_measurement: W
+  #- platform: powercalc
+  #  name: Powerline adapters
+  #  unique_id: e6e5a0f6-ac44-4e48-9dd5-2b9cdfb2f850
+  #  daily_fixed_energy:
+  #    # Measured standby usage, multiplied by 2
+  #    value: 4.2
   #    unit_of_measurement: W
 
 # Sensor for all living room lights summed together
