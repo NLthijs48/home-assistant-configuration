@@ -4,4 +4,6 @@
     - platform: time
       at: "06:00:00"
   action:
-    - service: speedtestdotnet.speedtest
+    - service: homeassistant.update_entity
+      # Targeting the download speed entity, but this will update ping and upload as well
+      entity_id: sensor.speedtest_download
