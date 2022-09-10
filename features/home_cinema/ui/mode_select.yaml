@@ -91,24 +91,24 @@ cards:
       - color: green
         operator: default
 
-  # TV (T-mobile)
+  # Laptop
   - type: 'custom:button-card'
-    name: 'TV'
-    entity: script.home_cinema_tv
+    name: 'Laptop'
+    entity: script.home_cinema_laptop
     template: home_cinema_mode
     tap_action:
       action: call-service
-      service: script.home_cinema_tv
+      service: script.home_cinema_laptop
     lock:
       enabled: >-
-        [[[ return states["input_select.home_cinema_mode"].state === "tv" ]]]
-      exemptions: []
+        [[[ return states["input_select.home_cinema_mode"].state === "laptop" ]]]
+      exemptions: [ ]
     state:
       # Not active
       - color: 'var( --ha-card-background, var(--card-background-color, white) )'
         operator: template
         value: >-
-          [[[ return states["input_select.home_cinema_mode"].state !== "tv" ]]]
+          [[[ return states["input_select.home_cinema_mode"].state !== "laptop" ]]]
       # Pending
       - operator: template
         color: orange
@@ -116,6 +116,9 @@ cards:
         icon: 'mdi:loading'
         value: >-
           [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
+        lock:
+          enabled: true
+          exemptions: [ ]
       # Active
       - color: green
         operator: default
@@ -123,37 +126,6 @@ cards:
   - type: grid
     columns: 2
     cards:
-      # Laptop
-      - type: 'custom:button-card'
-        name: 'Laptop'
-        entity: script.home_cinema_laptop
-        template: home_cinema_mode_tiny
-        tap_action:
-          action: call-service
-          service: script.home_cinema_laptop
-        lock:
-          enabled: >-
-            [[[ return states["input_select.home_cinema_mode"].state === "laptop" ]]]
-          exemptions: [ ]
-        state:
-          # Not active
-          - color: 'var( --ha-card-background, var(--card-background-color, white) )'
-            operator: template
-            value: >-
-              [[[ return states["input_select.home_cinema_mode"].state !== "laptop" ]]]
-          # Pending
-          - operator: template
-            color: orange
-            spin: true
-            icon: 'mdi:loading'
-            value: >-
-              [[[ return states["input_boolean.home_cinema_pending"].state === "on" ]]]
-            lock:
-              enabled: true
-              exemptions: [ ]
-          # Active
-          - color: green
-            operator: default
 
       # Steam link
       - type: 'custom:button-card'
