@@ -1,6 +1,10 @@
 ##### Intellij IDEA
 *.iml
-.idea
+.idea/*
+# Icon for this project
+!.idea/icon.png
+# Sets the default file encoding to UTF-8
+!.idea/encodings.xml
 
 ##### Ignore Home Assistant runtime folders
 # UI configuration
