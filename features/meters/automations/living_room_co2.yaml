@@ -5,7 +5,7 @@
   trigger:
     # Update when the living room CO2 level changes
     - platform: state
-      entity_id: sensor.netatmo_living_room_co2
+      entity_id: sensor.ecowitt_wh45_co2
     # Update when the living room usage updates
     - platform: state
       entity_id: input_boolean.living_room_in_use
@@ -30,8 +30,8 @@
                   {##### INPUTS #####}
                   {# Use the value of the entity that has triggered the automation #}
                   {% set sensor_entity_id = trigger.entity_id %}
-                  {% if sensor_entity_id != "sensor.netatmo_living_room_co2" and sensor_entity_id != "input_number.co2_override" %}
-                    {% set sensor_entity_id = "sensor.netatmo_living_room_co2" %}
+                  {% if sensor_entity_id != "sensor.ecowitt_wh45_co2" and sensor_entity_id != "input_number.co2_override" %}
+                    {% set sensor_entity_id = "sensor.ecowitt_wh45_co2" %}
                   {% endif %}
                   {# Value that should fill the complete meter #}
                   {% set max_value = 2000 %}
