@@ -2,11 +2,11 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.netatmo_computers_co2
-      above: '800'
-    # Repeat when getting to 1100
+      above: '1000'
+    # Repeat when even higher
     - platform: numeric_state
       entity_id: sensor.netatmo_computers_co2
-      above: '1100'
+      above: '1300'
   action:
     - service: script.computer_thijs_notify
       data:

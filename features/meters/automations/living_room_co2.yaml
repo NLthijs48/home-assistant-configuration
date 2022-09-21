@@ -34,7 +34,7 @@
                     {% set sensor_entity_id = "sensor.netatmo_living_room_co2" %}
                   {% endif %}
                   {# Value that should fill the complete meter #}
-                  {% set max_value = 1600 %}
+                  {% set max_value = 2000 %}
                   {# Number of leds in the strip #}
                   {% set led_count = 143 %}
 
@@ -71,9 +71,9 @@
                   {# List of color blocks, references sensor values #}
                   {%
                     set blocks = [
-                      {"start": 0, "end": 800, "color": [0, 255, 0]},
-                      {"start": 800, "end": 1200, "color": [255, 255, 0]},
-                      {"start": 1200, "end": max_value, "color": [255, 0, 0]},
+                      {"start": 0, "end": 1000, "color": [0, 255, 0]},
+                      {"start": 1000, "end": 1500, "color": [255, 255, 0]},
+                      {"start": 1500, "end": max_value, "color": [255, 0, 0]},
                     ]
                   %}
 

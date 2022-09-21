@@ -2,11 +2,11 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.netatmo_living_room_co2
-      above: '800'
-    # Repeat when getting to 1100
+      above: '1000'
+    # Repeat when even higher
     - platform: numeric_state
       entity_id: sensor.netatmo_living_room_co2
-      above: '1100'
+      above: '1300'
   action:
     # Save the current state of the lights
     - service: scene.create
