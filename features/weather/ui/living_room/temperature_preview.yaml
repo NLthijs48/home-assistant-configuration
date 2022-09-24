@@ -1,18 +1,8 @@
-# Temperature of the garden
 type: 'custom:mini-graph-card'
-name: Temperature
 entities:
-  - entity: sensor.netatmo_garden_temperature
+  - entity: sensor.ecowitt_wh45_temperature
     name: Temperature
     show_fill: false
-  # Comparison with the Living room
-  - entity: sensor.ecowitt_wh45_temperature
-    name: Living room
-    show_fill: false
-    show_legend: false
-    show_points: false
-    line_width: 4
-    color: '#666'
   # Sun is up/down soft-fade
   - color: '#9a9a9a'
     entity: sensor.solar_elevation
@@ -24,7 +14,7 @@ entities:
 height: 200
 hour24: true
 hours_to_show: 24
-points_per_hour: 6
+points_per_hour: 12
 decimals: 1
 color_thresholds: !include ../color_thresholds_temperature.yaml
 line_width: 8
@@ -34,4 +24,14 @@ show:
   name: false
   labels_secondary: false
   points: false
+min_bound_range: 3
 lower_bound_secondary: 0
+
+# Show more extensive temperature popup content
+tap_action:
+  action: fire-dom-event
+  browser_mod:
+    command: popup
+    card: !include temperature.yaml
+    title: ' '
+    hide_header: true
