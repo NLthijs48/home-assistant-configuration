@@ -39,7 +39,7 @@ cards:
       # Humidity
       - type: custom:button-card
         name: Humidity
-        entity: sensor.netatmo_living_room_humidity
+        entity: sensor.ecowitt_wh45_humidity
         template: statistic_button_humidity
         tap_action:
           action: fire-dom-event
