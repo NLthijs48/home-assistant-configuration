@@ -20,6 +20,7 @@ camera:
   - name: Roborock S7 Map
     # Bit slower than the standard 5 seconds, which it cannot keep up with
     scan_interval: 15
+    #auto_update: false # already done with an automation
     platform: xiaomi_cloud_map_extractor
     host: !secret xiaomi_vacuum_host
     token: !secret xiaomi_vacuum_token
