@@ -18,6 +18,8 @@ cards:
             - !include living_room/noise.yaml
             - !include living_room/humidity.yaml
             - !include living_room/pressure.yaml
+            - !include living_room/pm2_5.yaml
+            - !include living_room/pm10.yaml
 
   - !include living_room/temperature.yaml
 
@@ -73,5 +75,32 @@ cards:
           browser_mod:
             command: popup
             card: !include living_room/pressure.yaml
+            title: ' '
+            hide_header: true
+
+  - type: horizontal-stack
+    cards:
+      # PM 2.5
+      - type: custom:button-card
+        name: PM 2.5
+        entity: sensor.ecowitt_wh45_pm2_5
+        template: statistic_button_pm2_5
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            card: !include living_room/pm2_5.yaml
+            title: ' '
+            hide_header: true
+      # PM 10
+      - type: custom:button-card
+        name: PM 10
+        entity: sensor.ecowitt_wh45_pm10
+        template: statistic_button_pm10
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            card: !include living_room/pm10.yaml
             title: ' '
             hide_header: true

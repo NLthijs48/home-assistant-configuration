@@ -1,0 +1,17 @@
+# For usage with the color_thresholds of mini-graph-card showing PM10 values
+
+# Good state
+- color: '#008000'
+  value: 0
+- color: '#008000'
+  value: 10
+- color: '#008000'
+  value: 20
+# Getting-bad state
+- color: '#ffa500'
+  value: 40
+- color: '#ffa500'
+  value: 60
+# Bad state
+- color: '#790000'
+  value: 80

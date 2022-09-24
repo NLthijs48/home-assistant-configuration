@@ -1,0 +1,17 @@
+# For usage with the color_thresholds of mini-graph-card showing PM 2.5 values
+
+# Good state
+- color: '#008000'
+  value: 0
+- color: '#008000'
+  value: 4
+- color: '#008000'
+  value: 8
+# Getting-bad state
+- color: '#ffa500'
+  value: 12
+- color: '#ffa500'
+  value: 30
+# Bad state
+- color: '#790000'
+  value: 35

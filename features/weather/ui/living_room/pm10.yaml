@@ -1,0 +1,102 @@
+type: vertical-stack
+cards:
+  # Last 4 hours
+  - type: 'custom:mini-graph-card'
+    entities:
+      # PM 10 level as solid line
+      - entity: sensor.ecowitt_wh45_pm10
+        show_fill: false
+        name: PM 10 last 4 hours
+      # Sun is up/down soft-fade
+      - color: '#9a9a9a'
+        entity: sensor.solar_elevation
+        name: Day/Night
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    # Styling
+    height: 200
+    line_width: 4
+    show:
+      icon: false
+      labels: true
+      labels_secondary: false
+    # Time configuration
+    hours_to_show: 4
+    points_per_hour: 120
+    hour24: true
+    # Primary axis
+    decimals: 1
+    # Secondary axis
+    lower_bound_secondary: 0
+    # Add color to the PM 10 line to indicate health
+    color_thresholds: !include ../color_thresholds_pm10.yaml
+
+  # Last 3 days
+  - type: 'custom:mini-graph-card'
+    entities:
+      # PM 10 level as solid line
+      - entity: sensor.ecowitt_wh45_pm10
+        show_fill: false
+        name: PM 10 last 3 days
+      # Sun is up/down soft-fade
+      - color: '#9a9a9a'
+        entity: sensor.solar_elevation
+        name: Day/Night
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    # Styling
+    height: 200
+    line_width: 4
+    show:
+      icon: false
+      labels: true
+      labels_secondary: false
+    # Time configuration
+    hours_to_show: 72
+    points_per_hour: 6
+    hour24: true
+    # Primary axis
+    lower_bound: 0
+    decimals: 1
+    # Secondary axis
+    lower_bound_secondary: 0
+    # Add color to the PM 10 line to indicate health
+    color_thresholds: !include ../color_thresholds_pm10.yaml
+
+  # 24 hour moving average
+  - type: 'custom:mini-graph-card'
+    entities:
+      # PM 10 level as solid line
+      - entity: sensor.ecowitt_wh45_pm10_24h_average
+        show_fill: false
+        name: PM 10 24 hours average
+      # Sun is up/down soft-fade
+      - color: '#9a9a9a'
+        entity: sensor.solar_elevation
+        name: Day/Night
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    # Styling
+    height: 200
+    line_width: 4
+    show:
+      icon: false
+      labels: true
+      labels_secondary: false
+    # Time configuration
+    hours_to_show: 72
+    points_per_hour: 6
+    hour24: true
+    # Primary axis
+    lower_bound: 0
+    decimals: 1
+    # Secondary axis
+    lower_bound_secondary: 0
+    # Add color to the PM 10 line to indicate health
+    color_thresholds: !include ../color_thresholds_pm10.yaml
