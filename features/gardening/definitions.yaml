@@ -4,30 +4,44 @@
 automation: !include_dir_merge_list automations
 
 # Xiaomi flora plant sensor (also called Vegtrug in the Play Store)
-sensor:
-  - platform: miflora
-    mac: 'C4:7C:8D:67:9F:19'
+#sensor:
+#  - platform: miflora
+#    mac: 'C4:7C:8D:67:9F:19'
+
 
 # Group the flora sensors into 1 plant
 plant:
-  beet:
+  bonsai:
     sensors:
-      moisture: sensor.mi_flora_moisture
-      battery: sensor.mi_flora_battery
-      temperature: sensor.mi_flora_temperature
-      conductivity: sensor.mi_flora_conductivity
-      brightness: sensor.mi_flora_light_intensity
-
+      moisture: sensor.ecowitt_soil_bonsai_moisture
+      brightness: sensor.living_room_motion_sensor_illuminance
+      # First needs conversion from volt to percent
+      #battery: sensor.ecowitt_soil_bonsai_battery
+    # TODO: figure this out
     min_moisture: 15
     max_moisture: 60
+    # TODO: Brightness range?
 
-    min_conductivity: 350
-    max_conductivity: 2000
-
-    min_temperature: 4
-    max_temperature: 35
-
-    min_brightness: 4000
-    max_brightness: 60000
-
-    min_battery: 20
+# Old Xiaomi sensor
+#plant:
+#  beet:
+#    sensors:
+#      moisture: sensor.mi_flora_moisture
+#      battery: sensor.mi_flora_battery
+#      temperature: sensor.mi_flora_temperature
+#      conductivity: sensor.mi_flora_conductivity
+#      brightness: sensor.mi_flora_light_intensity
+#
+#    min_moisture: 15
+#    max_moisture: 60
+#
+#    min_conductivity: 350
+#    max_conductivity: 2000
+#
+#    min_temperature: 4
+#    max_temperature: 35
+#
+#    min_brightness: 4000
+#    max_brightness: 60000
+#
+#    min_battery: 20

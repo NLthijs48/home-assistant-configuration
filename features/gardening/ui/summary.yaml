@@ -1,0 +1,31 @@
+type: vertical-stack
+cards:
+  # Header with popup
+  - type: custom:button-card
+    name: 🌳 Plants
+    template: header
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
+        title: 🌳 Plants
+        card:
+          type: vertical-stack
+          cards:
+            - type: entity
+              entity: plant.bonsai
+            # TODO: moisture graph
+  - type: horizontal-stack
+    cards:
+      - type: entity
+        entity: plant.bonsai
+        name: Bonsai
+      # TODO: replace by statistic button mini graph?
+      - type: entity
+        entity: sensor.ecowitt_soil_bonsai_moisture
+        name: Moisture
+      # TODO: replace by statistic button mini graph?
+      - type: entity
+        entity: sensor.living_room_motion_sensor_illuminance
+        name: Illuminance
+        icon: mdi:white-balance-sunny

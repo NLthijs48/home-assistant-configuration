@@ -34,6 +34,7 @@ views:
           - !include features/system/ui/battery_low.yaml
       - !include features/electricity/ui/summary.yaml
       - !include features/weather/ui/outside_summary.yaml
+      - !include features/gardening/ui/summary.yaml
       - !include features/vacuum/ui/summary.yaml
 
       # - !include features/weather/ui/buienalarm.yaml, Constantly broken, look for fix

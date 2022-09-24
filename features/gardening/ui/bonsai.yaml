@@ -1,4 +1,5 @@
 type: 'custom:plant-picture-card'
-title: Beet
-entity: plant.beet
+title: Bonsai
+entity: plant.bonsai
+# TODO: update
 image: /local/plants/beet.jpg
