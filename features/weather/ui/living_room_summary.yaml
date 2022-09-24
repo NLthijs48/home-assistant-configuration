@@ -15,7 +15,6 @@ cards:
           cards:
             - !include living_room/temperature.yaml
             - !include living_room/co2.yaml
-            - !include living_room/co2_new.yaml
             - !include living_room/noise.yaml
             - !include living_room/humidity.yaml
             - !include living_room/pressure.yaml
@@ -28,25 +27,13 @@ cards:
       # CO2
       - type: custom:button-card
         name: CO2
-        entity: sensor.netatmo_living_room_co2
-        template: statistic_button_co2
-        tap_action:
-          action: fire-dom-event
-          browser_mod:
-            command: popup
-            card: !include living_room/co2.yaml
-            title: ' '
-            hide_header: true
-      # CO2
-      - type: custom:button-card
-        name: CO2 New
         entity: sensor.ecowitt_wh45_co2
         template: statistic_button_co2
         tap_action:
           action: fire-dom-event
           browser_mod:
             command: popup
-            card: !include living_room/co2_new.yaml
+            card: !include living_room/co2.yaml
             title: ' '
             hide_header: true
       # Humidity

@@ -1,11 +1,11 @@
 - alias: CO2 in the living room is getting high
   trigger:
     - platform: numeric_state
-      entity_id: sensor.netatmo_living_room_co2
+      entity_id: sensor.ecowitt_wh45_co2
       above: '1000'
     # Repeat when even higher
     - platform: numeric_state
-      entity_id: sensor.netatmo_living_room_co2
+      entity_id: sensor.ecowitt_wh45_co2
       above: '1300'
   action:
     # Save the current state of the lights
@@ -36,7 +36,7 @@
       data:
         entity_id: media_player.living_room_google_home_mini
         message: >-
-            CO2 is at {{states("sensor.netatmo_living_room_co2")}} ppm, open a window
+            CO2 is at {{states("sensor.ecowitt_wh45_co2")}} ppm, open a window
         cache: false # Contains a template, caching does not really work
     # Restore the living room lights after the flashing is done
     - alias: "Wait until the lights are done flashing"
