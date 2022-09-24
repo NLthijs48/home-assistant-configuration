@@ -1,7 +1,7 @@
 type: 'custom:mini-graph-card'
 entities:
   # Noise
-  - entity: sensor.netatmo_living_room_pressure
+  - entity: sensor.ecowitt_relative_pressure
     show_fill: false
     name: Pressure
     color: green

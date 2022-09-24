@@ -66,7 +66,7 @@ cards:
       # Pressure
       - type: custom:button-card
         name: Pressure
-        entity: sensor.netatmo_living_room_pressure
+        entity: sensor.ecowitt_relative_pressure
         template: statistic_button
         tap_action:
           action: fire-dom-event
