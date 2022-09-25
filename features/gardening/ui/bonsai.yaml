@@ -2,4 +2,4 @@ type: 'custom:plant-picture-card'
 title: Bonsai
 entity: plant.bonsai
 # TODO: update
-image: /local/plants/beet.jpg
+#image: /local/plants/beet.jpg
