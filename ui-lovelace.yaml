@@ -252,6 +252,18 @@ button_card_templates:
       - operator: "default"
         color: "var( --ha-card-background, var(--card-background-color, white) )"
 
+  # Plant state color
+  statistic_button_plant:
+    template: statistic_button
+    color_type: card # Use the color as card background
+    state:
+      # Bad state
+      - value: 'problem'
+        color: "#790000"
+      # OK state
+      - operator: "default"
+        color: "var( --ha-card-background, var(--card-background-color, white) )"
+
   # Home Cinema mode buttons
   home_cinema_mode:
     # Use color as card background instead of state text color

@@ -20,29 +20,41 @@ cards:
   # Bonsai
   - type: horizontal-stack
     cards:
-      - type: entity
+      - type: custom:button-card
         entity: plant.bonsai
         name: Bonsai
-      - type: entity
-        entity: sensor.ecowitt_soil_bonsai_moisture
+        template: statistic_button_plant
+      - type: custom:button-card
         name: Moisture
-      - type: entity
+        entity: sensor.ecowitt_soil_bonsai_moisture
+        template: statistic_button
+        # TODO: set this up
+        #tap_action:
+        #  action: fire-dom-event
+        #  browser_mod:
+        #    command: popup
+        #    card: !include computers/humidity.yaml
+        #    title: ' '
+      - type: custom:button-card
         entity: sensor.living_room_motion_sensor_illuminance
         name: Illuminance
-        icon: mdi:white-balance-sunny
+        template: statistic_button
 
   # Amaryllis
   - type: horizontal-stack
     cards:
-      - type: entity
+      - type: custom:button-card
         entity: plant.amaryllis
         name: Amaryllis
-      - type: entity
+        template: statistic_button_plant
+      - type: custom:button-card
         entity: sensor.amaryllis_moisture
         name: Moisture
-      - type: entity
+        template: statistic_button
+      - type: custom:button-card
         entity: sensor.amaryllis_conductivity
         name: Conductivity
+        template: statistic_button
       # Does not fit if entity cards are used
       #- type: entity
       #  entity: sensor.amaryllis_light_intensity
