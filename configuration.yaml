@@ -40,12 +40,12 @@ browser_mod:
 
 # Setup SSL
 http:
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
   use_x_forwarded_for: true
   trusted_proxies:
-    # Nginx Proxy Manager add-on
-    - 10.0.0.1
+    # Localhost, just to be sure
+    - 127.0.0.1
+    # Local docker network (add-ons like nginx proxy manager)
+    - 172.16.0.0/12
 
 # Setup history database (MariaDB addon)
 recorder:
