@@ -1,5 +1,7 @@
 # Aqara Temperature and Humidity Sensor
 
+Simple wireless temperature/humidity sensor
+
 - Model: WSDCGQ11LM
 - Connection: Zigbee (or Aqara Home app)
   - Press tiny reset button for 5 seconds to reset 
