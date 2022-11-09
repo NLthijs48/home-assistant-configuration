@@ -6,7 +6,7 @@
     # Future: maybe send a more aggressive notification when even higher?
   action:
     # Notify phone of Frits
-    - service: notify.mobile_app_frits
+    - service: notify.mobile_app_iphone99
       data:
         title: >-
           CO2 in your bedroom is at {{ states("sensor.netatmo_frits_co2") }}

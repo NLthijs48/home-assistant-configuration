@@ -16,7 +16,7 @@
         {% if is_state('input_select.washing_machine_user', 'Thijs') %}
           notify.mobile_app_phone_thijs
         {% else %}
-          notify.mobile_app_frits
+          notify.mobile_app_iphone99
         {% endif %}
       data:
         title: Washing machine done!
