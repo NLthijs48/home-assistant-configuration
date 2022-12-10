@@ -1,5 +1,5 @@
 # Turn on the lights when there is motion
-- alias: "Attic turn on when there is motion"
+- alias: "Attic hall turn on when there is motion"
   mode: restart
   trigger:
     - platform: state
@@ -13,6 +13,7 @@
         brightness: 255
 
     # Wait until there is no motion anymore
+    # TODO: kill this, does not work with reboot
     - wait_for_trigger:
         platform: state
         entity_id: binary_sensor.attic_hall_motion_sensor

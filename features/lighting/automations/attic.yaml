@@ -3,7 +3,7 @@
 # TODO: integrate a button for guests
 
 # Turn on the lights when there is motion
-- alias: "Attic hall turn on when there is motion"
+- alias: "Attic room turn on when there is motion"
   mode: restart
   trigger:
     - platform: state
@@ -25,6 +25,7 @@
         brightness: 255
 
     # Wait until there is no motion anymore
+    # TODO: kill this, it does not work when HA reboots during it
     - wait_for_trigger:
         platform: state
         entity_id: binary_sensor.attic_motion_sensor
