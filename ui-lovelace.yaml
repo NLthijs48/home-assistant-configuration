@@ -31,7 +31,7 @@ views:
           # Might be an immediate thing
           - !include features/system/ui/problems.yaml
           # Kinda short-term: might get unavailable later
-          - !include features/system/ui/battery_low.yaml
+          - !include features/system/ui/battery_summary.yaml
       - !include features/electricity/ui/summary.yaml
       - !include features/weather/ui/outside_summary.yaml
       - !include features/gardening/ui/summary.yaml
@@ -100,6 +100,13 @@ views:
     badges: []
     cards:
       - !include features/system/ui/updates.yaml
+
+  # Batteries
+  - icon: mdi:battery-80
+    path: batteries
+    badges: []
+    cards:
+      - !include features/system/ui/battery_all.yaml
 
 # Templates for type:custom-button
 button_card_templates:

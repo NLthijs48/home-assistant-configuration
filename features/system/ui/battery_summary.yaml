@@ -8,6 +8,9 @@ card:
     - type: custom:button-card
       name: 🔋 Battery low
       template: header
+      tap_action:
+        action: navigate
+        navigation_path: /lovelace/batteries
 
     # List of entities with low batteries
     - type: 'custom:auto-entities'
