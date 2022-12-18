@@ -30,3 +30,12 @@ sensor:
       - sensor.netatmo_garden_humidity
       # Using the 'gust' wind speed (meaning the result will be a worst-case temperature I guess)
       - sensor.netatmo_wind_gust_strength
+
+template:
+  - binary_sensor:
+      name: "Fridge temperature bad"
+      unique_id: '6aadae15-f9b9-4c30-bb96-c567bf276bc8'
+      state: "{{ (states('sensor.fridge_temperature') | float(default=20)) < 0 or (states('sensor.fridge_temperature') | float(default=20)) > 8 }}"
+      device_class: problem
+      availability: >-
+        {{ states('sensor.fridge_temperature') is not none }}
