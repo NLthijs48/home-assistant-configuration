@@ -1,62 +1,144 @@
-type: vertical-stack
+type: horizontal-stack
 cards:
-  # Header with popup
-  - type: custom:button-card
-    name: 🌳 Plants
-    template: header
-    tap_action:
-      action: fire-dom-event
-      browser_mod:
-        command: popup
-        title: 🌳 Plants
-        card:
-          type: vertical-stack
-          cards:
-            - type: entity
-              entity: plant.bonsai
-            # TODO: moisture graph
-
-  # TODO: use statistic button mini graphs?
-  # Bonsai
-  - type: horizontal-stack
+  # Flower bulbs
+  - type: vertical-stack
     cards:
       - type: custom:button-card
-        entity: plant.bonsai
-        name: Bonsai
-        template: statistic_button_plant
-      - type: custom:button-card
-        name: Moisture
-        entity: sensor.ecowitt_soil_bonsai_moisture
-        template: statistic_button
-        # TODO: set this up
-        #tap_action:
-        #  action: fire-dom-event
-        #  browser_mod:
-        #    command: popup
-        #    card: !include computers/humidity.yaml
-        #    title: ' '
-      - type: custom:button-card
-        entity: sensor.living_room_motion_sensor_illuminance
-        name: Illuminance
-        template: statistic_button
-
-  # Amaryllis
-  - type: horizontal-stack
-    cards:
+        name: 🌷Bulbs
+        template: header
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            title: 🌷 Bulbs
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:stack-in-card
+                  cards:
+                    - type: entity
+                      entity: plant.amaryllis
+                      name: State
+                    - type: conditional
+                      conditions:
+                        - entity: plant.amaryllis
+                          state: 'problem'
+                      card:
+                        type: markdown
+                        content: >-
+                          <ha-alert alert-type="error">{{ state_attr('plant.amaryllis', 'problem') }}</ha-alert>
+                - !include amaryllis_moisture.yaml
       - type: custom:button-card
         entity: plant.amaryllis
-        name: Amaryllis
+        name: State
         template: statistic_button_plant
       - type: custom:button-card
         entity: sensor.amaryllis_moisture
         name: Moisture
         template: statistic_button
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            title: 🌷 Bulbs
+            card: !include amaryllis_moisture.yaml
       - type: custom:button-card
         entity: sensor.amaryllis_conductivity
         name: Conductivity
         template: statistic_button
-      # Does not fit if entity cards are used
-      #- type: entity
-      #  entity: sensor.amaryllis_light_intensity
+      #- type: custom:button-card
+      #  entity: sensor.amaryllis_illuminance
       #  name: Illuminance
-      #  icon: mdi:white-balance-sunny
+      #  template: statistic_button
+
+  # Bonsai
+  - type: vertical-stack
+    cards:
+      - type: custom:button-card
+        name: 🌳Bonsai
+        template: header
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            title: 🌳 Bonsai
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:stack-in-card
+                  cards:
+                    - type: entity
+                      entity: plant.bonsai
+                      name: State
+                    - type: conditional
+                      conditions:
+                        - entity: plant.bonsai
+                          state: 'problem'
+                      card:
+                        type: markdown
+                        content: >-
+                          <ha-alert alert-type="error">{{ state_attr('plant.bonsai', 'problem') }}</ha-alert>
+                - !include bonsai_moisture.yaml
+                # TODO: the rest, and graphs
+      - type: custom:button-card
+        entity: plant.bonsai
+        template: statistic_button_plant
+        name: State
+      - type: custom:button-card
+        name: Moisture
+        entity: sensor.ecowitt_soil_bonsai_moisture
+        template: statistic_button
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            title: 🌳 Bonsai
+            card: !include bonsai_moisture.yaml
+      #- type: custom:button-card
+      #  entity: sensor.living_room_motion_sensor_illuminance
+      #  name: Illuminance
+      #  template: statistic_button
+
+  # Palm
+  - type: vertical-stack
+    cards:
+      - type: custom:button-card
+        name: 🌴Palm
+        template: header
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            title: 🌴 Palm
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:stack-in-card
+                  cards:
+                    - type: entity
+                      entity: plant.palm_big
+                      name: State
+                    - type: conditional
+                      conditions:
+                        - entity: plant.palm_big
+                          state: 'problem'
+                      card:
+                        type: markdown
+                        content: >-
+                          <ha-alert alert-type="error">{{ state_attr('plant.palm_big', 'problem') }}</ha-alert>
+                - !include palm_big_moisture.yaml
+      - type: custom:button-card
+        entity: plant.palm_big
+        name: State
+        icon: mdi:palm-tree
+        template: statistic_button_plant
+      - type: custom:button-card
+        name: Moisture
+        entity: sensor.palm_big_moisture
+        template: statistic_button
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            title: 🌴 Palm
+            card: !include palm_big_moisture.yaml

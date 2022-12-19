@@ -7,3 +7,6 @@ Implements garden monitoring using plant sensors.
   - [Ecowitt](https://www.home-assistant.io/integrations/ecowitt/) integration
 - Xiaomi Mi Flora sensor
   - [Xiaomi BLE](https://www.home-assistant.io/integrations/xiaomi_ble) integration
+
+### TODO
+- give physical sensor entities numbers, only give name/icon in UI?

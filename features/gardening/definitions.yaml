@@ -10,7 +10,7 @@ plant:
       moisture: sensor.ecowitt_soil_bonsai_moisture
       brightness: sensor.living_room_motion_sensor_illuminance
       temperature: sensor.ecowitt_wh45_temperature
-      # First needs conversion from volt to percent
+      # First needs conversion from volt to percent (use template sensor)
       #battery: sensor.ecowitt_soil_bonsai_battery
     # TODO: figure this out
     min_moisture: 15
@@ -19,6 +19,17 @@ plant:
     min_temperature: 10
     max_temperature: 30
     # TODO: Brightness range?
+
+  # Using the Xiaomi plant sensor XL
+  palm_big:
+    sensors:
+      moisture: sensor.palm_big_moisture
+      brightness: sensor.palm_big_illuminance
+      temperature: sensor.palm_big_temperature
+      #battery: not available, it should have this though?
+    min_moisture: 70
+    # Otherwise freezes too death
+    min_temperature: -5
 
   # Using the Xiaomi Plant Sensor
   amaryllis:

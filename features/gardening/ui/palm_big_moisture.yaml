@@ -1,0 +1,14 @@
+type: gauge
+entity: sensor.palm_big_moisture
+name: Moisture
+needle: true
+segments:
+  - from: 0
+    color: red
+    label: Dry
+  - from: 50
+    color: orange
+    label: Low
+  - from: 60
+    color: green
+    label: Good

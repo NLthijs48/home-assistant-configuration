@@ -1,0 +1,20 @@
+type: gauge
+entity: sensor.ecowitt_soil_bonsai_moisture
+name: Moisture
+needle: true
+segments:
+  - from: 0
+    color: red
+    label: Dry
+  - from: 15
+    color: orange
+    label: Low
+  - from: 25
+    color: green
+    label: Good
+  - from: 60
+    color: orange
+    label: High
+  - from: 70
+    color: red
+    label: Wet
