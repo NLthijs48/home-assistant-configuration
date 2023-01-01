@@ -42,6 +42,8 @@ glances.conf
 blueprints
 # Automations created using the UI
 automations.yaml
+# ESPHome (manage using the UI)
+esphome
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
