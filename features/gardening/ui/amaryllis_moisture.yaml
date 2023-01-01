@@ -1,20 +1,55 @@
-type: gauge
-entity: sensor.amaryllis_moisture
-name: Moisture
-needle: true
-segments:
-  - from: 0
-    color: red
-    label: Dry
-  - from: 15
-    color: orange
-    label: Low
-  - from: 25
-    color: green
-    label: Good
-  - from: 60
-    color: orange
-    label: High
-  - from: 70
-    color: red
-    label: Wet
+type: vertical-stack
+cards:
+
+  # Gauge
+  - type: gauge
+    entity: sensor.amaryllis_moisture
+    name: Moisture
+    needle: true
+    segments:
+      - from: 0
+        color: red
+        label: Dry
+      - from: 15
+        color: orange
+        label: Low
+      - from: 25
+        color: green
+        label: Good
+      - from: 60
+        color: orange
+        label: High
+      - from: 70
+        color: red
+        label: Wet
+
+  # Graph
+  - type: 'custom:mini-graph-card'
+    entities:
+      # Moisture
+      - entity: sensor.amaryllis_moisture
+        show_fill: false
+        name: Moisture
+      # Sun is up/down soft-fade
+      - color: '#9a9a9a'
+        entity: sensor.solar_elevation
+        name: Day/Night
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    # Styling
+    height: 200
+    line_width: 4
+    show:
+      icon: false
+      labels: true
+      labels_secondary: false
+    # Time configuration
+    hours_to_show: 72 # 3 days
+    points_per_hour: 6
+    hour24: true
+    # Primary axis
+    decimals: 0
+    # Secondary axis
+    lower_bound_secondary: 0
