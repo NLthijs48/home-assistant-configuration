@@ -28,6 +28,7 @@ cards:
                         content: >-
                           <ha-alert alert-type="error">{{ state_attr('plant.amaryllis', 'problem') }}</ha-alert>
                 - !include amaryllis_moisture.yaml
+                - !include amaryllis_conductivity.yaml
       - type: custom:button-card
         entity: plant.amaryllis
         name: State
@@ -46,6 +47,12 @@ cards:
         entity: sensor.amaryllis_conductivity
         name: Conductivity
         template: statistic_button
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            title: 🌷 Bulbs
+            card: !include amaryllis_conductivity.yaml
       #- type: custom:button-card
       #  entity: sensor.amaryllis_illuminance
       #  name: Illuminance
