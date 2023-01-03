@@ -16,9 +16,14 @@ cards:
               cards:
                 - type: custom:stack-in-card
                   cards:
-                    - type: entity
-                      entity: plant.amaryllis
-                      name: State
+                    - type: horizontal-stack
+                      cards:
+                        - type: entity
+                          entity: plant.amaryllis
+                          name: State
+                        - type: entity
+                          entity: sensor.amaryllis_battery
+                          name: Battery
                     - type: conditional
                       conditions:
                         - entity: plant.amaryllis
@@ -74,9 +79,14 @@ cards:
               cards:
                 - type: custom:stack-in-card
                   cards:
-                    - type: entity
-                      entity: plant.bonsai
-                      name: State
+                    - type: horizontal-stack
+                      cards:
+                        - type: entity
+                          entity: plant.bonsai
+                          name: State
+                        - type: entity
+                          entity: sensor.ecowitt_soil_bonsai_battery
+                          name: Battery
                     - type: conditional
                       conditions:
                         - entity: plant.bonsai
