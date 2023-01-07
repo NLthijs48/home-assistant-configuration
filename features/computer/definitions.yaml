@@ -27,11 +27,10 @@ switch:
     host: "10.0.100.1"
     broadcast_address: "10.0.100.1"
     turn_off:
-      # Go to sleep instead of doing an actual shutdown
-      service: mqtt.publish
-      data:
-        topic: "iotlink/workgroup/thijs/commands/suspend"
-        payload: ""
+      # Hibernate instead of actual shutdown
+      service: button.press
+      target:
+        entity_id: button.computer_thijs_hibernate
     scan_interval: 10
   # Laptop Thijs
   - name: Laptop Thijs wake on lan
@@ -40,6 +39,7 @@ switch:
     host: "10.0.100.3"
     broadcast_address: "10.0.100.3"
     scan_interval: 10
+  # TODO: Thijs Crisp laptop
   # Computer Frits
   - name: Computer Frits wake on lan
     platform: wake_on_lan
@@ -77,11 +77,3 @@ script:
           broadcast_address: "10.0.100.1"
   # iotlink notification test
   computer_thijs_notify: !include scripts/computer_thijs_notify.yaml
-  # Put to sleep
-  computer_thijs_suspend:
-    alias: "Computer Thijs: sleep"
-    sequence:
-      - service: mqtt.publish
-        data:
-          topic: "iotlink/workgroup/thijs/commands/suspend"
-          payload: ""
