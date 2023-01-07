@@ -1,0 +1,10 @@
+- alias: Computer Thijs publish all sensors on boot
+  description: Prevents having to wait for a sensor update after a Home Assistant restart
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: button.press
+      target:
+        entity_id: button.computer_thijs_publish_all_sensors
+  mode: single
