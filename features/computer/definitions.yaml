@@ -75,5 +75,3 @@ script:
         data:
           mac: "f0:2f:74:16:19:9b"
           broadcast_address: "10.0.100.1"
-  # iotlink notification test
-  computer_thijs_notify: !include scripts/computer_thijs_notify.yaml

@@ -8,7 +8,7 @@
       entity_id: sensor.netatmo_computers_co2
       above: '1300'
   action:
-    - service: script.computer_thijs_notify
+    - service: notify.computer_thijs
       data:
         title: The CO2 level is at {{states("sensor.netatmo_computers_co2")}} ppm!
         message: Open a window to fix it
