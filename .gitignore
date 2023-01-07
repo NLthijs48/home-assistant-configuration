@@ -5,6 +5,8 @@
 !.idea/icon.png
 # Sets the default file encoding to UTF-8
 !.idea/encodings.xml
+# Save the project name
+!.idea/.name
 
 ##### Ignore Home Assistant runtime folders
 # UI configuration
