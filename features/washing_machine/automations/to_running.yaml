@@ -20,9 +20,17 @@
           entity_id: input_select.washing_machine
           state: 'Done'
   action:
+    # When coming from 'Done', detect user again (might be someone else runs it again before marked emptied)
+    - if:
+        - condition: state
+          entity_id: input_select.washing_machine
+          state: 'Done'
+      then:
+        - service: script.washing_machine_detect_user
+
+    # Set the state to running
     - service: input_select.select_option
       target:
         entity_id: input_select.washing_machine
       data:
         option: "Running"
-

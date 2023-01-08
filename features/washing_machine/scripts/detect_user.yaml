@@ -1,0 +1,41 @@
+alias: Detect who turned the washing machine on
+description: Set the correct washing machine user
+icon: mdi:check-bold
+sequence:
+  - alias: Guess which person turned it on
+    service: input_select.select_option
+    target:
+      entity_id: input_select.washing_machine_user
+    data:
+      option: >-
+        {% if is_state("binary_sensor.thijs_home", "on") and is_state("binary_sensor.frits_home", "on") %}
+          {# Both home, try checking the floor #}
+          {% if is_state('sensor.phone_thijs_wifi_ap', 'upstairs') and is_state('sensor.phone_frits_wifi_ap', 'upstairs') %}
+            {# Both upstairs #}
+            {% if is_state('input_boolean.thijs_sleepy', 'on') %}
+              {# Frits did it, Thijs is still sleeping #}
+              Frits
+            {% else %}
+              {# Don't know: guess Thijs #}
+              Thijs
+            {% endif %}
+          {% elif is_state('sensor.phone_thijs_wifi_ap', 'upstairs') %}
+            {# Only Thijs is upstairs #}
+            Thijs
+          {% elif is_state('sensor.phone_frits_wifi_ap', 'upstairs') %}
+            {# Only Frits is upstairs #}
+            Frits
+          {% else %}
+            {# Both downstairs somehow, assign Thijs to have someone #}
+            Thijs
+          {% endif %}
+        {% elif is_state("binary_sensor.thijs_home", "on") %}
+          {# Only Thijs is home #}
+          Thijs
+        {% elif is_state("binary_sensor.frits_home", "on") %}
+          {# Only Frits is home #}
+          Frits
+        {% else %}
+          {# Nobody home?! guess Thijs #}
+          Thijs
+        {% endif %}

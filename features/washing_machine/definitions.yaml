@@ -2,6 +2,7 @@ automation: !include_dir_merge_list automations
 
 script:
   washing_machine_emptied: !include scripts/emptied.yaml
+  washing_machine_detect_user: !include scripts/detect_user.yaml
 
 input_select:
   # State tracker
