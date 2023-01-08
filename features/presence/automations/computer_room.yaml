@@ -1,6 +1,7 @@
 # Toggle monitor Thijs based on computer usage and being home
 - alias: Computer monitor Thijs toggle based on presence
   id: presence_computer_monitor_thijs
+  mode: restart
   trigger:
     - platform: state
       entity_id: binary_sensor.computer_thijs_used
