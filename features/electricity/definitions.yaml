@@ -14,11 +14,6 @@ sensor:
     model: LED1650R5
     multiply_factor: 7
     multiply_factor_standby: true
-  # WLED CO2 LED strip
-  - platform: powercalc
-    entity_id: sensor.quinled_dig_uno_estimated_current
-    wled:
-      voltage: 12
   # Frits' room
   - platform: powercalc
     entity_id: light.frits_room_wall # Random entity id, to base default ids on
@@ -58,6 +53,7 @@ template:
         state_class: measurement
         icon: mdi:transmission-tower
   - sensor:
+      # Change the unit of the house power from kW to W
       - name: "Power consumption (watt)"
         unit_of_measurement: W
         state: >
