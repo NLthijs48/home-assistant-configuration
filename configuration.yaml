@@ -60,13 +60,13 @@ recorder:
       - camera
       # Not using weather history, just current predictions
       - weather
+      # Not using history, updates every few seconds while playing
+      - media_player
     entities:
       # Triggers often, no need for history
       - automation.detect_motion_in_the_living_room
       # No need for a long history
       - binary_sensor.living_room_motion_sensor_occupancy
-      # Not using history, updates every few seconds while playing
-      - media_player.4k
       - sensor.computer_thijs_last_active
       - sensor.neerslag_buienalarm_regen_data
     entity_globs:
