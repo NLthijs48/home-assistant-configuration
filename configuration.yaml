@@ -93,8 +93,6 @@ recorder:
 tts:
   # Baseline tts voice, does not sound great
   - platform: google_translate
-    # It is trying to use the internal IP, but that does not work for the Google Home mini (must be https)
-    base_url: !secret domain
   - platform: google_cloud
     key_file: credentials/google_cloud_tts.json
     voice: en-US-Wavenet-D # Male, kinda deep voice
