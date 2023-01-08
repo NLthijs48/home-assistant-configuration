@@ -113,7 +113,7 @@
                           [block_start_leds, lowlight_start_leds] | max,
                           [block_end_leds, led_count] | min,
                           block.color,
-                          scaledown = 2.2 if is_state('input_boolean.light_outside', 'on') else 2.3
+                          scaledown = 2 if is_state('input_boolean.light_outside', 'on') else 2.3
                         )
                       }}
                     {% endif %}
