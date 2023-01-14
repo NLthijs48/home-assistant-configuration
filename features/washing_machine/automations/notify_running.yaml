@@ -42,6 +42,8 @@
           tag: washing_machine
           channel: Washing machine
           importance: high
+          # Only vibrate once (done notification does still alert)
+          alert_once: true
           notification_icon: mdi:washing-machine
           actions:
             - title: Not mine
