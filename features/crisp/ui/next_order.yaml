@@ -11,39 +11,40 @@ card:
       tap_action:
         action: fire-dom-event
         browser_mod:
-          command: popup
-          title: 🥐 Crisp
-          card:
-            type: entities
-            entities:
-              - entity: sensor.crisp_next_order_raw
-                name: Order
-              - entity: sensor.crisp_next_order_day
-                name: Day
-                icon: mdi:calendar
-              - entity: sensor.crisp_next_order_selected_timeslot
-                name: Timeslot
-                icon: mdi:clock-outline
-              - type: attribute
-                entity: sensor.crisp_next_order
-                attribute: details
-                name: Details
-              - entity: sensor.crisp_next_order_contents
-                name: Content
-                icon: mdi:food-croissant
-              - entity: sensor.crisp_next_order_tracking
-                name: Tracking
-                icon: mdi:map
-              - entity: sensor.crisp_next_order_tracking_details
-                name: Expected and driver
-                icon: mdi:account
-              - entity: sensor.crisp_next_order_tracking_location
-                name: Location
-                icon: mdi:map-marker
-              - entity: device_tracker.crisp_van
-                name: Van location
-              - entity: proximity.crisp_van
-                name: Van proximity
+          service: browser_mod.popup
+          data:
+            title: 🥐 Crisp
+            content:
+              type: entities
+              entities:
+                - entity: sensor.crisp_next_order_raw
+                  name: Order
+                - entity: sensor.crisp_next_order_day
+                  name: Day
+                  icon: mdi:calendar
+                - entity: sensor.crisp_next_order_selected_timeslot
+                  name: Timeslot
+                  icon: mdi:clock-outline
+                - type: attribute
+                  entity: sensor.crisp_next_order
+                  attribute: details
+                  name: Details
+                - entity: sensor.crisp_next_order_contents
+                  name: Content
+                  icon: mdi:food-croissant
+                - entity: sensor.crisp_next_order_tracking
+                  name: Tracking
+                  icon: mdi:map
+                - entity: sensor.crisp_next_order_tracking_details
+                  name: Expected and driver
+                  icon: mdi:account
+                - entity: sensor.crisp_next_order_tracking_location
+                  name: Location
+                  icon: mdi:map-marker
+                - entity: device_tracker.crisp_van
+                  name: Van location
+                - entity: proximity.crisp_van
+                  name: Van proximity
     - type: horizontal-stack
       cards:
         # Information button

@@ -34,11 +34,6 @@ homeassistant:
 frontend:
   themes: !include_dir_merge_named themes
 
-# Enable browser mod (for popups)
-browser_mod:
-  disable:
-    - all
-
 # Setup SSL
 http:
   use_x_forwarded_for: true

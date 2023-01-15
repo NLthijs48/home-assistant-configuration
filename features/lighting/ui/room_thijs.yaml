@@ -7,29 +7,30 @@ cards:
     tap_action:
       action: fire-dom-event
       browser_mod:
-        command: popup
-        title: 💡 Lights
-        card:
-          type: entities
-          entities:
-            # Phone
-            - type: section
-              label: Phone
-            - entity: input_boolean.thijs_sleepy
-              name: Sleepy?
-            - entity: sensor.phone_thijs_do_not_disturb
-              name: Do not disturb
-            - entity: sensor.phone_thijs_audio_setting
-              name: Phone sound
-            - entity: sensor.phone_thijs_next_alarm
-              name: Next alarm
-            # Motion
-            - type: section
-              label: Motion
-            - entity: binary_sensor.bedroom_thijs_motion_sensor_occupancy
-              name: Floor
-            - entity: binary_sensor.bedroom_thijs_motion_sensor_wide_occupancy
-              name: Room
+        service: browser_mod.popup
+        data:
+          title: 💡 Lights
+          content:
+            type: entities
+            entities:
+              # Phone
+              - type: section
+                label: Phone
+              - entity: input_boolean.thijs_sleepy
+                name: Sleepy?
+              - entity: sensor.phone_thijs_do_not_disturb
+                name: Do not disturb
+              - entity: sensor.phone_thijs_audio_setting
+                name: Phone sound
+              - entity: sensor.phone_thijs_next_alarm
+                name: Next alarm
+              # Motion
+              - type: section
+                label: Motion
+              - entity: binary_sensor.bedroom_thijs_motion_sensor_occupancy
+                name: Floor
+              - entity: binary_sensor.bedroom_thijs_motion_sensor_wide_occupancy
+                name: Room
 
   # Light sliders
   - type: horizontal-stack

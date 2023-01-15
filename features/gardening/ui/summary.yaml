@@ -9,31 +9,32 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            title: 🌷 Bulbs
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:stack-in-card
-                  cards:
-                    - type: horizontal-stack
-                      cards:
-                        - type: entity
-                          entity: plant.amaryllis
-                          name: State
-                        - type: entity
-                          entity: sensor.amaryllis_battery
-                          name: Battery
-                    - type: conditional
-                      conditions:
-                        - entity: plant.amaryllis
-                          state: 'problem'
-                      card:
-                        type: markdown
-                        content: >-
-                          <ha-alert alert-type="error">{{ state_attr('plant.amaryllis', 'problem') }}</ha-alert>
-                - !include amaryllis_moisture.yaml
-                - !include amaryllis_conductivity.yaml
+            service: browser_mod.popup
+            data:
+              title: 🌷 Bulbs
+              content:
+                type: vertical-stack
+                cards:
+                  - type: custom:stack-in-card
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: entity
+                            entity: plant.amaryllis
+                            name: State
+                          - type: entity
+                            entity: sensor.amaryllis_battery
+                            name: Battery
+                      - type: conditional
+                        conditions:
+                          - entity: plant.amaryllis
+                            state: 'problem'
+                        card:
+                          type: markdown
+                          content: >-
+                            <ha-alert alert-type="error">{{ state_attr('plant.amaryllis', 'problem') }}</ha-alert>
+                  - !include amaryllis_moisture.yaml
+                  - !include amaryllis_conductivity.yaml
       - type: custom:button-card
         entity: plant.amaryllis
         name: State
@@ -45,9 +46,10 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            title: 🌷 Bulbs
-            card: !include amaryllis_moisture.yaml
+            service: browser_mod.popup
+            data:
+              title: 🌷 Bulbs
+              content: !include amaryllis_moisture.yaml
       - type: custom:button-card
         entity: sensor.amaryllis_conductivity
         name: Conductivity
@@ -55,9 +57,10 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            title: 🌷 Bulbs
-            card: !include amaryllis_conductivity.yaml
+            service: browser_mod.popup
+            data:
+              title: 🌷 Bulbs
+              content: !include amaryllis_conductivity.yaml
       #- type: custom:button-card
       #  entity: sensor.amaryllis_illuminance
       #  name: Illuminance
@@ -72,31 +75,32 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            title: 🌳 Bonsai
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:stack-in-card
-                  cards:
-                    - type: horizontal-stack
-                      cards:
-                        - type: entity
-                          entity: plant.bonsai
-                          name: State
-                        - type: entity
-                          entity: sensor.ecowitt_soil_bonsai_battery
-                          name: Battery
-                    - type: conditional
-                      conditions:
-                        - entity: plant.bonsai
-                          state: 'problem'
-                      card:
-                        type: markdown
-                        content: >-
-                          <ha-alert alert-type="error">{{ state_attr('plant.bonsai', 'problem') }}</ha-alert>
-                - !include bonsai_moisture.yaml
-                # TODO: the rest, and graphs
+            service: browser_mod.popup
+            data:
+              title: 🌳 Bonsai
+              content:
+                type: vertical-stack
+                cards:
+                  - type: custom:stack-in-card
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: entity
+                            entity: plant.bonsai
+                            name: State
+                          - type: entity
+                            entity: sensor.ecowitt_soil_bonsai_battery
+                            name: Battery
+                      - type: conditional
+                        conditions:
+                          - entity: plant.bonsai
+                            state: 'problem'
+                        card:
+                          type: markdown
+                          content: >-
+                            <ha-alert alert-type="error">{{ state_attr('plant.bonsai', 'problem') }}</ha-alert>
+                  - !include bonsai_moisture.yaml
+                  # TODO: the rest, and graphs
       - type: custom:button-card
         entity: plant.bonsai
         template: statistic_button_plant
@@ -108,9 +112,10 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            title: 🌳 Bonsai
-            card: !include bonsai_moisture.yaml
+            service: browser_mod.popup
+            data:
+              title: 🌳 Bonsai
+              content: !include bonsai_moisture.yaml
       #- type: custom:button-card
       #  entity: sensor.living_room_motion_sensor_illuminance
       #  name: Illuminance
@@ -125,25 +130,26 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            title: 🌴 Palm
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:stack-in-card
-                  cards:
-                    - type: entity
-                      entity: plant.palm_big
-                      name: State
-                    - type: conditional
-                      conditions:
-                        - entity: plant.palm_big
-                          state: 'problem'
-                      card:
-                        type: markdown
-                        content: >-
-                          <ha-alert alert-type="error">{{ state_attr('plant.palm_big', 'problem') }}</ha-alert>
-                - !include palm_big_moisture.yaml
+            service: browser_mod.popup
+            data:
+              title: 🌴 Palm
+              content:
+                type: vertical-stack
+                cards:
+                  - type: custom:stack-in-card
+                    cards:
+                      - type: entity
+                        entity: plant.palm_big
+                        name: State
+                      - type: conditional
+                        conditions:
+                          - entity: plant.palm_big
+                            state: 'problem'
+                        card:
+                          type: markdown
+                          content: >-
+                            <ha-alert alert-type="error">{{ state_attr('plant.palm_big', 'problem') }}</ha-alert>
+                  - !include palm_big_moisture.yaml
       - type: custom:button-card
         entity: plant.palm_big
         name: State
@@ -156,6 +162,7 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            title: 🌴 Palm
-            card: !include palm_big_moisture.yaml
+            service: browser_mod.popup
+            data:
+              title: 🌴 Palm
+              content: !include palm_big_moisture.yaml

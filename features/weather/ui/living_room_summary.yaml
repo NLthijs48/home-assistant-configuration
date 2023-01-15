@@ -8,19 +8,21 @@ cards:
     tap_action:
       action: fire-dom-event
       browser_mod:
-        command: popup
-        title: 📺 Living room
-        card:
-          type: vertical-stack
-          cards:
-            - !include living_room/temperature.yaml
-            - !include living_room/co2.yaml
-            - !include living_room/noise.yaml
-            - !include living_room/humidity.yaml
-            - !include living_room/pressure.yaml
-            - !include living_room/pm2_5.yaml
-            - !include living_room/pm10.yaml
-            - !include living_room/fridge_temperature.yaml
+        service: browser_mod.popup
+        data:
+          title: 📺 Living room
+          size: fullscreen
+          content:
+            type: vertical-stack
+            cards:
+              - !include living_room/temperature.yaml
+              - !include living_room/co2.yaml
+              - !include living_room/noise.yaml
+              - !include living_room/humidity.yaml
+              - !include living_room/pressure.yaml
+              - !include living_room/pm2_5.yaml
+              - !include living_room/pm10.yaml
+              - !include living_room/fridge_temperature.yaml
 
   - !include living_room/temperature_preview.yaml
 
@@ -35,10 +37,9 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            card: !include living_room/co2.yaml
-            title: ' '
-            hide_header: true
+            service: browser_mod.popup
+            data:
+              content: !include living_room/co2.yaml
       # Humidity
       - type: custom:button-card
         name: Humidity
@@ -47,10 +48,9 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            card: !include living_room/humidity.yaml
-            title: ' '
-            hide_header: true
+            service: browser_mod.popup
+            data:
+              content: !include living_room/humidity.yaml
 
   - type: horizontal-stack
     cards:
@@ -62,10 +62,9 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            card: !include living_room/noise.yaml
-            title: ' '
-            hide_header: true
+            service: browser_mod.popup
+            data:
+              content: !include living_room/noise.yaml
       # Pressure
       - type: custom:button-card
         name: Pressure
@@ -74,10 +73,9 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            card: !include living_room/pressure.yaml
-            title: ' '
-            hide_header: true
+            service: browser_mod.popup
+            data:
+              content: !include living_room/pressure.yaml
 
   - type: horizontal-stack
     cards:
@@ -89,10 +87,9 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            card: !include living_room/pm2_5.yaml
-            title: ' '
-            hide_header: true
+            service: browser_mod.popup
+            data:
+              content: !include living_room/pm2_5.yaml
       # PM 10
       - type: custom:button-card
         name: PM 10
@@ -101,7 +98,6 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            card: !include living_room/pm10.yaml
-            title: ' '
-            hide_header: true
+            service: browser_mod.popup
+            data:
+              content: !include living_room/pm10.yaml

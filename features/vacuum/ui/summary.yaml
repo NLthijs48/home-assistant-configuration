@@ -7,17 +7,18 @@ cards:
     tap_action:
       action: fire-dom-event
       browser_mod:
-        command: popup
-        title: 🧹 Vacuum
-        card:
-          type: vertical-stack
-          cards:
-            - type: entity
-              entity: vacuum.roborock_s7
-            - !include map.yaml
-            - !include details.yaml
-            # To start anyway when already running
-            - !include start_buttons.yaml
+        service: browser_mod.popup
+        data:
+          title: 🧹 Vacuum
+          content:
+            type: vertical-stack
+            cards:
+              - type: entity
+                entity: vacuum.roborock_s7
+              - !include map.yaml
+              - !include details.yaml
+              # To start anyway when already running
+              - !include start_buttons.yaml
 
   # Entity state (when not docked or idle)
   - type: conditional

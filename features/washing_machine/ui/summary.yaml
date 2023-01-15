@@ -12,18 +12,19 @@ card:
       tap_action:
         action: fire-dom-event
         browser_mod:
-          command: popup
-          title: 👕 Washing machine
-          card:
-            type: vertical-stack
-            cards:
-              - type: entities
-                entities:
-                  - entity: input_select.washing_machine
-                    name: State
-                  - entity: input_select.washing_machine_user
-                    name: User
-              - !include power_last_hour.yaml
+          service: browser_mod.popup
+          data:
+            title: 👕 Washing machine
+            content:
+              type: vertical-stack
+              cards:
+                - type: entities
+                  entities:
+                    - entity: input_select.washing_machine
+                      name: State
+                    - entity: input_select.washing_machine_user
+                      name: User
+                - !include power_last_hour.yaml
     - type: horizontal-stack
       cards:
         - type: entity

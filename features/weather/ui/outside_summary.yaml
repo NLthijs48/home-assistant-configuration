@@ -6,18 +6,19 @@ cards:
     tap_action:
       action: fire-dom-event
       browser_mod:
-        command: popup
-        title: "☀️ Forecast"
-        card:
-          type: vertical-stack
-          cards:
-            - !include outside/forecast_24_hours_bar.yaml
-            - !include outside/forecast_24_hours_graph.yaml
-            - !include outside/forecast_days.yaml
-            # TODO: try showing this in the summary when not all-zero?
-            - !include outside/buienalarm.yaml
-            - !include outside/radar.yaml
-            #- !include outside/buienradar.yaml
+        service: browser_mod.popup
+        data:
+          title: "☀️ Forecast"
+          content:
+            type: vertical-stack
+            cards:
+              - !include outside/forecast_24_hours_bar.yaml
+              - !include outside/forecast_24_hours_graph.yaml
+              - !include outside/forecast_days.yaml
+              # TODO: try showing this in the summary when not all-zero?
+              - !include outside/buienalarm.yaml
+              - !include outside/radar.yaml
+              #- !include outside/buienradar.yaml
   - type: custom:stack-in-card
     cards:
       # TODO: try card-modding these cards closer to each other

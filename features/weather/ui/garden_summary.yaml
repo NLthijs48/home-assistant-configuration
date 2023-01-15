@@ -7,18 +7,19 @@ cards:
     tap_action:
       action: fire-dom-event
       browser_mod:
-        command: popup
-        title: 🌴 Garden
-        card:
-          type: vertical-stack
-          cards:
-          - type: entities
-            entities:
-              - entity: switch.water_pump
-          - !include garden/temperature.yaml
-          - !include garden/wind.yaml
-          - !include garden/humidity.yaml
-          - !include garden/rain.yaml
+        service: browser_mod.popup
+        data:
+          title: 🌴 Garden
+          content:
+            type: vertical-stack
+            cards:
+            - type: entities
+              entities:
+                - entity: switch.water_pump
+            - !include garden/temperature.yaml
+            - !include garden/wind.yaml
+            - !include garden/humidity.yaml
+            - !include garden/rain.yaml
   - !include garden/temperature.yaml
 
   # Rows of tiny garden stats
@@ -32,10 +33,9 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            card: !include garden/humidity.yaml
-            title: ' '
-            hide_header: true
+            service: browser_mod.popup
+            data:
+              content: !include garden/humidity.yaml
       # Rain today
       - type: custom:button-card
         name: Rain today
@@ -44,10 +44,9 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            card: !include garden/rain.yaml
-            title: ' '
-            hide_header: true
+            service: browser_mod.popup
+            data:
+              content: !include garden/rain.yaml
 
   - type: horizontal-stack
     cards:
@@ -59,10 +58,9 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            card: !include garden/wind.yaml
-            title: ' '
-            hide_header: true
+            service: browser_mod.popup
+            data:
+              content: !include garden/wind.yaml
       # Wind gust direction
       - type: custom:button-card
         name: Wind direction
@@ -71,7 +69,6 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            command: popup
-            card: !include garden/wind.yaml
-            title: ' '
-            hide_header: true
+            service: browser_mod.popup
+            data:
+              content: !include garden/wind.yaml
