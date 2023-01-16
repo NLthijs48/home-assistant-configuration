@@ -53,8 +53,7 @@ views:
     cards:
       - !include features/lighting/ui/room_thijs.yaml
       - !include features/computer/ui/computer_thijs.yaml
-      # Not using this spotify thing
-      #- !include features/spotify/ui/thijs.yaml
+      - !include features/spotify/ui/thijs.yaml
 
   # Frits
   - title: Frits

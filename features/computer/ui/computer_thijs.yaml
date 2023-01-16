@@ -42,3 +42,16 @@ cards:
           name: Webcam
           entity: sensor.computer_thijs_webcam_process
           icon: 'mdi:cctv'
+
+      # Media player computer
+      # TODO: hide when same as spotify?
+      - type: custom:mini-media-player
+        entity: media_player.computer_thijs
+        artwork: material
+        hide:
+          # Not implemented in HASS.Agent
+          power: true
+          # Shows a cast icon for some reason, just hide
+          icon: true
+          # Already in a Computer section
+          name: true

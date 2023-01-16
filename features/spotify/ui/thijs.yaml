@@ -1,41 +1,51 @@
 type: vertical-stack
 cards:
-  # Media controls
-  - type: 'custom:state-switch'
+  - type: custom:button-card
+    name: 🎵 Media
+    template: header
+  # Media player spotify
+  - type: custom:mini-media-player
     entity: media_player.spotify_thijs
-    default: default
-    states:
-      default:
-        entity: media_player.spotify_thijs
-        type: media-control
-      # Bad way to render 'nothing'
-      idle:
-        type: conditional
-        conditions:
-          - entity: light.does_not_exist
-            state: 'on'
-        card:
-          type: entities
-          entities: null
-      paused:
-        type: conditional
-        conditions:
-          - entity: light.does_not_exist
-            state: 'on'
-        card:
-          type: entities
-          entities: null
+    artwork: material
+    hide:
+      # Shows a cast icon for some reason, just hide
+      icon: true
+      # Already in a Computer section
+      name: true
+    shortcuts:
+      columns: 3
+      column_height: 50
+      buttons:
+        - name: Dance
+          type: service
+          id: script.playlist_dance
+        - name: Dancecore
+          type: service
+          id: script.playlist_dancecore
+        - name: Hardcore
+          type: service
+          id: script.playlist_hardcore
+        - name: Hardstyle
+          type: service
+          id: script.playlist_hardstyle
+        - name: Psy trance
+          type: service
+          id: script.playlist_psy_trance
+        - name: Techno
+          type: service
+          id: script.playlist_techno
 
   # List with all my playlists
-  - type: 'custom:spotify-card'
-    account: thijs
-    spotify_entity: media_player.4k
-    playlist_type: default
-    limit: 30
-    name: Music
-    display_style: list
-    hide_playback_controls: true
-    hide_top_header: true
-    filter_devices:
-      - Living Room speaker
-      - Bedroom speaker
+  # TODO: check how usefull this is and let it work
+  #- type: 'custom:spotify-card'
+  #  account: thijs
+  #  spotify_entity: media_player.4k
+  #  playlist_type: default
+  #  limit: 30
+  #  name: Music
+  #  display_style: list
+  #  hide_playback_controls: true
+  #  hide_top_header: true
+  #  filter_devices:
+  #    - Living Room speaker
+  #    - Bedroom speaker
