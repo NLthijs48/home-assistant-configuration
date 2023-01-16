@@ -10,6 +10,8 @@ cards:
         entities:
           - entity: switch.computer_thijs_wake_on_lan
             name: Switch
+
+      # Power usage
       - type: horizontal-stack
         cards:
           - type: entity
@@ -19,28 +21,24 @@ cards:
             entity: sensor.monitor_thijs_power
             name: Monitor power
 
-  # Show real-time stats when turned on
-  # Future: add tap_action with fancy popup with graphs
-  - type: conditional
-    conditions:
-      - entity: switch.computer_thijs_wake_on_lan
-        state: "on"
-      - entity: sensor.computer_thijs_cpu_usage
-        state_not: "unavailable"
-    card:
-      type: vertical-stack
-      cards:
-        - type: 'custom:bar-card'
-          entities:
-            - entity: sensor.computer_thijs_cpu_usage
-              name: CPU
-            - entity: sensor.computer_thijs_ram_usage
-              name: Memory
-        - type: horizontal-stack
-          cards:
-            - type: entity
-              entity: binary_sensor.microphone
-              icon: 'mdi:microphone'
-            - type: entity
-              entity: binary_sensor.webcam
-              icon: 'mdi:cctv'
+      # Microphone
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.computer_thijs_microphone_active
+            state: "on"
+        card:
+          type: entity
+          name: Microphone
+          entity: sensor.computer_thijs_microphone_process
+          icon: 'mdi:microphone'
+
+      # Webcam
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.computer_thijs_webcam_active
+            state: "on"
+        card:
+          type: entity
+          name: Webcam
+          entity: sensor.computer_thijs_webcam_process
+          icon: 'mdi:cctv'
