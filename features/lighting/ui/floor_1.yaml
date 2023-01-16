@@ -85,13 +85,24 @@ cards:
           - type: custom:fold-entity-row
             head:
               entity: binary_sensor.bedroom_thijs_motion_sensor_occupancy
-              name: Motion sensor
+              name: Motion sensor floor
             entities:
               - entity: sensor.bedroom_thijs_motion_sensor_illuminance
                 name: Light level
               - entity: sensor.bedroom_thijs_motion_sensor_temperature
                 name: Temperature
               - entity: sensor.bedroom_thijs_motion_sensor_power
+                name: Battery
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.bedroom_thijs_motion_sensor_wide_occupancy
+              name: Motion sensor wide
+            entities:
+              - entity: sensor.bedroom_thijs_motion_sensor_wide_illuminance
+                name: Light level
+              - entity: sensor.bedroom_thijs_motion_sensor_wide_temperature
+                name: Temperature
+              - entity: sensor.bedroom_thijs_motion_sensor_wide_power
                 name: Battery
 
       # Computer room
