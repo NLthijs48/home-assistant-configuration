@@ -16,7 +16,7 @@
     - alias: "Rest home cinema pending state"
       service: input_boolean.turn_off
       entity_id: input_boolean.home_cinema_pending
-    - alias: "Show error toast"
-      service: browser_mod.toast
+    - alias: "Show error notification"
+      service: browser_mod.notification
       data:
         message: Switching source timed out, correct manually!
