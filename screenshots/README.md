@@ -3,7 +3,10 @@
 In this folder you can find screenshots of complete dashboard tabs. For specific features and their details see the relevant `features/<feature>/ui/` [folder](/features) for more detailed screenshots.
 
 ## Home
-![Home dashboard](/screenshots/home.png?raw=true)
+### Mobile
+![Home dashboard mobile](/screenshots/home.png?raw=true)
+### Desktop
+![Home dashboard desktop](/screenshots/home-desktop.png?raw=true)
 
 ## Thijs
 ![Thijs' dashboard](/screenshots/thijs.png?raw=true)
