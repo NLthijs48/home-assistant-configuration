@@ -3,14 +3,14 @@
 In this folder you can find screenshots of complete dashboard tabs. For specific features and their details see the relevant `features/<feature>/ui/` [folder](/features) for more detailed screenshots.
 
 ## Home
-![Home dashboard](/home.png?raw=true)
+![Home dashboard](/screenshots/home.png?raw=true)
 
 ## Thijs
-![Thijs' dashboard](/thijs.png?raw=true)
+![Thijs' dashboard](/screenshots/thijs.png?raw=true)
 
 ## Lights
 ### Collapsed
-![Lights dashboard collapsed](/lights-collapsed.png?raw=true)
+![Lights dashboard collapsed](/screenshots/lights-collapsed.png?raw=true)
 
 ### Expanded
-![Lights dashboard expanded](/lights-expanded.png?raw=true)
+![Lights dashboard expanded](/screenshots/lights-expanded.png?raw=true)
