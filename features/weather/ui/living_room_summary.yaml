@@ -11,10 +11,10 @@ cards:
         service: browser_mod.popup
         data:
           title: 📺 Living room
-          size: fullscreen
           content:
             type: vertical-stack
             cards:
+              - !include living_room/air_quality.yaml
               - !include living_room/temperature.yaml
               - !include living_room/co2.yaml
               - !include living_room/noise.yaml

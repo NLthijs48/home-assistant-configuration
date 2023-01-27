@@ -39,3 +39,15 @@ template:
       device_class: problem
       availability: >-
         {{ states('sensor.fridge_temperature') is not none }}
+
+# Indoor air quality combination
+iaquk:
+  living_room:
+    name: Living room
+    sources:
+      temperature: sensor.ecowitt_wh45_temperature
+      humidity: sensor.ecowitt_wh45_humidity
+      co2: sensor.ecowitt_wh45_co2
+      pm:
+        - sensor.ecowitt_wh45_pm2_5
+        - sensor.ecowitt_wh45_pm10
