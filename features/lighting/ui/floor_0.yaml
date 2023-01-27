@@ -167,9 +167,9 @@ cards:
             entities:
               - entity: sensor.toilet_motion_sensor_battery
                 name: Battery
-              - entity: sensor.living_room_motion_sensor_illuminance
+              - entity: sensor.toilet_motion_sensor_illuminance
                 name: Illuminance
-              - entity: sensor.living_room_motion_sensor_temperature
+              - entity: sensor.toilet_motion_sensor_temperature
                 name: Temperature
 
 
@@ -195,11 +195,15 @@ cards:
         entities:
           - type: custom:fold-entity-row
             head:
-              entity: binary_sensor.ground_floor_hall_motion_sensor
+              entity: binary_sensor.ground_floor_hall_motion_sensor_occupancy
               name: Motion sensor
             entities:
               - entity: sensor.ground_floor_hall_motion_sensor_battery
                 name: Battery
+              - entity: sensor.ground_floor_hall_motion_sensor_illuminance
+                name: Illuminance
+              - entity: sensor.ground_floor_hall_motion_sensor_temperature
+                name: Temperature
 
       # Closet
       - type: custom:fold-entity-row
