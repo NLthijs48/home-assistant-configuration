@@ -17,7 +17,8 @@
 # Components installed using the community store
 custom_components
 # Themes installed using the community store
-themes
+themes/*
+!themes/fix.md
 # Integrations installed using the community store
 www/community
 # Zigbee network (conbee stick)
