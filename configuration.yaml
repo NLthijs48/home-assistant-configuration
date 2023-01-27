@@ -33,6 +33,9 @@ homeassistant:
 # Include themes
 frontend:
   themes: !include_dir_merge_named themes
+  # This has better performance than adding in lovelace-resources according to the author
+  extra_module_url:
+    - /hacsfiles/lovelace-card-mod/card-mod.js
 
 # Setup SSL
 http:

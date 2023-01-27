@@ -11,7 +11,6 @@ views:
     path: living-room
     cards:
       - !include features/presence/ui/person_locations.yaml
-      - !include features/lighting/ui/living_room.yaml
       - !include features/home_cinema/ui/mode_select.yaml
       - !include features/home_cinema/ui/players.yaml
       - !include features/crisp/ui/next_order.yaml

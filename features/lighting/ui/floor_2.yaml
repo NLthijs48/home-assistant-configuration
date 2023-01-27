@@ -5,18 +5,32 @@ cards:
     template: header
     name: 👕 Second floor
   - type: entities
-    show_header_toggle: false
+    card_mod:
+      style: |
+        ha-card #states {
+          padding: 0;
+        }
     entities:
 
       # Hall
       - type: custom:fold-entity-row
         head:
-          entity: light.attic_hall
+          type: custom:slider-button-card
           name: Washing hall
-          state_color: false
-          hide_state: true
-          grow: true
-          type: custom:slider-entity-row
+          entity: light.attic_hall
+          slider:
+            direction: left-right
+            background: gradient
+            use_state_color: false
+            use_percentage_bg_opacity: false
+            show_track: true
+          icon:
+            tap_action:
+              action: more-info
+            use_state_color: true
+          action_button:
+            show: false
+          compact: true
         entities:
           - type: custom:fold-entity-row
             head:
@@ -28,12 +42,23 @@ cards:
       # Room
       - type: custom:fold-entity-row
         head:
+          type: custom:slider-button-card
           name: Room
           entity: light.attic_room_lights
-          state_color: false
-          hide_state: true
-          grow: true
-          type: custom:slider-entity-row
+          slider:
+            direction: left-right
+            background: gradient
+            use_state_color: false
+            use_percentage_bg_opacity: false
+            show_track: true
+          icon:
+            icon: mdi:bed
+            tap_action:
+              action: more-info
+            use_state_color: true
+          action_button:
+            show: false
+          compact: true
         entities:
           - entity: light.attic_standing
             name: Standing

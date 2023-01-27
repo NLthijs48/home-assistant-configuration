@@ -5,17 +5,32 @@ cards:
     template: header
     name: 🛏️ First floor
   - type: entities
-    show_header_toggle: false
+    card_mod:
+      style: |
+        ha-card #states {
+          padding: 0;
+        }
     entities:
 
       # Hall
       - type: custom:fold-entity-row
         head:
-          entity: light.first_floor_hall
+          type: custom:slider-button-card
           name: Hall
-          state_color: false
-          type: custom:slider-entity-row
-          hide_state: true
+          entity: light.first_floor_hall
+          slider:
+            direction: left-right
+            background: gradient
+            use_state_color: false
+            use_percentage_bg_opacity: false
+            show_track: true
+          icon:
+            tap_action:
+              action: more-info
+            use_state_color: true
+          action_button:
+            show: false
+          compact: true
         entities:
           - type: custom:fold-entity-row
             head:
@@ -29,13 +44,23 @@ cards:
       - type: custom:fold-entity-row
         open: false
         head:
-          entity: light.bedroom_frits_lights
-          icon: mdi:track-light
+          type: custom:slider-button-card
           name: Frits' room
-          state_color: false
-          hide_state: true
-          grow: true
-          type: custom:slider-entity-row
+          entity: light.bedroom_frits_lights
+          slider:
+            direction: left-right
+            background: gradient
+            use_state_color: false
+            use_percentage_bg_opacity: false
+            show_track: true
+          icon:
+            icon: mdi:track-light
+            tap_action:
+              action: more-info
+            use_state_color: true
+          action_button:
+            show: false
+          compact: true
         entities:
           - entity: light.frits_room_wall
             name: Wall
@@ -61,12 +86,23 @@ cards:
       # Thijs' room
       - type: custom:fold-entity-row
         head:
-          entity: light.bedroom_thijs_lights
+          type: custom:slider-button-card
           name: Thijs' room
-          state_color: false
-          hide_state: true
-          grow: true
-          type: custom:slider-entity-row
+          entity: light.bedroom_thijs_lights
+          slider:
+            direction: left-right
+            background: gradient
+            use_state_color: false
+            use_percentage_bg_opacity: false
+            show_track: true
+          icon:
+            icon: mdi:track-light
+            tap_action:
+              action: more-info
+            use_state_color: true
+          action_button:
+            show: false
+          compact: true
         entities:
           - entity: light.bedroom_thijs_ceiling
             name: Ceiling
@@ -108,12 +144,23 @@ cards:
       # Computer room
       - type: custom:fold-entity-row
         head:
-          entity: light.computers_ceiling
+          type: custom:slider-button-card
           name: Computers
-          type: custom:slider-entity-row
-          state_color: false
-          hide_state: true
-          grow: true
+          entity: light.computers_ceiling
+          slider:
+            direction: left-right
+            background: gradient
+            use_state_color: false
+            use_percentage_bg_opacity: false
+            show_track: true
+          icon:
+            icon: mdi:track-light
+            tap_action:
+              action: more-info
+            use_state_color: true
+          action_button:
+            show: false
+          compact: true
         entities:
           - entity: sensor.computers_remote_battery
             name: Remote battery

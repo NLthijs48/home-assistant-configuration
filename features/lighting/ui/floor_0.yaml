@@ -5,20 +5,34 @@ cards:
     template: header
     name: 📺 Ground floor
   - type: entities
-    show_header_toggle: false
+    card_mod:
+      style: |
+        ha-card #states {
+          padding: 0;
+        }
     entities:
 
       # Living room
       - type: custom:fold-entity-row
         head:
-          entity: light.living_room_lights
+          type: custom:slider-button-card
           name: Living room
-          state_color: false
-          hide_state: true
-          grow: true
-          type: custom:slider-entity-row
+          entity: light.living_room_lights
+          slider:
+            direction: left-right
+            background: gradient
+            use_state_color: false
+            use_percentage_bg_opacity: false
+            show_track: true
+          icon:
+            icon: mdi:theater
+            tap_action:
+              action: more-info
+            use_state_color: true
+          action_button:
+            show: false
+          compact: true
         group_config:
-          type: custom:slider-entity-row
           state_color: false
           hide_state: true
           grow: true
@@ -111,14 +125,40 @@ cards:
               - entity: sensor.living_room_motion_sensor_power
                 name: Battery
 
+          # Lighting mode
+          - type: custom:button-card
+            name: "Lighting mode:"
+            show_state: true
+            show_icon: false
+            entity: input_select.living_room_lighting_mode
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Living room lighting
+                  content: !include living_room_details.yaml
+
+
       # Toilet
       - type: custom:fold-entity-row
         head:
+          type: custom:slider-button-card
+          name: Toilet
           entity: light.toilet
-          state_color: false
-          hide_state: true
-          grow: true
-          type: custom:slider-entity-row
+          slider:
+            direction: left-right
+            background: gradient
+            use_state_color: false
+            use_percentage_bg_opacity: false
+            show_track: true
+          icon:
+            tap_action:
+              action: more-info
+            use_state_color: true
+          action_button:
+            show: false
+          compact: true
         entities:
           - type: custom:fold-entity-row
             head:
@@ -136,12 +176,22 @@ cards:
       # Hall
       - type: custom:fold-entity-row
         head:
-          entity: light.ground_floor_hall
+          type: custom:slider-button-card
           name: Hall
-          state_color: false
-          hide_state: true
-          grow: true
-          type: custom:slider-entity-row
+          entity: light.ground_floor_hall
+          slider:
+            direction: left-right
+            background: gradient
+            use_state_color: false
+            use_percentage_bg_opacity: false
+            show_track: true
+          icon:
+            tap_action:
+              action: more-info
+            use_state_color: true
+          action_button:
+            show: false
+          compact: true
         entities:
           - type: custom:fold-entity-row
             head:
@@ -154,12 +204,22 @@ cards:
       # Closet
       - type: custom:fold-entity-row
         head:
-          entity: light.closet
+          type: custom:slider-button-card
           name: Closet
-          state_color: false
-          hide_state: true
-          grow: true
-          type: custom:slider-entity-row
+          entity: light.closet
+          slider:
+            direction: left-right
+            background: gradient
+            use_state_color: false
+            use_percentage_bg_opacity: false
+            show_track: true
+          icon:
+            tap_action:
+              action: more-info
+            use_state_color: true
+          action_button:
+            show: false
+          compact: true
         entities:
           - type: custom:fold-entity-row
             head:
