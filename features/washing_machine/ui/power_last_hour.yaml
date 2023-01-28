@@ -9,7 +9,7 @@ height: 130
 hour24: true
 hours_to_show: 1
 points_per_hour: 360
-decimals: 3
+decimals: 0
 line_width: 5
 lower_bound: 0
 show:
