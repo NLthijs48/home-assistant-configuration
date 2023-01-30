@@ -1,7 +1,7 @@
 # Notify when Idle/Running, allow assigning to the other person
 - alias: Washing machine turned on notification
   description: Indicate the washing machine is turned on
-  id: washing_machine_idle_to_off_notification
+  id: washing_machine_notify_running
   mode: parallel # Need to trigger the next one while this one is finishing
   trigger:
     - platform: state

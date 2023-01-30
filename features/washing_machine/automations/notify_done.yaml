@@ -1,7 +1,7 @@
 - alias: Washing machine done notification
   description: Indicate the washing machine is done, and allow setting marking as empty
   id: washing_machine_notify_done
-  mode: single
+  mode: parallel
   trigger:
     # State to Done
     - platform: state
