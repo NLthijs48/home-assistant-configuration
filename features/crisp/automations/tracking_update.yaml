@@ -15,19 +15,18 @@
 - alias: Crisp order tracking automation enable/disable
   id: crisp.tracking_update_automation_toggle
   trigger:
+    # TODO: maybe try triggering this less often?
     - platform: state
-      entity_id: sensor.crisp_next_order_raw
-      attribute: deliveryLink
-    - platform: state
-      entity_id: sensor.crisp_next_order_raw
-      attribute: fulfillStatus
+      entity_id: sensor.crisp_next_order_input
+      attribute: order
   action:
     - alias: Turn on/off tracking link automation
       service: >-
-        {% if state_attr('sensor.crisp_next_order_raw', 'deliveryLink') is not none and not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'done') and not is_state_attr('sensor.crisp_next_order_raw', 'fulfillStatus', 'cancel') %}
-          automation.turn_on
-        {% else %}
+        {% set order = state_attr('sensor.crisp_next_order_input', 'order') %}
+        {% if order is none or order.deliveryLink is none or order.fulfillStatus == 'done' or order.fulfillStatus == 'cancel' %}
           automation.turn_off
+        {% else %}
+          automation.turn_on
         {% endif %}
       target:
         entity_id: automation.tracking_link_data_updates

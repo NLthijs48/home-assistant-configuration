@@ -8,7 +8,8 @@ homeassistant:
 
 rest:
   # Next order REST sensor
-  - resource: "https://crisp.nl/v1/order/history?limit=1"
+  # - get the latest 3 orders: assumption is that there are no more orders to be delivered than that
+  - resource: "https://crisp.nl/v1/order/history?limit=3"
     scan_interval: 600
     headers:
       # Logged in as Thijs
@@ -32,6 +33,18 @@ rest:
           - "deliveryLink"
           - "editable"
           - "finalPrice"
+
+      # Raw list of the next few orders
+      # - calculate all other sensors from here
+      - name: "Crisp next orders input"
+        value_template: >-
+          {% if value_json is not none and value_json.data is not none %}
+            {{ value_json.data | length }}
+          {% else %}
+            0
+          {% endif %}
+        json_attributes:
+        - 'data'
       # Delivery day like "Saturday"
       - name: "Crisp next order day"
         # TODO: add relative dates like 'today' and 'tomorrow'
@@ -48,6 +61,7 @@ rest:
       # Number of products and recipes
       - name: "Crisp next order contents"
         # TODO: hide parts when zero
+        # TODO: add recipes, userRecipes, mealkits
         value_template: "{{ value_json.data[0].products | length }} products, {{ value_json.data[0].recipes | length }} recipes"
       # Feedback givven
       - name: "Crisp next order feedback given"
@@ -56,10 +70,10 @@ rest:
   # Tracking link REST sensor
   - resource_template: >-
       {# Get the data from the actual tracking link (and convert the public link to the data url) #}
-      {% if is_state('sensor.crisp_next_order_raw', 'deliveryLink') is not none %}
-        https://tracking.routigo.com/api/customer/tracking/{{ state_attr('sensor.crisp_next_order_raw', 'deliveryLink') | replace("https://tracking.routigo.com/?trackingCode=", '') }}
+      {% if state_attr('sensor.crisp_next_order_input', 'order') is not none and state_attr('sensor.crisp_next_order_input', 'order').deliveryLink is not none %}
+        https://tracking.routigo.com/api/customer/tracking/{{ state_attr('sensor.crisp_next_order_input', 'order').deliveryLink | replace("https://tracking.routigo.com/?trackingCode=", '') }}
 
-      {# Fallback to dummy file (otherwise it will keep retrying a dead link) #}
+      {# Fallback to dummy file (otherwise it will keep retrying a dead link) TODO; fix this #}
       {% else %}
         {{ states('input_text.crisp_tracking_fallback_url') }}
       {% endif %}
@@ -103,16 +117,41 @@ rest:
 
 # Parse the next order time into a nice string
 template:
+  - sensor:
+      # Select the order to highlight from the raw list of orders from Crisp
+      - name: Crisp next order input
+        unique_id: crisp_next_order_input
+        state: "nothing"
+        availability: >-
+          {{ state_attr('sensor.crisp_next_orders_input', 'data') is not none }}
+        attributes:
+          order: >-
+            {% set orders = state_attr('sensor.crisp_next_orders_input', 'data') %}
+            {% if orders is none %}
+              {{ None }}
+            {% else %}
+              {{
+                orders
+                | selectattr('fulfillStatus', '!=', 'done')
+                | selectattr('fulfillStatus', '!=', 'cancel')
+                | selectattr('fulfillStatus', '!=', 'manual')
+                | selectattr('fulfillStatus', '!=', '')
+                | list
+                | last
+              }}
+            {% endif %}
+
   # TODO: implement availability based on the fact that there is an order
   - sensor:
       - name: Crisp next order
         unique_id: crisp_next_order
         state: "{{ states('sensor.crisp_next_order_day') }} {{ states('sensor.crisp_next_order_selected_timeslot') }}"
         # Future: detect editing state by polling basket as well?
+        availability: >-
+          {{ state_attr('sensor.crisp_next_order_input', 'order') is not none }}
         icon: >-
-          {% set fulfillStatus = state_attr('sensor.crisp_next_order_raw', 'fulfillStatus') %}
-          {% set editable = state_attr('sensor.crisp_next_order_raw', 'editable') %}
-          {% set deliveryLink = state_attr('sensor.crisp_next_order_raw', 'deliveryLink') %}
+          {% set order = state_attr('sensor.crisp_next_order_input', 'order') %}
+          {% set fulfillStatus = order.fulfillStatus %}
 
           {# Cancelled, end state #}
           {% if fulfillStatus == 'cancel' %}
@@ -123,11 +162,11 @@ template:
             mdi:check-outline
 
           {# Delivery is ongoing, link available #}
-          {% elif deliveryLink is not none %}
+          {% elif order.deliveryLink is not none %}
             mdi:truck
 
           {# Editable, before cutoff #}
-          {% elif editable %}
+          {% elif order.editable %}
             mdi:pencil
 
           {# Not editable, not picked yet either #}
@@ -143,14 +182,13 @@ template:
             mdi:basket
           {% endif %}
         attributes:
-          app_link: "com.freshfoodventures.crisp:///order/{{ state_attr('sensor.crisp_next_order_raw', 'id') }}"
+          app_link: "com.freshfoodventures.crisp:///order/{{ state_attr('sensor.crisp_next_order_input', 'order').id }}"
           details: >-
-            {% set deliveryLink = state_attr('sensor.crisp_next_order_raw', 'deliveryLink') %}
-            {% set fulfillStatus = state_attr('sensor.crisp_next_order_raw', 'fulfillStatus') %}
+            {% set order = state_attr('sensor.crisp_next_order_input', 'order') %}
             {% set feedback_given = not is_state('sensor.crisp_next_order_feedback_given', '') %}
 
             {# Delivered #}
-            {% if fulfillStatus == 'done' %}
+            {% if order.fulfillStatus == 'done' %}
               {% if feedback_given %}
                 Delivered, and rated as {{ states('sensor.crisp_next_order_feedback_given') }}
               {% else %}
@@ -158,11 +196,11 @@ template:
               {% endif %}
 
             {# Cancelled #}
-            {% elif fulfillStatus == 'cancel' %}
+            {% elif order.fulfillStatus == 'cancel' %}
               Cancelled
 
             {# Show tracking details while there is a tracking link #}
-            {% elif deliveryLink is not none %}
+            {% elif order.deliveryLink is not none %}
               {{ states('sensor.crisp_next_order_tracking_details') }}
 
             {# Show order content before/after delivery #}

@@ -67,6 +67,10 @@ recorder:
       - binary_sensor.living_room_motion_sensor_occupancy
       - sensor.computer_thijs_last_active
       - sensor.neerslag_buienalarm_regen_data
+      # Stores raw orders from Crisp, can be huge, only derived sensors are needed
+      - sensor.crisp_next_orders
+      # Stores 1 raw order from Crisp
+      - sensor.crisp_next_order_input
     entity_globs:
       # Change very often, maybe remove completely?
       - sensor.glances_*
