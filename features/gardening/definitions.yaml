@@ -3,6 +3,19 @@
 # Automations for notifications
 automation: !include_dir_merge_list automations
 
+homeassistant:
+  customize:
+    plant.bonsai:
+      friendly_name: 🌳Bonsai
+      icon: mdi:pine-tree
+    plant.amaryllis:
+      # Banana plant
+      friendly_name: 🍌Banana
+      icon: mdi:leaf
+    plant.palm_big:
+      friendly_name: 🌴Palm
+      icon: mdi:palm-tree
+
 plant:
   # Using the Ecowitt soil sensor
   bonsai:

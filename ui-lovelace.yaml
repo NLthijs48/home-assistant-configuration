@@ -123,6 +123,8 @@ button_card_templates:
   header:
     color: transparent
     color_type: card
+    show_state: false
+    show_icon: false
     styles:
       card:
         - padding: 16px 16px 8px 16px

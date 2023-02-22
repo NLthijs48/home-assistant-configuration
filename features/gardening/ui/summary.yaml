@@ -1,17 +1,17 @@
 type: horizontal-stack
 cards:
-  # Flower bulbs
+  # 🍌Banana plant
   - type: vertical-stack
     cards:
       - type: custom:button-card
-        name: 🌷Bulbs
+        entity: plant.amaryllis
         template: header
         tap_action:
           action: fire-dom-event
           browser_mod:
             service: browser_mod.popup
             data:
-              title: 🌷 Bulbs
+              title: 🍌Banana
               content:
                 type: vertical-stack
                 cards:
@@ -48,7 +48,7 @@ cards:
           browser_mod:
             service: browser_mod.popup
             data:
-              title: 🌷 Bulbs
+              title: 🍌Banana
               content: !include amaryllis_moisture.yaml
       - type: custom:button-card
         entity: sensor.amaryllis_conductivity
@@ -59,7 +59,7 @@ cards:
           browser_mod:
             service: browser_mod.popup
             data:
-              title: 🌷 Bulbs
+              title: 🍌Banana
               content: !include amaryllis_conductivity.yaml
       #- type: custom:button-card
       #  entity: sensor.amaryllis_illuminance
@@ -70,7 +70,7 @@ cards:
   - type: vertical-stack
     cards:
       - type: custom:button-card
-        name: 🌳Bonsai
+        entity: plant.bonsai
         template: header
         tap_action:
           action: fire-dom-event
@@ -125,7 +125,7 @@ cards:
   - type: vertical-stack
     cards:
       - type: custom:button-card
-        name: 🌴Palm
+        entity: plant.palm_big
         template: header
         tap_action:
           action: fire-dom-event
