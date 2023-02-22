@@ -10,8 +10,19 @@ views:
   - icon: "mdi:theater"
     path: living-room
     cards:
-      - !include features/presence/ui/person_locations.yaml
-      - !include features/home_cinema/ui/mode_select.yaml
+      - type: vertical-stack
+        cards:
+          #- type: custom:button-card
+          #  name: 🧑 People
+          #  template: header
+          - !include features/presence/ui/person_locations.yaml
+      - type: vertical-stack
+        cards:
+          # TODO: move into mode_select.yaml
+          - type: custom:button-card
+            name: 🔊 Home cinema
+            template: header
+          - !include features/home_cinema/ui/mode_select.yaml
       - !include features/home_cinema/ui/players.yaml
       - !include features/crisp/ui/next_order.yaml
       - !include features/washing_machine/ui/summary.yaml
