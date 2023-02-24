@@ -3,31 +3,25 @@ cards:
 
   # Gauge
   - type: gauge
-    entity: sensor.ecowitt_soil_bonsai_moisture
+    entity: sensor.plant_2_moisture
     name: Moisture
     needle: true
     segments:
       - from: 0
         color: red
         label: Dry
-      - from: 15
+      - from: 50
         color: orange
         label: Low
-      - from: 25
+      - from: 60
         color: green
         label: Good
-      - from: 60
-        color: orange
-        label: High
-      - from: 70
-        color: red
-        label: Wet
 
   # Graph
   - type: 'custom:mini-graph-card'
     entities:
       # Moisture
-      - entity: sensor.ecowitt_soil_bonsai_moisture
+      - entity: sensor.plant_2_moisture
         show_fill: false
         name: Moisture
       # Sun is up/down soft-fade
@@ -60,22 +54,14 @@ cards:
       - color: '#ffa500'
         value: 0
       - color: '#ffa500'
-        value: 14
+        value: 49
       # A bit too low
       - color: '#ffa500'
-        value: 15
+        value: 50
       - color: '#ffa500'
-        value: 24
+        value: 59
       # Good
       - color: '#008000'
-        value: 25
-      - color: '#008000'
         value: 60
-      # A bit too high
-      - color: '#ffa500'
-        value: 61
-      - color: '#ffa500'
-        value: 70
-      # Too high
-      - color: '#ffa500'
-        value: 71
+      - color: '#008000'
+        value: 100

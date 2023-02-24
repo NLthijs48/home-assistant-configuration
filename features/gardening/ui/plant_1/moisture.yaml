@@ -3,35 +3,33 @@ cards:
 
   # Gauge
   - type: gauge
-    entity: sensor.amaryllis_conductivity
-    name: Conductivity
+    entity: sensor.plant_1_moisture
+    name: Moisture
     needle: true
-    min: 0
-    max: 5000
     segments:
       - from: 0
         color: red
-        label: Bad
-      - from: 350
+        label: Dry
+      - from: 15
         color: orange
         label: Low
-      - from: 500
+      - from: 25
         color: green
         label: Good
-      - from: 3000
+      - from: 60
         color: orange
         label: High
-      - from: 4000
+      - from: 70
         color: red
-        label: High
+        label: Wet
 
   # Graph
   - type: 'custom:mini-graph-card'
     entities:
-      # Conductivity
-      - entity: sensor.amaryllis_conductivity
+      # Moisture
+      - entity: sensor.plant_1_moisture
         show_fill: false
-        name: Conductivity
+        name: Moisture
       # Sun is up/down soft-fade
       - color: '#9a9a9a'
         entity: sensor.solar_elevation
@@ -53,9 +51,7 @@ cards:
     hour24: true
     # Primary axis
     decimals: 0
-    min_bound_range: 300
-    lower_bound: 0
-    upper_bound: ~1000 # At least render until this, but can go higher
+    min_bound_range: 20
     # Secondary axis
     lower_bound_secondary: 0
 
@@ -64,22 +60,22 @@ cards:
       - color: '#ffa500'
         value: 0
       - color: '#ffa500'
-        value: 300
+        value: 14
       # A bit too low
       - color: '#ffa500'
-        value: 400
+        value: 15
       - color: '#ffa500'
-        value: 500
+        value: 24
       # Good
       - color: '#008000'
-        value: 600
+        value: 25
       - color: '#008000'
-        value: 2900
+        value: 60
       # A bit too high
       - color: '#ffa500'
-        value: 3100
+        value: 61
       - color: '#ffa500'
-        value: 3300
+        value: 70
       # Too high
       - color: '#ffa500'
-        value: 3500
+        value: 71

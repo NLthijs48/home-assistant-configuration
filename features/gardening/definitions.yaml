@@ -5,53 +5,30 @@ automation: !include_dir_merge_list automations
 
 homeassistant:
   customize:
-    plant.bonsai:
-      friendly_name: 🌳Bonsai
-      icon: mdi:pine-tree
-    plant.amaryllis:
-      # Banana plant
+    plant.1:
       friendly_name: 🍌Banana
       icon: mdi:leaf
-    plant.palm_big:
+    plant.2:
       friendly_name: 🌴Palm
       icon: mdi:palm-tree
+    plant.3:
+      friendly_name: 🌳Bonsai
+      icon: mdi:pine-tree
 
+# Using numbers instead of names:
+# - only configure names in the UI, making plant changes easy
+# - try rendering the friendly_name of the plant everywhere, not all cards support that though
+# - the physical sensors are marked with the number
 plant:
-  # Using the Ecowitt soil sensor
-  bonsai:
-    sensors:
-      moisture: sensor.ecowitt_soil_bonsai_moisture
-      brightness: sensor.living_room_motion_sensor_illuminance
-      temperature: sensor.ecowitt_wh45_temperature
-      # First needs conversion from volt to percent (use template sensor)
-      #battery: sensor.ecowitt_soil_bonsai_battery
-    # TODO: figure this out
-    min_moisture: 15
-    max_moisture: 60
-
-    min_temperature: 10
-    max_temperature: 30
-    # TODO: Brightness range?
-
-  # Using the Xiaomi plant sensor XL
-  palm_big:
-    sensors:
-      moisture: sensor.palm_big_moisture
-      brightness: sensor.palm_big_illuminance
-      temperature: sensor.palm_big_temperature
-      #battery: not available, it should have this though?
-    min_moisture: 70
-    # Otherwise freezes too death
-    min_temperature: -5
 
   # Using the Xiaomi Plant Sensor
-  amaryllis:
+  1:
     sensors:
-      moisture: sensor.amaryllis_moisture
-      battery: sensor.amaryllis_battery
-      temperature: sensor.amaryllis_temperature
-      conductivity: sensor.amaryllis_conductivity
-      brightness: sensor.amaryllis_light_intensity
+      moisture: sensor.plant_1_moisture
+      battery: sensor.plant_1_battery
+      temperature: sensor.plant_1_temperature
+      conductivity: sensor.plant_1_conductivity
+      brightness: sensor.plant_1_light_intensity
 
     min_moisture: 15
     max_moisture: 60
@@ -66,3 +43,30 @@ plant:
     max_brightness: 35000
 
     min_battery: 20
+
+  # Using the Xiaomi plant sensor XL
+  2:
+    sensors:
+      moisture: sensor.plant_2_moisture
+      brightness: sensor.plant_2_illuminance
+      temperature: sensor.plant_2_temperature
+      #battery: not available, it should have this though?
+    min_moisture: 70
+    # Otherwise freezes too death
+    min_temperature: -5
+
+  # Using the Ecowitt soil sensor
+  3:
+    sensors:
+      moisture: sensor.plant_3_moisture
+      brightness: sensor.living_room_motion_sensor_illuminance
+      temperature: sensor.ecowitt_wh45_temperature
+      # First needs conversion from volt to percent (use template sensor)
+      #battery: sensor.plant_3_battery
+    # TODO: figure this out
+    min_moisture: 15
+    max_moisture: 60
+
+    min_temperature: 10
+    max_temperature: 30
+    # TODO: Brightness range?
