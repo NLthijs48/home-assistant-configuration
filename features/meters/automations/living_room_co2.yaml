@@ -33,15 +33,25 @@
                   {% if sensor_entity_id != "sensor.ecowitt_wh45_co2" and sensor_entity_id != "input_number.co2_override" %}
                     {% set sensor_entity_id = "sensor.ecowitt_wh45_co2" %}
                   {% endif %}
-                  {# Value that should fill the complete meter #}
-                  {% set max_value = 2000 %}
                   {# Number of leds in the strip #}
                   {% set led_count = 143 %}
+                  {# List of color blocks, references sensor values (lowest first, highest last) #}
+                  {%
+                    set blocks = [
+                      {"start": 0, "end": 1000, "color": [0, 255, 0]},
+                      {"start": 1000, "end": 1500, "color": [255, 255, 0]},
+                      {"start": 1500, "end": 2000, "color": [255, 0, 0]},
+                    ]
+                  %}
 
                   {##### CALCULATION #####}
+                  {# Meter range scaling #}
+                  {% set sensor_min_value = (blocks | first).start %}
+                  {% set sensor_max_value = (blocks | last).end %}
+                  {% set sensor_range = sensor_max_value - sensor_min_value %}
                   {# Fraction of the meter that should be on #}
                   {% set sensor_value = states(sensor_entity_id) | float(default=0) %}
-                  {% set fraction = sensor_value / max_value %}
+                  {% set fraction = sensor_value / sensor_range %}
                   {% set brightness = 50 %}
                   {# LED parts: normal for the active bar, then highlight the exact value, then lowlight the inactive part #}
                   {% set highlight_end_leds = (fraction * led_count) | int %}
@@ -68,19 +78,10 @@
                     %}
                   {%- endmacro %}
 
-                  {# List of color blocks, references sensor values #}
-                  {%
-                    set blocks = [
-                      {"start": 0, "end": 1000, "color": [0, 255, 0]},
-                      {"start": 1000, "end": 1500, "color": [255, 255, 0]},
-                      {"start": 1500, "end": max_value, "color": [255, 0, 0]},
-                    ]
-                  %}
-
                   {% for block in blocks %}
                     {# Convert sensor values of the block to led counts #}
-                    {% set block_start_leds = (block.start / max_value * led_count) | round %}
-                    {% set block_end_leds = (block.end / max_value * led_count) | round %}
+                    {% set block_start_leds = ((block.start - sensor_min_value) / sensor_range * led_count) | round %}
+                    {% set block_end_leds = ((block.end - sensor_min_value) / sensor_range * led_count) | round %}
 
                     {# NORMAL segment #}
                     {% if normal_end_leds >= block_start_leds %}
