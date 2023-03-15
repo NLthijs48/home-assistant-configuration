@@ -12,9 +12,29 @@ Smart plug with power consumption monitoring
 2. Connect to the shellyplug-* Wi-Fi network
 3. Go to 192.168.33.1
 4. Configure your Wi-Fi network using the web UI
-5. Setup the device password
-6. Update the device + channel name (will be used by Home Assistant)
-7. Connect to the regular Wi-Fi network with your phone/computer
+5. Find the ip address in the unifi controller
+   - Has a name in a format like `shellyplug-s-000AAA`
+   - Set a proper name indicating what it is used for
+   - Enabled `Fixed ip`
+6. Open the shelly web UI
+7. Configure settings:
+   - `Internet & security`:
+     - `Cloud`
+       - Enable cloud connection to trigger firmware update
+       - Disable afterwards
+     - `Restrict login`: Setup the device password
+     - `Advanced - Developer settings`:
+       - `Enable CoIoT`:
+         - `CoIoT peer`: `10.0.2.28:5683` (Home Assistant IP address)
+   - `Safety`:
+     - `Max power protection`: update if required for the device
+   - `Settings`:
+     - `Power on default mode`: choose based on the device
+     - `Device name`: update
+     - `Channel name`: same as `Device name` (should be detected in Home Assistant)
+     - `LED light control`:
+       - Disable LEDs
+     - `Device reboot`: for applying developer settings and such
 8. Add it in Home Assistant
-9. Go to the web UI for further config using Home Assistant
-10. Enable the `Firmware update` entity in Home Assistant
+   - [Should be detected already](https://my.home-assistant.io/redirect/integrations/)
+9. Enable the `Firmware update` entity in Home Assistant
