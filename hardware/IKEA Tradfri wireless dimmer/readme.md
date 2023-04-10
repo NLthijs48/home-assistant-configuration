@@ -7,4 +7,5 @@
 
 # Pairing / reset
 - Open rear cover
-- Press pairing button for 10 seconds
+- Press pairing button 4 times quickly
+  - Manual also mentions holding it for 10 seconds, that is for direct link to an Ikea light and not standard pairing 
