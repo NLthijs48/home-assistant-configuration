@@ -14,8 +14,8 @@ rest:
     headers:
       # Logged in as Thijs
       "Authorization": !secret crisp_authorization
-      # Identify as android app from around 2021-11-13
-      "X-Crisp-Agent": "crisp/e514fb23c2/app/android/385"
+      # Identify as android app from around 2023-04-27
+      "X-Crisp-Agent": "crisp/47dcbf595b/app/android/471"
       "User-Agent": "Home Assistant"
     sensor:
       - name: "Crisp next order raw"
