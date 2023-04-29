@@ -8,8 +8,8 @@ homeassistant:
 
 rest:
   # Next order REST sensor
-  # - get the latest 3 orders: assumption is that there are no more orders to be delivered than that
-  - resource: "https://crisp.nl/v1/order/history?limit=3"
+  # - get the latest 2 orders: assumption is that there are no more orders to be delivered than that
+  - resource: "https://crisp.nl/v1/order/history?limit=2"
     scan_interval: 600
     headers:
       # Logged in as Thijs
@@ -138,6 +138,7 @@ template:
                 | selectattr('fulfillStatus', '!=', '')
                 | list
                 | last
+                | default(None)
               }}
             {% endif %}
 
