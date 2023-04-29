@@ -1,0 +1,31 @@
+- alias: "Thijs' room open curtains when awake"
+  trigger:
+    - platform: state
+      entity_id: sensor.phone_thijs_do_not_disturb
+      to: 'off'
+  condition:
+    # Only when home
+    - condition: "state"
+      entity_id: "binary_sensor.thijs_home"
+      state: "on"
+  action:
+    # Open the curtains
+    - service: cover.open_cover
+      target:
+        entity_id: cover.thijs_room_curtains
+
+- alias: "Thijs' room close curtains when going to sleep"
+  trigger:
+    - platform: state
+      entity_id: sensor.phone_thijs_do_not_disturb
+      to: 'on'
+  condition:
+    # Only when home
+    - condition: "state"
+      entity_id: "binary_sensor.thijs_home"
+      state: "on"
+  action:
+    # Close the curtains
+    - service: cover.close_cover
+      target:
+        entity_id: cover.thijs_room_curtains

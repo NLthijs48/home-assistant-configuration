@@ -11,6 +11,7 @@ homeassistant:
   packages:
     computer: !include features/computer/definitions.yaml
     crisp: !include features/crisp/definitions.yaml
+    curtain: !include features/curtain/definitions.yaml
     electricity: !include features/electricity/definitions.yaml
     gardening: !include features/gardening/definitions.yaml
     home_cinema: !include features/home_cinema/definitions.yaml
