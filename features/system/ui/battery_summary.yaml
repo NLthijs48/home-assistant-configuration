@@ -18,10 +18,16 @@ card:
         type: entities
       filter:
         include:
-          # Sensors that declare themselves as a battery
+          # Battery sensors that are low
           - attributes:
               device_class: battery
             state: < 25
+            options:
+              secondary_info: last-changed
+          # Battery sensors that are unavailable (most likely completely empty)
+          - attributes:
+              device_class: battery
+            state: "unavailable"
             options:
               secondary_info: last-changed
       # Lowest battery first

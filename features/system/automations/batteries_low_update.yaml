@@ -11,15 +11,17 @@
       entity_id: sensor.frits_battery_level
   action:
     - variables:
+        # The rejectattr() ones should not be required, but in devtools they are required somehow
         batteries_low: >-
           {{
             states
+            | rejectattr("attributes.device_class", 'undefined')
             | selectattr("attributes.device_class", 'equalto', 'battery')
+            | rejectattr("attributes.unit_of_measurement", 'undefined')
             | selectattr("attributes.unit_of_measurement", 'equalto', '%')
-            | selectattr("state", '!=', 'unavailable')
             | selectattr("state", '!=', none)
-            | map(attribute="state")
-            | map('float')
+            | map(attribute="state", default=0)
+            | map('float', default=0)
             | min < 25
           }}
     - service: >
