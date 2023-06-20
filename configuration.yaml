@@ -148,3 +148,11 @@ sensor:
     display_options:
       - "date"
       - "date_time_iso"
+
+logger:
+  default: info
+  logs:
+    # TODO: disable
+    #goslideapi: debug
+    #custom_components.slide: debug
+    #homeassistant.components.slide: debug
