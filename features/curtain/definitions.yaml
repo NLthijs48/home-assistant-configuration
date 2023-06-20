@@ -3,6 +3,14 @@ automation: !include_dir_merge_list automations
 
 # https://slide.store/
 # https://www.home-assistant.io/integrations/slide
-slide:
-  username: !secret slide_username
-  password: !secret slide_password
+# Thijs: disabled, trying out https://github.com/ualex73/slide with support for local api
+#slide:
+#  username: !secret slide_username
+#  password: !secret slide_password
+
+# Setup of https://github.com/ualex73/slide
+# - uses the local api
+cover:
+- platform: slide
+  host: 10.0.2.82
+  password: !secret slide_device_code
