@@ -19,3 +19,6 @@ I want to keep the Raspberry Pi connected to my TV+receiver using HDMI for CEC c
 - [DSMR Slimme Meter](https://www.home-assistant.io/integrations/dsmr)
   - Works easily with the P1 reader hardware
 - [Shelly integration](https://www.home-assistant.io/integrations/shelly/)
+- [Powercalc](https://github.com/bramstroker/homeassistant-powercalc)
+  - Tracks energy usage of most Zigbee lights in my house
+  - Also used to group some of those lights
