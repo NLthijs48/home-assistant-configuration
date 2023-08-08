@@ -1,6 +1,4 @@
 # TODO: brightness based on time of day
-# TODO: different behavior in guest mode
-# TODO: integrate a button for guests
 
 # Turn on the lights when there is motion
 - alias: "Attic room turn on when there is motion"
@@ -9,6 +7,12 @@
     - platform: state
       entity_id: binary_sensor.attic_motion_sensor
       to: 'on'
+  condition:
+    # Only when guests mode is off, otherwise lights turn on while sleeping
+    - alias: Guests mode is off
+      condition: state
+      entity_id: input_boolean.guests_mode
+      state: 'off'
   action:
     # Turn on the lights
     - service: light.turn_on
