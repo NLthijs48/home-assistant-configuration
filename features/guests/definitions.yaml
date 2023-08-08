@@ -1,0 +1,7 @@
+# Guests mode, mostly for the attic lighting
+
+input_boolean:
+  # Guests mode on/off tracking
+  guests_mode:
+    name: Guests mode
+    icon: mdi:account-star
