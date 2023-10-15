@@ -10,8 +10,8 @@ switch:
   # - name: Computer Thijs wake on lan
   #   platform: wake_on_lan
   #   mac: "f0:2f:74:16:19:9b"
-  #   host: "10.0.100.1"
-  #   broadcast_address: "10.0.100.1"
+  #   host: "10.0.1.1"
+  #   broadcast_address: "10.0.1.1"
   #   turn_off:
   #     # Go to sleep instead of doing an actual shutdown
   #     service: mqtt.publish
@@ -24,8 +24,8 @@ switch:
   - name: Computer Thijs wake on lan
     platform: wake_on_lan
     mac: "f0:2f:74:16:19:9a"
-    host: "10.0.100.1"
-    broadcast_address: "10.0.100.1"
+    host: "10.0.1.1"
+    broadcast_address: "10.0.1.1"
     turn_off:
       # Hibernate instead of actual shutdown
       service: button.press
@@ -74,4 +74,4 @@ script:
       - service: wake_on_lan.send_magic_packet
         data:
           mac: "f0:2f:74:16:19:9b"
-          broadcast_address: "10.0.100.1"
+          broadcast_address: "10.0.1.1"
