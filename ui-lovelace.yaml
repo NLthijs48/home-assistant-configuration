@@ -76,6 +76,16 @@ views:
         cards:
           - type: custom:button-card
             template: header
+            name: 🌱 Plants
+          - type: tile
+            entity: switch.growlight
+            name: Growlights
+            show_entity_picture: false
+            vertical: false
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            template: header
             name: 📱 Phone
           - type: entities
             entities:
