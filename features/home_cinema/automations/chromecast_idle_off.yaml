@@ -33,13 +33,13 @@
     - condition: "state"
       entity_id: "input_select.home_cinema_mode"
       state: "chromecast"
-    # Not using the T-mobile app (which leaves the Chromecast in idle state, even when actually playing)
+    # Not using the Odido/T-mobile app (which leaves the Chromecast in idle state, even when actually playing)
     - condition: not
       conditions:
         - condition: "state"
           entity_id: "media_player.4k"
           attribute: app_name
-          state: "TVX TV Anywhere"
+          state: "Odido online TV"
   action:
     # Turn off everything
     - service: script.home_cinema_off
