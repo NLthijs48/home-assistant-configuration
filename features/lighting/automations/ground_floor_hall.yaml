@@ -38,5 +38,5 @@
           {% if is_state('sun.sun', 'below_horizon') %}
             20
           {% else %}
-            100
+            70
           {% endif %}
