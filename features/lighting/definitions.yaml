@@ -111,7 +111,7 @@ homeassistant:
 # Note: for some reason these don't support an 'icon' prop, hopefully in newer versions though
 light:
   # Living room lights, all of them (light.living_room_lights)
-  #- platform: group
+  - platform: group
     name: Living room lights
     entities:
       # TODO: more lights when installed
