@@ -1,6 +1,6 @@
 type: 'custom:mini-graph-card'
 entities:
-  - entity: sensor.netatmo_thijs_temperature
+  - entity: sensor.netatmo_bedroom_temperature
     name: Temperature
     show_fill: false
   # Sun is up/down soft-fade

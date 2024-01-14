@@ -31,7 +31,6 @@ input_select:
     name: Washing machine user
     initial: "-"
     options:
-      - "-"
+      - "-" # No-one, machine is empty
       - "Thijs"
-      - "Frits"
     icon: mdi:account

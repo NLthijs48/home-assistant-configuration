@@ -22,7 +22,7 @@ card:
     - type: entities
       title: Building blocks
       entities:
-        - entity: device_tracker.phone_thijs
+        - entity: device_tracker.phone_thijs_zone
           name: 'Phone: geolocation'
         - entity: device_tracker.unifi_phone_thijs
           name: 'Phone: unifi'
@@ -37,7 +37,7 @@ card:
       title: History
       hours_to_show: 12
       entities:
-        - device_tracker.phone_thijs
+        - device_tracker.phone_thijs_zone
         - device_tracker.unifi_phone_thijs
         - sensor.phone_thijs_wifi_ap
         - device_tracker.unifi_laptop_thijs

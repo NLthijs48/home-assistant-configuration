@@ -1,4 +1,4 @@
-# Show location of Thijs and Frits
+# Show location of Thijs
 type: horizontal-stack
 cards:
   - type: entity
@@ -10,12 +10,4 @@ cards:
         - entity: sensor.phone_thijs_battery_level
           tap_action: more-info
         - entity: input_boolean.thijs_sleepy
-          tap_action: more-info
-  - type: entity
-    entity: sensor.frits_location
-    name: 🧍 Frits
-    footer:
-      type: buttons
-      entities:
-        - entity: sensor.frits_battery_level
           tap_action: more-info

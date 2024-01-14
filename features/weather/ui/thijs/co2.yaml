@@ -1,7 +1,7 @@
 type: 'custom:mini-graph-card'
 entities:
   # CO2 level as solid line
-  - entity: sensor.netatmo_thijs_co2
+  - entity: sensor.netatmo_bedroom_co2
     show_fill: false
     name: CO2
   # Sun is up/down soft-fade

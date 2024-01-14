@@ -1,9 +1,8 @@
-# Turn off the light when going downstairs
-- alias: "Thijs' room turn off when going downstairs"
+- alias: "Thijs' room turn off when going to another floor"
   trigger:
     - entity_id: sensor.phone_thijs_wifi_ap
       platform: state
-      from: 'upstairs'
+      from: 'first floor'
   action:
     - service: light.turn_off
       data:
@@ -35,10 +34,10 @@
       entity_id: sensor.phone_thijs_do_not_disturb
       to: 'off'
   condition:
-    # Only do this when Thijs is upstairs
+    # Only do this when Thijs is on the first floor
     - condition: "state"
       entity_id: "sensor.phone_thijs_wifi_ap"
-      state: "upstairs"
+      state: "first floor"
     - condition: "state"
       entity_id: "binary_sensor.thijs_home"
       state: "on"

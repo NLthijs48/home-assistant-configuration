@@ -40,49 +40,6 @@ cards:
               - entity: sensor.first_floor_hall_motion_sensor_battery
                 name: Battery
 
-      # Frits' room
-      - type: custom:fold-entity-row
-        open: false
-        head:
-          type: custom:slider-button-card
-          name: Frits' room
-          entity: light.bedroom_frits_lights
-          slider:
-            direction: left-right
-            background: gradient
-            use_state_color: false
-            use_percentage_bg_opacity: false
-            show_track: true
-          icon:
-            icon: mdi:track-light
-            tap_action:
-              action: more-info
-            use_state_color: true
-          action_button:
-            show: false
-          compact: true
-        entities:
-          - entity: light.frits_room_wall
-            name: Wall
-            type: custom:slider-entity-row
-            state_color: false
-            hide_state: true
-            grow: true
-          - entity: light.frits_room_cabinet
-            name: Cabinet
-            type: custom:slider-entity-row
-            state_color: false
-            hide_state: true
-            grow: true
-          - entity: light.frits_room_window
-            name: Window
-            type: custom:slider-entity-row
-            state_color: false
-            hide_state: true
-            grow: true
-          - entity: sensor.bedroom_frits_remote_battery
-            name: Remote battery
-
       # Thijs' room
       - type: custom:fold-entity-row
         head:

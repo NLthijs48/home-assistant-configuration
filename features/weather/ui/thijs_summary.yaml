@@ -25,7 +25,7 @@ cards:
       - type: custom:button-card
         name: Temperature
         show_name: false
-        entity: sensor.netatmo_thijs_temperature
+        entity: sensor.netatmo_bedroom_temperature
         template: statistic_button_graph
         tap_action:
           action: fire-dom-event
@@ -36,7 +36,7 @@ cards:
       - type: custom:mini-graph-card
         group: true
         entities:
-          - entity: sensor.netatmo_thijs_temperature
+          - entity: sensor.netatmo_bedroom_temperature
             name: Temperature
             show_fill: false
           - color: '#9a9a9a'
@@ -65,7 +65,7 @@ cards:
   # CO2
   - type: custom:button-card
     name: CO2
-    entity: sensor.netatmo_thijs_co2
+    entity: sensor.netatmo_bedroom_co2
     template: statistic_button_co2
     tap_action:
       action: fire-dom-event
@@ -77,7 +77,7 @@ cards:
   # Humidity
   - type: custom:button-card
     name: Humidity
-    entity: sensor.netatmo_thijs_humidity
+    entity: sensor.netatmo_bedroom_humidity
     template: statistic_button_humidity
     tap_action:
       action: fire-dom-event

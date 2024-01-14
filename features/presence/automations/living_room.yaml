@@ -1,5 +1,5 @@
 # Map the ap detection to the living room presence input
-- alias: Detect phones downstairs
+- alias: Detect phones in the living room
   trigger:
     - platform: state
       entity_id: binary_sensor.living_room_used_wifi

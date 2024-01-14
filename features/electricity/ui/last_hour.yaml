@@ -9,10 +9,6 @@ entities:
     name: 🖥️ Thijs
     show_fill: false
     color: '#EC623D44'
-  - entity: sensor.computer_frits_power
-    name: 🖥️ Frits
-    show_fill: false
-    color: '#02A4EA55'
 height: 150
 hour24: true
 hours_to_show: 1

@@ -40,20 +40,6 @@ switch:
     broadcast_address: "10.0.100.3"
     scan_interval: 10
   # TODO: Thijs Crisp laptop
-  # Computer Frits
-  - name: Computer Frits wake on lan
-    platform: wake_on_lan
-    mac: "04:d9:f5:cd:a9:cd"
-    host: "10.0.100.2"
-    broadcast_address: "10.0.100.2"
-    scan_interval: 10
-  # Laptop Frits
-  - name: Laptop Frits wake on lan
-    platform: wake_on_lan
-    mac: "f8:ff:c2:5e:5c:b1"
-    host: "10.0.100.4"
-    broadcast_address: "10.0.100.4"
-    scan_interval: 10
 
 homeassistant:
   customize:
@@ -61,10 +47,6 @@ homeassistant:
       icon: mdi:desktop-tower-monitor
     switch.laptop_thijs_wake_on_lan:
       icon: mdi:laptop-windows
-    switch.computer_frits_wake_on_lan:
-      icon: mdi:desktop-tower-monitor
-    switch.laptop_frits_wake_on_lan:
-      icon: mdi:laptop-mac
 
 script:
   # Wake my computer

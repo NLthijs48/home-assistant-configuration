@@ -7,11 +7,10 @@
     # Couple triggers for more important ones
     - platform: state
       entity_id: sensor.phone_thijs_battery_level
-    - platform: state
-      entity_id: sensor.frits_battery_level
   action:
     - variables:
         # The rejectattr() ones should not be required, but in devtools they are required somehow
+        # I want to add             | reject('is_hidden_entity'), but that fails somehow
         batteries_low: >-
           {{
             states

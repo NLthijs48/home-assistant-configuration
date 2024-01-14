@@ -3,14 +3,14 @@ type: vertical-stack
 cards:
   # Header with popup
   - type: custom:button-card
-    name: 🖱️ Game
+    name: 🖱️ Attic
     template: header
     tap_action:
       action: fire-dom-event
       browser_mod:
         service: browser_mod.popup
         data:
-          title: 🖱️ Game room
+          title: 🖱️ Attic
           content:
             type: vertical-stack
             cards:

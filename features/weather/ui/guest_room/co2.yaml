@@ -1,9 +1,9 @@
 type: 'custom:mini-graph-card'
 entities:
-  # Humidity
-  - entity: sensor.netatmo_frits_humidity
+  # CO2 level as solid line
+  - entity: sensor.netatmo_guest_room_co2
     show_fill: false
-    name: Humidity
+    name: CO2
   # Sun is up/down soft-fade
   - color: '#9a9a9a'
     entity: sensor.solar_elevation
@@ -25,9 +25,8 @@ points_per_hour: 6
 hour24: true
 # Primary axis
 lower_bound: 0
-upper_bound: 100
 decimals: 0
 # Secondary axis
 lower_bound_secondary: 0
-# Add color to indicate health
-color_thresholds: !include ../color_thresholds_humidity.yaml
+# Add color to the CO2 line to indicate health
+color_thresholds: !include ../color_thresholds_co2.yaml

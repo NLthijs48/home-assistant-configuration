@@ -54,17 +54,17 @@ cards:
 
   - type: horizontal-stack
     cards:
-      # Noise
-      - type: custom:button-card
-        name: Noise
-        entity: sensor.netatmo_living_room_noise
-        template: statistic_button
-        tap_action:
-          action: fire-dom-event
-          browser_mod:
-            service: browser_mod.popup
-            data:
-              content: !include living_room/noise.yaml
+      # Noise: disabled, using Netatmo base station in my bedroom now
+      #- type: custom:button-card
+      #  name: Noise
+      #  entity: sensor.netatmo_living_room_noise
+      #  template: statistic_button
+      #  tap_action:
+      #    action: fire-dom-event
+      #    browser_mod:
+      #      service: browser_mod.popup
+      #      data:
+      #        content: !include living_room/noise.yaml
       # Pressure
       - type: custom:button-card
         name: Pressure

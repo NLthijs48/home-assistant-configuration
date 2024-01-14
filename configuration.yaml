@@ -13,7 +13,7 @@ homeassistant:
     crisp: !include features/crisp/definitions.yaml
     curtain: !include features/curtain/definitions.yaml
     electricity: !include features/electricity/definitions.yaml
-    gardening: !include features/gardening/definitions.yaml
+    #gardening: !include features/gardening/definitions.yaml
     guests: !include features/guests/definitions.yaml
     home_cinema: !include features/home_cinema/definitions.yaml
     lighting: !include features/lighting/definitions.yaml
@@ -21,8 +21,8 @@ homeassistant:
     network: !include features/network/definitions.yaml
     presence: !include features/presence/definitions.yaml
     system: !include features/system/definitions.yaml
-    spotify: !include features/spotify/definitions.yaml
-    trains: !include features/trains/definitions.yaml
+    #spotify: !include features/spotify/definitions.yaml
+    #trains: !include features/trains/definitions.yaml
     vacuum: !include features/vacuum/definitions.yaml
     weather: !include features/weather/definitions.yaml
     washing_machine: !include features/washing_machine/definitions.yaml

@@ -33,8 +33,8 @@ views:
       - type: horizontal-stack
         cards:
           - !include features/weather/ui/thijs_summary.yaml
-          - !include features/weather/ui/frits_summary.yaml
           - !include features/weather/ui/computers_summary.yaml
+          - !include features/weather/ui/guest_room_summary.yaml
       # Maintenance column
       - type: vertical-stack
         cards:
@@ -44,7 +44,7 @@ views:
           - !include features/system/ui/battery_summary.yaml
       - !include features/electricity/ui/summary.yaml
       - !include features/weather/ui/outside_summary.yaml
-      - !include features/gardening/ui/summary.yaml
+      #- !include features/gardening/ui/summary.yaml
       - !include features/vacuum/ui/summary.yaml
 
       # - !include features/weather/ui/buienalarm.yaml, Constantly broken, look for fix
@@ -53,8 +53,6 @@ views:
     # More info popup replacements
     popup_cards:
       sensor.thijs_location: !include features/presence/ui/thijs_location_popup.yaml
-      sensor.frits_location: !include features/presence/ui/frits_location_popup.yaml
-
 
   # Thijs
   - title: Thijs
@@ -65,39 +63,6 @@ views:
       - !include features/computer/ui/computer_thijs.yaml
       - !include features/curtain/ui/thijs_room.yaml
       - !include features/spotify/ui/thijs.yaml
-
-  # Frits
-  - title: Frits
-    path: frits
-    badges: []
-    cards:
-      - !include features/lighting/ui/room_frits.yaml
-      - type: vertical-stack
-        cards:
-          - type: custom:button-card
-            template: header
-            name: 🌱 Plants
-          - type: tile
-            entity: switch.growlight
-            name: Growlights
-            show_entity_picture: false
-            vertical: false
-      - type: vertical-stack
-        cards:
-          - type: custom:button-card
-            template: header
-            name: 📱 Phone
-          - type: entities
-            entities:
-              - device_tracker.unifi_phone_frits
-              - sensor.frits_battery_level
-              - sensor.frits_battery_state
-              - sensor.frits_bssid
-              - sensor.frits_connection_type
-              - sensor.frits_geocoded_location
-              - sensor.frits_last_update_trigger
-              - sensor.frits_ssid
-              - sensor.frits_storage
 
   # Plants
   #- icon: mdi:sprout

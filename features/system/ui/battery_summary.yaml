@@ -30,6 +30,9 @@ card:
             state: "unavailable"
             options:
               secondary_info: last-changed
+        exclude:
+          # Does not seem to work
+          - hidden_by: "*"
       # Lowest battery first
       sort:
         method: state
