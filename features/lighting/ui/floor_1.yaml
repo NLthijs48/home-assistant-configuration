@@ -131,12 +131,12 @@ cards:
         compact: true
         # TODO: motion sensor?
 
-      # Computer room
+      # Guest room
       - type: custom:fold-entity-row
         head:
           type: custom:slider-button-card
-          name: Computers
-          entity: light.computers_ceiling
+          name: Guest room
+          entity: light.guest_room
           slider:
             direction: left-right
             background: gradient
@@ -144,7 +144,6 @@ cards:
             use_percentage_bg_opacity: false
             show_track: true
           icon:
-            icon: mdi:track-light
             tap_action:
               action: more-info
             use_state_color: true
@@ -152,7 +151,7 @@ cards:
             show: false
           compact: true
         entities:
-          - entity: sensor.computers_remote_battery
+          - entity: sensor.guest_room_remote_battery
             name: Remote battery
 
 
