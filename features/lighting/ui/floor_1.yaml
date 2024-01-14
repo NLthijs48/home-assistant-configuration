@@ -40,7 +40,7 @@ cards:
               - entity: sensor.first_floor_hall_motion_sensor_battery
                 name: Battery
 
-      # Thijs' room
+      # Bedroom
       - type: custom:fold-entity-row
         head:
           type: custom:slider-button-card
@@ -111,6 +111,25 @@ cards:
             state_color: false
             hide_state: true
             grow: true
+
+      # Bathroom
+      - type: custom:slider-button-card
+        name: Bathroom
+        entity: light.bathroom
+        slider:
+          direction: left-right
+          background: gradient
+          use_state_color: false
+          use_percentage_bg_opacity: false
+          show_track: true
+        icon:
+          tap_action:
+            action: more-info
+          use_state_color: true
+        action_button:
+          show: false
+        compact: true
+        # TODO: motion sensor?
 
       # Computer room
       - type: custom:fold-entity-row
