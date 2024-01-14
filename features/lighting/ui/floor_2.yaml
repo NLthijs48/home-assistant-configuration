@@ -66,12 +66,6 @@ cards:
             state_color: false
             hide_state: true
             grow: true
-          - entity: light.attic_couch
-            name: Couch
-            type: custom:slider-entity-row
-            state_color: false
-            hide_state: true
-            grow: true
           - entity: light.attic_beds
             name: Beds
             type: custom:slider-entity-row

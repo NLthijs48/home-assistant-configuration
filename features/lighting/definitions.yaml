@@ -88,8 +88,6 @@ homeassistant:
     # Beds
     light.attic_beds:
       icon: mdi:bed
-    light.attic_couch:
-      icon: mdi:sofa
 
   customize_glob:
     # Motion sensors
@@ -136,7 +134,6 @@ light:
     name: "Attic room lights"
     entities:
       - light.attic_beds
-      - light.attic_couch
       - light.attic_standing
 
 input_select:

@@ -151,7 +151,11 @@ cards:
             show: false
           compact: true
         entities:
+          - entity: light.guest_room_nightstand
+            name: Nightstand
+            type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
           - entity: sensor.guest_room_remote_battery
             name: Remote battery
-
-
