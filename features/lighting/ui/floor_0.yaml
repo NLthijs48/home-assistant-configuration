@@ -38,79 +38,10 @@ cards:
           grow: true
         entities:
           # TV: connect and enable
-          #- type: custom:fold-entity-row
-          #  head:
-          #    entity: light.tv_lights
-          #    name: TV
-          #    icon: mdi:television
-          #    state_color: false
-          #    hide_state: true
-          #    grow: true
-          #    type: custom:slider-entity-row
-          #  group_config:
-          #    type: custom:slider-entity-row
-          #    state_color: false
-          #    hide_state: true
-          #    grow: true
-          #  entities:
-          #    - entity: light.living_room_iceland_1
-          #      name: 'Iceland #1'
-          #    - entity: light.living_room_iceland_2
-          #      name: 'Iceland #2'
-          #    - entity: light.tv_led_strip
-          #      name: LED strip
-          #  open: false
 
           # Dining TODO: connect and enable
-          #- type: custom:fold-entity-row
-          #  head:
-          #    entity: light.dining_lights
-          #    name: Dining
-          #    icon: mdi:table-chair
-          #    state_color: false
-          #    hide_state: true
-          #    grow: true
-          #    type: custom:slider-entity-row
-          #  group_config:
-          #    type: custom:slider-entity-row
-          #    state_color: false
-          #    hide_state: true
-          #    grow: true
-          #  entities:
-          #    - entity: light.dining_table
-          #      name: Table
-          #    - entity: light.dining_duck
-          #      name: Duck paintings
-          #    - entity: light.dining_large_painting
-          #      name: Large painting
-          #  open: false
 
           # Kitchen: TODO connect and enable
-          #- type: custom:fold-entity-row
-          #  head:
-          #    entity: light.kitchen_lights
-          #    name: Kitchen
-          #    icon: mdi:chef-hat
-          #    state_color: false
-          #    hide_state: true
-          #    grow: true
-          #    type: custom:slider-entity-row
-          #  entities:
-          #    - entity: light.kitchen_cooking
-          #      name: Cooking area
-          #      type: custom:slider-entity-row
-          #      state_color: false
-          #      hide_state: true
-          #      grow: true
-          #    - entity: light.kitchen_kielzogschild
-          #      name: Kielzogschild
-          #      type: custom:slider-entity-row
-          #      state_color: false
-          #      hide_state: true
-          #      grow: true
-          #    - entity: switch.kitchen_sink
-          #      name: Sink
-          #  open: false
 
           # Motion sensor
           - type: custom:fold-entity-row
