@@ -141,36 +141,23 @@ cards:
 
 
       # Toilet
-      - type: custom:fold-entity-row
-        head:
-          type: custom:slider-button-card
-          name: Toilet
-          entity: light.toilet
-          slider:
-            direction: left-right
-            background: gradient
-            use_state_color: false
-            use_percentage_bg_opacity: false
-            show_track: true
-          icon:
-            tap_action:
-              action: more-info
-            use_state_color: true
-          action_button:
-            show: false
-          compact: true
-        entities:
-          - type: custom:fold-entity-row
-            head:
-              entity: binary_sensor.toilet_motion_sensor_occupancy
-              name: Motion sensor
-            entities:
-              - entity: sensor.toilet_motion_sensor_battery
-                name: Battery
-              - entity: sensor.toilet_motion_sensor_illuminance
-                name: Illuminance
-              - entity: sensor.toilet_motion_sensor_temperature
-                name: Temperature
+      # - has a motion sensor built into the ceiling, acting as physical switch
+      - type: custom:slider-button-card
+        name: Toilet
+        entity: light.toilet
+        slider:
+          direction: left-right
+          background: gradient
+          use_state_color: false
+          use_percentage_bg_opacity: false
+          show_track: true
+        icon:
+          tap_action:
+            action: more-info
+          use_state_color: true
+        action_button:
+          show: false
+        compact: true
 
 
       # Hall
