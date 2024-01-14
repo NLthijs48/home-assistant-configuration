@@ -2,12 +2,12 @@
 type: 'custom:mini-graph-card'
 entities:
   - entity: sensor.washing_machine_power
-    name: Power usage
+    name: Power usage last 3 hours
     show_fill: false
     color: green
 height: 130
 hour24: true
-hours_to_show: 1
+hours_to_show: 3
 points_per_hour: 360
 decimals: 0
 line_width: 5

@@ -15,26 +15,78 @@ card:
           service: browser_mod.popup
           data:
             title: 👕 Washing machine
-            content:
-              type: vertical-stack
-              cards:
-                - type: entities
-                  entities:
-                    - entity: input_select.washing_machine
-                      name: State
-                    - entity: input_select.washing_machine_user
-                      name: User
-                - !include power_last_hour.yaml
+            content: !include popup.yaml
     - type: horizontal-stack
       cards:
-        - type: entity
+        - type: tile
           entity: input_select.washing_machine
-          name: State
-          state_color: false
-        - type: entity
-          entity: input_select.washing_machine_user
-          name: User
-          state_color: false
+          color: green
+          name: 'State'
+          show_entity_picture: false
+          hide_state: false
+          vertical: false
+          state_content:
+            - state
+            - last-changed
+          tap_action:
+            action: fire-dom-event
+            browser_mod:
+              service: browser_mod.popup
+              data:
+                content: !include popup.yaml
+        # Electricity usage
+        - type: custom:stack-in-card
+          mode: vertical
+          cards:
+            - type: custom:button-card
+              name: Power usage
+              show_name: false
+              entity: sensor.washing_machine_power
+              template: statistic_button_graph
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  service: browser_mod.popup
+                  data:
+                    content: !include popup.yaml
+            - type: custom:mini-graph-card
+              group: true
+              entities:
+                - entity: sensor.washing_machine_power
+                  name: Power usage
+                  show_fill: false
+                  color: green
+                - color: '#9a9a9a'
+                  entity: sensor.solar_elevation
+                  name: Day/Night
+                  show_line: false
+                  show_legend: false
+                  y_axis: secondary
+                # TODO: show shade that indicates the running state?
+                #- entity: input_select.washing_machine
+                #  name: State
+                #  show_legend: false
+              height: 100
+              hour24: true
+              hours_to_show: 3
+              lower_bound: 0
+              min_bound_range: 3
+              points_per_hour: 120
+              decimals: 1
+              line_width: 4
+              show:
+                icon: false
+                labels: false
+                points: false
+                state: false
+                name: false
+                labels_secondary: false
+              lower_bound_secondary: 0
+
+        #- type: entity
+        #  entity: input_select.washing_machine_user
+        #  name: User
+        #  state_color: false
     # Button to mark it emptied when Done
     - type: conditional
       conditions:
