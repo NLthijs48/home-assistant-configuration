@@ -38,5 +38,13 @@
           {% if is_state('sun.sun', 'below_horizon') %}
             20
           {% else %}
-            70
+            60
+          {% endif %}
+        # White(r) during the day, yellow-ish at night
+        # TODO: switch to Kelvin everywhere
+        color_temp: >-
+          {% if now().hour < 7 or now().hour >= 18 %}
+            400
+          {% else %}
+            300
           {% endif %}
