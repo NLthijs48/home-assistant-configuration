@@ -63,32 +63,33 @@ cards:
         name: All
   - type: horizontal-stack
     cards:
-      - type: custom:slider-button-card
-        entity: light.bedroom_thijs_ceiling
-        slider:
-          direction: left-right
-          background: gradient
-          use_state_color: false
-          use_percentage_bg_opacity: false
-          show_track: true
-          force_square: false
-        icon:
-          tap_action:
-            action: more-info
-          icon: ''
-          show: true
-          use_state_color: true
-        action_button:
-          mode: custom
-          icon: ''
-          show: true
-          tap_action:
-            action: toggle
-          show_spinner: false
-        show_name: true
-        show_state: false
-        compact: true
-        name: Ceiling
+      # TODO turn on when there is a light
+      #- type: custom:slider-button-card
+      #  entity: light.bedroom_ceiling
+      #  slider:
+      #    direction: left-right
+      #    background: gradient
+      #    use_state_color: false
+      #    use_percentage_bg_opacity: false
+      #    show_track: true
+      #    force_square: false
+      #  icon:
+      #    tap_action:
+      #      action: more-info
+      #    icon: ''
+      #    show: true
+      #    use_state_color: true
+      #  action_button:
+      #    mode: custom
+      #    icon: ''
+      #    show: true
+      #    tap_action:
+      #      action: toggle
+      #    show_spinner: false
+      #  show_name: true
+      #  show_state: false
+      #  compact: true
+      #  name: Ceiling
       - type: custom:slider-button-card
         entity: light.bedroom_thijs_bed
         slider:
@@ -115,3 +116,55 @@ cards:
         show_state: false
         compact: true
         name: Bed
+      - type: custom:slider-button-card
+        entity: light.bedroom_closets
+        slider:
+          direction: left-right
+          background: gradient
+          use_state_color: false
+          use_percentage_bg_opacity: false
+          show_track: true
+          force_square: false
+        icon:
+          tap_action:
+            action: more-info
+          icon: ''
+          show: true
+          use_state_color: true
+        action_button:
+          mode: custom
+          icon: ''
+          show: true
+          tap_action:
+            action: toggle
+          show_spinner: false
+        show_name: true
+        show_state: false
+        compact: true
+        name: Closets
+      - type: custom:slider-button-card
+        entity: light.shower
+        slider:
+          direction: left-right
+          background: gradient
+          use_state_color: false
+          use_percentage_bg_opacity: false
+          show_track: true
+          force_square: false
+        icon:
+          tap_action:
+            action: more-info
+          icon: ''
+          show: true
+          use_state_color: true
+        action_button:
+          mode: custom
+          icon: ''
+          show: true
+          tap_action:
+            action: toggle
+          show_spinner: false
+        show_name: true
+        show_state: false
+        compact: true
+        name: Shower

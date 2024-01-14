@@ -61,20 +61,28 @@ cards:
             show: false
           compact: true
         entities:
-          - entity: light.bedroom_thijs_ceiling
-            name: Ceiling
-            type: custom:slider-entity-row
-            state_color: false
-            hide_state: true
-            grow: true
+          # TODO: enable when available
+          #- entity: light.bedroom_ceiling
+          #  name: Ceiling
+          #  type: custom:slider-entity-row
+          #  state_color: false
+          #  hide_state: true
+          #  grow: true
           - entity: light.bedroom_thijs_bed
             name: Bed
             type: custom:slider-entity-row
             state_color: false
             hide_state: true
             grow: true
-          - entity: sensor.bedroom_thijs_remote_battery
-            name: Remote battery
+          - entity: light.bedroom_closets
+            name: Closets
+            type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
+          # TODO find where this one went
+          #- entity: sensor.bedroom_thijs_remote_battery
+          #  name: Remote battery
           - type: custom:fold-entity-row
             head:
               entity: binary_sensor.bedroom_thijs_motion_sensor_occupancy
@@ -97,6 +105,12 @@ cards:
                 name: Temperature
               - entity: sensor.bedroom_thijs_motion_sensor_wide_power
                 name: Battery
+          - entity: light.shower
+            name: Shower
+            type: custom:slider-entity-row
+            state_color: false
+            hide_state: true
+            grow: true
 
       # Computer room
       - type: custom:fold-entity-row
