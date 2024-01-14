@@ -1,13 +1,39 @@
 # Show location of Thijs
 type: horizontal-stack
 cards:
-  - type: entity
-    entity: sensor.thijs_location
-    name: 🧍 Thijs
-    footer:
-      type: buttons
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - type: tile
+      entity: sensor.thijs_location
+      state_content:
+        - state
+        - last-changed
+    - type: history-graph
       entities:
-        - entity: sensor.phone_thijs_battery_level
-          tap_action: more-info
-        - entity: input_boolean.thijs_sleepy
-          tap_action: more-info
+        - sensor.thijs_location
+      hours_to_show: 4
+      show_names: false
+      card_mod:
+        style: |
+          ha-card .content {
+            padding-top: 2px;
+            padding-bottom: 2px;
+          }
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    # Phone battery
+    - type: tile
+      entity: sensor.phone_thijs_battery_level
+      name: Phone battery
+      state_content:
+        - state
+        - last-changed
+    # Computer state
+    - type: tile
+      entity: switch.computer_thijs_wake_on_lan
+      name: Desktop
+      state_content:
+        - state
+        - last-changed
