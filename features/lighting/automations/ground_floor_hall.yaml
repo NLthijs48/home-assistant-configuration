@@ -17,6 +17,9 @@
         platform: state
         entity_id: binary_sensor.ground_floor_hall_motion_sensor_occupancy
         to: 'off'
+        # Hue motions sensor turns off after 10 seconds already, extends light a bit
+        for:
+          minutes: 1
 
     # Turn off the light
     - service: light.turn_off
