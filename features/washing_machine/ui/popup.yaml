@@ -1,25 +1,31 @@
 type: vertical-stack
 cards:
-  - type: vertical-stack
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
-      - features:
-          - type: select-options
-        type: tile
-        entity: input_select.washing_machine
-        color: light-green
-        show_entity_picture: false
-        hide_state: false
-        vertical: false
-        state_content: last-changed
-        name: State
-      - features:
-          - type: select-options
-        type: tile
-        entity: input_select.washing_machine_user
-        color: light-green
-        show_entity_picture: false
-        hide_state: false
-        vertical: false
-        name: User
-        state_content: last-changed
+    - features:
+        - type: select-options
+      type: tile
+      entity: input_select.washing_machine
+      color: light-green
+      show_entity_picture: false
+      hide_state: false
+      vertical: false
+      state_content: last-changed
+      name: State
+    - type: history-graph
+      entities:
+        - input_select.washing_machine
+      hours_to_show: 4
+      show_names: false
+  - features:
+      - type: select-options
+    type: tile
+    entity: input_select.washing_machine_user
+    color: light-green
+    show_entity_picture: false
+    hide_state: false
+    vertical: false
+    name: User
+    state_content: last-changed
   - !include power_usage.yaml

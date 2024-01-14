@@ -68,7 +68,7 @@ card:
                 #  show_legend: false
               height: 100
               hour24: true
-              hours_to_show: 3
+              hours_to_show: 4
               lower_bound: 0
               min_bound_range: 3
               points_per_hour: 120
