@@ -12,33 +12,6 @@ cards:
         }
     entities:
 
-      # Hall
-      - type: custom:fold-entity-row
-        head:
-          type: custom:slider-button-card
-          name: Washing hall
-          entity: light.attic_hall
-          slider:
-            direction: left-right
-            background: gradient
-            use_state_color: false
-            use_percentage_bg_opacity: false
-            show_track: true
-          icon:
-            tap_action:
-              action: more-info
-            use_state_color: true
-          action_button:
-            show: false
-          compact: true
-        entities:
-          - type: custom:fold-entity-row
-            head:
-              entity: binary_sensor.attic_hall_motion_sensor
-              name: Motion sensor
-            entities:
-              - entity: sensor.attic_hall_motion_sensor_battery
-                name: Battery
       # Room
       - type: custom:fold-entity-row
         head:

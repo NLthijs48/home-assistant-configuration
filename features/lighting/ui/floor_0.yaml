@@ -37,7 +37,24 @@ cards:
           hide_state: true
           grow: true
         entities:
-          # TV: connect and enable
+          # TV: TODO connect and enable
+
+          - type: custom:slider-button-card
+            name: Ceiling
+            entity: light.living_room_ceiling
+            slider:
+              direction: left-right
+              background: gradient
+              use_state_color: false
+              use_percentage_bg_opacity: false
+              show_track: true
+            icon:
+              tap_action:
+                action: more-info
+              use_state_color: true
+            action_button:
+              show: false
+            compact: true
 
           # Dining TODO: connect and enable
 
