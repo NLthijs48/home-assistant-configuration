@@ -61,7 +61,8 @@ cards:
         show_state: false
         compact: true
         name: All
-  - type: horizontal-stack
+  - type: custom:stack-in-card
+    mode: vertical
     cards:
       # TODO turn on when there is a light
       #- type: custom:slider-button-card
