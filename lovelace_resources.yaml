@@ -13,9 +13,6 @@
 # Auto entities: dynamic entity lists
 - type: module
   url: /hacsfiles/lovelace-auto-entities/auto-entities.js
-# Multiple entity row
-- type: module
-  url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
 # Graph card: sensor graphs
 - type: module
   url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
@@ -40,9 +37,6 @@
 # Compass card
 - url: /hacsfiles/compass-card/compass-card.js
   type: module
-# Bar card
-- url: /hacsfiles/bar-card/bar-card.js
-  type: module
 # Slider button card (fancy sliders)
 - url: /hacsfiles/slider-button-card/slider-button-card.js
   type: module
@@ -64,6 +58,9 @@
 # Weather radar card
 - type: module
   url: /hacsfiles/weather-radar-card/weather-radar-card.js
+# Clock weather card
+- type: module
+  url: /hacsfiles/clock-weather-card/clock-weather-card.js
 
 # Uptime card (unused)
 #- url: /hacsfiles/uptime-card/uptime-card.js
