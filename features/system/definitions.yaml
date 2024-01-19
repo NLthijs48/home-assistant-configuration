@@ -24,3 +24,6 @@ input_boolean:
     name: Batteries low
     icon: mdi:battery-charging-20
     initial: off
+
+# Enable this integration (which does autodiscovery using the UI)
+battery_notes:
