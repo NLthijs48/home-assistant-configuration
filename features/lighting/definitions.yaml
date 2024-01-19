@@ -28,84 +28,23 @@ input_boolean:
     name: Light outside
     icon: mdi:theme-light-dark
 
-# Setup all light icons
 homeassistant:
-  customize:
-    ##### Ground floor
-    # TV
-    light.living_room_iceland_1:
-      icon: mdi:track-light
-    light.living_room_iceland_2:
-      icon: mdi:track-light
-    light.attic_standing:
-      icon: mdi:floor-lamp
-    light.tv_led_strip:
-      icon: mdi:led-strip-variant
-    # Dining
-    light.dining_duck:
-      icon: mdi:track-light
-    light.dining_large_painting:
-      icon: mdi:track-light
-    light.dining_table:
-      icon: mdi:track-light
-    # Kitchen
-    light.kitchen_cooking:
-      icon: mdi:track-light
-    light.kitchen_kielzogschild:
-      icon: mdi:track-light
-    switch.kitchen_sink:
-      icon: mdi:water-pump
-    # Toilet
-    light.toilet:
-      icon: mdi:toilet
-    # Closet
-    light.closet:
-      icon: mdi:wardrobe
-    # Hall
-    light.ground_floor_hall:
-      icon: mdi:road-variant
-
-    ##### First floor
-    # Bedroom
-    light.bedroom_closets:
-      icon: mdi:rectangle-outline
-    light.bedroom_thijs_bed:
-      icon: mdi:bed
-    # Hall
-    light.first_floor_hall:
-      icon: mdi:stairs
-    # Computer room
-    light.computers_ceiling:
-      icon: mdi:desktop-tower-monitor
-
-    ##### Second floor
-    # Hall
-    light.attic_hall:
-      icon: mdi:washing-machine
-    # Room
-    switch.standing_lamp:
-      icon: mdi:floor-lamp
-    # Beds
-    light.attic_beds:
-      icon: mdi:bed
-
   customize_glob:
     # Motion sensors
-    "sensor.motion_*": # Legacy, renaming to the one below
+    "sensor.motion_*": # TODO phase out Legacy, renaming to the one below
       icon: mdi:motion-sensor
     "sensor.*_motion_sensor*":
       icon: mdi:motion-sensor
     "binary_sensor.*_motion_sensor*":
       icon: mdi:motion-sensor
     # Remotes
-    "sensor.remote_*": # Legacy, renaming to the one below
+    "sensor.remote_*": # TODO phase out legacy, renaming to the one below
       icon: mdi:remote-tv
     "sensor.*_remote":
       icon: mdi:remote-tv
     # Identify buttons
     "button.*_identify":
       icon: mdi:card-account-details
-
 
 # Light groups
 # Note: for some reason these don't support an 'icon' prop, hopefully in newer versions though
