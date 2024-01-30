@@ -20,7 +20,7 @@ zha:
 script:
   living_room_lighting_mode: !include scripts/set_living_room_lighting_mode.yaml
   thijs_bedroom_lights_turn_on: !include scripts/thijs_bedroom_lights_turn_on.yaml
-  toilet_light_turn_on: !include scripts/toilet_light_turn_on.yaml
+  bedroom_closets_turn_on: !include scripts/bedroom_closets_turn_on.yaml
 
 input_boolean:
   # Indicates if we consider it light outside

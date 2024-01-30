@@ -10,6 +10,7 @@ input_boolean:
   thijs_sleepy:
     name: Thijs is sleepy
     icon: mdi:sleep
+  # TODO: thijs_sleeping sensor based on DnD
 
 sensor:
   - platform: template

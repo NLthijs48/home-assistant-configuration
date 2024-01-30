@@ -1,0 +1,24 @@
+- alias: "Bedroom closets turn on when there is motion"
+  id: lights_bedroom_closets_motion
+  mode: restart
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_closets_motion_sensor_occupancy
+      to: 'on'
+  action:
+    # Turn on the light
+    - service: script.bedroom_closets_turn_on
+
+    # Wait until there is no motion anymore
+    - wait_for_trigger:
+        platform: state
+        entity_id: binary_sensor.bedroom_closets_motion_sensor_occupancy
+        to: 'off'
+        for:
+          minutes: 1
+
+    # Turn off the light
+    - service: light.turn_off
+      data:
+        entity_id: light.bedroom_closets
+        transition: 5

@@ -1,0 +1,32 @@
+alias: Bedroom closets turn on
+description: Turns on with the right brightness for the time of day
+icon: mdi:brightness-4
+sequence:
+  - alias: Set daytime variable
+    variables:
+      daytime: "{{ is_state('input_boolean.thijs_sleepy', 'off') }}"
+      dnd: "{{ is_state('sensor.phone_thijs_do_not_disturb', 'priority_only') }}"
+
+  - alias: "Not actually sleeping"
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: sensor.phone_thijs_do_not_disturb
+        state: "priority_only"
+
+  - alias: Turn on the closets light panel
+    service: light.turn_on
+    data:
+      entity_id: light.bedroom_closets
+      brightness_pct: >-
+        {% if daytime %}
+          100
+        {% else %}
+          5
+        {% endif %}
+      kelvin: >-
+        {% if daytime %}
+          4000
+        {% else %}
+          2202
+        {% endif %}

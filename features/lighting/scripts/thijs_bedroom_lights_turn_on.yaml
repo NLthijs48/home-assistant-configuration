@@ -27,19 +27,20 @@ sequence:
         {% endif %}
 
   # Turn on the ceiling light during daytime
-  - choose:
-      # Turn on at daytime
-      - conditions:
-          - "{{ daytime }}"
-        sequence:
-          - service: light.turn_on
-            data:
-              entity_id: light.bedroom_ceiling
-              brightness: 255
-              color_temp: 250
-    # Turn off at nighttime
-    default:
-      - service: light.turn_off
-        data:
-          entity_id: light.bedroom_ceiling
-          transition: 5
+  # TODO: enable again when there is a light
+  #- choose:
+  #    # Turn on at daytime
+  #    - conditions:
+  #        - "{{ daytime }}"
+  #      sequence:
+  #        - service: light.turn_on
+  #          data:
+  #            entity_id: light.bedroom_ceiling
+  #            brightness: 255
+  #            color_temp: 250
+  #  # Turn off at nighttime
+  #  default:
+  #    - service: light.turn_off
+  #      data:
+  #        entity_id: light.bedroom_ceiling
+  #        transition: 5
