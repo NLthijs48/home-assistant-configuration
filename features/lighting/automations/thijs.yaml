@@ -8,26 +8,6 @@
       data:
         entity_id: light.bedroom_thijs_lights
 
-# Update lighting when changing do-not-disturb
-- alias: "Thijs' room turn off when going into do-not-disturb"
-  trigger:
-    - platform: state
-      entity_id: sensor.phone_thijs_do_not_disturb
-      to: 'priority_only'
-  condition:
-    - condition: "state"
-      entity_id: "binary_sensor.thijs_home"
-      state: "on"
-    # Only when still on, otherwise they will turn on and transition off because of the transition
-    - condition: "state"
-      entity_id: "light.bedroom_thijs_lights"
-      state: "on"
-  action:
-    - service: light.turn_off
-      data:
-        entity_id: light.bedroom_thijs_lights
-        transition: 10
-
 - alias: "Thijs' room turn on when going out of do-not-disturb"
   trigger:
     - platform: state
