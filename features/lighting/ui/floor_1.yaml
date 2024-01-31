@@ -127,6 +127,17 @@ cards:
             state_color: false
             hide_state: true
             grow: true
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.shower_motion_sensor_occupancy
+              name: Motion sensor shower
+            entities:
+            - entity: sensor.shower_motion_sensor_illuminance
+              name: Light level
+            - entity: sensor.shower_motion_sensor_temperature
+              name: Temperature
+            - entity: sensor.shower_motion_sensor_power
+              name: Battery
 
       # Bathroom
       - type: custom:slider-button-card

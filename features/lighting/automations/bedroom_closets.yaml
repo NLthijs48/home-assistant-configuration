@@ -1,4 +1,4 @@
-- alias: "Bedroom closets turn on when there is motion"
+- alias: "Bedroom > Closets lights motion"
   id: lights_bedroom_closets_motion
   mode: restart
   trigger:
