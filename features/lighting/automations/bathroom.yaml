@@ -1,9 +1,9 @@
-- alias: "Shower > Lights motion"
+- alias: "Bathroom > Lights motion"
   mode: restart
-  id: lighting_shower_motion
+  id: lighting_bathroom_motion
   trigger:
     - platform: state
-      entity_id: binary_sensor.shower_motion_sensor_occupancy
+      entity_id: binary_sensor.bathroom_motion_sensor
       to: 'on'
   action:
     # Turn on the light
@@ -13,12 +13,12 @@
         dnd: "{{ is_state('sensor.phone_thijs_do_not_disturb', 'priority_only') }}"
     - service: light.turn_on
       data:
-        entity_id: light.shower
+        entity_id: light.bathroom
         brightness_pct: >-
           {% if dnd %}
             5
           {% elif sleepy %}
-            20
+            50 # Need some light for brushing teeth
           {% else %}
             100
           {% endif %}
@@ -35,14 +35,11 @@
     # Wait until there is no motion anymore
     - wait_for_trigger:
         platform: state
-        entity_id: binary_sensor.shower_motion_sensor_occupancy
+        entity_id: binary_sensor.bathroom_motion_sensor
         to: 'off'
-        # Does not detect inside the shower, so keep on for quite long
-        for:
-          minutes: 5
 
     # Turn off the light
     - service: light.turn_off
       data:
-        entity_id: light.shower
+        entity_id: light.bathroom
         transition: 10 # slow turn off, time to trigger again
