@@ -306,11 +306,11 @@ button_card_templates:
       # Error message if starting is blocked by something
       error: >-
         [[[
-          if (states["binary_sensor.roborock_s7_mop_attached"].state === 'off') {
+          if (states["binary_sensor.duster_mop_attached"].state === 'off') {
             return "Missing mop";
-          } else if (states["binary_sensor.roborock_s7_water_box_attached"].state === 'off') {
+          } else if (states["binary_sensor.duster_water_box_attached"].state === 'off') {
             return "Missing water box";
-          } else if (states["binary_sensor.roborock_s7_water_shortage"].state === 'on') {
+          } else if (states["binary_sensor.duster_water_shortage"].state === 'on') {
             return "Water low";
           } else {
             return "";

@@ -4,7 +4,7 @@ cards:
   - type: custom:button-card
     template: icon_button
     name: Vacuum
-    entity: vacuum.roborock_s7
+    entity: vacuum.duster
     icon: mdi:vacuum
     tap_action:
       action: call-service
@@ -15,7 +15,7 @@ cards:
   - type: custom:button-card
     template: mop_button
     name: Mop + vacuum
-    entity: vacuum.roborock_s7
+    entity: vacuum.duster
     icon: mdi:silverware-clean
     tap_action:
       action: call-service
@@ -26,7 +26,7 @@ cards:
   - type: custom:button-card
     template: mop_button
     name: Mop
-    entity: vacuum.roborock_s7
+    entity: vacuum.duster
     icon: mdi:water
     tap_action:
       action: call-service

@@ -27,7 +27,7 @@ sequence:
       - alias: "Set vacuum scrub intensityy"
         service: vacuum.send_command
         target:
-          entity_id: vacuum.roborock_s7
+          entity_id: vacuum.duster
         data:
           command: set_water_box_custom_mode
           params: "[{{ scrub_intensity_code }}]"

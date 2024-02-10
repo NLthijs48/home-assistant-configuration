@@ -4,7 +4,7 @@ map_source:
   camera: camera.roborock_s7_map
 calibration_source:
   camera: true
-entity: vacuum.roborock_s7
+entity: vacuum.duster
 vacuum_platform: default
 # TODO: preset for other floors
 # - ground floor map_name in the camera entity: roboroommap%2F506250889%2F0
@@ -54,19 +54,17 @@ map_modes:
 # Only show information that is relevant during cleaning
 tiles:
   - label: Current duration
-    entity: sensor.roborock_s7_current_clean_duration
+    entity: sensor.duster_cleaning_time
     icon: mdi:timer-sand
     unit: ' s'
   - label: Current area
-    entity: sensor.roborock_s7_current_clean_area
+    entity: sensor.duster_cleaning_area
     icon: mdi:texture-box
     unit: ' m²'
   - label: Battery
-    entity: vacuum.roborock_s7
-    attribute: battery_level
+    entity: sensor.duster_battery
     unit: '%'
     icon: mdi:fan
     conditions:
-      - entity: vacuum.roborock_s7
-        attribute: battery_level
+      - entity: sensor.duster_battery
         value_not: 100

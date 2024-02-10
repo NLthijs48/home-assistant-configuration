@@ -28,7 +28,7 @@ sequence:
       - alias: "Set vacuum suction power mode"
         service: vacuum.send_command
         target:
-          entity_id: vacuum.roborock_s7
+          entity_id: vacuum.duster
         data:
           command: set_custom_mode
           params: "[{{ suction_power_code }}]"

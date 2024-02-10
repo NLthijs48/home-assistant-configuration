@@ -14,8 +14,9 @@ cards:
             type: vertical-stack
             cards:
               - type: entity
-                entity: vacuum.roborock_s7
-              - !include map.yaml
+                entity: vacuum.duster
+              - !include maps.yaml
+              # Broken, not sure if works with Roborock integration: - !include map.yaml
               - !include details.yaml
               # To start anyway when already running
               - !include start_buttons.yaml
@@ -24,32 +25,32 @@ cards:
   - type: conditional
     conditions:
       # On the dock/charger
-      - entity: vacuum.roborock_s7
+      - entity: vacuum.duster
         state_not: docked
       # Idle (happens when placing it on another floor)
-      - entity: vacuum.roborock_s7
+      - entity: vacuum.duster
         state_not: idle
     card:
       type: entity
-      entity: vacuum.roborock_s7
+      entity: vacuum.duster
 
   # Start buttons (when not cleaning)
   - type: conditional
     conditions:
-      - entity: vacuum.roborock_s7
+      - entity: vacuum.duster
         state_not: cleaning
-      - entity: vacuum.roborock_s7
+      - entity: vacuum.duster
         state_not: returning
-      - entity: vacuum.roborock_s7
+      - entity: vacuum.duster
         state_not: paused
-      - entity: vacuum.roborock_s7
+      - entity: vacuum.duster
         state_not: error
     card: !include start_buttons.yaml
 
   # Map (during cleaning)
   - type: conditional
     conditions:
-      - entity: vacuum.roborock_s7
+      - entity: vacuum.duster
         state_not: docked
     card:
       type: picture-glance

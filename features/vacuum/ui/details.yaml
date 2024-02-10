@@ -5,25 +5,25 @@ entities:
 
   - type: section
     label: Current/last round
-  - entity: sensor.roborock_s7_current_clean_area
+  - entity: sensor.duster_last_clean_begin
+    name: Last clean begin
+  - entity: sensor.duster_cleaning_area
     name: Clean Area
-  - entity: sensor.roborock_s7_current_clean_duration
+  - entity: sensor.duster_cleaning_time
     name: Clean Duration
 
   - type: section
     label: Statistics
-  - entity: sensor.roborock_s7_total_clean_area
+  - entity: sensor.duster_total_cleaning_area
     name: Total Clean Area
-  - entity: sensor.roborock_s7_total_dust_collection_count
-    name: Total Dust Collection Count
-  - entity: sensor.roborock_s7_total_duration
+  - entity: sensor.duster_total_cleaning_time
     name: Total duration
 
   - type: section
     label: Mopping
-  - entity: binary_sensor.roborock_s7_mop_attached
+  - entity: binary_sensor.duster_mop_attached
     name: Mop Attached
-  - entity: binary_sensor.roborock_s7_water_box_attached
+  - entity: binary_sensor.duster_water_box_attached
     name: Water Box Attached
-  - entity: binary_sensor.roborock_s7_water_shortage
+  - entity: binary_sensor.duster_water_shortage
     name: Water Shortage
