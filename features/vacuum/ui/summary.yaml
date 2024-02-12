@@ -31,8 +31,37 @@ cards:
       - entity: vacuum.duster
         state_not: idle
     card:
-      type: entity
-      entity: vacuum.duster
+      type: custom:stack-in-card
+      mode: vertical
+      cards:
+        - type: entity
+          entity: vacuum.duster
+        - type: horizontal-stack
+          cards:
+            - type: tile
+              entity: sensor.duster_status
+              name: Status
+              show_entity_picture: false
+              hide_state: false
+              color: green
+              state_content:
+                - state
+                - last-changed
+            - type: conditional
+              conditions:
+                - entity: sensor.duster_vacuum_error
+                  state_not: none
+              card:
+                type: tile
+                entity: sensor.duster_vacuum_error
+                name: Error
+                show_entity_picture: false
+                hide_state: false
+                color: red
+                icon: mdi:alert
+                state_content:
+                  - state
+                  - last-changed
 
   # Start buttons (when not cleaning)
   - type: conditional
@@ -52,8 +81,10 @@ cards:
     conditions:
       - entity: vacuum.duster
         state_not: docked
-    card:
-      type: picture-glance
-      camera_view: auto
-      entities: []
-      camera_image: camera.roborock_s7_map
+    # TODO: only show the most recent updated image?
+    card: !include maps.yaml
+    # For the old map:
+    #  type: picture-glance
+    #  camera_view: auto
+    #  entities: []
+    #  camera_image: camera.roborock_s7_map
