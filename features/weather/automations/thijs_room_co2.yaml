@@ -8,7 +8,10 @@
     - service: notify.mobile_app_phone_thijs
       data:
         title: >-
-          CO2 in your bedroom is at {{ states("sensor.netatmo_bedroom_co2") }}
+          Bedroom CO2 is at {{ states("sensor.netatmo_bedroom_co2") }} ppm!
         message: Open the window!
         data:
-          tag: co2_thijs
+          tag: co2_bedroom
+          channel: CO2
+          importance: high
+          notification_icon: mdi:molecule-co2

@@ -1,0 +1,32 @@
+- alias: CO2 in the attic is getting high
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.netatmo_attic_co2
+      above: '1000'
+    # Repeat when even higher
+    - platform: numeric_state
+      entity_id: sensor.netatmo_attic_co2
+      above: '1300'
+  action:
+    - service: notify.mobile_app_phone_thijs
+      data:
+        title: Attic CO2 is at {{states("sensor.netatmo_attic_co2")}} ppm!
+        message: Open a window to fix it
+        data:
+          tag: co2_attic
+          channel: CO2
+          importance: high
+          notification_icon: mdi:molecule-co2
+    - service: notify.computer_thijs
+      data:
+        title: Attic CO2 is at {{states("sensor.netatmo_attic_co2")}} ppm!
+        message: Open a window to fix it
+    # Flash the lights
+    # TODO: enable again when there is smart lighting in the attic
+    #- repeat:
+    #    count: 6
+    #    sequence:
+    #      - delay: 1
+    #      - service: light.toggle
+    #        data:
+    #          entity_id: light.computers_ceiling

@@ -8,6 +8,15 @@
       entity_id: sensor.ecowitt_wh45_co2
       above: '1300'
   action:
+    - service: notify.mobile_app_phone_thijs
+      data:
+        title: Living room CO2 is at {{states("sensor.ecowitt_wh45_co2")}} ppm!
+        message: Open a window to fix it
+        data:
+          tag: co2_living_room
+          channel: CO2
+          importance: high
+          notification_icon: mdi:molecule-co2
     # Save the current state of the lights
     - service: scene.create
       data:
