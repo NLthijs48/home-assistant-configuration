@@ -1,4 +1,4 @@
-# Computers room summary
+# Attic summary
 type: vertical-stack
 cards:
   # Header with popup
@@ -14,9 +14,9 @@ cards:
           content:
             type: vertical-stack
             cards:
-              - !include computers/co2.yaml
-              - !include computers/temperature.yaml
-              - !include computers/humidity.yaml
+              - !include attic/co2.yaml
+              - !include attic/temperature.yaml
+              - !include attic/humidity.yaml
 
   # Temperature
   - type: custom:stack-in-card
@@ -25,18 +25,18 @@ cards:
       - type: custom:button-card
         name: Temperature
         show_name: false
-        entity: sensor.netatmo_computers_temperature
+        entity: sensor.netatmo_attic_temperature
         template: statistic_button_graph
         tap_action:
           action: fire-dom-event
           browser_mod:
             service: browser_mod.popup
             data:
-              content: !include computers/temperature.yaml
+              content: !include attic/temperature.yaml
       - type: custom:mini-graph-card
         group: true
         entities:
-          - entity: sensor.netatmo_computers_temperature
+          - entity: sensor.netatmo_attic_temperature
             name: Temperature
             show_fill: false
           - color: '#9a9a9a'
@@ -65,23 +65,23 @@ cards:
   # CO2
   - type: custom:button-card
     name: CO2
-    entity: sensor.netatmo_computers_co2
+    entity: sensor.netatmo_attic_co2
     template: statistic_button_co2
     tap_action:
       action: fire-dom-event
       browser_mod:
         service: browser_mod.popup
         data:
-          content: !include computers/co2.yaml
+          content: !include attic/co2.yaml
 
   # Humidity
   - type: custom:button-card
     name: Humidity
-    entity: sensor.netatmo_computers_humidity
+    entity: sensor.netatmo_attic_humidity
     template: statistic_button_humidity
     tap_action:
       action: fire-dom-event
       browser_mod:
         service: browser_mod.popup
         data:
-          content: !include computers/humidity.yaml
+          content: !include attic/humidity.yaml

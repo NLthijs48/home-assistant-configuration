@@ -1,7 +1,7 @@
 type: 'custom:mini-graph-card'
 entities:
   # Humidity
-  - entity: sensor.netatmo_computers_humidity
+  - entity: sensor.netatmo_attic_humidity
     show_fill: false
     name: Humidity
   # Sun is up/down soft-fade

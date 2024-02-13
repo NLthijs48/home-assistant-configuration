@@ -33,7 +33,7 @@ views:
       - type: horizontal-stack
         cards:
           - !include features/weather/ui/thijs_summary.yaml
-          - !include features/weather/ui/computers_summary.yaml
+          - !include features/weather/ui/attic_summary.yaml
           - !include features/weather/ui/guest_room_summary.yaml
       # Maintenance column
       - type: vertical-stack
