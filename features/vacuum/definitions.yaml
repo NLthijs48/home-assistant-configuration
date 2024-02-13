@@ -16,45 +16,45 @@ script:
   roborock_set_mop_route: !include scripts/set_mop_route.yaml
 
 # Map view as camera
-camera:
-  - name: Roborock S7 Map
-    # Bit slower than the standard 5 seconds, which it cannot keep up with
-    scan_interval: 15
-    #auto_update: false # already done with an automation
-    platform: xiaomi_cloud_map_extractor
-    host: !secret xiaomi_vacuum_host
-    token: !secret xiaomi_vacuum_token
-    username: !secret xiaomi_cloud_username
-    password: !secret xiaomi_cloud_password
-    country: de
-    draw: ['all']
-    attributes:
-      - calibration_points
-      #- rooms (only for setup of rooms for the card)
-      - map_name
-      - vacuum_room_name
-      - vacuum_room
-    map_transformation:
-      # Add a lot more pixels
-      scale: 3
-      # Trim useless parts around the map
-      trim:
-        top: 30
-        right: 24
-        bottom: 33
-        left: 25
-    colors:
-      # Transparent color for 'outside'
-      color_map_outside: [0, 0, 0, 0]
-      # Transparent white for areas outside walls
-      color_grey_wall: [240, 240, 240, 64] # Maybe do this one full transparent?
-      # White for walls/obstacles
-      color_map_wall_v2: [240, 240, 240]
-      # Bright path color
-      color_path: [255, 255, 255]
-      # Color of the vacuum in nice orange
-      color_robo: [236, 98, 61]
-    # TODO: room colors
-    sizes:
-      charger_radius: 6
-      vacuum_radius: 8
+# camera:
+#   - name: Roborock S7 Map
+#     # Bit slower than the standard 5 seconds, which it cannot keep up with
+#     scan_interval: 15
+#     #auto_update: false # already done with an automation
+#     platform: xiaomi_cloud_map_extractor
+#     host: !secret xiaomi_vacuum_host
+#     token: !secret xiaomi_vacuum_token
+#     username: !secret xiaomi_cloud_username
+#     password: !secret xiaomi_cloud_password
+#     country: de
+#     draw: ['all']
+#     attributes:
+#       - calibration_points
+#       #- rooms (only for setup of rooms for the card)
+#       - map_name
+#       - vacuum_room_name
+#       - vacuum_room
+#     map_transformation:
+#       # Add a lot more pixels
+#       scale: 3
+#       # Trim useless parts around the map
+#       trim:
+#         top: 30
+#         right: 24
+#         bottom: 33
+#         left: 25
+#     colors:
+#       # Transparent color for 'outside'
+#       color_map_outside: [0, 0, 0, 0]
+#       # Transparent white for areas outside walls
+#       color_grey_wall: [240, 240, 240, 64] # Maybe do this one full transparent?
+#       # White for walls/obstacles
+#       color_map_wall_v2: [240, 240, 240]
+#       # Bright path color
+#       color_path: [255, 255, 255]
+#       # Color of the vacuum in nice orange
+#       color_robo: [236, 98, 61]
+#     # TODO: room colors
+#     sizes:
+#       charger_radius: 6
+#       vacuum_radius: 8
