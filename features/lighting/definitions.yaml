@@ -67,7 +67,7 @@ light:
   - platform: group
     name: "Bedroom Thijs lights"
     entities:
-      - light.bedroom_ceiling
+      #- light.bedroom_ceiling
       - light.bedroom_thijs_bed
   # Attic room lights (light.attic_room_lights)
   - platform: group
