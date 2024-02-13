@@ -22,7 +22,6 @@ homeassistant:
     presence: !include features/presence/definitions.yaml
     system: !include features/system/definitions.yaml
     #spotify: !include features/spotify/definitions.yaml
-    #trains: !include features/trains/definitions.yaml
     vacuum: !include features/vacuum/definitions.yaml
     weather: !include features/weather/definitions.yaml
     washing_machine: !include features/washing_machine/definitions.yaml
