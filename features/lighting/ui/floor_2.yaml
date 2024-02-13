@@ -45,13 +45,6 @@ cards:
             state_color: false
             hide_state: true
             grow: true
-          - type: custom:fold-entity-row
-            head:
-              entity: binary_sensor.attic_motion_sensor
-              name: Motion sensor
-            entities:
-              - entity: sensor.attic_motion_sensor_battery
-                name: Battery
 
       # Washing machine light
       - type: custom:fold-entity-row
