@@ -4,7 +4,7 @@
 - alias: Turn on 'Light outside' when there is enough light outside
   trigger:
     - platform: numeric_state
-      entity_id: sensor.garden_motion_sensor_light_level
+      entity_id: sensor.terrace_motion_sensor_illuminance_lux
       above: 600
       for:
         seconds: 30
@@ -17,7 +17,7 @@
 - alias: Turn off 'Light outside' when there is not much light outside
   trigger:
     - platform: numeric_state
-      entity_id: sensor.garden_motion_sensor_light_level
+      entity_id: sensor.terrace_motion_sensor_illuminance_lux
       below: 600
       for:
         seconds: 30

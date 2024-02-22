@@ -16,7 +16,7 @@ cards:
       - type: custom:mini-graph-card
         name: Outside brightness
         entities:
-          - entity: sensor.garden_motion_sensor_light_level
+          - entity: sensor.terrace_motion_sensor_illuminance_lux
             name: Light level
             show_fill: false
             color: '#00FF00'
@@ -45,11 +45,11 @@ cards:
           - entity: input_boolean.light_outside
       - type: entities
         entities:
-          - entity: sensor.garden_motion_sensor_light_level
+          - entity: sensor.terrace_motion_sensor_illuminance_lux
             name: Light level
-          - entity: binary_sensor.garden_motion_sensor
+          - entity: binary_sensor.terrace_motion_sensor_occupancy
             name: Motion
-          - entity: sensor.garden_motion_sensor_temperature
+          - entity: sensor.terrace_motion_sensor_temperature
             name: Temperature
 
   # Inside brightness

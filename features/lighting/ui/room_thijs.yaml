@@ -27,9 +27,9 @@ cards:
               # Motion
               - type: section
                 label: Motion
-              - entity: binary_sensor.bedroom_thijs_motion_sensor_occupancy
+              - entity: binary_sensor.bedroom_floor_motion_sensor_occupancy
                 name: Floor
-              - entity: binary_sensor.bedroom_thijs_motion_sensor_wide_occupancy
+              - entity: binary_sensor.bedroom_wide_motion_sensor_occupancy
                 name: Room
 
   # Light sliders

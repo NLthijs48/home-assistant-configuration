@@ -44,7 +44,7 @@ cards:
       - type: custom:fold-entity-row
         head:
           type: custom:slider-button-card
-          name: Thijs' room
+          name: Bedroom
           entity: light.bedroom_thijs_lights
           slider:
             direction: left-right
@@ -53,7 +53,7 @@ cards:
             use_percentage_bg_opacity: false
             show_track: true
           icon:
-            icon: mdi:track-light
+            icon: mdi:bed
             tap_action:
               action: more-info
             use_state_color: true
@@ -80,25 +80,25 @@ cards:
           #  name: Remote battery
           - type: custom:fold-entity-row
             head:
-              entity: binary_sensor.bedroom_thijs_motion_sensor_occupancy
+              entity: binary_sensor.bedroom_floor_motion_sensor_occupancy
               name: Motion sensor floor
             entities:
-            - entity: sensor.bedroom_thijs_motion_sensor_illuminance
+            - entity: sensor.bedroom_floor_motion_sensor_illuminance_lux
               name: Light level
-            - entity: sensor.bedroom_thijs_motion_sensor_temperature
+            - entity: sensor.bedroom_floor_motion_sensor_temperature
               name: Temperature
-            - entity: sensor.bedroom_thijs_motion_sensor_power
+            - entity: sensor.bedroom_floor_motion_sensor_battery
               name: Battery
           - type: custom:fold-entity-row
             head:
-              entity: binary_sensor.bedroom_thijs_motion_sensor_wide_occupancy
+              entity: binary_sensor.bedroom_wide_motion_sensor_occupancy
               name: Motion sensor wide
             entities:
-            - entity: sensor.bedroom_thijs_motion_sensor_wide_illuminance
+            - entity: sensor.bedroom_wide_motion_sensor_illuminance_lux
               name: Light level
-            - entity: sensor.bedroom_thijs_motion_sensor_wide_temperature
+            - entity: sensor.bedroom_wide_motion_sensor_temperature
               name: Temperature
-            - entity: sensor.bedroom_thijs_motion_sensor_wide_power
+            - entity: sensor.bedroom_wide_motion_sensor_battery
               name: Battery
 
           # Closets
@@ -113,11 +113,11 @@ cards:
               entity: binary_sensor.bedroom_closets_motion_sensor_occupancy
               name: Motion sensor closets
             entities:
-            - entity: sensor.bedroom_closets_motion_sensor_illuminance
+            - entity: sensor.bedroom_closets_motion_sensor_illuminance_lux
               name: Light level
             - entity: sensor.bedroom_closets_motion_sensor_temperature
               name: Temperature
-            - entity: sensor.bedroom_closets_motion_sensor_power
+            - entity: sensor.bedroom_closets_motion_sensor_battery
               name: Battery
 
           # Shower
@@ -136,7 +136,7 @@ cards:
               name: Light level
             - entity: sensor.shower_motion_sensor_temperature
               name: Temperature
-            - entity: sensor.shower_motion_sensor_power
+            - entity: sensor.shower_motion_sensor_battery
               name: Battery
 
       # Bathroom
