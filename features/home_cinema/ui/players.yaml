@@ -68,17 +68,6 @@ cards:
           #   mute: true
           #   power: true
 
-  # Google home (when not off)
-  - type: conditional
-    conditions:
-      - entity: media_player.google_home_mini_living_room
-        state_not: 'off'
-    card:
-      type: 'custom:mini-media-player'
-      name: Google Home Mini
-      icon: 'mdi:google-home'
-      entity: media_player.google_home_mini_living_room
-
   # Personal Spotify card when playing
   # TODO: try hiding this when state!=playing (conditional card did not work)
   #  - type: custom:state-switch
