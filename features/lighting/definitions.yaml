@@ -30,21 +30,12 @@ input_boolean:
 
 homeassistant:
   customize_glob:
-    # Motion sensors
-    "sensor.motion_*": # TODO phase out Legacy, renaming to the one below
-      icon: mdi:motion-sensor
-    "sensor.*_motion_sensor*":
-      icon: mdi:motion-sensor
-    "binary_sensor.*_motion_sensor*":
-      icon: mdi:motion-sensor
+    # TODO: probably just remove? they should have nice defaults already
     # Remotes
     "sensor.remote_*": # TODO phase out legacy, renaming to the one below
       icon: mdi:remote-tv
     "sensor.*_remote":
       icon: mdi:remote-tv
-    # Identify buttons
-    "button.*_identify":
-      icon: mdi:card-account-details
 
 # Light groups
 # Note: for some reason these don't support an 'icon' prop, hopefully in newer versions though
