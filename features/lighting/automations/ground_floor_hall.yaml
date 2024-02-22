@@ -1,16 +1,36 @@
-# Turn on the lights when there is motion
-- alias: "Hall ground floor turn on when there is motion"
+- alias: "Ground floor hall > Lights motion"
   mode: restart
-  id: lighting_ground_floor_hall
+  id: lighting_ground_floor_hall_motion
   trigger:
     - platform: state
       entity_id: binary_sensor.ground_floor_hall_motion_sensor_occupancy
       to: 'on'
   action:
     # Turn on the light
+    - alias: Set daytime variable
+      variables:
+        sleepy: "{{ is_state('input_boolean.thijs_sleepy', 'on') }}"
+        dnd: "{{ is_state('sensor.phone_thijs_do_not_disturb', 'priority_only') }}"
     - service: light.turn_on
       data:
         entity_id: light.ground_floor_hall
+        brightness_pct: >-
+          {% if dnd %}
+            1
+          {% elif sleepy %}
+            20 # Need some light for brushing teeth
+          {% else %}
+            60
+          {% endif %}
+        # White(r) during the day, yellow-ish at night
+        kelvin: >-
+          {% if dnd %}
+            2202
+          {% elif sleepy %}
+            2200
+          {% else %}
+            2500
+          {% endif %}
 
     # Wait until there is no motion anymore
     - wait_for_trigger:
@@ -26,28 +46,3 @@
       data:
         entity_id: light.ground_floor_hall
         transition: 5
-
-# Dimmed when turned on at night
-- alias: Ground floor hall light starts dimmed when turned on at night
-  trigger:
-    - entity_id: light.ground_floor_hall
-      platform: state
-      to: 'on'
-  action:
-    - service: light.turn_on
-      data:
-        entity_id: light.ground_floor_hall
-        brightness_pct: >-
-          {% if is_state('sun.sun', 'below_horizon') %}
-            20
-          {% else %}
-            60
-          {% endif %}
-        # White(r) during the day, yellow-ish at night
-        # TODO: switch to Kelvin everywhere
-        color_temp: >-
-          {% if now().hour < 7 or now().hour >= 18 %}
-            400
-          {% else %}
-            300
-          {% endif %}
