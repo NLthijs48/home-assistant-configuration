@@ -1,4 +1,4 @@
-- alias: "Thijs' room open curtains when awake"
+- alias: "Bedroom > Curtains open when awake"
   trigger:
     - platform: state
       entity_id: sensor.phone_thijs_do_not_disturb
@@ -14,7 +14,7 @@
       target:
         entity_id: cover.thijs_room_curtains
 
-- alias: "Thijs' room close curtains when going to sleep"
+- alias: "Bedroom > Curtains close when going to sleep"
   trigger:
     - platform: state
       entity_id: sensor.phone_thijs_do_not_disturb
