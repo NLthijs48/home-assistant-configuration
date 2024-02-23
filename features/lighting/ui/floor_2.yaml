@@ -54,7 +54,7 @@ cards:
         entities:
           - type: custom:fold-entity-row
             head:
-              entity: binary_sensor.washing_machine_light_motion_sensor
+              entity: binary_sensor.washing_machine_light_motion_sensor_occupancy
               name: Motion sensor
             entities:
               - entity: sensor.washing_machine_light_motion_sensor_battery
