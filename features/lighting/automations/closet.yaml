@@ -17,6 +17,8 @@
         platform: state
         entity_id: binary_sensor.closet_motion_sensor
         to: 'off'
+        for:
+          minutes: 1
 
     # Turn off the light
     - service: light.turn_off
