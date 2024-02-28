@@ -18,7 +18,7 @@
           {% if dnd %}
             1
           {% elif sleepy %}
-            20 # Need some light for brushing teeth
+            20
           {% else %}
             60
           {% endif %}
