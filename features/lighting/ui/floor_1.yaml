@@ -193,5 +193,3 @@ cards:
             state_color: false
             hide_state: true
             grow: true
-          - entity: sensor.guest_room_remote_battery
-            name: Remote battery

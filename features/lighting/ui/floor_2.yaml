@@ -12,7 +12,7 @@ cards:
         }
     entities:
 
-      # Room
+      # Attic guest
       - type: custom:fold-entity-row
         head:
           type: custom:slider-button-card
@@ -45,6 +45,8 @@ cards:
             state_color: false
             hide_state: true
             grow: true
+          - entity: sensor.attic_guest_remote_battery
+            name: Remote
 
       # Washing machine light
       - type: custom:fold-entity-row
