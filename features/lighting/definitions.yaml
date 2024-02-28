@@ -47,13 +47,6 @@ light:
       # TODO: more lights when installed
       - light.tv_led_strip
       - light.living_room_ceiling
-  # Dining room lights
-  - platform: group
-    name: Dining lights
-    entities:
-      - light.dining_table
-      - light.dining_duck
-      - light.dining_large_painting
   # Thijs' bedroom lights (light.bedroom_thijs_lights)
   - platform: group
     name: "Bedroom Thijs lights"
