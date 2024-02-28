@@ -34,7 +34,7 @@ cards:
         entities:
           - type: custom:fold-entity-row
             head:
-              entity: binary_sensor.first_floor_hall_motion_sensor
+              entity: binary_sensor.first_floor_hall_motion_sensor_occupancy
               name: Motion sensor
             entities:
               - entity: sensor.first_floor_hall_motion_sensor_battery

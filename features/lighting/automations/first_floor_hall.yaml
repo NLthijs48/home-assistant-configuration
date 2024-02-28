@@ -3,7 +3,7 @@
   mode: restart
   trigger:
     - platform: state
-      entity_id: binary_sensor.first_floor_hall_motion_sensor
+      entity_id: binary_sensor.first_floor_hall_motion_sensor_occupancy
       to: 'on'
   action:
     # Turn on the light
@@ -14,7 +14,7 @@
     # Wait until there is no motion anymore
     - wait_for_trigger:
         platform: state
-        entity_id: binary_sensor.first_floor_hall_motion_sensor
+        entity_id: binary_sensor.first_floor_hall_motion_sensor_occupancy
         to: 'off'
 
     # Turn off the light
