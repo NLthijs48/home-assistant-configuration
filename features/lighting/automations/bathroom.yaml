@@ -3,7 +3,7 @@
   id: lighting_bathroom_motion
   trigger:
     - platform: state
-      entity_id: binary_sensor.bathroom_motion_sensor
+      entity_id: binary_sensor.bathroom_motion_sensor_occupancy
       to: 'on'
   action:
     # Turn on the light
@@ -29,13 +29,13 @@
           {% elif sleepy %}
             2500
           {% else %}
-            6535
+            4000
           {% endif %}
 
     # Wait until there is no motion anymore
     - wait_for_trigger:
         platform: state
-        entity_id: binary_sensor.bathroom_motion_sensor
+        entity_id: binary_sensor.bathroom_motion_sensor_occupancy
         to: 'off'
 
     # Turn off the light
