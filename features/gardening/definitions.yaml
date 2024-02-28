@@ -59,7 +59,7 @@ plant:
   3:
     sensors:
       moisture: sensor.plant_3_moisture
-      brightness: sensor.living_room_motion_sensor_illuminance
+      brightness: sensor.living_room_motion_sensor_illuminance_lux
       temperature: sensor.ecowitt_wh45_temperature
       # First needs conversion from volt to percent (use template sensor)
       #battery: sensor.plant_3_battery

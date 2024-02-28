@@ -58,7 +58,7 @@ cards:
       - type: custom:mini-graph-card
         name: Inside brightness
         entities:
-          - entity: sensor.living_room_motion_sensor_illuminance
+          - entity: sensor.living_room_motion_sensor_illuminance_lux
             name: Light level
             show_fill: false
             color: '#00FF00'
@@ -87,7 +87,7 @@ cards:
           - light.living_room_lights
       - type: entities
         entities:
-          - entity: sensor.living_room_motion_sensor_illuminance
+          - entity: sensor.living_room_motion_sensor_illuminance_lux
             name: Light level
           - entity: binary_sensor.living_room_motion_sensor_occupancy
             name: Motion

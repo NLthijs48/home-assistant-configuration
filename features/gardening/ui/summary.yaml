@@ -116,7 +116,7 @@ cards:
               title: 🌳 Bonsai
               content: !include plant_3/moisture.yaml
       #- type: custom:button-card
-      #  entity: sensor.living_room_motion_sensor_illuminance
+      #  entity: sensor.living_room_motion_sensor_illuminance_lux
       #  name: Illuminance
       #  template: statistic_button
 
