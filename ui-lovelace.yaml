@@ -58,7 +58,6 @@ views:
     path: thijs
     badges: []
     cards:
-      - !include features/lighting/ui/room_thijs.yaml
       - !include features/computer/ui/computer_thijs.yaml
       - !include features/curtain/ui/thijs_room.yaml
 
