@@ -61,7 +61,6 @@ views:
       - !include features/lighting/ui/room_thijs.yaml
       - !include features/computer/ui/computer_thijs.yaml
       - !include features/curtain/ui/thijs_room.yaml
-      - !include features/spotify/ui/thijs.yaml
 
   # Plants
   #- icon: mdi:sprout
