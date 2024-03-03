@@ -9,6 +9,11 @@ cards:
       state_content:
         - state
         - last-changed
+      tap_action:
+        action: fire-dom-event
+        browser_mod:
+          service: browser_mod.popup
+          data: !include thijs_location_popup.yaml
     - type: history-graph
       entities:
         - sensor.thijs_location

@@ -1,44 +1,57 @@
 title: Thijs' locations
-card:
+content:
   type: vertical-stack
   cards:
     # Resulting combined entity state
-    - type: entities
-      entities:
-        - entity: sensor.thijs_location
-        - entity: binary_sensor.thijs_home
-        - entity: sensor.phone_thijs_battery_level
-          name: Phone battery
-        - entity: input_boolean.thijs_sleepy
-          name: Sleepy
-    # History
-    - type: logbook
-      title: History
-      hours_to_show: 12
-      entities:
-        - sensor.thijs_location
-        - binary_sensor.thijs_home
+    - type: custom:stack-in-card
+      mode: vertical
+      cards:
+        - type: tile
+          entity: sensor.thijs_location
+          state_content:
+            - state
+            - last-changed
+        - type: tile
+          entity: binary_sensor.thijs_home
+          state_content:
+            - state
+            - last-changed
+        # History
+        - type: logbook
+          hours_to_show: 24
+          entities:
+            - sensor.thijs_location
+            - binary_sensor.thijs_home
     # Building blocks used to create the combined location
-    - type: entities
+    - type: custom:stack-in-card
+      mode: vertical
       title: Building blocks
-      entities:
-        - entity: device_tracker.phone_thijs_zone
+      cards:
+        - type: tile
+          entity: device_tracker.phone_thijs_zone
           name: 'Phone: geolocation'
-        - entity: device_tracker.unifi_phone_thijs
+          state_content:
+            - state
+            - last-changed
+            - source_type
+        - type: tile
+          entity: device_tracker.unifi_phone_thijs
           name: 'Phone: unifi'
-        - entity: sensor.phone_thijs_wifi_ap
+          state_content:
+            - state
+            - last-changed
+            - ip
+        - type: tile
+          entity: sensor.phone_thijs_wifi_ap
           name: 'Phone: floor'
-        - entity: device_tracker.unifi_laptop_thijs
-          name: 'Laptop: unifi'
-        - entity: sensor.laptop_thijs_wifi_ap
-          name: 'Laptop: floor'
-    # History
-    - type: logbook
-      title: History
-      hours_to_show: 12
-      entities:
-        - device_tracker.phone_thijs_zone
-        - device_tracker.unifi_phone_thijs
-        - sensor.phone_thijs_wifi_ap
-        - device_tracker.unifi_laptop_thijs
-        - sensor.laptop_thijs_wifi_ap
+          state_content:
+            - state
+            - last-changed
+        - type: logbook
+          hours_to_show: 24
+          entities:
+            - device_tracker.phone_thijs_zone
+            - device_tracker.unifi_phone_thijs
+            - sensor.phone_thijs_wifi_ap
+            - device_tracker.unifi_laptop_thijs
+            - sensor.laptop_thijs_wifi_ap
