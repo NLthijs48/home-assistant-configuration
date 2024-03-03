@@ -37,3 +37,17 @@ cards:
       state_content:
         - state
         - last-changed
+    # Next alarm
+    # TODO: ideally show the time as H:i here as well
+    - type: conditional
+      conditions:
+        - condition: state
+          entity: sensor.phone_thijs_next_alarm
+          state_not: unavailable
+      card:
+        type: tile
+        entity: sensor.phone_thijs_next_alarm
+        color: green
+        name: Alarm
+        state_content:
+          - state
