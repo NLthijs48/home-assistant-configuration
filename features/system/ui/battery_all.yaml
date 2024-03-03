@@ -12,6 +12,9 @@ cards:
           options:
             secondary_info: last-changed
           state: "unavailable"
+      exclude:
+        # Does not seem to work
+        - hidden_by: "*"
     sort:
       method: name
 
@@ -28,6 +31,8 @@ cards:
             secondary_info: last-changed
       exclude:
         - state: "unavailable"
+        # Does not seem to work
+        - hidden_by: "*"
     sort:
       method: state
       numeric: true
