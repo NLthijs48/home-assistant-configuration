@@ -59,7 +59,6 @@ views:
     badges: []
     cards:
       - !include features/computer/ui/computer_thijs.yaml
-      - !include features/curtain/ui/thijs_room.yaml
 
   # Plants
   #- icon: mdi:sprout
