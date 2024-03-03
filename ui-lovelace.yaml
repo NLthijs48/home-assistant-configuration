@@ -53,13 +53,6 @@ views:
     popup_cards:
       sensor.thijs_location: !include features/presence/ui/thijs_location_popup.yaml
 
-  # Thijs
-  - title: Thijs
-    path: thijs
-    badges: []
-    cards:
-      - !include features/computer/ui/computer_thijs.yaml
-
   # Plants
   #- icon: mdi:sprout
   #  path: plants

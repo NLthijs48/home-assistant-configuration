@@ -1,15 +1,15 @@
 type: vertical-stack
 cards:
-  - type: custom:button-card
-    name: 🖥️ Computer
-    template: header
   - type: 'custom:stack-in-card'
     cards:
       # Maybe switch this to custom button card with "turn on" or "sleep"
-      - type: entities
-        entities:
-          - entity: switch.computer_thijs_wake_on_lan
-            name: Switch
+      - type: tile
+        entity: switch.computer_thijs_wake_on_lan
+        name: Desktop
+        color: green
+        state_content:
+          - state
+          - last-changed
 
       # Power usage
       - type: horizontal-stack

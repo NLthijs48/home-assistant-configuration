@@ -42,6 +42,13 @@ cards:
       state_content:
         - state
         - last-changed
+      tap_action:
+        action: fire-dom-event
+        browser_mod:
+          service: browser_mod.popup
+          data:
+            title: Desktop
+            content: !include ../../computer/ui/desktop_thijs.yaml
     # Next alarm
     # TODO: ideally show the time as H:i here as well
     - type: conditional
