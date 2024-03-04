@@ -1,16 +1,6 @@
-alias: Play psy trance playlist
+alias: Play PSY trance playlist
 icon: mdi:spotify
 sequence:
-  # Enable shuffle
-  - service: media_player.shuffle_set
+  - service: script.play_playlist
     data:
-      shuffle: true
-    target:
-      entity_id: media_player.spotify_thijs
-  # Start playlist
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.spotify_thijs
-    data:
-      media_content_id: spotify:playlist:60lawtwZQVwGUDo91JOwmW
-      media_content_type: playlist
+      playlist: spotify:playlist:60lawtwZQVwGUDo91JOwmW
