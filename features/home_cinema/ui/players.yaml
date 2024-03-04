@@ -67,18 +67,10 @@ cards:
           #   controls: true
           #   mute: true
           #   power: true
-  - !include ../../spotify/ui/media_player.yaml
 
-  # Personal Spotify card when playing
-  # TODO: try hiding this when state!=playing (conditional card did not work)
-  #  - type: custom:state-switch
-  #    entity: user
-  #    states:
-  #      Thijs:
-  #        type: 'custom:mini-media-player'
-  #        entity: media_player.spotify_thijs
-  #        artwork: cover
-  #        hide:
-  #          source: true
-  #          icon: true
-  #          power: true
+  # Spotify when not already showing on the Chromecast player
+  - type: conditional
+    conditions:
+    - entity: media_player.4k
+      state: 'off'
+    card: !include ../../spotify/ui/media_player.yaml

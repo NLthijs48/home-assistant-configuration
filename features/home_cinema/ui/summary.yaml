@@ -1,0 +1,13 @@
+type: vertical-stack
+cards:
+- type: custom:button-card
+  name: 🔊 Home cinema
+  template: header
+  tap_action:
+    action: fire-dom-event
+    browser_mod:
+      service: browser_mod.popup
+      data:
+        title: 🔊 Home cinema
+        content: !include ../../spotify/ui/playlist_buttons.yaml
+- !include mode_select.yaml
