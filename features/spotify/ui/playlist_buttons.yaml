@@ -1,0 +1,62 @@
+type: vertical-stack
+cards:
+- type: horizontal-stack
+  cards:
+  - type: custom:stack-in-card
+    cards:
+    - name: Dance
+      type: tile
+      entity: script.playlist_dance
+      hide_state: true
+      icon: mdi:play
+      tap_action:
+        action: toggle
+      icon_tap_action:
+        action: toggle
+    - name: Hardstyle
+      type: tile
+      entity: script.playlist_hardstyle
+      hide_state: true
+      icon: mdi:play
+      tap_action:
+        action: toggle
+      icon_tap_action:
+        action: toggle
+    - name: Techno
+      type: tile
+      entity: script.playlist_techno
+      hide_state: true
+      icon: mdi:play
+      tap_action:
+        action: toggle
+      icon_tap_action:
+        action: toggle
+  - type: custom:stack-in-card
+    cards:
+    - name: Dancecore
+      type: tile
+      entity: script.playlist_dancecore
+      hide_state: true
+      icon: mdi:play
+      tap_action:
+        action: toggle
+      icon_tap_action:
+        action: toggle
+    - name: Psy Trance
+      type: tile
+      entity: script.playlist_psy_trance
+      hide_state: true
+      icon: mdi:play
+      tap_action:
+        action: toggle
+      icon_tap_action:
+        action: toggle
+    - name: Hardcore
+      type: tile
+      entity: script.playlist_hardcore
+      hide_state: true
+      icon: mdi:play
+      tap_action:
+        action: toggle
+      icon_tap_action:
+        action: toggle

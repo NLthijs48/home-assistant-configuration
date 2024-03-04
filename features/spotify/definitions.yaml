@@ -1,8 +1,5 @@
-# TODO: share a play-playlist service with shuffle and spotcast stuff?
-
 # Define playlist scripts
 script:
-  play_playlist: !include scripts/play_playlist.yaml
   playlist_dance: !include scripts/playlist_dance.yaml
   playlist_dancecore: !include scripts/playlist_dancecore.yaml
   playlist_hardcore: !include scripts/playlist_hardcore.yaml
@@ -14,7 +11,3 @@ script:
 spotcast:
   sp_dc: !secret spotify_thijs_sp_dc
   sp_key: !secret spotify_thijs_sp_key
-  accounts:
-    thijs:
-      sp_dc: !secret spotify_thijs_sp_dc
-      sp_key: !secret spotify_thijs_sp_key
