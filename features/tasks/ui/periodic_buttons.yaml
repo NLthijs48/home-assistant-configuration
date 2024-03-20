@@ -1,0 +1,33 @@
+type: vertical-stack
+title: Tasks
+cards:
+- type: tile
+  entity: input_button.last_run
+  state_content: state
+  icon_tap_action:
+    action: more-info
+- type: tile
+  entity: input_button.last_barber_cut
+  state_content: state
+  icon_tap_action:
+    action: more-info
+- type: tile
+  entity: input_button.last_bed_sheets_change
+  state_content: state
+  icon_tap_action:
+    action: more-info
+- type: tile
+  entity: input_button.last_cleaned_bathroom
+  state_content: state
+  icon_tap_action:
+    action: more-info
+- type: tile
+  entity: input_button.last_cleaned_shower
+  state_content: state
+  icon_tap_action:
+    action: more-info
+- type: tile
+  entity: input_button.last_cleaned_shaver
+  state_content: state
+  icon_tap_action:
+    action: more-info

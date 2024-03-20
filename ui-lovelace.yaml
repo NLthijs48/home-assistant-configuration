@@ -50,6 +50,14 @@ views:
   #  cards:
   #    - !include features/gardening/ui/plant.yaml
 
+  # Tasks
+  - icon: "mdi:check-bold"
+    path: tasks
+    cards:
+    - !include features/tasks/ui/today.yaml
+    - !include features/tasks/ui/periodic_buttons.yaml
+    - !include features/tasks/ui/periodic_buttons_missing.yaml
+
   # Lighting
   - icon: mdi:lightbulb
     path: lights

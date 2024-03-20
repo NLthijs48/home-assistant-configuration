@@ -1,0 +1,19 @@
+type: custom:auto-entities
+card:
+  type: entities
+  title: Buttons to add
+filter:
+  include:
+  - entity_id: input_button.*
+    options:
+      secondary_info: last-updated
+  exclude:
+  - entity_id: input_button.last_run
+  - entity_id: input_button.last_barber_cut
+  - entity_id: input_button.last_bed_sheets_change
+  - entity_id: input_button.last_cleaned_shower
+  - entity_id: input_button.last_cleaned_bathroom
+  - entity_id: input_button.last_cleaned_shaver
+sort:
+  method: last_updated
+show_empty: false
