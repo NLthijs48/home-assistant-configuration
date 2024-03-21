@@ -44,9 +44,8 @@ light:
   - platform: group
     name: Living room lights
     entities:
-      # TODO: more lights when installed
-      #- light.tv_led_strip
       - light.living_room_ceiling
+      - light.kitchen_ceiling
   # Thijs' bedroom lights (light.bedroom_thijs_lights)
   - platform: group
     name: "Bedroom Thijs lights"

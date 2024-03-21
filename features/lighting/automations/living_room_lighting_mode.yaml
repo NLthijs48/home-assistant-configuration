@@ -24,7 +24,7 @@
 - alias: 'Living room lighting mode to evening'
   trigger:
     - platform: time
-      at: "19:00"
+      at: "19:30"
   action:
     - service: script.living_room_lighting_mode
       data:

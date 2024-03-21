@@ -58,7 +58,23 @@ cards:
 
           # Dining TODO: connect and enable
 
-          # Kitchen: TODO connect and enable
+          # Kitchen
+          - type: custom:slider-button-card
+            name: Kitchen ceiling
+            entity: light.kitchen_ceiling
+            slider:
+              direction: left-right
+              background: gradient
+              use_state_color: false
+              use_percentage_bg_opacity: false
+              show_track: true
+            icon:
+              tap_action:
+                action: more-info
+              use_state_color: true
+            action_button:
+              show: false
+            compact: true
 
           # Motion sensor
           - type: custom:fold-entity-row
