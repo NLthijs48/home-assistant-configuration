@@ -31,15 +31,35 @@
         mode: evening
 
 # Night mode
-- alias: 'Living room lighting mode to night'
+- alias: 'Living room lighting mode to night (weekend)'
   trigger:
     - platform: time
-      at: "23:00"
+      at: "23:30"
+  condition:
+    - condition: time
+      weekday:
+      - fri
+      - sat
   action:
     - service: script.living_room_lighting_mode
       data:
         mode: night
-
+- alias: 'Living room lighting mode to night (weekday)'
+  trigger:
+  - platform: time
+    at: "22:00"
+  condition:
+  - condition: time
+    weekday:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thu
+  action:
+  - service: script.living_room_lighting_mode
+    data:
+      mode: night
 
 
 # Set brightness depending on the mode
@@ -73,7 +93,7 @@
           {% elif is_state("input_select.living_room_lighting_mode", "cooking") %}
             100
           {% elif is_state("input_select.living_room_lighting_mode", "evening") %}
-            35
+            25
           {% elif is_state("input_select.living_room_lighting_mode", "night") %}
             5
           {% endif %}
