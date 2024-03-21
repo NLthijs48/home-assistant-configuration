@@ -64,6 +64,7 @@
 
 # Set brightness depending on the mode
 - alias: Living room lights turn on brightness
+  id: living_room_lights_mode_brightness
   trigger:
     - platform: state
       entity_id: input_boolean.living_room_in_use
@@ -75,31 +76,51 @@
   condition:
     - condition: state
       entity_id: input_boolean.living_room_in_use
+      alias: "Living room is in use"
       state: 'on'
     - condition: template
+      alias: "Stop control when set to manual"
       value_template: "{{ not is_state('input_select.living_room_lighting_mode', 'manual') }}"
   action:
-    - service: light.turn_on
-      data:
-        entity_id: light.living_room_lights
-        transition: 5
-        brightness_pct: >-
-          {% if is_state("input_select.living_room_lighting_mode", "day") %}
-            {% if is_state("input_boolean.light_outside", "on") %}
-              0
-            {% else %}
-              60
-            {% endif %}
-          {% elif is_state("input_select.living_room_lighting_mode", "cooking") %}
-            100
-          {% elif is_state("input_select.living_room_lighting_mode", "evening") %}
-            25
-          {% elif is_state("input_select.living_room_lighting_mode", "night") %}
-            5
-          {% endif %}
+    - variables:
+        lighting_mode: "{{ states('input_select.living_room_lighting_mode') }}"
+        light_outside: "{{ is_state('input_boolean.light_outside', 'on') }}"
+    - choose:
+        # If not enabled by a timer, and no-one in the living room
+        - conditions:
+          - condition: template
+            value_template: '{{ lighting_mode == "day" and light_outside }}'
+          sequence:
+          - service: light.turn_off
+            entity_id: light.living_room_lights
+      # Else turn on with correct brightness
+      default:
+        - service: light.turn_on
+          data:
+            entity_id: light.living_room_ceiling
+            transition: 5
+            brightness_pct: >-
+              {{ {
+                "day": 100,
+                "cooking": 70,
+                "evening": 25,
+                "night": 5,
+              }[lighting_mode] }}
+        - service: light.turn_on
+          data:
+            entity_id: light.kitchen_ceiling
+            transition: 5
+            brightness_pct: >-
+              {{ {
+                "day": 100,
+                "cooking": 100,
+                "evening": 15,
+                "night": 5,
+              }[lighting_mode] }}
 
 # Turn off when no-one present
-- alias: Living room lights turn on brightness
+- alias: Living room lights turn off (no-one present)
+  id: living_room_lights_off_presence
   trigger:
     - platform: state
       entity_id: input_boolean.living_room_in_use
