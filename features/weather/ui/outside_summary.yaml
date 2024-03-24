@@ -13,7 +13,7 @@ cards:
             type: vertical-stack
             cards:
               - !include outside/forecast_24_hours_bar.yaml
-              - !include outside/forecast_24_hours_graph.yaml
+              #- !include outside/forecast_24_hours_graph.yaml
               - !include outside/forecast_days.yaml
               # TODO: try showing this in the summary when not all-zero?
               - !include outside/buienalarm.yaml
@@ -23,24 +23,17 @@ cards:
     cards:
       # TODO: try card-modding these cards closer to each other
       - type: custom:hourly-weather
-        entity: weather.152_hourly
+        entity: weather.152
         # Aligned with the graph below
         num_segments: 24
-        label_spacing: 4
+        label_spacing: 3
         icons: true
         # The graph below shows it already
-        hide_hours: true
+        #hide_hours: true
         # Hides the name
         name: null
         colors: !include outside/hourly_weather_colors.yaml
-      - type: custom:weather-chart-card
-        entity: weather.152_hourly
-        show_main: false
-        show_attributes: false
-        forecast:
-          # Smaller font size means showing more hours
-          # - use tiny font to basically just get a graph, actual temperature is shown in card above
-          # - ideally UI would just show more without smaller font size though
-          labels_font_size: 3
-          condition_icons: false
+        round_temperatures: true
+        show_wind: speed
+      #- !include outside/forecast_24_hours_graph.yaml
   - !include outside/forecast_days.yaml

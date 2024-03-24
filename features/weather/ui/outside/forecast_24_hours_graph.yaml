@@ -1,5 +1,6 @@
+# TODO: somehow get this to show hourly data again (not possible at this time)
 type: custom:weather-chart-card
-entity: weather.152_hourly
+entity: weather.152
 show_main: false
 show_attributes: false
 forecast:

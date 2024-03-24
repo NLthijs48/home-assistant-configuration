@@ -1,5 +1,5 @@
 type: custom:hourly-weather
-entity: weather.152_hourly
+entity: weather.152
 num_segments: 24
 label_spacing: 4
 icons: true
