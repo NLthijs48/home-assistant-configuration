@@ -43,8 +43,10 @@ card:
                   icon: mdi:map-marker
                 - entity: device_tracker.crisp_van
                   name: Van location
-                - entity: proximity.crisp_van
-                  name: Van proximity
+                - entity: sensor.crisp_van_distance
+                  name: Van distance
+                - entity: sensor.crisp_van_direction_of_travel
+                  name: Van direction of travel
     - type: horizontal-stack
       cards:
         # Information button

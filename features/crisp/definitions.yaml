@@ -223,7 +223,7 @@ template:
           {% endif %}
 
           {# Add distance #}
-          {% set van_meters = states('proximity.crisp_van') %}
+          {% set van_meters = states('sensor.crisp_van_distance') %}
           {% if van_meters is not none and van_meters != 'not set' %}
             {% set van_meters = van_meters | int(default=0) %}
             {% if van_meters > 0 %}
@@ -280,12 +280,3 @@ input_text:
   crisp_tracking_fallback_url:
     name: Fallback url
     initial: !secret crisp_tracking_fallback_url
-
-# Track the direction and distance of the Crisp van
-proximity:
-  crisp_van:
-    zone: home
-    devices:
-      - device_tracker.crisp_van
-    unit_of_measurement: m
-    tolerance: 10

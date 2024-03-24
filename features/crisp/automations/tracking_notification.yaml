@@ -58,8 +58,8 @@
   id: crisp.driver_is_close
   trigger:
     - platform: numeric_state
-      entity_id: proximity.crisp_van
-      below: 150 # Meters
+      entity_id: sensor.crisp_van_distance
+      below: 200 # Meters
   action:
     - alias: Send driver is close notification
       service: notify.mobile_app_phone_thijs
