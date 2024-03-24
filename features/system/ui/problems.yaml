@@ -5,8 +5,12 @@ card:
   title: 🟥 Problems
 filter:
   include:
+    # For example overheating sensor of Shelly Plug S
     - attributes:
         device_class: problem
+    # For example KNMI weather alert
+    - attributes:
+        device_class: safety
   exclude:
     - state: unavailable
     - state: 'off'
