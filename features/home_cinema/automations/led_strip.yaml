@@ -1,36 +1,37 @@
 # Future: think about how this should integrate with the living room lighting
-- alias: Home cinema state reflected in the tv led strip color
-  mode: restart
-  trigger:
-    # Home cinema state changes
-    - platform: state
-      entity_id: input_select.home_cinema_mode
-    # Home cinema pending state changes
-    - platform: state
-      entity_id: input_boolean.home_cinema_pending
-  action:
-    # Update the led strip
-    # (not touching brightness, lighting feature does that)
-    - service: light.turn_on
-      entity_id: light.tv_led_strip
-      data:
-        rgb_color: >-
-          {% if is_state("input_boolean.home_cinema_pending", "on") %}
-            {# Orange pending state #}
-            {{ [175, 113, 0] }}
-          {% elif is_state("input_select.home_cinema_mode", "chromecast") %}
-            {# Green #}
-            {{ [0, 255, 0] }}
-          {% elif is_state("input_select.home_cinema_mode", "tv") %}
-            {# Purple (T-mobile) #}
-            {{ [255, 46, 129] }}
-          {% elif is_state("input_select.home_cinema_mode", "bluetooth") %}
-            {# Blue #}
-            {{ [50, 50, 255] }}
-          {% elif is_state("input_select.home_cinema_mode", "unknown") %}
-            {# Red #}
-            {{ [255, 0, 0] }}
-          {% else %}
-            {# Warm white default color #}
-            {{ [255, 255, 220] }}
-          {% endif %}
+# TODO: install LED strip?
+#- alias: Home cinema state reflected in the tv led strip color
+#  mode: restart
+#  trigger:
+#    # Home cinema state changes
+#    - platform: state
+#      entity_id: input_select.home_cinema_mode
+#    # Home cinema pending state changes
+#    - platform: state
+#      entity_id: input_boolean.home_cinema_pending
+#  action:
+#    # Update the LED strip
+#    # (not touching brightness, lighting feature does that)
+#    - service: light.turn_on
+#      entity_id: light.tv_led_strip
+#      data:
+#        rgb_color: >-
+#          {% if is_state("input_boolean.home_cinema_pending", "on") %}
+#            {# Orange pending state #}
+#            {{ [175, 113, 0] }}
+#          {% elif is_state("input_select.home_cinema_mode", "chromecast") %}
+#            {# Green #}
+#            {{ [0, 255, 0] }}
+#          {% elif is_state("input_select.home_cinema_mode", "tv") %}
+#            {# Purple (T-mobile) #}
+#            {{ [255, 46, 129] }}
+#          {% elif is_state("input_select.home_cinema_mode", "bluetooth") %}
+#            {# Blue #}
+#            {{ [50, 50, 255] }}
+#          {% elif is_state("input_select.home_cinema_mode", "unknown") %}
+#            {# Red #}
+#            {{ [255, 0, 0] }}
+#          {% else %}
+#            {# Warm white default color #}
+#            {{ [255, 255, 220] }}
+#          {% endif %}
