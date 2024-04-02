@@ -1,70 +1,5 @@
 type: horizontal-stack
 cards:
-  # 🍌Banana plant
-  - type: vertical-stack
-    cards:
-      - type: custom:button-card
-        entity: plant.1
-        template: header
-        tap_action:
-          action: fire-dom-event
-          browser_mod:
-            service: browser_mod.popup
-            data:
-              title: 🍌Banana
-              content:
-                type: vertical-stack
-                cards:
-                  - type: custom:stack-in-card
-                    cards:
-                      - type: horizontal-stack
-                        cards:
-                          - type: entity
-                            entity: plant.1
-                            name: State
-                          - type: entity
-                            entity: sensor.plant_1_battery
-                            name: Battery
-                      - type: conditional
-                        conditions:
-                          - entity: plant.1
-                            state: 'problem'
-                        card:
-                          type: markdown
-                          content: >-
-                            <ha-alert alert-type="error">{{ state_attr('plant.1', 'problem') }}</ha-alert>
-                  - !include plant_1/moisture.yaml
-                  - !include plant_1/conductivity.yaml
-      - type: custom:button-card
-        entity: plant.1
-        name: State
-        template: statistic_button_plant
-      - type: custom:button-card
-        entity: sensor.plant_1_moisture
-        name: Moisture
-        template: statistic_button
-        tap_action:
-          action: fire-dom-event
-          browser_mod:
-            service: browser_mod.popup
-            data:
-              title: 🍌Banana
-              content: !include plant_1/moisture.yaml
-      - type: custom:button-card
-        entity: sensor.plant_1_conductivity
-        name: Conductivity
-        template: statistic_button
-        tap_action:
-          action: fire-dom-event
-          browser_mod:
-            service: browser_mod.popup
-            data:
-              title: 🍌Banana
-              content: !include plant_1/conductivity.yaml
-      #- type: custom:button-card
-      #  entity: sensor.plant_1_illuminance
-      #  name: Illuminance
-      #  template: statistic_button
 
   # Bonsai
   - type: vertical-stack
@@ -120,7 +55,7 @@ cards:
       #  name: Illuminance
       #  template: statistic_button
 
-  # Palm
+  # Butterfly
   - type: vertical-stack
     cards:
       - type: custom:button-card
@@ -131,7 +66,7 @@ cards:
           browser_mod:
             service: browser_mod.popup
             data:
-              title: 🌴 Palm
+              title: 🦋 Butterfly
               content:
                 type: vertical-stack
                 cards:

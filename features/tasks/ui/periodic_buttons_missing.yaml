@@ -14,6 +14,7 @@ filter:
   - entity_id: input_button.last_cleaned_shower
   - entity_id: input_button.last_cleaned_bathroom
   - entity_id: input_button.last_cleaned_shaver
+  - entity_id: input_button.last_fed_plants
 sort:
   method: last_updated
 show_empty: false

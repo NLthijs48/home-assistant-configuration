@@ -31,3 +31,8 @@ cards:
   state_content: state
   icon_tap_action:
     action: more-info
+- type: tile
+  entity: input_button.last_fed_plants
+  state_content: state
+  icon_tap_action:
+    action: more-info

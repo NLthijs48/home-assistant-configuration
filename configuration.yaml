@@ -13,7 +13,7 @@ homeassistant:
     crisp: !include features/crisp/definitions.yaml
     curtain: !include features/curtain/definitions.yaml
     electricity: !include features/electricity/definitions.yaml
-    #gardening: !include features/gardening/definitions.yaml
+    gardening: !include features/gardening/definitions.yaml
     guests: !include features/guests/definitions.yaml
     home_cinema: !include features/home_cinema/definitions.yaml
     lighting: !include features/lighting/definitions.yaml

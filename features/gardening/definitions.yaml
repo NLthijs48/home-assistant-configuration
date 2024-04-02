@@ -5,12 +5,12 @@ automation: !include_dir_merge_list automations
 
 homeassistant:
   customize:
-    plant.1:
-      friendly_name: 🍌Banana
-      icon: mdi:leaf
+    #plant.1:
+    #  friendly_name: 🍌Banana
+    #  icon: mdi:leaf
     plant.2:
-      friendly_name: 🌴Palm
-      icon: mdi:palm-tree
+      friendly_name: 🦋Butterfly
+      icon: mdi:butterfly
     plant.3:
       friendly_name: 🌳Bonsai
       icon: mdi:pine-tree
@@ -22,27 +22,26 @@ homeassistant:
 plant:
 
   # Using the Xiaomi Plant Sensor
-  1:
-    sensors:
-      moisture: sensor.plant_1_moisture
-      battery: sensor.plant_1_battery
-      temperature: sensor.plant_1_temperature
-      conductivity: sensor.plant_1_conductivity
-      brightness: sensor.plant_1_light_intensity
-
-    min_moisture: 15
-    max_moisture: 60
-
-    min_conductivity: 350
-    max_conductivity: 2000
-
-    min_temperature: 5
-    max_temperature: 35
-
-    min_brightness: 2000
-    max_brightness: 35000
-
-    min_battery: 20
+  #1:
+  #  sensors:
+  #    moisture: sensor.plant_1_moisture
+  #    battery: sensor.plant_1_battery
+  #    temperature: sensor.plant_1_temperature
+  #   brightness: sensor.plant_1_light_intensity
+  #
+  #  min_moisture: 15
+  #  max_moisture: 60
+  #
+  #  min_conductivity: 350
+  #  max_conductivity: 2000
+  #
+  #  min_temperature: 5
+  #  max_temperature: 35
+  #
+  #  min_brightness: 2000
+  #  max_brightness: 35000
+  #
+  #  min_battery: 20
 
   # Using the Xiaomi plant sensor XL
   2:
@@ -52,8 +51,8 @@ plant:
       temperature: sensor.plant_2_temperature
       #battery: not available, it should have this though?
     min_moisture: 70
-    # Otherwise freezes too death
-    min_temperature: -5
+    # Just as a warning, not
+    min_temperature: -10
 
   # Using the Ecowitt soil sensor
   3:
