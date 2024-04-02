@@ -98,5 +98,5 @@ cards:
           browser_mod:
             service: browser_mod.popup
             data:
-              title: 🌴 Palm
+              title: 🦋 Butterfly
               content: !include plant_2/moisture.yaml
