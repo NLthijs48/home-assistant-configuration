@@ -37,8 +37,12 @@ cards:
               entity: binary_sensor.first_floor_hall_motion_sensor_occupancy
               name: Motion sensor
             entities:
-              - entity: sensor.first_floor_hall_motion_sensor_battery
-                name: Battery
+            - entity: sensor.first_floor_hall_motion_sensor_illuminance_lux
+              name: Light level
+            - entity: sensor.first_floor_hall_motion_sensor_temperature
+              name: Temperature
+            - entity: sensor.first_floor_hall_motion_sensor_battery
+              name: Battery
 
       # Bedroom
       - type: custom:fold-entity-row
