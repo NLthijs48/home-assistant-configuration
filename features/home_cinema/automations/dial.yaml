@@ -37,8 +37,10 @@
       message: 'Step size: {{step_size}}, diff: {{volume_diff_sqrt}} -> {{volume_diff_clipped}}'
       data:
         tag: dial_test
-    enabled: false
     alias: Debug notification
+
+  # TODO: enable after checked
+  - stop: "disabled until verified"
 
   - choose:
     # Turn the volume up
@@ -68,70 +70,3 @@
         data:
           volume_level: "{{ state_attr('media_player.receiver', 'volume_level')
             - volume_diff_clipped}}"
-
-  # Setup buttons for media controls
-- alias: Living room dial buttons
-  id: living_room_dial_buttons
-  description: "Play/pause, turn off, next, previous buttons"
-  mode: single
-  trigger:
-    - platform: event
-      event_type: zha_event
-      event_data:
-        device_id: 7037bc40535d0e6293e902129518dd3e
-        command: recall
-      alias: Dial scene button event
-  action:
-    - variables:
-        scene_id: "{{ trigger.event.data.params.scene_id }}"
-        scene_to_button:
-          "0": two
-          "1": one
-          "4": four
-          "5": three
-        button: "{{ scene_to_button[scene_id | string] }}"
-      alias: Extract pressed button
-
-    # Debug notification
-    - service: notify.mobile_app_phone_thijs
-      data:
-        title: Dial
-        message: "Scene id: {{scene_id}}, button: {{button}}"
-        data:
-          tag: dial_test
-      enabled: false
-      alias: Debug notification
-
-    # Do button action
-    - choose:
-        - conditions:
-            - condition: template
-              value_template: "{{ button == 'one' }}"
-              alias: Button one pressed
-          sequence:
-            - service: media_player.media_play_pause
-              target:
-                entity_id: media_player.4k
-        - conditions:
-            - condition: template
-              value_template: "{{ button == 'two' }}"
-              alias: Button two pressed
-          sequence:
-            - service: script.home_cinema_off
-        - conditions:
-            - condition: template
-              value_template: "{{ button == 'three' }}"
-              alias: Button three pressed
-          sequence:
-            - service: media_player.media_previous_track
-              target:
-                entity_id: media_player.4k
-        - conditions:
-            - condition: template
-              value_template: "{{ button == 'four' }}"
-              alias: Button four pressed
-          sequence:
-            - service: media_player.media_next_track
-              target:
-                entity_id: media_player.4k
-      alias: Button actions
