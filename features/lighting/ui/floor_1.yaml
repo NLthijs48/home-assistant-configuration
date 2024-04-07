@@ -65,83 +65,93 @@ cards:
             show: false
           compact: true
         entities:
-          # Bed
-          # TODO: enable when available
-          #- entity: light.bedroom_ceiling
-          #  name: Ceiling
-          #  type: custom:slider-entity-row
-          #  state_color: false
-          #  hide_state: true
-          #  grow: true
-          - entity: light.bedroom_thijs_bed
-            name: Bed
-            type: custom:slider-entity-row
-            state_color: false
-            hide_state: true
-            grow: true
+          - type: custom:fold-entity-row
+            head:
+              entity: light.bedroom_ceiling
+              name: Ceiling
+              type: custom:slider-entity-row
+              state_color: false
+              hide_state: true
+              grow: true
+            entities:
+              - type: custom:fold-entity-row
+                head:
+                  entity: binary_sensor.bedroom_wide_motion_sensor_occupancy
+                  name: Motion sensor wide
+                entities:
+                - entity: sensor.bedroom_wide_motion_sensor_illuminance_lux
+                  name: Light level
+                - entity: sensor.bedroom_wide_motion_sensor_temperature
+                  name: Temperature
+                - entity: sensor.bedroom_wide_motion_sensor_battery
+                  name: Battery
+          - type: custom:fold-entity-row
+            head:
+              entity: light.bedroom_thijs_bed
+              name: Bed
+              type: custom:slider-entity-row
+              state_color: false
+              hide_state: true
+              grow: true
+            entities:
+              - type: custom:fold-entity-row
+                head:
+                  entity: binary_sensor.bedroom_floor_motion_sensor_occupancy
+                  name: Motion sensor floor
+                entities:
+                - entity: sensor.bedroom_floor_motion_sensor_illuminance_lux
+                  name: Light level
+                - entity: sensor.bedroom_floor_motion_sensor_temperature
+                  name: Temperature
+                - entity: sensor.bedroom_floor_motion_sensor_battery
+                  name: Battery
            # TODO find where this one went
           #- entity: sensor.bedroom_thijs_remote_battery
           #  name: Remote battery
-          - type: custom:fold-entity-row
-            head:
-              entity: binary_sensor.bedroom_floor_motion_sensor_occupancy
-              name: Motion sensor floor
-            entities:
-            - entity: sensor.bedroom_floor_motion_sensor_illuminance_lux
-              name: Light level
-            - entity: sensor.bedroom_floor_motion_sensor_temperature
-              name: Temperature
-            - entity: sensor.bedroom_floor_motion_sensor_battery
-              name: Battery
-          - type: custom:fold-entity-row
-            head:
-              entity: binary_sensor.bedroom_wide_motion_sensor_occupancy
-              name: Motion sensor wide
-            entities:
-            - entity: sensor.bedroom_wide_motion_sensor_illuminance_lux
-              name: Light level
-            - entity: sensor.bedroom_wide_motion_sensor_temperature
-              name: Temperature
-            - entity: sensor.bedroom_wide_motion_sensor_battery
-              name: Battery
 
           # Closets
-          - entity: light.bedroom_closets
-            name: Closets
-            type: custom:slider-entity-row
-            state_color: false
-            hide_state: true
-            grow: true
           - type: custom:fold-entity-row
             head:
-              entity: binary_sensor.bedroom_closets_motion_sensor_occupancy
-              name: Motion sensor closets
+              entity: light.bedroom_closets
+              name: Closets
+              type: custom:slider-entity-row
+              state_color: false
+              hide_state: true
+              grow: true
             entities:
-            - entity: sensor.bedroom_closets_motion_sensor_illuminance_lux
-              name: Light level
-            - entity: sensor.bedroom_closets_motion_sensor_temperature
-              name: Temperature
-            - entity: sensor.bedroom_closets_motion_sensor_battery
-              name: Battery
+              - type: custom:fold-entity-row
+                head:
+                  entity: binary_sensor.bedroom_closets_motion_sensor_occupancy
+                  name: Motion sensor closets
+                entities:
+                - entity: sensor.bedroom_closets_motion_sensor_illuminance_lux
+                  name: Light level
+                - entity: sensor.bedroom_closets_motion_sensor_temperature
+                  name: Temperature
+                - entity: sensor.bedroom_closets_motion_sensor_battery
+                  name: Battery
 
           # Shower
-          - entity: light.shower
-            name: Shower
-            type: custom:slider-entity-row
-            state_color: false
-            hide_state: true
-            grow: true
           - type: custom:fold-entity-row
             head:
-              entity: binary_sensor.shower_motion_sensor_occupancy
-              name: Motion sensor shower
+              entity: light.shower
+              name: Shower
+              type: custom:slider-entity-row
+              state_color: false
+              hide_state: true
+              grow: true
             entities:
-            - entity: sensor.shower_motion_sensor_illuminance_lux
-              name: Light level
-            - entity: sensor.shower_motion_sensor_temperature
-              name: Temperature
-            - entity: sensor.shower_motion_sensor_battery
-              name: Battery
+              - type: custom:fold-entity-row
+                head:
+                  entity: binary_sensor.shower_motion_sensor_occupancy
+                  name: Motion sensor shower
+                entities:
+                - entity: sensor.shower_motion_sensor_illuminance_lux
+                  name: Light level
+                - entity: sensor.shower_motion_sensor_temperature
+                  name: Temperature
+                - entity: sensor.shower_motion_sensor_battery
+                  name: Battery
 
       # Bathroom
       - type: custom:fold-entity-row
