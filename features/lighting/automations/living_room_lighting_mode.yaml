@@ -108,6 +108,17 @@
               }[lighting_mode] }}
         - service: light.turn_on
           data:
+            entity_id: light.couch_corner
+            transition: 5
+            brightness_pct: >-
+              {{ {
+                "day": 100,
+                "cooking": 20,
+                "evening": 50,
+                "night": 10,
+              }[lighting_mode] }}
+        - service: light.turn_on
+          data:
             entity_id: light.dining_ceiling
             transition: 5
             brightness_pct: >-
