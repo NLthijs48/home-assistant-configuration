@@ -45,6 +45,7 @@ light:
     name: Living room lights
     entities:
       - light.living_room_ceiling
+      - light.dining_ceiling
       - light.kitchen_ceiling
   # Thijs' bedroom lights (light.bedroom_thijs_lights)
   - platform: group
