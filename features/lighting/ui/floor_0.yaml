@@ -37,11 +37,26 @@ cards:
           hide_state: true
           grow: true
         entities:
-          # TV: TODO connect and enable
-
+          # Living room
           - type: custom:slider-button-card
             name: Ceiling
             entity: light.living_room_ceiling
+            slider:
+              direction: left-right
+              background: gradient
+              use_state_color: false
+              use_percentage_bg_opacity: false
+              show_track: true
+            icon:
+              tap_action:
+                action: more-info
+              use_state_color: true
+            action_button:
+              show: false
+            compact: true
+          - type: custom:slider-button-card
+            name: Couch corner
+            entity: light.couch_corner
             slider:
               direction: left-right
               background: gradient
