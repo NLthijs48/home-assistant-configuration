@@ -114,8 +114,8 @@
               {{ {
                 "day": 100,
                 "cooking": 20,
-                "evening": 50,
-                "night": 10,
+                "evening": 20,
+                "night": 5,
               }[lighting_mode] }}
         - service: light.turn_on
           data:
