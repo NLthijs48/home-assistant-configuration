@@ -70,6 +70,22 @@ cards:
             action_button:
               show: false
             compact: true
+          - type: custom:slider-button-card
+            name: TV LED strip
+            entity: light.tv_led_strip
+            slider:
+              direction: left-right
+              background: gradient
+              use_state_color: false
+              use_percentage_bg_opacity: false
+              show_track: true
+            icon:
+              tap_action:
+                action: more-info
+              use_state_color: true
+            action_button:
+              show: false
+            compact: true
 
           # Dining
           - type: custom:slider-button-card
