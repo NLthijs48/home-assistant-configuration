@@ -18,6 +18,7 @@ sequence:
     service: light.turn_on
     data:
       entity_id: light.bedroom_closets
+      transition: 1
       brightness_pct: >-
         {% if daytime %}
           100

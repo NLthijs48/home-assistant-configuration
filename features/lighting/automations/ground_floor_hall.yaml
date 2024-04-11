@@ -14,6 +14,7 @@
     - service: light.turn_on
       data:
         entity_id: light.ground_floor_hall
+        transition: 1
         brightness_pct: >-
           {% if dnd %}
             1
