@@ -2,9 +2,9 @@
 type: picture-entity
 name: Buienradar
 aspect_ratio: 100%
-camera_image: camera.buienradar_home
+camera_image: camera.buienradar
 camera_view: live
-entity: camera.buienradar_home
+entity: weather.buienradar
 hold_action:
   action: none
 show_name: false
