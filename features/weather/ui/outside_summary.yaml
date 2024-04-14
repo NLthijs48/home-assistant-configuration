@@ -17,8 +17,8 @@ cards:
               - !include outside/forecast_days.yaml
               # TODO: try showing this in the summary when not all-zero?
               - !include outside/buienalarm.yaml
+              - !include outside/buienradar.yaml
               - !include outside/radar.yaml
-              #- !include outside/buienradar.yaml
   - type: custom:stack-in-card
     cards:
       # TODO: try card-modding these cards closer to each other
