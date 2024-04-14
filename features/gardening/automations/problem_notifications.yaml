@@ -19,7 +19,7 @@
     - service: notify.mobile_app_phone_thijs
       data:
         title: >-
-          {{ state_atrtr("plant.3", "friendly_name") }} needs attention
+          {{ state_attr("plant.3", "friendly_name") }} needs attention
         message: >-
           {{state_attr("plant.3", "problem")}}
         data:
@@ -36,7 +36,7 @@
     - service: notify.mobile_app_phone_thijs
       data:
         title: >-
-          {{ state_atrtr("plant.3", "friendly_name") }} is doing well!
+          {{ state_attr("plant.3", "friendly_name") }} is doing well!
         message: No reported problems anymore
         data:
           tag: plant.3
