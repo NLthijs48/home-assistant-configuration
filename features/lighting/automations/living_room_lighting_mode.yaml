@@ -101,9 +101,9 @@
             transition: 5
             brightness_pct: >-
               {{ {
-                "day": 80,
-                "cooking": 70,
-                "evening": 25,
+                "day": 60,
+                "cooking": 40,
+                "evening": 10,
                 "night": 1,
               }[lighting_mode] }}
         - service: light.turn_on
@@ -124,7 +124,7 @@
             brightness_pct: >-
               {{ {
                 "day": 40,
-                "cooking": 30,
+                "cooking": 40,
                 "evening": 10,
                 "night": 1,
               }[lighting_mode] }}
@@ -136,7 +136,7 @@
               {{ {
                 "day": 60,
                 "cooking": 80,
-                "evening": 15,
+                "evening": 10,
                 "night": 1,
               }[lighting_mode] }}
         - service: light.turn_on
