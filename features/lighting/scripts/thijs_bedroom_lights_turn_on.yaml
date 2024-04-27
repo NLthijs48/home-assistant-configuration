@@ -11,7 +11,6 @@ sequence:
     service: light.turn_on
     data:
       entity_id: light.bedroom_thijs_bed
-      transition: 3
       brightness: >-
         {% if dnd %}
           5
