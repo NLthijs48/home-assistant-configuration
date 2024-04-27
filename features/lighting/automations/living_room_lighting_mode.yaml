@@ -65,6 +65,8 @@
 # Set brightness depending on the mode
 - alias: Living room lights turn on brightness
   id: living_room_lights_mode_brightness
+  # Just cancel ongoing updates, restart and sync to the latest state
+  mode: restart
   trigger:
     - platform: state
       entity_id: input_boolean.living_room_in_use
@@ -73,6 +75,10 @@
       entity_id: input_select.living_room_lighting_mode
     - platform: state
       entity_id: input_boolean.light_outside
+    - platform: state
+      entity_id: binary_sensor.kitchen_occupied
+    - platform: state
+      entity_id: binary_sensor.dining_area_occupied
   condition:
     - condition: state
       entity_id: input_boolean.living_room_in_use
@@ -85,6 +91,8 @@
     - variables:
         lighting_mode: "{{ states('input_select.living_room_lighting_mode') }}"
         light_outside: "{{ is_state('input_boolean.light_outside', 'on') }}"
+        dining_area_occupied: "{{ is_state('binary_sensor.dining_area_occupied', 'on') }}"
+        kitchen_occupied: "{{ is_state('binary_sensor.kitchen_occupied', 'on') }}"
     - choose:
         # If not enabled by a timer, and no-one in the living room
         - conditions:
@@ -122,23 +130,41 @@
             entity_id: light.dining_ceiling
             transition: 5
             brightness_pct: >-
-              {{ {
-                "day": 40,
-                "cooking": 40,
-                "evening": 10,
-                "night": 1,
-              }[lighting_mode] }}
+              {% if dining_area_occupied %}
+                {{ {
+                  "day": 80,
+                  "cooking": 60,
+                  "evening": 15,
+                  "night": 5,
+                }[lighting_mode] }}
+              {% else %}
+                {{ {
+                  "day": 40,
+                  "cooking": 40,
+                  "evening": 10,
+                  "night": 1,
+                }[lighting_mode] }}
+              {% endif %}
         - service: light.turn_on
           data:
             entity_id: light.kitchen_ceiling
             transition: 5
             brightness_pct: >-
-              {{ {
-                "day": 60,
-                "cooking": 80,
-                "evening": 10,
-                "night": 1,
-              }[lighting_mode] }}
+              {% if kitchen_occupied %}
+                {{ {
+                  "day": 80,
+                  "cooking": 80,
+                  "evening": 40,
+                  "night": 20,
+                }[lighting_mode] }}
+              {% else %}
+                {{ {
+                  "day": 60,
+                  "cooking": 80,
+                  "evening": 10,
+                  "night": 1,
+                }[lighting_mode] }}
+              {% endif %}
         - service: light.turn_on
           data:
             entity_id: light.tv_led_strip
