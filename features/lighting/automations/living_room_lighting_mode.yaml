@@ -141,7 +141,7 @@
                 {{ {
                   "day": 40,
                   "cooking": 40,
-                  "evening": 10,
+                  "evening": 5,
                   "night": 1,
                 }[lighting_mode] }}
               {% endif %}
@@ -161,7 +161,7 @@
                 {{ {
                   "day": 60,
                   "cooking": 80,
-                  "evening": 10,
+                  "evening": 5,
                   "night": 1,
                 }[lighting_mode] }}
               {% endif %}
