@@ -1,22 +1,22 @@
-# Thijs' room summary
+# Bedroom room summary
 type: vertical-stack
 cards:
   # Header with popup
   - type: custom:button-card
-    name: 🛌 Thijs
+    name: 🛌 Bedroom
     template: header
     tap_action:
       action: fire-dom-event
       browser_mod:
         service: browser_mod.popup
         data:
-          title: "🛌 Thijs' room"
+          title: "🛌 Bedroom"
           content:
             type: vertical-stack
             cards:
-              - !include thijs/co2.yaml
-              - !include thijs/temperature.yaml
-              - !include thijs/humidity.yaml
+              - !include bedroom/co2.yaml
+              - !include bedroom/temperature.yaml
+              - !include bedroom/humidity.yaml
 
   # Temperature
   - type: custom:stack-in-card
@@ -32,7 +32,7 @@ cards:
           browser_mod:
             service: browser_mod.popup
             data:
-              content: !include thijs/temperature.yaml
+              content: !include bedroom/temperature.yaml
       - type: custom:mini-graph-card
         group: true
         entities:
@@ -72,7 +72,7 @@ cards:
       browser_mod:
         service: browser_mod.popup
         data:
-          content: !include thijs/co2.yaml
+          content: !include bedroom/co2.yaml
 
   # Humidity
   - type: custom:button-card
@@ -84,4 +84,4 @@ cards:
       browser_mod:
         service: browser_mod.popup
         data:
-          content: !include thijs/humidity.yaml
+          content: !include bedroom/humidity.yaml
