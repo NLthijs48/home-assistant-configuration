@@ -30,7 +30,7 @@
           {% elif sleepy %}
             2500
           {% else %}
-            4000
+            3500
           {% endif %}
 
     # Wait until there is no motion anymore
