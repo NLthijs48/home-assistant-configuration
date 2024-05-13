@@ -12,6 +12,11 @@ cards:
   icon_tap_action:
     action: more-info
 - type: tile
+  entity: input_button.last_fed_plants
+  state_content: state
+  icon_tap_action:
+    action: more-info
+- type: tile
   entity: input_button.last_bed_sheets_change
   state_content: state
   icon_tap_action:
@@ -32,7 +37,17 @@ cards:
   icon_tap_action:
     action: more-info
 - type: tile
-  entity: input_button.last_fed_plants
+  entity: input_button.last_cleaned_toilet
+  state_content: state
+  icon_tap_action:
+    action: more-info
+- type: tile
+  entity: input_button.last_cleaned_washing_machine
+  state_content: state
+  icon_tap_action:
+    action: more-info
+- type: tile
+  entity: input_button.update_crisp_integration_to_main
   state_content: state
   icon_tap_action:
     action: more-info

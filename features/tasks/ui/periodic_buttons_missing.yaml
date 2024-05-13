@@ -14,7 +14,10 @@ filter:
   - entity_id: input_button.last_cleaned_shower
   - entity_id: input_button.last_cleaned_bathroom
   - entity_id: input_button.last_cleaned_shaver
+  - entity_id: input_button.last_cleaned_toilet
+  - entity_id: input_button.last_cleaned_washing_machine
   - entity_id: input_button.last_fed_plants
+  - entity_id: input_button.update_crisp_integration_to_main
 sort:
   method: last_updated
 show_empty: false
