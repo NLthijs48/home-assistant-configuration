@@ -43,9 +43,6 @@
 # Vacuum map card
 - type: module
   url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
-# Datetime card (for chores)
-- type: module
-  url: /hacsfiles/datetime-card/datetime-card.js
 # Hourly weather card
 - type: module
   url: /hacsfiles/lovelace-hourly-weather/hourly-weather.js
