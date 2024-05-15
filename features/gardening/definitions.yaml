@@ -15,8 +15,11 @@ homeassistant:
       friendly_name: 🍽️Dining
       icon: mdi:stairs
     plant.4:
-      friendly_name: 🪴Hanging
+      friendly_name: 🚪Hanging
       icon: mdi:door
+    plant.5:
+      friendly_name: 💦Terrace
+      icon: mdi:waves
 
 # Using numbers instead of names:
 # - only configure names in the UI, making plant changes easy
@@ -58,7 +61,7 @@ plant:
       # First needs conversion from volt to percent (use template sensor)
       #battery: sensor.plant_3_battery
     # TODO: figure this out
-    min_moisture: 15
+    min_moisture: 20
     max_moisture: 60
     min_temperature: 10
     max_temperature: 30
@@ -71,7 +74,18 @@ plant:
       # First needs conversion from volt to percent (use template sensor)
       #battery: sensor.plant_4_battery
     # TODO: figure this out
-    min_moisture: 15
+    min_moisture: 20
     max_moisture: 60
     min_temperature: 18
     max_temperature: 50
+
+  # Ecowitt WH51 soil sensor
+  5:
+    sensors:
+      moisture: sensor.plant_5_moisture
+      brightness: sensor.terrace_motion_sensor_illuminance_lux
+      # First needs conversion from volt to percent (use template sensor)
+      #battery: sensor.plant_5_battery
+    # TODO: figure this out
+    min_moisture: 20
+    max_moisture: 70
