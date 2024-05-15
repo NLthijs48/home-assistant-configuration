@@ -50,10 +50,6 @@ cards:
             data:
               title: 🍽️ Dining
               content: !include plant_3/moisture.yaml
-      #- type: custom:button-card
-      #  entity: sensor.living_room_motion_sensor_illuminance_lux
-      #  name: Illuminance
-      #  template: statistic_button
 
   # Attic
   - type: vertical-stack
@@ -100,3 +96,53 @@ cards:
             data:
               title: 🪜 Attic
               content: !include plant_1/moisture.yaml
+
+  # Ground floor hall
+  - type: vertical-stack
+    cards:
+      - type: custom:button-card
+        entity: plant.4
+        template: header
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: 🪴 Hanging
+              content:
+                type: vertical-stack
+                cards:
+                  - type: custom:stack-in-card
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: entity
+                            entity: plant.4
+                            name: State
+                          - type: entity
+                            entity: sensor.plant_4_battery
+                            name: Battery
+                      - type: conditional
+                        conditions:
+                          - entity: plant.4
+                            state: 'problem'
+                        card:
+                          type: markdown
+                          content: >-
+                            <ha-alert alert-type="error">{{ state_attr('plant.4', 'problem') }}</ha-alert>
+                  - !include plant_3/moisture.yaml
+      - type: custom:button-card
+        entity: plant.4
+        template: statistic_button_plant
+        name: State
+      - type: custom:button-card
+        name: Moisture
+        entity: sensor.plant_4_moisture
+        template: statistic_button
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: 🪴 Hanging
+              content: !include plant_4/moisture.yaml
