@@ -1,7 +1,7 @@
 type: horizontal-stack
 cards:
 
-  # Bonsai
+  # Dining room table
   - type: vertical-stack
     cards:
       - type: custom:button-card
@@ -12,7 +12,7 @@ cards:
           browser_mod:
             service: browser_mod.popup
             data:
-              title: 🌳 Bonsai
+              title: 🍽️ Dining
               content:
                 type: vertical-stack
                 cards:
@@ -48,32 +48,32 @@ cards:
           browser_mod:
             service: browser_mod.popup
             data:
-              title: 🌳 Bonsai
+              title: 🍽️ Dining
               content: !include plant_3/moisture.yaml
       #- type: custom:button-card
       #  entity: sensor.living_room_motion_sensor_illuminance_lux
       #  name: Illuminance
       #  template: statistic_button
 
-  # Butterfly
+  # Attic
   - type: vertical-stack
     cards:
       - type: custom:button-card
-        entity: plant.2
+        entity: plant.1
         template: header
         tap_action:
           action: fire-dom-event
           browser_mod:
             service: browser_mod.popup
             data:
-              title: 🦋 Butterfly
+              title: 🪜 Attic
               content:
                 type: vertical-stack
                 cards:
                   - type: custom:stack-in-card
                     cards:
                       - type: entity
-                        entity: plant.2
+                        entity: plant.1
                         name: State
                       - type: conditional
                         conditions:
@@ -82,21 +82,21 @@ cards:
                         card:
                           type: markdown
                           content: >-
-                            <ha-alert alert-type="error">{{ state_attr('plant.2', 'problem') }}</ha-alert>
-                  - !include plant_2/moisture.yaml
+                            <ha-alert alert-type="error">{{ state_attr('plant.1', 'problem') }}</ha-alert>
+                  - !include plant_1/moisture.yaml
       - type: custom:button-card
-        entity: plant.2
+        entity: plant.1
         name: State
-        icon: mdi:palm-tree
+        icon: mdi:stairs
         template: statistic_button_plant
       - type: custom:button-card
         name: Moisture
-        entity: sensor.plant_2_moisture
+        entity: sensor.plant_1_moisture
         template: statistic_button
         tap_action:
           action: fire-dom-event
           browser_mod:
             service: browser_mod.popup
             data:
-              title: 🦋 Butterfly
-              content: !include plant_2/moisture.yaml
+              title: 🪜 Attic
+              content: !include plant_1/moisture.yaml
