@@ -19,7 +19,7 @@ views:
       - !include features/system/ui/problems.yaml
       - !include features/packages/ui/summary.yaml
 
-      #- !include features/crisp/ui/next_order.yaml
+      - !include features/crisp/ui/next_order.yaml
       - !include features/washing_machine/ui/summary.yaml
       - type: horizontal-stack
         cards:
@@ -106,7 +106,7 @@ button_card_templates:
       card:
         - padding: 4px 16px 8px 16px
       name:
-        - font-size: 16px
+        - font-size: 15px
 
   # Small button with a statistic
   statistic_button:

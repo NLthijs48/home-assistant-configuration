@@ -1,7 +1,7 @@
 type: conditional
 conditions:
-  - entity: binary_sensor.crisp_next_order_show_on_home
-    state: 'on'
+  - entity: sensor.crisp_next_order_delivery_on
+    state_not: 'none'
 card:
   type: vertical-stack
   cards:
@@ -15,54 +15,56 @@ card:
           data:
             title: 🥐 Crisp
             content:
-              type: entities
-              entities:
-                - entity: sensor.crisp_next_order_raw
-                  name: Order
-                - entity: sensor.crisp_next_order_day
-                  name: Day
-                  icon: mdi:calendar
-                - entity: sensor.crisp_next_order_selected_timeslot
-                  name: Timeslot
-                  icon: mdi:clock-outline
-                - type: attribute
-                  entity: sensor.crisp_next_order
-                  attribute: details
-                  name: Details
-                - entity: sensor.crisp_next_order_contents
-                  name: Content
-                  icon: mdi:food-croissant
-                - entity: sensor.crisp_next_order_tracking
-                  name: Tracking
-                  icon: mdi:map
-                - entity: sensor.crisp_next_order_tracking_details
-                  name: Expected and driver
-                  icon: mdi:account
-                - entity: sensor.crisp_next_order_tracking_location
-                  name: Location
-                  icon: mdi:map-marker
-                - entity: device_tracker.crisp_van
-                  name: Van location
-                - entity: sensor.crisp_van_distance
-                  name: Van distance
-                - entity: sensor.crisp_van_direction_of_travel
-                  name: Van direction of travel
+              type: vertical-stack
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: tile
+                      entity: sensor.crisp_order_count_total
+                      name: Order count total
+                    - type: tile
+                      entity: sensor.crisp_order_count_open
+                      name: Order count open
+                - type: custom:button-card
+                  template: header
+                  name: Next order
+                - type: tile
+                  entity: sensor.crisp_next_order_product_count
+                  name: Product count
+                - type: tile
+                  entity: sensor.crisp_next_order_delivery_on
+                  name: Delivery on
+                - type: horizontal-stack
+                  cards:
+                    - type: tile
+                      entity: sensor.crisp_next_order_delivery_start_time
+                      name: Delivery start time
+                    - type: tile
+                      entity: sensor.crisp_next_order_delivery_end_time
+                      name: Delivery end time
     - type: horizontal-stack
       cards:
         # Information button
         - type: custom:button-card
-          entity: sensor.crisp_next_order
+          entity: sensor.crisp_next_order_delivery_on
+          state_display: >-
+            [[[ return states['sensor.crisp_next_order_delivery_on'].state + ' between ' + states['sensor.crisp_next_order_delivery_start_time'].state + ' - ' + states['sensor.crisp_next_order_delivery_end_time'].state; ]]]
           name: >-
-            [[[ return states['sensor.crisp_next_order'].attributes.details; ]]]
+            [[[ return states['sensor.crisp_next_order_product_count'].state + ' products'; ]]]
           show_state: true
           show_icon: false
           show_name: true
+          #tap_action:
+          #  action: url
+          #  # When there is a delivery link: open that
+          #  # Otherwise link to the order in the app (easy to start edit after that)
+          #  url_path: >-
+          #    [[[ return states['sensor.crisp_next_order_raw'].attributes.deliveryLink && states['sensor.crisp_next_order_raw'].attributes.fulfillStatus != 'done' ? states['sensor.crisp_next_order_raw'].attributes.deliveryLink : states['sensor.crisp_next_order'].attributes.app_link; ]]]
           tap_action:
             action: url
-            # When there is a delivery link: open that
-            # Otherwise link to the order in the app (easy to start edit after that)
-            url_path: >-
-              [[[ return states['sensor.crisp_next_order_raw'].attributes.deliveryLink && states['sensor.crisp_next_order_raw'].attributes.fulfillStatus != 'done' ? states['sensor.crisp_next_order_raw'].attributes.deliveryLink : states['sensor.crisp_next_order'].attributes.app_link; ]]]
+            # TODO: link to the specific order, expose this url in the integration somewhere
+            # TODO: expose tracking link somewhere and use that here as well
+            url_path: 'https://crisp.nl/app/'
           styles:
             card:
               - height: 70px
@@ -82,7 +84,9 @@ card:
               - gridArea: s / s / s / s
         # Icon button
         - type: custom:button-card
-          entity: sensor.crisp_next_order
+          # TODO: expose fulfillStatus or an icon from the integration
+          #entity: sensor.crisp_next_order
+          icon: 'mdi:truck'
           name: Details line
           show_state: false
           show_icon: true
@@ -101,16 +105,17 @@ card:
               - height: 25px
               - width: 25px
     # Map with a Crisp van tracker
-    - type: conditional
-      conditions:
-        - entity: sensor.crisp_next_order_tracking_location
-          state: "available"
-      card:
-        type: map
-        entities:
-          - entity: device_tracker.crisp_van
-          - entity: zone.home
-        dark_mode: true
-        auto_fit: true
-        aspect_ratio: '2:1'
-        hours_to_show: 2
+    # TODO: support this in the integration
+    #- type: conditional
+    #  conditions:
+    #    - entity: sensor.crisp_next_order_tracking_location
+    #      state: "available"
+    #  card:
+    #    type: map
+    #    entities:
+    #      - entity: device_tracker.crisp_van
+    #      - entity: zone.home
+    #    dark_mode: true
+    #    auto_fit: true
+    #    aspect_ratio: '2:1'
+    #    hours_to_show: 2
