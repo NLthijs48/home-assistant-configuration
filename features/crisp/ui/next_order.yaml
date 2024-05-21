@@ -48,7 +48,17 @@ card:
         - type: custom:button-card
           entity: sensor.crisp_next_order_delivery_on
           state_display: >-
-            [[[ return states['sensor.crisp_next_order_delivery_on'].state + ' between ' + states['sensor.crisp_next_order_delivery_start_time'].state + ' - ' + states['sensor.crisp_next_order_delivery_end_time'].state; ]]]
+            [[[ return helpers.formatDateWeekday(states['sensor.crisp_next_order_delivery_on'].state)
+                + ' '
+                + states['sensor.crisp_next_order_delivery_on'].state.split('-')[2]
+                + ' '
+                + helpers.formatDateMonth(states['sensor.crisp_next_order_delivery_on'].state)
+                + ' '
+                + helpers.formatTime24h(states['sensor.crisp_next_order_delivery_start'].state)
+                + '-'
+                + helpers.formatTime24h(states['sensor.crisp_next_order_delivery_end'].state)
+                ;
+            ]]]
           name: >-
             [[[ return states['sensor.crisp_next_order_product_count'].state + ' products'; ]]]
           show_state: true
