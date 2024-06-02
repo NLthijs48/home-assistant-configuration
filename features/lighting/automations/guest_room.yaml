@@ -1,0 +1,60 @@
+- alias: "Guest room > Lights motion"
+  mode: restart
+  id: lighting_guest_room_motion
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.guest_room_motion_sensor_occupancy
+      to: 'on'
+  condition:
+    - alias: Guests mode is off
+      condition: state
+      entity_id: input_boolean.guests_mode
+      state: 'off'
+  action:
+    # Turn on the lights
+    - alias: Set daytime variable
+      variables:
+        sleepy: "{{ is_state('input_boolean.thijs_sleepy', 'on') }}"
+        dnd: "{{ is_state('sensor.phone_thijs_do_not_disturb', 'priority_only') }}"
+    - service: light.turn_on
+      data:
+        entity_id: light.guest_room
+        transition: 1
+        brightness_pct: >-
+          {% if dnd %}
+            5
+          {% elif sleepy %}
+            50
+          {% else %}
+            100
+          {% endif %}
+    - service: light.turn_on
+      data:
+        entity_id: light.guest_room_nightstand
+        transition: 1
+        brightness_pct: >-
+          {% if dnd %}
+            5
+          {% elif sleepy %}
+            30
+          {% else %}
+            50
+          {% endif %}
+
+    # Wait until there is no motion anymore
+    - wait_for_trigger:
+        platform: state
+        entity_id: binary_sensor.guest_room_motion_sensor_occupancy
+        to: 'off'
+        for:
+          minutes: 1
+
+    # Turn off the lights
+    - service: light.turn_off
+      data:
+        entity_id: light.guest_room
+        transition: 10
+    - service: light.turn_off
+      data:
+        entity_id: light.guest_room_nightstand
+        transition: 10

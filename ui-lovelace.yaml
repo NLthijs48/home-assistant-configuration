@@ -18,6 +18,7 @@ views:
       # Alerts and such
       - !include features/system/ui/problems.yaml
       - !include features/packages/ui/summary.yaml
+      - !include features/guests/ui/summary.yaml
 
       - !include features/crisp/ui/next_order.yaml
       - !include features/washing_machine/ui/summary.yaml
