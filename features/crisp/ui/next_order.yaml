@@ -1,7 +1,7 @@
 type: conditional
 conditions:
   - entity: sensor.crisp_next_order_delivery_on
-    state_not: 'none'
+    state_not: 'unknown'
 card:
   type: vertical-stack
   cards:
