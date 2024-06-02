@@ -207,3 +207,16 @@ cards:
             state_color: false
             hide_state: true
             grow: true
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.guest_room_motion_sensor_occupancy
+              name: Motion sensor
+            entities:
+            - entity: sensor.guest_room_motion_sensor_illuminance_lux
+              name: Light level
+            - entity: sensor.guest_room_motion_sensor_temperature
+              name: Temperature
+            - entity: sensor.guest_room_motion_sensor_battery
+              name: Battery
+          - entity: input_boolean.guests_mode
+            name: Guests mode
