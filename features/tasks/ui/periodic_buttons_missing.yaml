@@ -17,6 +17,12 @@ filter:
   - entity_id: input_button.last_cleaned_toilet
   - entity_id: input_button.last_cleaned_washing_machine
   - entity_id: input_button.last_fed_plants
+  - entity_id: input_button.last_vacuumed_ground_floor
+  - entity_id: input_button.last_vacuumed_first_floor
+  - entity_id: input_button.last_vacuumed_attic
+  - entity_id: input_button.last_vacuumed_stairs
+  - entity_id: input_button.last_replaced_toothbrush
+
   - entity_id: input_button.update_crisp_integration_to_main
 sort:
   method: last_updated
