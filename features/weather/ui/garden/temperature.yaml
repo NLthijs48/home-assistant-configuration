@@ -2,7 +2,7 @@
 type: 'custom:mini-graph-card'
 name: Temperature
 entities:
-  - entity: sensor.netatmo_garden_temperature
+  - entity: sensor.netatmo_terrace_temperature
     name: Temperature
     show_fill: false
   # Comparison with the Living room

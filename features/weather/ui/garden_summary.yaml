@@ -2,14 +2,14 @@
 type: vertical-stack
 cards:
   - type: custom:button-card
-    name: 🌴 Garden
+    name: 🌴 Outdoors
     template: header
     tap_action:
       action: fire-dom-event
       browser_mod:
         service: browser_mod.popup
         data:
-          title: 🌴 Garden
+          title: 🌴 Outdoors
           content:
             type: vertical-stack
             cards:
@@ -28,7 +28,7 @@ cards:
       # Humidity
       - type: custom:button-card
         name: Humidity
-        entity: sensor.netatmo_garden_humidity
+        entity: sensor.netatmo_terrace_humidity
         template: statistic_button # Don't use humidity template, for outside it does not matter
         tap_action:
           action: fire-dom-event
