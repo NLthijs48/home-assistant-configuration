@@ -1,0 +1,26 @@
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    name: 💧 Water
+    template: header
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: 💧 Water
+          content:
+            type: vertical-stack
+            cards:
+              # Most recent data
+              - type: vertical-stack
+                title: Last hour
+                cards:
+                  - !include last_hour.yaml
+              - type: vertical-stack
+                title: Longer term
+                cards:
+                  - type: energy-date-selection
+                  - type: energy-water-graph
+                  - type: energy-sources-table
+  - !include last_hour.yaml
