@@ -18,22 +18,34 @@ card:
             content: !include popup.yaml
     - type: horizontal-stack
       cards:
-        - type: tile
-          entity: input_select.washing_machine
-          color: green
-          name: 'State'
-          show_entity_picture: false
-          hide_state: false
-          vertical: false
-          state_content:
-            - state
-            - last-changed
-          tap_action:
-            action: fire-dom-event
-            browser_mod:
-              service: browser_mod.popup
-              data:
-                content: !include popup.yaml
+        - type: vertical-stack
+          cards:
+            - type: tile
+              entity: input_select.washing_machine
+              color: green
+              name: 'State'
+              show_entity_picture: false
+              hide_state: false
+              vertical: false
+              state_content:
+                - state
+                - last-changed
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  service: browser_mod.popup
+                  data:
+                    content: !include popup.yaml
+            - type: tile
+              entity: sensor.washing_machine_run_energy
+              color: green
+              name: 'Energy usage'
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  service: browser_mod.popup
+                  data:
+                    content: !include popup.yaml
         # Electricity usage
         - type: custom:stack-in-card
           mode: vertical
@@ -66,7 +78,7 @@ card:
                 #- entity: input_select.washing_machine
                 #  name: State
                 #  show_legend: false
-              height: 100
+              height: 182
               hour24: true
               hours_to_show: 4
               lower_bound: 0

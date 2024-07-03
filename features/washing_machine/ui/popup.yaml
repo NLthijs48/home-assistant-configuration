@@ -28,4 +28,8 @@ cards:
     vertical: false
     name: User
     state_content: last-changed
+  - type: tile
+    entity: sensor.washing_machine_run_energy
+    color: green
+    name: 'Energy usage'
   - !include power_usage.yaml
