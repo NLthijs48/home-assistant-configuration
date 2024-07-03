@@ -10,10 +10,10 @@ cards:
       - from: 0
         color: red
         label: Dry
-      - from: 15
+      - from: 10
         color: orange
         label: Low
-      - from: 25
+      - from: 20
         color: green
         label: Good
       - from: 60
@@ -60,15 +60,15 @@ cards:
       - color: '#ffa500'
         value: 0
       - color: '#ffa500'
-        value: 14
+        value: 9
       # A bit too low
       - color: '#ffa500'
-        value: 15
+        value: 10
       - color: '#ffa500'
-        value: 24
+        value: 19
       # Good
       - color: '#008000'
-        value: 25
+        value: 20
       - color: '#008000'
         value: 60
       # A bit too high
