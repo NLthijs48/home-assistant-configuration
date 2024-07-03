@@ -85,7 +85,7 @@ card:
               min_bound_range: 3
               points_per_hour: 120
               decimals: 1
-              line_width: 4
+              line_width: 8
               show:
                 icon: false
                 labels: false

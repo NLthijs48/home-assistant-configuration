@@ -24,5 +24,4 @@ show:
   icon: false
   labels: true
   name: false
-  points: false
   labels_secondary: false
