@@ -66,7 +66,10 @@ media_player:
 # - Raspberry pi is connected to the Receiver using HDMI
 # - Host points to a supervisor addon, see readme.md
 hdmi_cec:
+  # Add-on address
   host: 58c14403-pi-cec
+  # Raspberry Pi Zero 2 W remote pycec
+  #host: 10.0.6.216
   platform: media_player
   # HDMI network layout as seen from the TV
   devices:
