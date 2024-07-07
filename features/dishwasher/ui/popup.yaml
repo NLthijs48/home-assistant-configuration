@@ -18,8 +18,18 @@ cards:
         - input_select.dishwasher_state
       hours_to_show: 4
       show_names: false
+  - type: horizontal-stack
+    cards:
+      - type: tile
+        entity: sensor.dishwasher_program_progress
+        color: blue
+        name: 'Progress'
+      - type: tile
+        entity: sensor.dishwasher_remaining_program_time
+        color: blue
+        name: 'Done around'
+  - !include power_usage.yaml
   - type: tile
     entity: sensor.dishwasher_run_energy
     color: blue
     name: 'Energy usage'
-  - !include power_usage.yaml

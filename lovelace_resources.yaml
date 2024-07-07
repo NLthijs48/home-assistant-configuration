@@ -55,6 +55,10 @@
 # Clock weather card
 - type: module
   url: /hacsfiles/clock-weather-card/clock-weather-card.js
+# Timer bar card
+- type: module
+  url: /hacsfiles/timer-bar-card/timer-bar-card.js
+
 
 # Uptime card (unused)
 #- url: /hacsfiles/uptime-card/uptime-card.js
