@@ -22,6 +22,7 @@ views:
 
       - !include features/crisp/ui/next_order.yaml
       - !include features/washing_machine/ui/summary.yaml
+      - !include features/dishwasher/ui/summary.yaml
       - type: horizontal-stack
         cards:
           - !include features/weather/ui/living_room_summary.yaml

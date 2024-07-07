@@ -1,0 +1,25 @@
+type: vertical-stack
+cards:
+  - type: custom:stack-in-card
+    mode: vertical
+    cards:
+    - features:
+        - type: select-options
+      type: tile
+      entity: input_select.dishwasher_state
+      color: blue
+      show_entity_picture: false
+      hide_state: false
+      vertical: false
+      state_content: last-changed
+      name: State
+    - type: history-graph
+      entities:
+        - input_select.dishwasher_state
+      hours_to_show: 4
+      show_names: false
+  - type: tile
+    entity: sensor.dishwasher_run_energy
+    color: blue
+    name: 'Energy usage'
+  - !include power_usage.yaml

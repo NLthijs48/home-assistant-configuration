@@ -1,0 +1,143 @@
+type: conditional
+conditions:
+  - entity: input_select.dishwasher_state
+    state_not: 'Off'
+card:
+  type: vertical-stack
+  cards:
+    - type: custom:button-card
+      name: 🍽 Dishwasher
+      template: header
+      tap_action:
+        action: fire-dom-event
+        browser_mod:
+          service: browser_mod.popup
+          data:
+            title: 🍽 Dishwasher
+            content: !include popup.yaml
+    - type: horizontal-stack
+      cards:
+        - type: vertical-stack
+          cards:
+            - type: tile
+              entity: input_select.dishwasher_state
+              color: blue
+              name: 'State'
+              show_entity_picture: false
+              hide_state: false
+              vertical: false
+              state_content:
+                - state
+                - last-changed
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  service: browser_mod.popup
+                  data:
+                    content: !include popup.yaml
+            - type: tile
+              entity: sensor.dishwasher_run_energy
+              color: blue
+              name: 'Energy usage'
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  service: browser_mod.popup
+                  data:
+                    content: !include popup.yaml
+        # Electricity usage
+        - type: custom:stack-in-card
+          mode: vertical
+          cards:
+            - type: custom:button-card
+              name: Power usage
+              show_name: false
+              entity: sensor.dishwasher_power
+              template: statistic_button_graph
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  service: browser_mod.popup
+                  data:
+                    content: !include popup.yaml
+            - type: custom:mini-graph-card
+              group: true
+              entities:
+                - entity: sensor.dishwasher_power
+                  name: Power usage
+                  show_fill: false
+                  color: '#2196f3'
+                - color: '#9a9a9a'
+                  entity: sensor.solar_elevation
+                  name: Day/Night
+                  show_line: false
+                  show_legend: false
+                  y_axis: secondary
+              height: 182
+              hour24: true
+              hours_to_show: 4
+              lower_bound: 0
+              min_bound_range: 3
+              points_per_hour: 120
+              decimals: 1
+              line_width: 8
+              show:
+                icon: false
+                labels: false
+                points: false
+                state: false
+                name: false
+                labels_secondary: false
+              lower_bound_secondary: 0
+
+    # Button to mark it emptied when Done
+    - type: conditional
+      conditions:
+        - entity: input_select.dishwasher_state
+          state: 'Done'
+      card:
+        type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            name: Resets the state
+            label: I emptied it!
+            show_state: true
+            show_icon: false
+            show_name: true
+            show_label: true
+            tap_action:
+              action: call-service
+              service: script.dishwasher_emptied
+            styles:
+              card:
+                - height: 70px
+                - marginRight: 0
+              label:
+                - gridArea: n / n / n / n
+                - placeSelf: flex-start
+                - paddingLeft: 20px
+              name:
+                - opacity: 0.6
+                - fontSize: 85%
+                - paddingTop: 5px
+                - placeSelf: flex-start
+                - paddingLeft: 20px
+                - gridArea: l / l / l / l
+          - type: custom:button-card
+            icon: mdi:check-bold
+            name: Details line
+            show_state: false
+            show_icon: true
+            show_name: false
+            styles:
+              card:
+                - height: 70px
+                - width: 70px
+                - marginLeft: '-78px'
+                - boxShadow: none
+                - background: transparent
+                - pointerEvents: none
+              icon:
+                - height: 40px
+                - width: 40px
+
