@@ -31,6 +31,13 @@ card:
           layout: full_row
           mushroom:
             fill_container: true
+          tap_action:
+            action: fire-dom-event
+            browser_mod:
+              service: browser_mod.popup
+              data:
+                title: 🍽 Dishwasher
+                content: !include popup.yaml
     - type: horizontal-stack
       cards:
         - type: vertical-stack
