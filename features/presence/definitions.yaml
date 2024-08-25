@@ -94,6 +94,22 @@ sensor:
             {# On wifi, use icon of that tracker (indicates floor) #}
             {{ state_attr('sensor.phone_thijs_wifi_ap', 'icon') }}
           {% endif %}
+  - platform: history_stats
+    name: Office this week
+    entity_id: sensor.thijs_location
+    unique_id: office_this_week
+    state: "Office"
+    type: time
+    start: "{{ today_at() - timedelta(days=now().weekday()) }}"
+    end: "{{ now() }}"
+  - platform: history_stats
+    name: Warehouse this week
+    entity_id: sensor.thijs_location
+    unique_id: warehouse_amsterdam_this_week
+    state: "Warehouse"
+    type: time
+    start: "{{ today_at() - timedelta(days=now().weekday()) }}"
+    end: "{{ now() }}"
 
 binary_sensor:
   - platform: template
