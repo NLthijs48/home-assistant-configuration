@@ -2,19 +2,6 @@
 # - CLI tool: https://python-miio.readthedocs.io/en/latest/index.html
 # - Big article about Roborock S7 setup: https://smarthomepursuits.com/how-to-setup-configure-roborock-s7-with-home-assistant/
 
-# Script to augment the standard home assistant functionality
-# - Based on community thread: https://community.home-assistant.io/t/s7-mop-control/317393/26
-# - Github discussion about adding this to vacuum by default: https://github.com/home-assistant/architecture/discussions/684
-script:
-  # Do a thing
-  roborock_start_mop: !include scripts/start_mop.yaml
-  roborock_start_mop_vacuum: !include scripts/start_mop_vacuum.yaml
-  roborock_start_vacuum: !include scripts/start_vacuum.yaml
-  # Update settings
-  roborock_set_vacuum_suction_power: !include scripts/set_vacuum_suction_power.yaml
-  roborock_set_mop_scrub_intensity: !include scripts/set_mop_scrub_intensity.yaml
-  roborock_set_mop_route: !include scripts/set_mop_route.yaml
-
 # Map view as camera
 # camera:
 #   - name: Roborock S7 Map
