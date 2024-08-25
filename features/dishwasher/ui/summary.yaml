@@ -130,7 +130,7 @@ card:
             show_label: true
             tap_action:
               action: call-service
-              service: script.dishwasher_emptied
+              service: script.dishwasher_mark_emptied
             styles:
               card:
                 - height: 70px
