@@ -10,7 +10,7 @@ cards:
       action: call-service
       confirmation:
         text: Start vacuuming?
-      service: script.roborock_start_vacuum
+      service: script.duster_start_vacuum
   # Mop+vacuum
   - type: custom:button-card
     template: mop_button
@@ -21,7 +21,7 @@ cards:
       action: call-service
       confirmation:
         text: Start mopping and vacuuming?
-      service: script.roborock_start_mop_vacuum
+      service: script.duster_start_vacuum_mop
   # Mop
   - type: custom:button-card
     template: mop_button
@@ -32,4 +32,4 @@ cards:
       action: call-service
       confirmation:
         text: Start mopping?
-      service: script.roborock_start_mop
+      service: script.duster_start_mop
