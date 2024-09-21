@@ -9,6 +9,36 @@ views:
   # Home screen
   - icon: "mdi:theater"
     path: living-room
+    badges:
+      - type: entity
+        show_name: false
+        show_state: true
+        show_icon: true
+        entity: sensor.phone_thijs_battery_level
+        state_content:
+          - state
+          - last_updated
+      - type: entity
+        show_name: false
+        show_state: true
+        show_icon: true
+        entity: switch.computer_thijs_wake_on_lan
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Desktop
+              content: !include features/computer/ui/desktop_thijs.yaml
+      - type: entity
+        show_name: false
+        show_state: true
+        show_icon: true
+        entity: sensor.phone_thijs_next_alarm
+        visibility:
+          - condition: state
+            entity: sensor.phone_thijs_next_alarm
+            state_not: unavailable
     cards:
       - type: vertical-stack
         cards:

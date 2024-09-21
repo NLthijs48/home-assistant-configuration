@@ -1,65 +1,25 @@
 # Show location of Thijs
-type: horizontal-stack
+type: custom:stack-in-card
+mode: horizontal
 cards:
-  - type: custom:stack-in-card
-    mode: vertical
-    cards:
-    - type: tile
-      entity: sensor.thijs_location
-      state_content:
-        - state
-        - last-changed
-      tap_action:
-        action: fire-dom-event
-        browser_mod:
-          service: browser_mod.popup
-          data: !include thijs_location_popup.yaml
-    - type: history-graph
-      entities:
-        - sensor.thijs_location
-      hours_to_show: 4
-      show_names: false
-      card_mod:
-        style: |
-          ha-card .content {
-            padding-top: 2px;
-            padding-bottom: 2px;
-          }
-  - type: custom:stack-in-card
-    mode: vertical
-    cards:
-    # Phone battery
-    - type: tile
-      entity: sensor.phone_thijs_battery_level
-      name: Phone battery
-      state_content:
-        - state
-        - last-changed
-    # Computer state
-    - type: tile
-      entity: switch.computer_thijs_wake_on_lan
-      name: Desktop
-      state_content:
-        - state
-        - last-changed
-      tap_action:
-        action: fire-dom-event
-        browser_mod:
-          service: browser_mod.popup
-          data:
-            title: Desktop
-            content: !include ../../computer/ui/desktop_thijs.yaml
-    # Next alarm
-    # TODO: ideally show the time as H:i here as well
-    - type: conditional
-      conditions:
-        - condition: state
-          entity: sensor.phone_thijs_next_alarm
-          state_not: unavailable
-      card:
-        type: tile
-        entity: sensor.phone_thijs_next_alarm
-        color: green
-        name: Alarm
-        state_content:
-          - state
+- type: tile
+  entity: sensor.thijs_location
+  state_content:
+    - state
+    - last-changed
+  tap_action:
+    action: fire-dom-event
+    browser_mod:
+      service: browser_mod.popup
+      data: !include thijs_location_popup.yaml
+- type: history-graph
+  entities:
+    - sensor.thijs_location
+  hours_to_show: 4
+  show_names: false
+  card_mod:
+    style: |
+      ha-card .content {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
