@@ -38,6 +38,16 @@ cards:
       state_content: state
       icon_tap_action:
         action: more-info
+    - type: tile
+      entity: input_button.last_cleaned_dishwasher
+      state_content: state
+      icon_tap_action:
+        action: more-info
+    - type: tile
+      entity: input_button.last_cleaned_hood_vent
+      state_content: state
+      icon_tap_action:
+        action: more-info
 - type: vertical-stack
   title: Personal health
   cards:
