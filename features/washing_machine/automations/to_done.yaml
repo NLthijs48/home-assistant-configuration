@@ -5,9 +5,10 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.washing_machine_power
-      below: '2'
+      # While it is done and making noise it is around 3.2 watt
+      # Drops to 0.4 watt when the noise stops after a minute or two
+      below: '4'
       for:
-        # TODO: ideally get rid of this or make it lower
         seconds: 10
   condition:
     # Only allow from Running
