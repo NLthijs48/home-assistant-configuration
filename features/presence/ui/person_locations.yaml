@@ -5,7 +5,7 @@ cards:
 - type: history-graph
   entities:
     - sensor.thijs_location
-  hours_to_show: 4
+  hours_to_show: 8
   show_names: false
   card_mod:
     style: |
