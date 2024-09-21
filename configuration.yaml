@@ -30,7 +30,6 @@ homeassistant:
 
     ##### DISABLED
     # party_lighting: !include features/party_lighting/definitions.yaml
-    # corona: !include features/corona/definitions.yaml
     # queing: !include features/queing/definitions.yaml
 
 # Include themes
