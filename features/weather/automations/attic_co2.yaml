@@ -17,10 +17,10 @@
           channel: CO2
           importance: high
           notification_icon: mdi:molecule-co2
-    - action: notify.computer_thijs
-      data:
-        title: Attic CO2 is at {{states("sensor.netatmo_attic_co2")}} ppm!
-        message: Open a window to fix it
+    #- action: notify.computer_thijs
+    #  data:
+    #    title: Attic CO2 is at {{states("sensor.netatmo_attic_co2")}} ppm!
+    #    message: Open a window to fix it
     # Flash the lights
     # TODO: enable again when there is smart lighting in the attic
     #- repeat:
