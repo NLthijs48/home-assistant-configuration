@@ -8,7 +8,7 @@ cards:
     tap_action:
       action: fire-dom-event
       browser_mod:
-        action: browser_mod.popup
+        service: browser_mod.popup
         data:
           title: 🖱️ Attic
           content:
@@ -30,7 +30,7 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            action: browser_mod.popup
+            service: browser_mod.popup
             data:
               content: !include attic/temperature.yaml
       - type: custom:mini-graph-card
@@ -70,7 +70,7 @@ cards:
     tap_action:
       action: fire-dom-event
       browser_mod:
-        action: browser_mod.popup
+        service: browser_mod.popup
         data:
           content: !include attic/co2.yaml
 
@@ -82,6 +82,6 @@ cards:
     tap_action:
       action: fire-dom-event
       browser_mod:
-        action: browser_mod.popup
+        service: browser_mod.popup
         data:
           content: !include attic/humidity.yaml

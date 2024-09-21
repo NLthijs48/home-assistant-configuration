@@ -11,7 +11,7 @@ card:
       tap_action:
         action: fire-dom-event
         browser_mod:
-          action: browser_mod.popup
+          service: browser_mod.popup
           data:
             title: 🍽 Dishwasher
             content: !include popup.yaml
@@ -34,7 +34,7 @@ card:
           tap_action:
             action: fire-dom-event
             browser_mod:
-              action: browser_mod.popup
+              service: browser_mod.popup
               data:
                 title: 🍽 Dishwasher
                 content: !include popup.yaml
@@ -55,7 +55,7 @@ card:
               tap_action:
                 action: fire-dom-event
                 browser_mod:
-                  action: browser_mod.popup
+                  service: browser_mod.popup
                   data:
                     content: !include popup.yaml
             - type: tile
@@ -65,7 +65,7 @@ card:
               tap_action:
                 action: fire-dom-event
                 browser_mod:
-                  action: browser_mod.popup
+                  service: browser_mod.popup
                   data:
                     content: !include popup.yaml
         # Electricity usage
@@ -80,7 +80,7 @@ card:
               tap_action:
                 action: fire-dom-event
                 browser_mod:
-                  action: browser_mod.popup
+                  service: browser_mod.popup
                   data:
                     content: !include popup.yaml
             - type: custom:mini-graph-card

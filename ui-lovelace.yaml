@@ -25,7 +25,7 @@ views:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            action: browser_mod.popup
+            service: browser_mod.popup
             data:
               title: Desktop
               content: !include features/computer/ui/desktop_thijs.yaml

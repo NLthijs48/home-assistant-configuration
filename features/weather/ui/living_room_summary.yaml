@@ -8,7 +8,7 @@ cards:
     tap_action:
       action: fire-dom-event
       browser_mod:
-        action: browser_mod.popup
+        service: browser_mod.popup
         data:
           title: 📺 Living room
           content:
@@ -37,7 +37,7 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            action: browser_mod.popup
+            service: browser_mod.popup
             data:
               content: !include living_room/co2.yaml
       # Humidity
@@ -48,7 +48,7 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            action: browser_mod.popup
+            service: browser_mod.popup
             data:
               content: !include living_room/humidity.yaml
 
@@ -62,7 +62,7 @@ cards:
       #  tap_action:
       #    action: fire-dom-event
       #    browser_mod:
-      #      action: browser_mod.popup
+      #      service: browser_mod.popup
       #      data:
       #        content: !include living_room/noise.yaml
       # Pressure
@@ -73,7 +73,7 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            action: browser_mod.popup
+            service: browser_mod.popup
             data:
               content: !include living_room/pressure.yaml
 
@@ -87,7 +87,7 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            action: browser_mod.popup
+            service: browser_mod.popup
             data:
               content: !include living_room/pm2_5.yaml
       # PM 10
@@ -98,6 +98,6 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            action: browser_mod.popup
+            service: browser_mod.popup
             data:
               content: !include living_room/pm10.yaml
