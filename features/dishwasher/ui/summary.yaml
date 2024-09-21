@@ -129,8 +129,8 @@ card:
             show_name: true
             show_label: true
             tap_action:
-              action: call-service
-              action: script.dishwasher_mark_emptied
+              action: perform-action
+              perform_action: script.dishwasher_mark_emptied
             styles:
               card:
                 - height: 70px

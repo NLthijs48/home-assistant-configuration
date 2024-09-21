@@ -7,10 +7,10 @@ cards:
     entity: vacuum.duster
     icon: mdi:vacuum
     tap_action:
-      action: call-service
+      action: perform-action
       confirmation:
         text: Start vacuuming?
-      action: script.duster_start_vacuum
+      perform_action: script.duster_start_vacuum
   # Mop+vacuum
   - type: custom:button-card
     template: mop_button
@@ -18,10 +18,10 @@ cards:
     entity: vacuum.duster
     icon: mdi:silverware-clean
     tap_action:
-      action: call-service
+      action: perform-action
       confirmation:
         text: Start mopping and vacuuming?
-      action: script.duster_start_vacuum_mop
+      perform_action: script.duster_start_vacuum_mop
   # Mop
   - type: custom:button-card
     template: mop_button
@@ -29,7 +29,7 @@ cards:
     entity: vacuum.duster
     icon: mdi:water
     tap_action:
-      action: call-service
+      action: perform-action
       confirmation:
         text: Start mopping?
-      action: script.duster_start_mop
+      perform_action: script.duster_start_mop

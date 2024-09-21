@@ -10,8 +10,8 @@ cards:
     entity: script.home_cinema_off
     template: home_cinema_mode
     tap_action:
-      action: call-service
-      action: script.home_cinema_off
+      action: perform-action
+      perform_action: script.home_cinema_off
     lock:
       enabled: >-
         [[[ return states["input_select.home_cinema_mode"].state === "off" ]]]
@@ -39,8 +39,8 @@ cards:
     entity: script.home_cinema_chromecast
     template: home_cinema_mode
     tap_action:
-      action: call-service
-      action: script.home_cinema_chromecast
+      action: perform-action
+      perform_action: script.home_cinema_chromecast
     lock: # Prevent running script again
       enabled: >-
         [[[ return states["input_select.home_cinema_mode"].state === "chromecast" ]]]
@@ -68,8 +68,8 @@ cards:
     entity: script.home_cinema_bluetooth
     template: home_cinema_mode
     tap_action:
-      action: call-service
-      action: script.home_cinema_bluetooth
+      action: perform-action
+      perform_action: script.home_cinema_bluetooth
     lock:
       enabled: >-
         [[[ return states["input_select.home_cinema_mode"].state === "bluetooth" ]]]
@@ -97,8 +97,8 @@ cards:
     entity: script.home_cinema_laptop
     template: home_cinema_mode
     tap_action:
-      action: call-service
-      action: script.home_cinema_laptop
+      action: perform-action
+      perform_action: script.home_cinema_laptop
     lock:
       enabled: >-
         [[[ return states["input_select.home_cinema_mode"].state === "laptop" ]]]
@@ -133,8 +133,8 @@ cards:
         entity: script.home_cinema_steam_link
         template: home_cinema_mode_tiny
         tap_action:
-          action: call-service
-          action: script.home_cinema_steam_link
+          action: perform-action
+          perform_action: script.home_cinema_steam_link
         lock:
           enabled: >-
             [[[ return states["input_select.home_cinema_mode"].state === "steamLink" ]]]
@@ -165,8 +165,8 @@ cards:
         entity: script.home_cinema_raspberry_pi
         template: home_cinema_mode_tiny
         tap_action:
-          action: call-service
-          action: script.home_cinema_raspberry_pi
+          action: perform-action
+          perform_action: script.home_cinema_raspberry_pi
         lock:
           enabled: >-
             [[[ return states["input_select.home_cinema_mode"].state === "raspberryPi" ]]]
@@ -198,8 +198,8 @@ cards:
         template: home_cinema_mode_tiny
         # TODO: incidate what this represents with a toast?
         #tap_action:
-        #  action: call-service
-        #  action: script.home_cinema_laptop
+        #  action: perform-action
+        #  perform_action: script.home_cinema_laptop
         lock:
           enabled: yes
           exemptions: [ ]

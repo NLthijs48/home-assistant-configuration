@@ -115,8 +115,8 @@ card:
             show_name: true
             show_label: true
             tap_action:
-              action: call-service
-              action: script.washing_machine_emptied
+              action: perform-action
+              perform_action: script.washing_machine_emptied
             styles:
               card:
                 - height: 70px
