@@ -95,7 +95,7 @@ card:
                 labels_secondary: false
               lower_bound_secondary: 0
 
-        #- type: entity
+        #- type: tile
         #  entity: input_select.washing_machine_user
         #  name: User
         #  state_color: false
