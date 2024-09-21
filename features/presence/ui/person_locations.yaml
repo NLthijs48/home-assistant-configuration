@@ -2,16 +2,6 @@
 type: custom:stack-in-card
 mode: horizontal
 cards:
-- type: tile
-  entity: sensor.thijs_location
-  state_content:
-    - state
-    - last-changed
-  tap_action:
-    action: fire-dom-event
-    browser_mod:
-      service: browser_mod.popup
-      data: !include thijs_location_popup.yaml
 - type: history-graph
   entities:
     - sensor.thijs_location
@@ -20,6 +10,6 @@ cards:
   card_mod:
     style: |
       ha-card .content {
-        padding-top: 0;
-        padding-bottom: 0;
+        padding-top: 4px;
+        padding-bottom: 4px;
       }

@@ -11,13 +11,12 @@ views:
     path: living-room
     badges:
       - type: entity
+        entity: sensor.thijs_location
+      - type: entity
         show_name: false
         show_state: true
         show_icon: true
         entity: sensor.phone_thijs_battery_level
-        state_content:
-          - state
-          - last_updated
       - type: entity
         show_name: false
         show_state: true
