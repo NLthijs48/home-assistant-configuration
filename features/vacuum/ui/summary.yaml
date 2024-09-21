@@ -13,8 +13,14 @@ cards:
           content:
             type: vertical-stack
             cards:
-              - type: entity
+              - type: tile
                 entity: vacuum.duster
+                features:
+                  - type: vacuum-commands
+                    commands:
+                      - start_pause
+                      - stop
+                      - clean_spot
               - !include maps.yaml
               # Broken, not sure if works with Roborock integration: - !include map.yaml
               - !include details.yaml
@@ -34,7 +40,7 @@ cards:
       type: custom:stack-in-card
       mode: vertical
       cards:
-        - type: entity
+        - type: tile
           entity: vacuum.duster
         - type: horizontal-stack
           cards:

@@ -1,8 +1,6 @@
 type: entities
 title: Details
 entities:
-  - device_tracker.roborock_s7
-
   - type: section
     label: Current/last round
   - entity: sensor.duster_last_clean_begin
