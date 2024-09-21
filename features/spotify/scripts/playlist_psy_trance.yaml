@@ -1,6 +1,6 @@
 alias: Play PSY trance playlist
 icon: mdi:spotify
 sequence:
-  - service: script.play_spotify
+  - action: script.play_spotify
     data:
       playlist: spotify:playlist:60lawtwZQVwGUDo91JOwmW

@@ -9,7 +9,7 @@
       entity_id: sensor.crisp_next_order_tracking_location
       state: 'available'
   action:
-    service: device_tracker.see
+    action: device_tracker.see
     data_template:
       dev_id: crisp_van
       host_name: Crisp van

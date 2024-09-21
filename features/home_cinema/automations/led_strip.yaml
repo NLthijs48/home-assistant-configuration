@@ -15,7 +15,7 @@
   action:
     # Update the LED strip
     # (not touching brightness, lighting feature does that)
-    - service: light.turn_on
+    - action: light.turn_on
       entity_id: light.tv_led_strip
       data:
         transition: 2

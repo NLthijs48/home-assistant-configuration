@@ -31,6 +31,6 @@ lower_bound_secondary: 0
 tap_action:
   action: fire-dom-event
   browser_mod:
-    service: browser_mod.popup
+    action: browser_mod.popup
     data:
       content: !include temperature.yaml

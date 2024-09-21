@@ -15,7 +15,7 @@
       entity_id: input_select.washing_machine
       state: 'Idle'
   action:
-    - service: input_select.select_option
+    - action: input_select.select_option
       target:
         entity_id: input_select.washing_machine
       data:
@@ -32,7 +32,7 @@
       to: "Off"
   action:
     - alias: "Clear notification"
-      service: >-
+      action: >-
         {% if is_state('input_select.washing_machine_user', 'Thijs') %}
           notify.mobile_app_phone_thijs
         {% endif %}

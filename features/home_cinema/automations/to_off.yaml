@@ -11,14 +11,14 @@
       state: "off"
   action:
     # Update the mode
-    - service: input_select.select_option
+    - action: input_select.select_option
       data:
         entity_id: input_select.home_cinema_mode
         option: "off"
-    - service: "input_boolean.turn_off"
+    - action: "input_boolean.turn_off"
       data:
         entity_id: "input_boolean.home_cinema_pending"
     # Turn off the Chromecast (in case this is a manual turn off tv)
-    - service: "media_player.turn_off"
+    - action: "media_player.turn_off"
       data:
         entity_id: "media_player.4k"

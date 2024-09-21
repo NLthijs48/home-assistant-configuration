@@ -41,11 +41,11 @@
         icon: '{{ icon_and_uri[0] }}'
         uri: '{{ icon_and_uri[1] }}'
     # Update the helpers
-    - service: input_text.set_value
+    - action: input_text.set_value
       data:
         entity_id: input_text.home_cinema_media_icon
         value: '{{ icon }}'
-    - service: input_text.set_value
+    - action: input_text.set_value
       data:
         entity_id: input_text.home_cinema_media_uri
         value: '{{ uri }}'

@@ -23,7 +23,7 @@
             | map('float', default=0)
             | min < 25
           }}
-    - service: >
+    - action: >
         {% if batteries_low %}
           input_boolean.turn_on
         {% else %}

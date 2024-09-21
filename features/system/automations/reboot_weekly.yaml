@@ -8,4 +8,4 @@
       weekday:
         - sat
   action:
-    - service: homeassistant.restart
+    - action: homeassistant.restart

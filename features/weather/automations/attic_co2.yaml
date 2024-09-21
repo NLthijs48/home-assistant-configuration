@@ -8,7 +8,7 @@
       entity_id: sensor.netatmo_attic_co2
       above: '1300'
   action:
-    - service: notify.mobile_app_phone_thijs
+    - action: notify.mobile_app_phone_thijs
       data:
         title: Attic CO2 is at {{states("sensor.netatmo_attic_co2")}} ppm!
         message: Open a window to fix it
@@ -17,7 +17,7 @@
           channel: CO2
           importance: high
           notification_icon: mdi:molecule-co2
-    - service: notify.computer_thijs
+    - action: notify.computer_thijs
       data:
         title: Attic CO2 is at {{states("sensor.netatmo_attic_co2")}} ppm!
         message: Open a window to fix it
@@ -27,6 +27,6 @@
     #    count: 6
     #    sequence:
     #      - delay: 1
-    #      - service: light.toggle
+    #      - action: light.toggle
     #        data:
     #          entity_id: light.computers_ceiling

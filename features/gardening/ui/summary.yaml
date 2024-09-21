@@ -15,7 +15,7 @@ cards:
             tap_action:
               action: fire-dom-event
               browser_mod:
-                service: browser_mod.popup
+                action: browser_mod.popup
                 data:
                   title: 🍽️ Dining
                   content:
@@ -51,7 +51,7 @@ cards:
             tap_action:
               action: fire-dom-event
               browser_mod:
-                service: browser_mod.popup
+                action: browser_mod.popup
                 data:
                   title: 🍽️ Dining
                   content: !include plant_3/moisture.yaml
@@ -65,7 +65,7 @@ cards:
             tap_action:
               action: fire-dom-event
               browser_mod:
-                service: browser_mod.popup
+                action: browser_mod.popup
                 data:
                   title: 🪜 Attic
                   content:
@@ -102,7 +102,7 @@ cards:
             tap_action:
               action: fire-dom-event
               browser_mod:
-                service: browser_mod.popup
+                action: browser_mod.popup
                 data:
                   title: 🪜 Attic
                   content: !include plant_1/moisture.yaml
@@ -116,7 +116,7 @@ cards:
             tap_action:
               action: fire-dom-event
               browser_mod:
-                service: browser_mod.popup
+                action: browser_mod.popup
                 data:
                   title: 🚪 Hanging
                   content:
@@ -152,7 +152,7 @@ cards:
             tap_action:
               action: fire-dom-event
               browser_mod:
-                service: browser_mod.popup
+                action: browser_mod.popup
                 data:
                   title: 🚪 Hanging
                   content: !include plant_4/moisture.yaml
@@ -166,7 +166,7 @@ cards:
             tap_action:
               action: fire-dom-event
               browser_mod:
-                service: browser_mod.popup
+                action: browser_mod.popup
                 data:
                   title: 💦 Terrace
                   content:
@@ -202,7 +202,7 @@ cards:
             tap_action:
               action: fire-dom-event
               browser_mod:
-                service: browser_mod.popup
+                action: browser_mod.popup
                 data:
                   title: 💦 Terrace
                   content: !include plant_5/moisture.yaml

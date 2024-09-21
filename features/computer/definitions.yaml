@@ -14,7 +14,7 @@ switch:
   #   broadcast_address: "10.0.1.1"
   #   turn_off:
   #     # Go to sleep instead of doing an actual shutdown
-  #     service: mqtt.publish
+  #     action: mqtt.publish
   #     data:
   #       topic: "iotlink/workgroup/thijs/commands/suspend"
   #       payload: ""
@@ -28,7 +28,7 @@ switch:
     broadcast_address: "10.0.1.1"
     turn_off:
       # Hibernate instead of actual shutdown
-      service: button.press
+      action: button.press
       target:
         entity_id: button.computer_thijs_hibernate
     scan_interval: 10
@@ -53,7 +53,7 @@ script:
   computer_thijs_wake:
     alias: "Computer Thijs: wake up"
     sequence:
-      - service: wake_on_lan.send_magic_packet
+      - action: wake_on_lan.send_magic_packet
         data:
           mac: "f0:2f:74:16:19:9b"
           broadcast_address: "10.0.1.1"

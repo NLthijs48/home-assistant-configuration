@@ -4,7 +4,7 @@
       platform: state
       from: 'first floor'
   action:
-    - service: light.turn_off
+    - action: light.turn_off
       data:
         entity_id: light.bedroom_thijs_lights
 
@@ -22,7 +22,7 @@
       entity_id: "binary_sensor.thijs_home"
       state: "on"
   action:
-    - service: script.thijs_bedroom_lights_turn_on
+    - action: script.thijs_bedroom_lights_turn_on
 
 - alias: "Thijs' room turn on when there is motion next to the bed"
   mode: restart
@@ -31,7 +31,7 @@
       entity_id: binary_sensor.bedroom_floor_motion_sensor_occupancy
       to: 'on'
   action:
-    - service: script.thijs_bedroom_lights_turn_on
+    - action: script.thijs_bedroom_lights_turn_on
 
     # Wait until there is no motion anymore for a while
     - wait_for_trigger:
@@ -47,7 +47,7 @@
       state: "off"
 
     # Turn off the light
-    - service: light.turn_off
+    - action: light.turn_off
       data:
         entity_id: light.bedroom_thijs_lights
 
@@ -63,7 +63,7 @@
       entity_id: sensor.phone_thijs_do_not_disturb
       state: 'off'
   action:
-    - service: script.thijs_bedroom_lights_turn_on
+    - action: script.thijs_bedroom_lights_turn_on
 
     # Wait until there is no motion anymore for a while
     - wait_for_trigger:
@@ -79,6 +79,6 @@
       state: "off"
 
     # Turn off the light
-    - service: light.turn_off
+    - action: light.turn_off
       data:
         entity_id: light.bedroom_thijs_lights

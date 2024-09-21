@@ -2,17 +2,17 @@ alias: Home cinema - Raspberry Pi
 description: View the Raspberry Pi output
 icon: mdi:raspberry-pi
 sequence:
-  - service: script.home_cinema_mode
+  - action: script.home_cinema_mode
     data:
       mode: raspberryPi
 
   # Turn on the TV (turns on the receiver as well)
-  - service: media_player.turn_on
+  - action: media_player.turn_on
     data:
       entity_id: media_player.hdmi_0
 
   # Set the TV to the Receiver input (Raspberry Pi is connected to the receiver)
-  - service: hdmi_cec.select_device
+  - action: hdmi_cec.select_device
     data:
       # Directly to Raspberry Pi
       device: 1.7.0.0

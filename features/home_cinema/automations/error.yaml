@@ -9,14 +9,14 @@
         seconds: 30
   action:
     - alias: 'Set to "unknown" home cinema mode'
-      service: input_select.select_option
+      action: input_select.select_option
       data:
         entity_id: input_select.home_cinema_mode
         option: "unknown"
     - alias: "Rest home cinema pending state"
-      service: input_boolean.turn_off
+      action: input_boolean.turn_off
       entity_id: input_boolean.home_cinema_pending
     - alias: "Show error notification"
-      service: browser_mod.notification
+      action: browser_mod.notification
       data:
         message: Switching source timed out, correct manually!

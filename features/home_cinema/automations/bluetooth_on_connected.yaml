@@ -15,4 +15,4 @@
         state: "bluetooth"
   action:
     # Set to bluetooth mode
-    - service: script.home_cinema_bluetooth
+    - action: script.home_cinema_bluetooth

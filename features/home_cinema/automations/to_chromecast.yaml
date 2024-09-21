@@ -16,11 +16,11 @@
         state: "off"
   action:
     # Update the mode
-    - service: input_select.select_option
+    - action: input_select.select_option
       data:
         entity_id: input_select.home_cinema_mode
         option: "chromecast"
-    - service: "input_boolean.turn_off"
+    - action: "input_boolean.turn_off"
       data:
         entity_id: "input_boolean.home_cinema_pending"
 
@@ -43,10 +43,10 @@
     # TODO: this is not compatible with the laptop source: in both cases the receiver is set to TV, but no clue what the TV itself is on
   action:
     # Update the mode
-    - service: input_select.select_option
+    - action: input_select.select_option
       data:
         entity_id: input_select.home_cinema_mode
         option: "chromecast"
-    - service: "input_boolean.turn_off"
+    - action: "input_boolean.turn_off"
       data:
         entity_id: "input_boolean.home_cinema_pending"

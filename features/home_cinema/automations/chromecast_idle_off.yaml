@@ -42,4 +42,4 @@
           state: "Odido online TV"
   action:
     # Turn off everything
-    - service: script.home_cinema_off
+    - action: script.home_cinema_off

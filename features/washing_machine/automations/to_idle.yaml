@@ -13,8 +13,8 @@
       state: 'Off'
   action:
     - alias: Guess which person turned it on
-      service: script.washing_machine_detect_user
-    - service: input_select.select_option
+      action: script.washing_machine_detect_user
+    - action: input_select.select_option
       target:
         entity_id: input_select.washing_machine
       data:

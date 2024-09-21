@@ -6,7 +6,7 @@
     - platform: time
       at: "06:00"
   action:
-    - service: script.living_room_lighting_mode
+    - action: script.living_room_lighting_mode
       data:
         mode: day
 
@@ -16,7 +16,7 @@
 #    - platform: time
 #      at: "18:00"
 #  action:
-#    - service: script.living_room_lighting_mode
+#    - action: script.living_room_lighting_mode
 #      data:
 #        mode: cooking
 
@@ -26,7 +26,7 @@
     - platform: time
       at: "19:30"
   action:
-    - service: script.living_room_lighting_mode
+    - action: script.living_room_lighting_mode
       data:
         mode: evening
 
@@ -41,7 +41,7 @@
       - fri
       - sat
   action:
-    - service: script.living_room_lighting_mode
+    - action: script.living_room_lighting_mode
       data:
         mode: night
 - alias: 'Living room lighting mode to night (weekday)'
@@ -57,7 +57,7 @@
     - wed
     - thu
   action:
-  - service: script.living_room_lighting_mode
+  - action: script.living_room_lighting_mode
     data:
       mode: night
 
@@ -99,11 +99,11 @@
           - condition: template
             value_template: '{{ lighting_mode == "day" and light_outside }}'
           sequence:
-          - service: light.turn_off
+          - action: light.turn_off
             entity_id: light.living_room_lights
       # Else turn on with correct brightness
       default:
-        - service: light.turn_on
+        - action: light.turn_on
           data:
             entity_id: light.living_room_ceiling
             transition: 5
@@ -114,7 +114,7 @@
                 "evening": 10,
                 "night": 1,
               }[lighting_mode] }}
-        - service: light.turn_on
+        - action: light.turn_on
           data:
             entity_id: light.couch_corner
             transition: 5
@@ -125,7 +125,7 @@
                 "evening": 20,
                 "night": 1,
               }[lighting_mode] }}
-        - service: light.turn_on
+        - action: light.turn_on
           data:
             entity_id: light.dining_ceiling
             transition: 5
@@ -145,7 +145,7 @@
                   "night": 1,
                 }[lighting_mode] }}
               {% endif %}
-        - service: light.turn_on
+        - action: light.turn_on
           data:
             entity_id: light.kitchen_ceiling
             transition: 5
@@ -165,7 +165,7 @@
                   "night": 1,
                 }[lighting_mode] }}
               {% endif %}
-        - service: light.turn_on
+        - action: light.turn_on
           data:
             entity_id: light.tv_led_strip
             transition: 5
@@ -188,6 +188,6 @@
       for:
         minutes: 2
   action:
-    - service: light.turn_off
+    - action: light.turn_off
       data:
         entity_id: light.living_room_lights

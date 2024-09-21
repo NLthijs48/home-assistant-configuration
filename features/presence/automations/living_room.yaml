@@ -4,7 +4,7 @@
     - platform: state
       entity_id: binary_sensor.living_room_used_wifi
   action:
-    - service: >
+    - action: >
         {% if is_state('binary_sensor.living_room_used_wifi', 'on') %}
           input_boolean.turn_on
         {% else %}
@@ -20,7 +20,7 @@
       entity_id: binary_sensor.living_room_motion_sensor_occupancy
       to: 'on'
   action:
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       data:
         entity_id: input_boolean.living_room_in_use
 
@@ -38,6 +38,6 @@
       entity_id: binary_sensor.living_room_used_wifi
       state: 'off'
   action:
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       data:
         entity_id: input_boolean.living_room_in_use

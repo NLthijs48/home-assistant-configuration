@@ -12,7 +12,7 @@
       variables:
         action_emptied: "{{ 'EMPTIED_' ~ context.id }}"
     - alias: "Notify done, ask to empty it"
-      service: >-
+      action: >-
         {% if is_state('input_select.washing_machine_user', 'Thijs') %}
           notify.mobile_app_phone_thijs
         {% endif %}
@@ -36,4 +36,4 @@
             action: "{{ action_emptied }}"
 
     - alias: "Call the washing machine emptied script"
-      service: script.washing_machine_emptied
+      action: script.washing_machine_emptied

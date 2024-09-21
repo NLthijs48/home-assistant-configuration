@@ -7,7 +7,7 @@
       to: 'on'
   action:
     # Turn on the light
-    - service: light.turn_on
+    - action: light.turn_on
       data:
         transition: 1
         entity_id: light.first_floor_hall
@@ -19,7 +19,7 @@
         to: 'off'
 
     # Turn off the light
-    - service: light.turn_off
+    - action: light.turn_off
       data:
         entity_id: light.first_floor_hall
         transition: 5
@@ -31,7 +31,7 @@
       platform: state
       to: 'on'
   action:
-    - service: light.turn_on
+    - action: light.turn_on
       data:
         entity_id: light.first_floor_hall
         brightness_pct: >-

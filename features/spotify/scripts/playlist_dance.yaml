@@ -1,6 +1,6 @@
 alias: Play dance playlist
 icon: mdi:spotify
 sequence:
-  - service: script.play_spotify
+  - action: script.play_spotify
     data:
       playlist: spotify:playlist:7esr88iapnKZnhw6jOZDlv

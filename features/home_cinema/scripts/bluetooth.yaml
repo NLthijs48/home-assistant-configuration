@@ -2,19 +2,19 @@ alias: Home cinema - Bluetooth
 description: Listen to music using bluetooth
 icon: mdi:bluetooth
 sequence:
-  - service: script.home_cinema_mode
+  - action: script.home_cinema_mode
     data:
       mode: bluetooth
 
   # TODO turn off the TV? might turn off the receiver as well
 
   # Turn on the receiver
-  - service: media_player.turn_on
+  - action: media_player.turn_on
     data:
       entity_id: media_player.hdmi_5
 
   # Receiver input
-  - service: media_player.select_source
+  - action: media_player.select_source
     data:
       entity_id: media_player.receiver
       source: Bluetooth

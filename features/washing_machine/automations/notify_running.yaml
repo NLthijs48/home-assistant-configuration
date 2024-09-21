@@ -24,7 +24,7 @@
       variables:
         action_not_mine: "{{ 'NOT_MINE_' ~ context.id }}"
     - alias: "Notify turned on"
-      service: >-
+      action: >-
         {% if is_state('input_select.washing_machine_user', 'Thijs') %}
           notify.mobile_app_phone_thijs
         {% endif %}
@@ -76,7 +76,7 @@
 #             Thijs
 #           {% endif %}
 #     - alias: "Confirmation notification"
-#       service: >-
+#       action: >-
 #         {% if is_state('input_select.washing_machine_user', 'Thijs') %}
 #           notify.mobile_app_phone_thijs
 #         {% endif %}
@@ -91,7 +91,7 @@
 #           timeout: 10 # Remove after 10 seconds
 #           alert_once: true
 #     - alias: "Move the cycle to the other user"
-#       service: input_select.select_option
+#       action: input_select.select_option
 #       target:
 #         entity_id: input_select.washing_machine_user
 #       data:

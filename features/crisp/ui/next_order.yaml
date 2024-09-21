@@ -11,7 +11,7 @@ card:
       tap_action:
         action: fire-dom-event
         browser_mod:
-          service: browser_mod.popup
+          action: browser_mod.popup
           data:
             title: 🥐 Crisp
             content:

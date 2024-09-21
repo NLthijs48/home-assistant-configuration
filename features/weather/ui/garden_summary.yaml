@@ -7,7 +7,7 @@ cards:
     tap_action:
       action: fire-dom-event
       browser_mod:
-        service: browser_mod.popup
+        action: browser_mod.popup
         data:
           title: 🌴 Outdoors
           content:
@@ -33,7 +33,7 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            service: browser_mod.popup
+            action: browser_mod.popup
             data:
               content: !include garden/humidity.yaml
       # Rain today
@@ -44,7 +44,7 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            service: browser_mod.popup
+            action: browser_mod.popup
             data:
               content: !include garden/rain.yaml
 
@@ -58,7 +58,7 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            service: browser_mod.popup
+            action: browser_mod.popup
             data:
               content: !include garden/wind.yaml
       # Wind gust direction
@@ -69,6 +69,6 @@ cards:
         tap_action:
           action: fire-dom-event
           browser_mod:
-            service: browser_mod.popup
+            action: browser_mod.popup
             data:
               content: !include garden/wind.yaml

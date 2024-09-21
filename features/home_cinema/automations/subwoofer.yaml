@@ -7,7 +7,7 @@
       entity_id: media_player.receiver
       to: 'on'
   action:
-    - service: switch.turn_on
+    - action: switch.turn_on
       target:
         entity_id: switch.subwoofer
   mode: single
@@ -18,7 +18,7 @@
       entity_id: media_player.receiver
       to: 'off'
   action:
-    - service: switch.turn_off
+    - action: switch.turn_off
       target:
         entity_id: switch.subwoofer
   mode: single

@@ -145,7 +145,7 @@ cards:
             tap_action:
               action: fire-dom-event
               browser_mod:
-                service: browser_mod.popup
+                action: browser_mod.popup
                 data:
                   title: Living room lighting
                   content: !include living_room_details.yaml

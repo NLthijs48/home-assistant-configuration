@@ -2,22 +2,22 @@ alias: Home cinema - Chromecast
 description: Use the Chromecast to view/listen
 icon: mdi:cast
 sequence:
-  - service: script.home_cinema_mode
+  - action: script.home_cinema_mode
     data:
       mode: chromecast
 
   # Turn on the TV (turns on the receiver as well)
-  - service: media_player.turn_on
+  - action: media_player.turn_on
     data:
       entity_id: media_player.hdmi_0
 
   # TV to the Chromecast input
-  - service: hdmi_cec.select_device
+  - action: hdmi_cec.select_device
     data:
       device: Chromecast
 
   # Receiver to the TV input
-  - service: media_player.select_source
+  - action: media_player.select_source
     data:
       entity_id: media_player.receiver
       source: TV

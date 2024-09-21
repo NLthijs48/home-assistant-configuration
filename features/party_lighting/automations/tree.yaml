@@ -4,7 +4,7 @@
     - platform: time
       at: "9:00"
   action:
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       data:
         entity_id: input_boolean.tree_timer
 
@@ -14,7 +14,7 @@
     - platform: time
       at: "22:00"
   action:
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       data:
         entity_id: input_boolean.tree_timer
 
@@ -36,9 +36,9 @@
               entity_id: input_boolean.living_room_in_use
               state: 'off'
           sequence:
-            - service: switch.turn_off
+            - action: switch.turn_off
               entity_id: switch.tree
       # Else turn on
       default:
-        - service: switch.turn_on
+        - action: switch.turn_on
           entity_id: switch.tree

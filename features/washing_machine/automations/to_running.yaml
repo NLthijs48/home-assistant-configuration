@@ -26,10 +26,10 @@
           entity_id: input_select.washing_machine
           state: 'Done'
       then:
-        - service: script.washing_machine_detect_user
+        - action: script.washing_machine_detect_user
 
     # Set the state to running
-    - service: input_select.select_option
+    - action: input_select.select_option
       target:
         entity_id: input_select.washing_machine
       data:

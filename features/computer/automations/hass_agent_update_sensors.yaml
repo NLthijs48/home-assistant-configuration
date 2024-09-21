@@ -4,7 +4,7 @@
     - platform: homeassistant
       event: start
   action:
-    - service: button.press
+    - action: button.press
       target:
         entity_id: button.computer_thijs_publish_all_sensors
   mode: single

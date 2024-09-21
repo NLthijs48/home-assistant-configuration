@@ -4,6 +4,6 @@
       # An hour before the daily restart
       at: '04:00:00'
   action:
-    - service: hassio.addon_start
+    - action: hassio.addon_start
       data:
         addon: core_letsencrypt

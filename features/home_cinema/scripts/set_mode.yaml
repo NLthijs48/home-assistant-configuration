@@ -7,11 +7,11 @@ fields:
     example: 'chromecast, off, ...'
 sequence:
   # Update the mode state
-  - service: input_select.select_option
+  - action: input_select.select_option
     data:
       entity_id: input_select.home_cinema_mode
       option: "{{ mode }}"
   # Set pending
-  - service: input_boolean.turn_on
+  - action: input_boolean.turn_on
     data:
       entity_id: input_boolean.home_cinema_pending

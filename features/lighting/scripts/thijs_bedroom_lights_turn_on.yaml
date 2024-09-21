@@ -8,7 +8,7 @@ sequence:
       dnd: "{{ is_state('sensor.phone_thijs_do_not_disturb', 'priority_only') }}"
 
   - alias: Turn on the LED strip
-    service: light.turn_on
+    action: light.turn_on
     data:
       entity_id: light.bedroom_thijs_bed
       brightness: >-
@@ -32,7 +32,7 @@ sequence:
       - conditions:
           - "{{ daytime }}"
         sequence:
-          - service: light.turn_on
+          - action: light.turn_on
             data:
               transition: 1
               entity_id: light.bedroom_ceiling
@@ -40,7 +40,7 @@ sequence:
               color_temp: 250
     # Turn off at nighttime
     default:
-      - service: light.turn_off
+      - action: light.turn_off
         data:
           entity_id: light.bedroom_ceiling
           transition: 5

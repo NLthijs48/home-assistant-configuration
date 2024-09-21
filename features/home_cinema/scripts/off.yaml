@@ -2,21 +2,21 @@ alias: Home cinema - Off
 description: Turn off the TV and receiver
 icon: 'mdi:television-off'
 sequence:
-  - service: script.home_cinema_mode
+  - action: script.home_cinema_mode
     data:
       mode: 'off'
 
   # Turn off the TV (also turns off the receiver)
-  - service: media_player.turn_off
+  - action: media_player.turn_off
     data:
       entity_id: media_player.hdmi_0
 
   # Turn off the Chromecast (otherwise it will keep playing in the background)
-  - service: media_player.turn_off
+  - action: media_player.turn_off
     data:
       entity_id: media_player.4k
 
   # Turn off the receiver (for the case where the TV was already off)
-  - service: media_player.turn_off
+  - action: media_player.turn_off
     data:
       entity_id: media_player.hdmi_5

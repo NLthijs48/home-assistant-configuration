@@ -15,7 +15,7 @@ sequence:
     value_template: "{{ not is_state('input_select.living_room_lighting_mode', 'manual') }}"
 
   # Update the mode state
-  - service: input_select.select_option
+  - action: input_select.select_option
     data:
       entity_id: input_select.living_room_lighting_mode
       option: "{{ mode }}"

@@ -3,7 +3,7 @@ description: Set the correct washing machine user
 icon: mdi:check-bold
 sequence:
   - alias: Guess which person turned it on
-    service: input_select.select_option
+    action: input_select.select_option
     target:
       entity_id: input_select.washing_machine_user
     data:

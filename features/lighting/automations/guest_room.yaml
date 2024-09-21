@@ -16,7 +16,7 @@
       variables:
         sleepy: "{{ is_state('input_boolean.thijs_sleepy', 'on') }}"
         dnd: "{{ is_state('sensor.phone_thijs_do_not_disturb', 'priority_only') }}"
-    - service: light.turn_on
+    - action: light.turn_on
       data:
         entity_id: light.guest_room
         transition: 1
@@ -28,7 +28,7 @@
           {% else %}
             100
           {% endif %}
-    - service: light.turn_on
+    - action: light.turn_on
       data:
         entity_id: light.guest_room_nightstand
         transition: 1
@@ -50,11 +50,11 @@
           minutes: 1
 
     # Turn off the lights
-    - service: light.turn_off
+    - action: light.turn_off
       data:
         entity_id: light.guest_room
         transition: 10
-    - service: light.turn_off
+    - action: light.turn_off
       data:
         entity_id: light.guest_room_nightstand
         transition: 10

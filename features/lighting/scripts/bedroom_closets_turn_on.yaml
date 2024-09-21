@@ -15,7 +15,7 @@ sequence:
         state: "priority_only"
 
   - alias: Turn on the closets light panel
-    service: light.turn_on
+    action: light.turn_on
     data:
       entity_id: light.bedroom_closets
       transition: 1

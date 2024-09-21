@@ -16,7 +16,7 @@
         minutes: 15
   action:
     # Notify phone of Thijs
-    - service: notify.mobile_app_phone_thijs
+    - action: notify.mobile_app_phone_thijs
       data:
         title: >-
           {{ state_attr("plant.3", "friendly_name") }} needs attention
@@ -33,7 +33,7 @@
       from: 'problem' # TODO find out the 'good' state and use a 'to' trigger?
   action:
     # Notify phone of Thijs
-    - service: notify.mobile_app_phone_thijs
+    - action: notify.mobile_app_phone_thijs
       data:
         title: >-
           {{ state_attr("plant.3", "friendly_name") }} is doing well!

@@ -5,7 +5,7 @@
       entity_id: sensor.phone_thijs_audio_setting
       to: normal
   action:
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       data:
         entity_id: input_boolean.thijs_sleepy
   mode: single
@@ -16,7 +16,7 @@
       entity_id: sensor.phone_thijs_audio_setting
       to: vibrate
   action:
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       data:
         entity_id: input_boolean.thijs_sleepy
   mode: single
@@ -36,7 +36,7 @@
         - wed
         - thu
   action:
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       data:
         entity_id: input_boolean.thijs_sleepy
 - alias: Sleepy after 23:59 during the weekend
@@ -50,6 +50,6 @@
         - fri
         - sat
   action:
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       data:
         entity_id: input_boolean.thijs_sleepy

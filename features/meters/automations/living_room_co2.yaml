@@ -21,10 +21,10 @@
         - alias: "Living room in use"
           conditions: '{{ is_state("input_boolean.living_room_in_use", "on") }}'
           sequence:
-            - service: rest_command.wled_update
+            - action: rest_command.wled_update
               data:
                 payload: '{"on": true}'
-            - service: rest_command.wled_update
+            - action: rest_command.wled_update
               data:
                 payload: >-
                   {##### INPUTS #####}
@@ -134,6 +134,6 @@
                   }}
       # Living room not in use
       default:
-        - service: rest_command.wled_update
+        - action: rest_command.wled_update
           data:
             payload: '{"on": false}'

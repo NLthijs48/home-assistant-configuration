@@ -2,22 +2,22 @@ alias: Home cinema - Steam link
 description: Use the Steam link that is connected to the Receiver
 icon: mdi:controller
 sequence:
-  - service: script.home_cinema_mode
+  - action: script.home_cinema_mode
     data:
       mode: steamLink
 
   # Turn on the TV (turns on the receiver as well)
-  - service: media_player.turn_on
+  - action: media_player.turn_on
     data:
       entity_id: media_player.hdmi_0
 
   # Set the TV to the Receiver input (steam link is connected to the receiver)
-  - service: hdmi_cec.select_device
+  - action: hdmi_cec.select_device
     data:
       device: Receiver
 
   # Receiver to the correct input
-  - service: media_player.select_source
+  - action: media_player.select_source
     data:
       entity_id: media_player.receiver
       source: Steam link

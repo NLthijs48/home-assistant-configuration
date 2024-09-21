@@ -11,7 +11,7 @@ cards:
     template: home_cinema_mode
     tap_action:
       action: call-service
-      service: script.home_cinema_off
+      action: script.home_cinema_off
     lock:
       enabled: >-
         [[[ return states["input_select.home_cinema_mode"].state === "off" ]]]
@@ -40,7 +40,7 @@ cards:
     template: home_cinema_mode
     tap_action:
       action: call-service
-      service: script.home_cinema_chromecast
+      action: script.home_cinema_chromecast
     lock: # Prevent running script again
       enabled: >-
         [[[ return states["input_select.home_cinema_mode"].state === "chromecast" ]]]
@@ -69,7 +69,7 @@ cards:
     template: home_cinema_mode
     tap_action:
       action: call-service
-      service: script.home_cinema_bluetooth
+      action: script.home_cinema_bluetooth
     lock:
       enabled: >-
         [[[ return states["input_select.home_cinema_mode"].state === "bluetooth" ]]]
@@ -98,7 +98,7 @@ cards:
     template: home_cinema_mode
     tap_action:
       action: call-service
-      service: script.home_cinema_laptop
+      action: script.home_cinema_laptop
     lock:
       enabled: >-
         [[[ return states["input_select.home_cinema_mode"].state === "laptop" ]]]
@@ -134,7 +134,7 @@ cards:
         template: home_cinema_mode_tiny
         tap_action:
           action: call-service
-          service: script.home_cinema_steam_link
+          action: script.home_cinema_steam_link
         lock:
           enabled: >-
             [[[ return states["input_select.home_cinema_mode"].state === "steamLink" ]]]
@@ -166,7 +166,7 @@ cards:
         template: home_cinema_mode_tiny
         tap_action:
           action: call-service
-          service: script.home_cinema_raspberry_pi
+          action: script.home_cinema_raspberry_pi
         lock:
           enabled: >-
             [[[ return states["input_select.home_cinema_mode"].state === "raspberryPi" ]]]
@@ -199,7 +199,7 @@ cards:
         # TODO: incidate what this represents with a toast?
         #tap_action:
         #  action: call-service
-        #  service: script.home_cinema_laptop
+        #  action: script.home_cinema_laptop
         lock:
           enabled: yes
           exemptions: [ ]

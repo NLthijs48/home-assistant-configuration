@@ -6,14 +6,14 @@ sequence:
     entity_id: input_select.washing_machine
     state: "Done"
   - alias: "Set the washing machine to Off"
-    service: input_select.select_option
+    action: input_select.select_option
     target:
       entity_id: input_select.washing_machine
     data:
       # Note: it might already be turned on again for another round, power sensor triggers will take care of that though
       option: "Off"
   - alias: "Great work notification"
-    service: >-
+    action: >-
       {% if is_state('input_select.washing_machine_user', 'Thijs') %}
         notify.mobile_app_phone_thijs
       {% endif %}
@@ -27,12 +27,12 @@ sequence:
         timeout: 10 # Remove after 10 seconds
         alert_once: true
   - alias: "Clear the washing machine user"
-    service: input_select.select_option
+    action: input_select.select_option
     target:
       entity_id: input_select.washing_machine_user
     data:
       option: "-"
   - alias: "Show a done notification"
-    service: browser_mod.notification
+    action: browser_mod.notification
     data:
       message: Great work doing the laundry!
