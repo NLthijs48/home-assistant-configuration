@@ -25,10 +25,10 @@ cards:
                         cards:
                           - type: horizontal-stack
                             cards:
-                              - type: entity
+                              - type: tile
                                 entity: plant.3
                                 name: State
-                              - type: entity
+                              - type: tile
                                 entity: sensor.plant_3_battery
                                 name: Battery
                           - type: conditional
@@ -73,9 +73,14 @@ cards:
                     cards:
                       - type: custom:stack-in-card
                         cards:
-                          - type: entity
-                            entity: plant.1
-                            name: State
+                          - type: horizontal-stack
+                            cards:
+                              - type: tile
+                                entity: plant.1
+                                name: State
+                              - type: tile
+                                entity: sensor.plant_1_battery
+                                name: Battery
                           - type: conditional
                             conditions:
                               - entity: plant.2
@@ -121,10 +126,10 @@ cards:
                         cards:
                           - type: horizontal-stack
                             cards:
-                              - type: entity
+                              - type: tile
                                 entity: plant.4
                                 name: State
-                              - type: entity
+                              - type: tile
                                 entity: sensor.plant_4_battery
                                 name: Battery
                           - type: conditional
@@ -171,10 +176,10 @@ cards:
                         cards:
                           - type: horizontal-stack
                             cards:
-                              - type: entity
+                              - type: tile
                                 entity: plant.5
                                 name: State
-                              - type: entity
+                              - type: tile
                                 entity: sensor.plant_5_battery
                                 name: Battery
                           - type: conditional
