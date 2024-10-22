@@ -38,6 +38,15 @@ views:
           - condition: state
             entity: sensor.phone_thijs_next_alarm
             state_not: unavailable
+      - type: entity
+        show_name: false
+        show_state: true
+        show_icon: true
+        entity: binary_sensor.terrace_door_contact
+        visibility:
+          - condition: state
+            entity: binary_sensor.terrace_door_contact
+            state: on
     cards:
       - type: vertical-stack
         cards:
