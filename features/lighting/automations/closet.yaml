@@ -6,19 +6,15 @@
       entity_id: binary_sensor.closet_motion_sensor
       to: 'on'
   action:
-    - alias: Set daytime variable
-      variables:
-        sleepy: "{{ is_state('input_boolean.thijs_sleepy', 'on') }}"
-    # Turn on the light
     - action: light.turn_on
       data:
         transition: 1
         entity_id: light.closet
-        brightness: >-
-          {% if sleepy %}
-            150
+        brightness_pct: |-
+          {% if is_state('sun.sun', 'below_horizon') %}
+            50
           {% else %}
-            255
+            100
           {% endif %}
 
     # Wait until there is no motion anymore
