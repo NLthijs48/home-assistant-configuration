@@ -24,6 +24,7 @@ filter:
   - entity_id: input_button.last_replaced_toothbrush
   - entity_id: input_button.last_cleaned_dishwasher
   - entity_id: input_button.last_cleaned_hood_vent
+  - entity_id: input_button.last_bled_radiators
 
   - entity_id: input_button.update_crisp_integration_to_main
 sort:
