@@ -24,7 +24,7 @@
 - alias: 'Living room lighting mode to evening'
   trigger:
     - platform: time
-      at: "19:30"
+      at: "18:30"
   action:
     - action: script.living_room_lighting_mode
       data:
@@ -111,7 +111,7 @@
               {{ {
                 "day": 60,
                 "cooking": 40,
-                "evening": 10,
+                "evening": 20,
                 "night": 1,
               }[lighting_mode] }}
         - action: light.turn_on
@@ -134,12 +134,12 @@
                 {{ {
                   "day": 80,
                   "cooking": 60,
-                  "evening": 15,
+                  "evening": 25,
                   "night": 5,
                 }[lighting_mode] }}
               {% else %}
                 {{ {
-                  "day": 40,
+                  "day": 30,
                   "cooking": 40,
                   "evening": 5,
                   "night": 1,
@@ -159,7 +159,7 @@
                 }[lighting_mode] }}
               {% else %}
                 {{ {
-                  "day": 60,
+                  "day": 30,
                   "cooking": 80,
                   "evening": 5,
                   "night": 1,
@@ -174,7 +174,7 @@
                 "day": 50,
                 "cooking": 50,
                 "evening": 30,
-                "night": 20,
+                "night": 15,
               }[lighting_mode] }}
 
 # Turn off when no-one present
