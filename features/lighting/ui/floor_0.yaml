@@ -231,6 +231,38 @@ cards:
               - entity: sensor.closet_motion_sensor_battery
                 name: Battery
 
+      # Shed
+      - type: custom:fold-entity-row
+        head:
+          type: custom:slider-button-card
+          name: Shed
+          entity: light.shed
+          slider:
+            direction: left-right
+            background: gradient
+            use_state_color: false
+            use_percentage_bg_opacity: false
+            show_track: true
+          icon:
+            tap_action:
+              action: more-info
+            use_state_color: true
+          action_button:
+            show: false
+          compact: true
+        entities:
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.shed_motion_sensor_occupancy
+              name: Shed motion sensor
+            entities:
+              - entity: sensor.shed_motion_sensor_illuminance_lux
+                name: Light level
+              - entity: sensor.shed_motion_sensor_temperature
+                name: Temperature
+              - entity: sensor.shed_motion_sensor_battery
+                name: Battery
+
       # Terrace
       - type: custom:fold-entity-row
         head:
