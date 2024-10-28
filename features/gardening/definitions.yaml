@@ -18,6 +18,9 @@ homeassistant:
       friendly_name: 🚪Hanging
       icon: mdi:door
     plant.5:
+      friendly_name: 🌿Fern
+      icon: mdi:leaf-maple
+    plant.6:
       friendly_name: 💦Terrace
       icon: mdi:waves
 
@@ -71,6 +74,7 @@ plant:
     sensors:
       moisture: sensor.plant_4_moisture
       brightness: sensor.ground_floor_hall_motion_sensor_illuminance_lux
+      temperature: sensor.ecowitt_wh45_temperature
       # First needs conversion from volt to percent (use template sensor)
       #battery: sensor.plant_4_battery
     # TODO: figure this out
@@ -83,9 +87,22 @@ plant:
   5:
     sensors:
       moisture: sensor.plant_5_moisture
-      brightness: sensor.terrace_motion_sensor_illuminance_lux
+      brightness: sensor.living_room_motion_sensor_illuminance_lux
+      temperature: sensor.ecowitt_wh45_temperature
       # First needs conversion from volt to percent (use template sensor)
       #battery: sensor.plant_5_battery
+    # TODO: figure this out
+    min_moisture: 20
+    max_moisture: 70
+
+  # Ecowitt WH51L soil sensor (the one with a wire)
+  6:
+    sensors:
+      moisture: sensor.plant_6_moisture
+      brightness: sensor.terrace_motion_sensor_illuminance_lux
+      temperature: sensor.netatmo_terrace_temperature
+      # First needs conversion from volt to percent (use template sensor)
+      #battery: sensor.plant_6_battery
     # TODO: figure this out
     min_moisture: 20
     max_moisture: 70
