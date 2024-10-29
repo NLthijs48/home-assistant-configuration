@@ -62,6 +62,36 @@ media_player:
   #   name: TV
   #   api_version: 6
 
+  # Combined media player for the Google TV Streamer:
+  # - part of the chromecast integration
+  # - part of the android tv remote integration
+  # https://www.home-assistant.io/integrations/universal/
+  - platform: universal
+    name: Google TV Streamer
+    unique_id: google_tv_streamer
+    device_class: tv
+    children:
+      - media_player.google_tv_streamer_android_tv_remote
+      - media_player.google_tv_streamer_cast
+    browse_media_entity: media_player.google_tv_streamer_cast
+    commands:
+      turn_off:
+        action: media_player.turn_off
+        data:
+          entity_id: media_player.google_tv_streamer_android_tv_remote
+      turn_on:
+        action: media_player.turn_on
+        data:
+          entity_id: media_player.google_tv_streamer_android_tv_remote
+      volume_up:
+        action: media_player.volume_up
+        data:
+          entity_id: media_player.google_tv_streamer_android_tv_remote
+      volume_down:
+        action: media_player.volume_down
+        data:
+          entity_id: media_player.google_tv_streamer_android_tv_remote
+
 # HDMI-CEC plugin to control connected devices
 # - Raspberry pi is connected to the Receiver using HDMI
 # - Host points to a supervisor addon, see readme.md
