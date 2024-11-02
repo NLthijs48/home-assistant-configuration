@@ -3,13 +3,13 @@
   trigger:
     # Chromecast app changes
     - platform: state
-      entity_id: media_player.4k
+      entity_id: media_player.google_tv_streamer
       attribute: app_name
   action:
     - alias: Determine icon and uri
       variables:
         app_name: >-
-          {{ state_attr('media_player.4k', 'app_name') }}
+          {{ state_attr('media_player.google_tv_streamer', 'app_name') }}
         icon_and_uri: >-
           {% set icon = '-' %}
           {% set uri = '-' %}
