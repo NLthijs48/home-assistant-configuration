@@ -28,17 +28,17 @@
   trigger:
     # ChromeCast changes state
     - platform: "state"
-      entity_id: "media_player.google_tv_stremer"
+      entity_id: "media_player.google_tv_streamer"
       to: "playing"
     - platform: "state"
-      entity_id: "media_player.google_tv_stremer"
+      entity_id: "media_player.google_tv_streamer"
       to: "paused"
   condition:
     - condition: not
       conditions:
       # ChromeCast is not off (either 'playing' or 'paused')
       - condition: "state"
-        entity_id: media_player.google_tv_stremer
+        entity_id: media_player.google_tv_streamer
         state: "off"
   action:
     # Update the mode
