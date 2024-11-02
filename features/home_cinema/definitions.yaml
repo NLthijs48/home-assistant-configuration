@@ -33,7 +33,6 @@ input_boolean:
 script:
   home_cinema_mode: !include scripts/set_mode.yaml
 
-  home_cinema_off: !include scripts/off.yaml
   home_cinema_chromecast: !include scripts/chromecast.yaml
   home_cinema_bluetooth: !include scripts/bluetooth.yaml
   home_cinema_tv: !include scripts/tv.yaml
