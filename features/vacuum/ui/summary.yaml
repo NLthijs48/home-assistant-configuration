@@ -5,27 +5,8 @@ cards:
     name: 🧹 Vacuum
     template: header
     tap_action:
-      action: fire-dom-event
-      browser_mod:
-        service: browser_mod.popup
-        data:
-          title: 🧹 Vacuum
-          content:
-            type: vertical-stack
-            cards:
-              - type: tile
-                entity: vacuum.duster
-                features:
-                  - type: vacuum-commands
-                    commands:
-                      - start_pause
-                      - stop
-                      - clean_spot
-              - !include maps.yaml
-              # Broken, not sure if works with Roborock integration: - !include map.yaml
-              - !include details.yaml
-              # To start anyway when already running
-              - !include start_buttons.yaml
+      action: navigate
+      navigation_path: /dashboard-sections/vacuum
 
   # Entity state (when not docked or idle)
   - type: conditional
