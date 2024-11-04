@@ -37,6 +37,12 @@ sequence:
               transition: 1
               entity_id: light.bedroom_ceiling
               brightness: 255
+          - delay: 1
+            alias: Transitioning brightness+temperature together does not work for this light
+          - action: light.turn_on
+            data:
+              transition: 1
+              entity_id: light.bedroom_ceiling
               color_temp: 250
     # Turn off at nighttime
     default:

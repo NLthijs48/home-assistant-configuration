@@ -25,6 +25,14 @@ sequence:
         {% else %}
           5
         {% endif %}
+
+  - delay: 1
+    alias: Wait for the turn on transition to complete first
+  - alias: Switch to the right color temperature (transition of temperature+brightness together does not work for most Ikea lights)
+    action: light.turn_on
+    data:
+      entity_id: light.bedroom_closets
+      transition: 1
       kelvin: >-
         {% if daytime %}
           4000
