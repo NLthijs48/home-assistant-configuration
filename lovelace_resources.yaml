@@ -58,6 +58,9 @@
 # Timer bar card
 - type: module
   url: /hacsfiles/timer-bar-card/timer-bar-card.js
+# Formula 1
+- type: module
+  url: /hacsfiles/formulaone-card/formulaone-card.js
 
 
 # Uptime card (unused)
