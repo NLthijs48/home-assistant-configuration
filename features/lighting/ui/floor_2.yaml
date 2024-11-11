@@ -12,6 +12,10 @@ cards:
         }
     entities:
 
+      # Ceiling lights
+      - entity: light.attic_lights
+        name: Ceiling lights
+
       # Attic guest
       - type: custom:fold-entity-row
         head:
