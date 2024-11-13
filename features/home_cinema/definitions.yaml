@@ -40,21 +40,7 @@ script:
   home_cinema_steam_link: !include scripts/steam_link.yaml
   home_cinema_raspberry_pi: !include scripts/raspberry_pi.yaml
 
-# Onkyo integration
 media_player:
-  - platform: onkyo
-    host: 10.0.2.1
-    name: receiver
-    receiver_max_volume: 100
-    sources:
-      # To figure these out:
-      # 1. install https://github.com/miracle2k/onkyo-eiscp
-      # 2. run `onkyo --host 192.168.0.100 source=query` when on a source you need to the name for
-      cd: TV
-      video3: Bluetooth
-      video2: T-Mobile
-      video6: Raspberry Pi
-      dvd: Steam link
   # Api is pretty broken after a few calls, and unplugged the cable to get rid of annoying extra ChromeCast device
   # - platform: philips_js
   #   host: 10.0.2.22
