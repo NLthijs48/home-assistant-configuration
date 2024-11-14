@@ -1,41 +1,6 @@
 type: vertical-stack
 cards:
 
-  # Show chromecast when not off
-  # TODO: cleanup after switch
-  - type: conditional
-    conditions:
-      - entity: media_player.4k
-        state_not: 'off'
-    card:
-      type: 'custom:stack-in-card'
-      mode: horizontal
-      cards:
-        - type: 'custom:mini-media-player'
-          entity: media_player.4k
-          artwork: cover
-          hide:
-            icon: true
-            mute: true
-            power: true
-            runtime: false
-            volume: true
-        #- type: custom:button-card
-        #  icon: "[[[ return states['input_text.home_cinema_media_icon'].state; ]]]"
-        #  show_state: false
-        #  show_icon: true
-        #  show_name: false
-        #  tap_action:
-        #    action: url
-        #    url_path: '[[[ return states[''input_text.home_cinema_media_uri''].state; ]]]'
-        #  size: 60%
-        #  styles:
-        #    card:
-        #      # Use this hack instead of a conditional card around it, because that leaves empty space
-        #      - display: "[[[ return states['input_text.home_cinema_media_icon'].state === '-' ? 'none' : 'block'; ]]]"
-        #      - height: 88px
-        #      - width: 88px
-
   # Show Google TV Streamer when not off
   - type: conditional
     conditions:
@@ -107,8 +72,6 @@ cards:
   # Spotify when not already showing on the Chromecast player
   - type: conditional
     conditions:
-    - entity: media_player.4k
-      state: 'off'
     - entity: media_player.google_tv_streamer
       state: 'off'
     card: !include ../../spotify/ui/media_player.yaml

@@ -1,29 +1,3 @@
-- alias: Home cinema mode to ChromeCast (by checking chromecast state)
-  trigger:
-    # ChromeCast changes state
-    - platform: "state"
-      entity_id: "media_player.4k"
-      to: "playing"
-    - platform: "state"
-      entity_id: "media_player.4k"
-      to: "paused"
-  condition:
-    - condition: not
-      conditions:
-      # ChromeCast is not off (either 'playing' or 'paused')
-      - condition: "state"
-        entity_id: media_player.4k
-        state: "off"
-  action:
-    # Update the mode
-    - action: input_select.select_option
-      data:
-        entity_id: input_select.home_cinema_mode
-        option: "chromecast"
-    - action: "input_boolean.turn_off"
-      data:
-        entity_id: "input_boolean.home_cinema_pending"
-
 - alias: Home cinema mode to ChromeCast (by checking Streamer state)
   trigger:
     # ChromeCast changes state
