@@ -26,12 +26,8 @@ views:
         show_icon: true
         entity: switch.computer_thijs_wake_on_lan
         tap_action:
-          action: fire-dom-event
-          browser_mod:
-            service: browser_mod.popup
-            data:
-              title: Desktop
-              content: !include features/computer/ui/desktop_thijs.yaml
+          action: navigate
+          navigation_path: /dashboard-sections/computer
       # Phone alarm
       - type: entity
         show_name: false
