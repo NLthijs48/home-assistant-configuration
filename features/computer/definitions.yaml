@@ -1,5 +1,3 @@
-automation: !include_dir_merge_list automations
-
 # Enable wake on lan integration
 wake_on_lan:
 
@@ -21,6 +19,7 @@ switch:
   #   scan_interval: 6
 
   # Computer Thijs (2.5Gbps jack)
+  # TODO: move to UI config
   - name: Computer Thijs wake on lan
     platform: wake_on_lan
     mac: "f0:2f:74:16:19:9a"
@@ -32,21 +31,11 @@ switch:
       target:
         entity_id: button.computer_thijs_hibernate
     scan_interval: 10
-  # Laptop Thijs
-  - name: Laptop Thijs wake on lan
-    platform: wake_on_lan
-    mac: "00:28:f8:3e:c6:82"
-    host: "10.0.100.3"
-    broadcast_address: "10.0.100.3"
-    scan_interval: 10
-  # TODO: Thijs Crisp laptop
 
 homeassistant:
   customize:
     switch.computer_thijs_wake_on_lan:
       icon: mdi:desktop-tower-monitor
-    switch.laptop_thijs_wake_on_lan:
-      icon: mdi:laptop-windows
 
 script:
   # Wake my computer
