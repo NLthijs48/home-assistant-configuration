@@ -68,6 +68,17 @@ views:
           - condition: state
             entity: binary_sensor.terrace_door_contact
             state: "off"
+      # Guests mode (while on)
+      - type: entity
+        show_name: true
+        show_state: false
+        show_icon: true
+        entity: input_boolean.guests_mode
+        name: Guests
+        visibility:
+          - condition: state
+            entity: input_boolean.guests_mode
+            state: "on"
     cards:
       - type: vertical-stack
         cards:
