@@ -13,8 +13,22 @@ cards:
     entities:
 
       # Ceiling lights
-      - entity: light.attic_lights
-        name: Ceiling lights
+      - type: custom:fold-entity-row
+        head:
+          entity: light.attic_lights
+          name: Ceiling lights
+        entities:
+          - type: custom:fold-entity-row
+            head:
+              entity: binary_sensor.attic_motion_sensor_occupancy
+              name: Motion sensor
+            entities:
+            - entity: sensor.attic_motion_sensor_illuminance_lux
+              name: Light level
+            - entity: sensor.attic_motion_sensor_temperature
+              name: Temperature
+            - entity: sensor.attic_motion_sensor_battery
+              name: Battery
 
       # Attic guest
       - type: custom:fold-entity-row
