@@ -16,6 +16,7 @@ homeassistant:
     electricity: !include features/electricity/definitions.yaml
     gardening: !include features/gardening/definitions.yaml
     guests: !include features/guests/definitions.yaml
+    heating: !include features/heating/definitions.yaml
     home_cinema: !include features/home_cinema/definitions.yaml
     lighting: !include features/lighting/definitions.yaml
     meters: !include features/meters/definitions.yaml
