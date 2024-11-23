@@ -1,8 +1,3 @@
-# Summary column for an overview of the inside environment
-# TODO: split this up into a few buttons:
-# - Current usage
-# - Last day
-# - Long term
 type: vertical-stack
 cards:
   - type: custom:button-card
@@ -10,40 +5,40 @@ cards:
     template: header
     # Show details popup when clicking the header
     tap_action:
-      action: fire-dom-event
-      browser_mod:
-        service: browser_mod.popup
-        data:
-          title: ⚡ Electricity
-          content:
-            type: vertical-stack
-            cards:
-              # Most recent data
-              - type: vertical-stack
-                title: Last hour
-                cards:
-                  - !include last_hour.yaml
-                  - !include current_power_usage.yaml
-              # Last day
-              - type: vertical-stack
-                title: Daily
-                cards:
-                  - type: energy-date-selection
-                  - type: energy-distribution
-                  - type: energy-usage-graph
-                  - type: energy-sources-table
-                  - type: energy-devices-graph
-              # Last 3 days
-              - type: vertical-stack
-                title: Last 3 days
-                cards:
-                  - !include last_three_days.yaml
-              # Total usage
-              - type: vertical-stack
-                title: Totals
-                cards:
-                  - type: tile
-                    entity: sensor.energy_consumption_tarif_2
-                  - type: tile
-                    entity: sensor.energy_consumption_tarif_1
-  - !include last_hour.yaml
+      action: navigate
+      navigation_path: /dashboard-sections/electricity
+  - type: 'custom:mini-graph-card'
+    entities:
+      - entity: sensor.power_consumption_watt
+        name: Whole house
+        show_fill: false
+        color: green
+      - entity: sensor.computer_thijs_power
+        name: 🖥️ Thijs
+        show_fill: false
+        color: '#EC623D77'
+      # Big appliances that use power
+      - entity: sensor.fridge_power
+        name: Fridge
+        show_fill: false
+        color: '#038FC7CC'
+      - entity: sensor.washing_machine_power
+        name: Wash
+        show_fill: false
+        color: '#BDCB05CC'
+      - entity: 'sensor.tv_power'
+        name: TV
+        show_fill: false
+    height: 150
+    hour24: true
+    hours_to_show: 1
+    points_per_hour: 180
+    decimals: 0
+    line_width: 5
+    lower_bound: 0
+    show:
+      icon: false
+      labels: true
+      name: false
+      points: false
+
