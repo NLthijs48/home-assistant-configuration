@@ -10,13 +10,10 @@ homeassistant:
       entity_picture: "/local/frits.jpg"
   packages:
     computer: !include features/computer/definitions.yaml
-    # Tracking broken: too much JSON to do using REST sensors and such
-    #crisp: !include features/crisp/definitions.yaml
     curtain: !include features/curtain/definitions.yaml
     electricity: !include features/electricity/definitions.yaml
     gardening: !include features/gardening/definitions.yaml
     guests: !include features/guests/definitions.yaml
-    heating: !include features/heating/definitions.yaml
     home_cinema: !include features/home_cinema/definitions.yaml
     lighting: !include features/lighting/definitions.yaml
     meters: !include features/meters/definitions.yaml
