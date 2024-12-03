@@ -62,6 +62,17 @@ cards:
           labels_secondary: false
         lower_bound_secondary: 0
 
+  # Radiator valve
+  - type: tile
+    name: Radiator
+    entity: climate.attic_radiator_valve
+    state_content:
+      - current_temperature
+      - temperature
+    tap_action:
+      action: navigate
+      navigation_path: /dashboard-sections/heating
+
   # CO2
   - type: custom:button-card
     name: CO2
