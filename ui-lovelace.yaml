@@ -75,6 +75,24 @@ views:
           - condition: state
             entity: input_boolean.guests_mode
             state: "on"
+      # Next starship launch
+      - type: entity
+        show_name: false
+        show_state: true
+        show_icon: true
+        entity: sensor.next_launch_next_starship_launch
+        color: orange
+        icon: mdi:rocket-launch
+        visibility:
+          - condition: state
+            entity: sensor.next_launch_next_starship_launch
+            state_not: unavailable
+          - condition: state
+            entity: sensor.next_launch_next_starship_launch
+            state_not: unknown
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-sections/space
     cards:
       - type: vertical-stack
         cards:
