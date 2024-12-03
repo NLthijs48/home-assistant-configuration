@@ -184,7 +184,7 @@ button_card_templates:
     styles:
       card:
         - padding-bottom: 0.8rem
-        - height: 58px
+        - height: 56px
       name:
         - font-size: 0.8rem
         - text-transform: uppercase
