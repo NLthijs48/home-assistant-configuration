@@ -1,9 +1,0 @@
-- alias: "Tasks > Today > Nightly cleanup of completed"
-  trigger:
-  - platform: time
-    at: "05:00:00"
-  action:
-  - action: todo.remove_completed_items
-    target:
-      entity_id: todo.today
-

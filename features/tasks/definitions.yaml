@@ -1,3 +1,1 @@
 # Tasks and chores tracking
-
-automation: !include_dir_merge_list automations
