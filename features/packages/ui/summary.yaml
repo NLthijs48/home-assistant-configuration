@@ -8,13 +8,18 @@ card:
     - type: custom:button-card
       template: header
       name: 📦 Packages
+      tap_action:
+        action: navigate
+        navigation_path: /dashboard-sections/packages
     - type: tile
       entity: input_boolean.package_locker_occupied
       color: green
-      icon_tap_action:
-        action: more-info
       tap_action:
-        action: more-info
+        action: navigate
+        navigation_path: /dashboard-sections/packages
+      icon_tap_action:
+        action: navigate
+        navigation_path: /dashboard-sections/packages
       state_content: last-changed
       vertical: false
       name: Package in locker
