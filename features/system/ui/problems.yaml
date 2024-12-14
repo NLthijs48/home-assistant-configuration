@@ -11,8 +11,12 @@ filter:
     # For example KNMI weather alert
     - attributes:
         device_class: safety
+    # Leak sensors
+    - attributes:
+        device_class: moisture
+        domain: binary_sensor # Exclude plant moisture sensors
   exclude:
-    - state: unavailable
+    #- state: unavailable
     - state: 'off'
 show_empty: false
 sort:
