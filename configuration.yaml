@@ -27,7 +27,6 @@ homeassistant:
     washing_machine: !include features/washing_machine/definitions.yaml
 
     ##### DISABLED
-    # party_lighting: !include features/party_lighting/definitions.yaml
     # queing: !include features/queing/definitions.yaml
 
 # Include themes
