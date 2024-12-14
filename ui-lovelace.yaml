@@ -13,6 +13,9 @@ views:
       # Location
       - type: entity
         entity: sensor.thijs_location
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-sections/location
       # Phone battery level
       - type: entity
         show_name: false
