@@ -77,26 +77,6 @@ media_player:
         data:
           entity_id: media_player.google_tv_streamer_android_tv_remote
 
-# HDMI-CEC plugin to control connected devices
-# - Raspberry pi is connected to the Receiver using HDMI
-# - Host points to a supervisor addon, see readme.md
-hdmi_cec:
-  # Add-on address
-  host: 58c14403-pi-cec
-  # Raspberry Pi Zero 2 W remote pycec
-  #host: 10.0.6.216
-  platform: media_player
-  # HDMI network layout as seen from the TV
-  devices:
-    TV: 0.0.0.0
-    Receiver: 1.0.0.0
-    # Connected to the receiver
-    Raspberry Pi: 1.7.0.0
-
-    Laptop: 2.0.0.0
-    Chromecast: 3.0.0.0
-
-
 # Data fields for button that goes to the currently playing media content
 input_text:
   home_cinema_media_icon:
