@@ -43,6 +43,7 @@
           # Only vibrate once (done notification does still alert)
           alert_once: true
           notification_icon: mdi:washing-machine
+          clickAction: /dashboard-sections/washing
           # Disabled
           #actions:
           #  - title: Not mine

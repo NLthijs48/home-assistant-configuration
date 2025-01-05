@@ -24,6 +24,7 @@
           channel: Washing machine
           importance: high
           notification_icon: mdi:washing-machine
+          clickAction: /dashboard-sections/washing
           actions:
             - action: "{{ action_emptied }}"
               title: Emptied it

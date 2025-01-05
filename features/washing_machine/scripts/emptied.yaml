@@ -24,6 +24,7 @@ sequence:
         channel: Washing machine
         importance: high
         notification_icon: mdi:washing-machine
+        clickAction: /dashboard-sections/washing
         timeout: 10 # Remove after 10 seconds
         alert_once: true
   - alias: "Clear the washing machine user"

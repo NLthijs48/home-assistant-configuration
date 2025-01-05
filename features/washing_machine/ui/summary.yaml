@@ -10,12 +10,8 @@ card:
       name: 👕 Washing machine
       template: header
       tap_action:
-        action: fire-dom-event
-        browser_mod:
-          service: browser_mod.popup
-          data:
-            title: 👕 Washing machine
-            content: !include popup.yaml
+        action: navigate
+        navigation_path: /dashboard-sections/washing
     - type: horizontal-stack
       cards:
         - type: vertical-stack
@@ -31,21 +27,15 @@ card:
                 - state
                 - last-changed
               tap_action:
-                action: fire-dom-event
-                browser_mod:
-                  service: browser_mod.popup
-                  data:
-                    content: !include popup.yaml
+                action: navigate
+                navigation_path: /dashboard-sections/washing
             - type: tile
               entity: sensor.washing_machine_run_energy
               color: green
               name: 'Energy usage'
               tap_action:
-                action: fire-dom-event
-                browser_mod:
-                  service: browser_mod.popup
-                  data:
-                    content: !include popup.yaml
+                action: navigate
+                navigation_path: /dashboard-sections/washing
         # Electricity usage
         - type: custom:stack-in-card
           mode: vertical
@@ -56,11 +46,8 @@ card:
               entity: sensor.washing_machine_power
               template: statistic_button_graph
               tap_action:
-                action: fire-dom-event
-                browser_mod:
-                  service: browser_mod.popup
-                  data:
-                    content: !include popup.yaml
+                action: navigate
+                navigation_path: /dashboard-sections/washing
             - type: custom:mini-graph-card
               group: true
               entities:
