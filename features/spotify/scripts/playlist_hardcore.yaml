@@ -1,6 +1,0 @@
-alias: Play hardcore playlist
-icon: mdi:spotify
-sequence:
-  - action: script.play_spotify
-    data:
-      playlist: spotify:playlist:3WzbfnN823kqRh9hvtFNFs

@@ -1,7 +1,0 @@
-alias: Play techno playlist
-icon: mdi:spotify
-sequence:
-  - action: script.play_spotify
-    data:
-      playlist: spotify:playlist:0OOsS4TwxfWSMOnb5ygMNA
-      media_content_type: playlist

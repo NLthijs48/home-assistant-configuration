@@ -6,7 +6,7 @@ cards:
     cards:
     - name: Dance
       type: tile
-      entity: script.playlist_dance
+      entity: script.play_dance_playlist
       hide_state: true
       icon: mdi:play
       tap_action:
@@ -15,7 +15,7 @@ cards:
         action: toggle
     - name: Hardstyle
       type: tile
-      entity: script.playlist_hardstyle
+      entity: script.play_hardstyle_playlist
       hide_state: true
       icon: mdi:play
       tap_action:
@@ -24,7 +24,7 @@ cards:
         action: toggle
     - name: Techno
       type: tile
-      entity: script.playlist_techno
+      entity: script.play_techno_playlist
       hide_state: true
       icon: mdi:play
       tap_action:
@@ -33,7 +33,7 @@ cards:
         action: toggle
     - name: Dancecore
       type: tile
-      entity: script.playlist_dancecore
+      entity: script.play_dancecore_playlist
       hide_state: true
       icon: mdi:play
       tap_action:
@@ -44,7 +44,7 @@ cards:
     cards:
     - name: Psy Trance
       type: tile
-      entity: script.playlist_psy_trance
+      entity: script.play_psy_trance_playlist
       hide_state: true
       icon: mdi:play
       tap_action:
@@ -53,7 +53,7 @@ cards:
         action: toggle
     - name: Hardcore
       type: tile
-      entity: script.playlist_hardcore
+      entity: script.play_hardcore_playlist
       hide_state: true
       icon: mdi:play
       tap_action:

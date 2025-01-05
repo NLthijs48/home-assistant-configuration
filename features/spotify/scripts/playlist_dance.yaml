@@ -1,6 +1,0 @@
-alias: Play dance playlist
-icon: mdi:spotify
-sequence:
-  - action: script.play_spotify
-    data:
-      playlist: spotify:playlist:7esr88iapnKZnhw6jOZDlv

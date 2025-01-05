@@ -1,6 +1,0 @@
-alias: Play hardstyle playlist
-icon: mdi:spotify
-sequence:
-  - action: script.play_spotify
-    data:
-      playlist: spotify:playlist:3fyLRA465rNeomGg4cohGh
