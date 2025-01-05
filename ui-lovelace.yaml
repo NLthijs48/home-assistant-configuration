@@ -127,7 +127,6 @@ views:
       - !include features/gardening/ui/summary.yaml
       - !include features/vacuum/ui/summary.yaml
 
-      # - !include features/weather/ui/buienalarm.yaml, Constantly broken, look for fix
       # - !include ui/media/plex-status.yaml, not useful yet
 
     # More info popup replacements

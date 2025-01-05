@@ -1,8 +1,5 @@
 # Plant monitoring systems
 
-# Automations for notifications
-automation: !include_dir_merge_list automations
-
 homeassistant:
   customize:
     plant.1:
@@ -29,7 +26,6 @@ homeassistant:
 # - try rendering the friendly_name of the plant everywhere, not all cards support that though
 # - the physical sensors are marked with the number
 plant:
-
   # Ecowitt WH51 soil sensor
   1:
     sensors:
