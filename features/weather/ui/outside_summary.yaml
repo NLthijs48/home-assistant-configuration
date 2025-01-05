@@ -4,36 +4,42 @@ cards:
     name: ☀️ Forecast
     template: header
     tap_action:
-      action: fire-dom-event
-      browser_mod:
-        service: browser_mod.popup
-        data:
-          title: "☀️ Forecast"
-          content:
-            type: vertical-stack
-            cards:
-              - !include outside/forecast_24_hours_bar.yaml
-              #- !include outside/forecast_24_hours_graph.yaml
-              - !include outside/forecast_days.yaml
-              # TODO: try showing this in the summary when not all-zero?
-              - !include outside/buienalarm.yaml
-              - !include outside/buienradar.yaml
-              - !include outside/radar.yaml
-  - type: custom:stack-in-card
-    cards:
-      # TODO: try card-modding these cards closer to each other
-      - type: custom:hourly-weather
-        entity: weather.152
-        # Aligned with the graph below
-        num_segments: 24
-        label_spacing: 3
-        icons: true
-        # The graph below shows it already
-        #hide_hours: true
-        # Hides the name
-        name: null
-        colors: !include outside/hourly_weather_colors.yaml
-        round_temperatures: true
-        show_wind: speed
-      #- !include outside/forecast_24_hours_graph.yaml
-  - !include outside/forecast_days.yaml
+      action: navigate
+      navigation_path: /dashboard-sections/weather
+  - type: custom:hourly-weather
+    entity: weather.152
+    # Aligned with the graph below
+    num_segments: 24
+    label_spacing: 3
+    icons: true
+    # The graph below shows it already
+    #hide_hours: true
+    # Hides the name
+    name: null
+    colors:
+      sunny: "#a19504" # Dark yellow (keep white icon visible)
+      rainy: "#2e70ab" # Deep blue
+      pouring: "#024785" # Darker than rainy
+      cloudy: "#626262" # Dark grey
+      partlycloudy: "#7a7532" # Darker variant of sunny
+      exceptional: red
+    round_temperatures: true
+    show_wind: speed
+    tap_action:
+      action: navigate
+      navigation_path: /dashboard-sections/weather
+  - type: custom:clock-weather-card
+    entity: weather.knmi_152
+    sun_entity: sun.sun
+    weather_icon_type: fill
+    date_pattern: cccc dd LLLL
+    hide_today_section: true
+    hide_forecast_section: false
+    hide_clock: false
+    hide_date: false
+    hourly_forecast: false
+    use_browser_time: false
+    time_zone: null
+    tap_action:
+      action: navigate
+      navigation_path: /dashboard-sections/weather
