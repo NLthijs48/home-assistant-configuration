@@ -1,7 +1,7 @@
 type: conditional
 conditions:
   - entity: sensor.crisp_next_order_delivery_on
-    state_not: 'unknown'
+    state_not: "unknown"
 card:
   type: vertical-stack
   cards:
@@ -9,39 +9,8 @@ card:
       name: 🥐 Crisp
       template: header
       tap_action:
-        action: fire-dom-event
-        browser_mod:
-          service: browser_mod.popup
-          data:
-            title: 🥐 Crisp
-            content:
-              type: vertical-stack
-              cards:
-                - type: horizontal-stack
-                  cards:
-                    - type: tile
-                      entity: sensor.crisp_order_count_total
-                      name: Order count total
-                    - type: tile
-                      entity: sensor.crisp_order_count_open
-                      name: Order count open
-                - type: custom:button-card
-                  template: header
-                  name: Next order
-                - type: tile
-                  entity: sensor.crisp_next_order_product_count
-                  name: Product count
-                - type: tile
-                  entity: sensor.crisp_next_order_delivery_on
-                  name: Delivery on
-                - type: horizontal-stack
-                  cards:
-                    - type: tile
-                      entity: sensor.crisp_next_order_delivery_start_time
-                      name: Delivery start time
-                    - type: tile
-                      entity: sensor.crisp_next_order_delivery_end_time
-                      name: Delivery end time
+        action: navigate
+        navigation_path: /dashboard-sections/crisp
     - type: horizontal-stack
       cards:
         # Information button
@@ -74,7 +43,7 @@ card:
             action: url
             # TODO: link to the specific order, expose this url in the integration somewhere
             # TODO: expose tracking link somewhere and use that here as well
-            url_path: 'https://crisp.nl/app/'
+            url_path: "https://crisp.nl/app/"
           styles:
             card:
               - height: 70px
@@ -96,7 +65,7 @@ card:
         - type: custom:button-card
           # TODO: expose fulfillStatus or an icon from the integration
           #entity: sensor.crisp_next_order
-          icon: 'mdi:truck'
+          icon: "mdi:truck"
           name: Details line
           show_state: false
           show_icon: true
@@ -107,10 +76,10 @@ card:
               - width: 50px
               # Overlap it with the information button
               - marginLeft: "-58px"
-              - boxShadow: 'none'
-              - background: 'transparent'
+              - boxShadow: "none"
+              - background: "transparent"
               # Passthrough taps to the information button instead
-              - pointerEvents: 'none'
+              - pointerEvents: "none"
             icon:
               - height: 25px
               - width: 25px
