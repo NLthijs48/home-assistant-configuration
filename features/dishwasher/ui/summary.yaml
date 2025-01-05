@@ -15,29 +15,34 @@ card:
           data:
             title: 🍽 Dishwasher
             content: !include popup.yaml
-    - type: custom:timer-bar-card
-      entities:
+    - type: conditional
+      conditions:
         - entity: sensor.dishwasher_operation_state
-          name: Dishwasher
-          active_state: Run
-          active_icon: mdi:dishwasher
-          text_width: 4.5em
-          bar_height: 1em
-          bar_background: rgba(255,255,255,0.3)
-          bar_foreground: '#2196f3'
-          compressed: true
-          end_time:
-            entity: sensor.dishwasher_remaining_program_time
-          layout: full_row
-          mushroom:
-            fill_container: true
-          tap_action:
-            action: fire-dom-event
-            browser_mod:
-              service: browser_mod.popup
-              data:
-                title: 🍽 Dishwasher
-                content: !include popup.yaml
+          state_not: 'ready'
+      card:
+        - type: custom:timer-bar-card
+          entities:
+            - entity: sensor.dishwasher_operation_state
+              name: Dishwasher
+              active_state: Run
+              active_icon: mdi:dishwasher
+              text_width: 4.5em
+              bar_height: 1em
+              bar_background: rgba(255,255,255,0.3)
+              bar_foreground: '#2196f3'
+              compressed: true
+              end_time:
+                entity: sensor.dishwasher_remaining_program_time
+              layout: full_row
+              mushroom:
+                fill_container: true
+              tap_action:
+                action: fire-dom-event
+                browser_mod:
+                  service: browser_mod.popup
+                  data:
+                    title: 🍽 Dishwasher
+                    content: !include popup.yaml
     - type: horizontal-stack
       cards:
         - type: vertical-stack
