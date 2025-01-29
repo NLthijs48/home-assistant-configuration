@@ -55,7 +55,7 @@ plant:
   3:
     sensors:
       moisture: sensor.plant_3_moisture
-      brightness: sensor.living_room_motion_sensor_illuminance_lux
+      brightness: sensor.living_room_motion_sensor_illuminance
       temperature: sensor.ecowitt_wh45_temperature
       # First needs conversion from volt to percent (use template sensor)
       #battery: sensor.plant_3_battery
@@ -69,7 +69,7 @@ plant:
   4:
     sensors:
       moisture: sensor.plant_4_moisture
-      brightness: sensor.ground_floor_hall_motion_sensor_illuminance_lux
+      brightness: sensor.ground_floor_hall_motion_sensor_illuminance
       temperature: sensor.ecowitt_wh45_temperature
       # First needs conversion from volt to percent (use template sensor)
       #battery: sensor.plant_4_battery
@@ -83,7 +83,7 @@ plant:
   5:
     sensors:
       moisture: sensor.plant_5_moisture
-      brightness: sensor.living_room_motion_sensor_illuminance_lux
+      brightness: sensor.living_room_motion_sensor_illuminance
       temperature: sensor.ecowitt_wh45_temperature
       # First needs conversion from volt to percent (use template sensor)
       #battery: sensor.plant_5_battery
@@ -95,7 +95,7 @@ plant:
   6:
     sensors:
       moisture: sensor.plant_6_moisture
-      brightness: sensor.terrace_motion_sensor_illuminance_lux
+      brightness: sensor.terrace_motion_sensor_illuminance
       temperature: sensor.netatmo_terrace_temperature
       # First needs conversion from volt to percent (use template sensor)
       #battery: sensor.plant_6_battery

@@ -37,7 +37,7 @@ cards:
               entity: binary_sensor.first_floor_hall_motion_sensor_occupancy
               name: Motion sensor
             entities:
-            - entity: sensor.first_floor_hall_motion_sensor_illuminance_lux
+            - entity: sensor.first_floor_hall_motion_sensor_illuminance
               name: Light level
             - entity: sensor.first_floor_hall_motion_sensor_temperature
               name: Temperature
@@ -79,7 +79,7 @@ cards:
                   entity: binary_sensor.bedroom_wide_motion_sensor_occupancy
                   name: Motion sensor wide
                 entities:
-                - entity: sensor.bedroom_wide_motion_sensor_illuminance_lux
+                - entity: sensor.bedroom_wide_motion_sensor_illuminance
                   name: Light level
                 - entity: sensor.bedroom_wide_motion_sensor_temperature
                   name: Temperature
@@ -99,7 +99,7 @@ cards:
                   entity: binary_sensor.bedroom_floor_motion_sensor_occupancy
                   name: Motion sensor floor
                 entities:
-                - entity: sensor.bedroom_floor_motion_sensor_illuminance_lux
+                - entity: sensor.bedroom_floor_motion_sensor_illuminance
                   name: Light level
                 - entity: sensor.bedroom_floor_motion_sensor_temperature
                   name: Temperature
@@ -124,7 +124,7 @@ cards:
                   entity: binary_sensor.bedroom_closets_motion_sensor_occupancy
                   name: Motion sensor closets
                 entities:
-                - entity: sensor.bedroom_closets_motion_sensor_illuminance_lux
+                - entity: sensor.bedroom_closets_motion_sensor_illuminance
                   name: Light level
                 - entity: sensor.bedroom_closets_motion_sensor_temperature
                   name: Temperature
@@ -146,7 +146,7 @@ cards:
                   entity: binary_sensor.shower_motion_sensor_occupancy
                   name: Motion sensor shower
                 entities:
-                - entity: sensor.shower_motion_sensor_illuminance_lux
+                - entity: sensor.shower_motion_sensor_illuminance
                   name: Light level
                 - entity: sensor.shower_motion_sensor_temperature
                   name: Temperature
@@ -212,7 +212,7 @@ cards:
               entity: binary_sensor.guest_room_motion_sensor_occupancy
               name: Motion sensor
             entities:
-            - entity: sensor.guest_room_motion_sensor_illuminance_lux
+            - entity: sensor.guest_room_motion_sensor_illuminance
               name: Light level
             - entity: sensor.guest_room_motion_sensor_temperature
               name: Temperature

@@ -129,7 +129,7 @@ cards:
               entity: binary_sensor.living_room_motion_sensor_occupancy
               name: Motion sensor
             entities:
-              - entity: sensor.living_room_motion_sensor_illuminance_lux
+              - entity: sensor.living_room_motion_sensor_illuminance
                 name: Illuminance
               - entity: sensor.living_room_motion_sensor_temperature
                 name: Temperature
@@ -198,7 +198,7 @@ cards:
             entities:
               - entity: sensor.ground_floor_hall_motion_sensor_battery
                 name: Battery
-              - entity: sensor.ground_floor_hall_motion_sensor_illuminance_lux
+              - entity: sensor.ground_floor_hall_motion_sensor_illuminance
                 name: Illuminance
               - entity: sensor.ground_floor_hall_motion_sensor_temperature
                 name: Temperature
@@ -256,7 +256,7 @@ cards:
               entity: binary_sensor.shed_motion_sensor_occupancy
               name: Shed motion sensor
             entities:
-              - entity: sensor.shed_motion_sensor_illuminance_lux
+              - entity: sensor.shed_motion_sensor_illuminance
                 name: Light level
               - entity: sensor.shed_motion_sensor_temperature
                 name: Temperature
@@ -269,7 +269,7 @@ cards:
           entity: binary_sensor.terrace_motion_sensor_occupancy
           name: Terrace motion sensor
         entities:
-          - entity: sensor.terrace_motion_sensor_illuminance_lux
+          - entity: sensor.terrace_motion_sensor_illuminance
             name: Light level
           - entity: sensor.terrace_motion_sensor_temperature
             name: Temperature

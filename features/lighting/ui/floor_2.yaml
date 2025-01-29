@@ -23,7 +23,7 @@ cards:
               entity: binary_sensor.attic_motion_sensor_occupancy
               name: Motion sensor
             entities:
-            - entity: sensor.attic_motion_sensor_illuminance_lux
+            - entity: sensor.attic_motion_sensor_illuminance
               name: Light level
             - entity: sensor.attic_motion_sensor_temperature
               name: Temperature
