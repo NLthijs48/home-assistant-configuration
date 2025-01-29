@@ -64,8 +64,8 @@ cards:
 
   # Radiator valve
   - type: tile
-    name: Radiator
-    entity: climate.attic_radiator_valve
+    name: Climate
+    entity: climate.attic_group
     state_content:
       - current_temperature
       - temperature
