@@ -14,9 +14,5 @@ card:
         name: true
         power: true
       tap_action:
-        action: fire-dom-event
-        browser_mod:
-          service: browser_mod.popup
-          data:
-            title: ▶️ Spotify playlist
-            content: !include playlist_buttons.yaml
+        action: navigate
+        navigation_path: /dashboard-sections/music
