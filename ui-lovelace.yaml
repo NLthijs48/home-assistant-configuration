@@ -133,20 +133,6 @@ views:
     popup_cards:
       sensor.thijs_location: !include features/presence/ui/thijs_location_popup.yaml
 
-  # Plants
-  #- icon: mdi:sprout
-  #  path: plants
-  #  cards:
-  #    - !include features/gardening/ui/plant.yaml
-
-  # Tasks
-  - icon: "mdi:check-bold"
-    path: tasks
-    cards:
-    - !include features/tasks/ui/periodic_buttons.yaml
-    - !include features/tasks/ui/periodic_buttons_missing.yaml
-
-
   # Batteries
   - icon: mdi:battery-80
     path: batteries
