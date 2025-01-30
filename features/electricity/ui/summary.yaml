@@ -6,7 +6,7 @@ cards:
     # Show details popup when clicking the header
     tap_action:
       action: navigate
-      navigation_path: /dashboard-sections/electricity
+      navigation_path: /dashboard-utilities/electricity
   - type: 'custom:mini-graph-card'
     entities:
       - entity: sensor.power_consumption_watt
