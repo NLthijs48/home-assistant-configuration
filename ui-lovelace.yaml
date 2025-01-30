@@ -133,13 +133,6 @@ views:
     popup_cards:
       sensor.thijs_location: !include features/presence/ui/thijs_location_popup.yaml
 
-  # Batteries
-  - icon: mdi:battery-80
-    path: batteries
-    badges: []
-    cards:
-      - !include features/system/ui/battery_all.yaml
-
 # Templates for type:custom-button
 button_card_templates:
   # Card header that can be tapped

@@ -10,7 +10,7 @@ card:
       template: header
       tap_action:
         action: navigate
-        navigation_path: /lovelace/batteries
+        navigation_path: /dashboard-maintenance/batteries
 
     # List of entities with low batteries
     - type: 'custom:auto-entities'
