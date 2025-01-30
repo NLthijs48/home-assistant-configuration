@@ -147,13 +147,6 @@ views:
     - !include features/tasks/ui/periodic_buttons_missing.yaml
 
 
-  # Updates
-  - icon: mdi:download
-    path: updates
-    badges: []
-    cards:
-      - !include features/system/ui/updates.yaml
-
   # Batteries
   - icon: mdi:battery-80
     path: batteries
