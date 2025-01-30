@@ -146,14 +146,6 @@ views:
     - !include features/tasks/ui/periodic_buttons.yaml
     - !include features/tasks/ui/periodic_buttons_missing.yaml
 
-  # Lighting
-  - icon: mdi:lightbulb
-    path: lights
-    badges: []
-    cards:
-      - !include features/lighting/ui/floor_0.yaml
-      - !include features/lighting/ui/floor_1.yaml
-      - !include features/lighting/ui/floor_2.yaml
 
   # Updates
   - icon: mdi:download
