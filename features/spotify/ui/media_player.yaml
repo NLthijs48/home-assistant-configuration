@@ -3,16 +3,13 @@ conditions:
   - entity: media_player.spotify_thijs
     state_not: 'off'
 card:
-  type: vertical-stack
-  cards:
-    # Media player spotify
-    - type: custom:mini-media-player
-      entity: media_player.spotify_thijs
-      artwork: material
-      hide:
-        icon: true
-        name: true
-        power: true
-      tap_action:
-        action: navigate
-        navigation_path: /dashboard-sections/music
+  type: custom:mini-media-player
+  entity: media_player.spotify_thijs
+  artwork: material
+  hide:
+    icon: true
+    name: true
+    power: true
+  tap_action:
+    action: navigate
+    navigation_path: /dashboard-sections/music
