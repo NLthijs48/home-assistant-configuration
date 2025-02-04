@@ -34,7 +34,7 @@ cards:
       - temperature
     tap_action:
       action: navigate
-      navigation_path: /dashboard-sections/heating-living-room
+      navigation_path: /dashboard-heating/living-room
   - type: horizontal-stack
     cards:
       # CO2
