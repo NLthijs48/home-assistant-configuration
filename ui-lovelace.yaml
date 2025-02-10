@@ -9,95 +9,7 @@ views:
   # Home screen
   - icon: "mdi:theater"
     path: living-room
-    badges:
-      # Location
-      - type: entity
-        entity: sensor.thijs_location
-        tap_action:
-          action: navigate
-          navigation_path: /dashboard-sections/location
-      # Phone battery level
-      - type: entity
-        show_name: false
-        show_state: true
-        show_icon: true
-        entity: sensor.phone_thijs_battery_level
-      # Computer state
-      - type: entity
-        show_name: false
-        show_state: true
-        show_icon: true
-        entity: switch.computer_thijs_wake_on_lan
-        tap_action:
-          action: navigate
-          navigation_path: /dashboard-home/computer
-      # Phone alarm
-      - type: entity
-        show_name: false
-        show_state: true
-        show_icon: true
-        entity: sensor.phone_thijs_next_alarm
-        visibility:
-          - condition: state
-            entity: sensor.phone_thijs_next_alarm
-            state_not: unavailable
-      # Show terrace door is open
-      - type: entity
-        show_name: false
-        show_state: true
-        show_icon: true
-        entity: binary_sensor.terrace_door_contact
-        visibility:
-          - condition: state
-            entity: binary_sensor.terrace_door_contact
-            state: on
-      # Show terrace door beam is not locked when terrace door is closed
-      - type: entity
-        show_name: true
-        show_state: true
-        show_icon: true
-        entity: binary_sensor.terrace_door_beam_contact
-        color: red
-        name: Terrace door beam
-        show_entity_picture: false
-        visibility:
-          - condition: state
-            entity: binary_sensor.terrace_door_beam_contact
-            state: "on"
-          - condition: state
-            entity: binary_sensor.terrace_door_contact
-            state: "off"
-      # Guests mode (while on)
-      - type: entity
-        show_name: true
-        show_state: false
-        show_icon: true
-        entity: input_boolean.guests_mode
-        name: Guests
-        visibility:
-          - condition: state
-            entity: input_boolean.guests_mode
-            state: "on"
-      # Next starship launch
-      - type: entity
-        show_name: false
-        show_state: true
-        show_icon: true
-        entity: sensor.next_launch_next_starship_launch
-        color: orange
-        icon: mdi:rocket-launch
-        visibility:
-          - condition: state
-            entity: sensor.next_launch_next_starship_launch
-            state_not: unavailable
-          - condition: state
-            entity: sensor.next_launch_next_starship_launch
-            state_not: unknown
-        tap_action:
-          action: navigate
-          navigation_path: /dashboard-sections/space
     cards:
-      - !include features/presence/ui/person_locations.yaml
       - !include features/home_cinema/ui/players.yaml
       # Alerts and such
       - !include features/system/ui/problems.yaml
@@ -115,10 +27,6 @@ views:
       - !include features/vacuum/ui/summary.yaml
 
       # - !include ui/media/plex-status.yaml, not useful yet
-
-    # More info popup replacements
-    popup_cards:
-      sensor.thijs_location: !include features/presence/ui/thijs_location_popup.yaml
 
 # Templates for type:custom-button
 button_card_templates:
