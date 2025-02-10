@@ -1,8 +1,0 @@
-type: vertical-stack
-cards:
-  - type: picture
-    image_entity: image.duster_ground_floor
-  - type: picture
-    image_entity: image.duster_first_floor
-  - type: picture
-    image_entity: image.duster_attic

@@ -23,7 +23,6 @@ views:
           - !include features/weather/ui/bedroom_summary.yaml
           - !include features/weather/ui/attic_summary.yaml
           - !include features/weather/ui/guest_room_summary.yaml
-      - !include features/vacuum/ui/summary.yaml
 
       # - !include ui/media/plex-status.yaml, not useful yet
 
