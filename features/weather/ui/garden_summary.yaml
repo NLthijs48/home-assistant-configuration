@@ -13,11 +13,9 @@ cards:
           content:
             type: vertical-stack
             cards:
-            - !include garden/temperature.yaml
             - !include garden/wind.yaml
             - !include garden/humidity.yaml
             - !include garden/rain.yaml
-  - !include garden/temperature.yaml
 
   # Rows of tiny garden stats
   - type: horizontal-stack
