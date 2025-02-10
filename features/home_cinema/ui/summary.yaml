@@ -1,9 +1,0 @@
-type: vertical-stack
-cards:
-- type: custom:button-card
-  name: 🔊 Home cinema
-  template: header
-  tap_action:
-    action: navigate
-    navigation_path: /dashboard-sections/music
-- !include mode_select.yaml

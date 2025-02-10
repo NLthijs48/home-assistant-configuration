@@ -99,7 +99,6 @@ views:
     cards:
       - !include features/presence/ui/person_locations.yaml
       - !include features/tasks/ui/summary.yaml
-      - !include features/home_cinema/ui/summary.yaml
       - !include features/home_cinema/ui/players.yaml
       # Alerts and such
       - !include features/system/ui/problems.yaml
