@@ -117,7 +117,6 @@ views:
       # Maintenance (lower priority)
       - !include features/system/ui/battery_summary.yaml
 
-      - !include features/electricity/ui/summary.yaml
       - !include features/weather/ui/outside_summary.yaml
       - !include features/vacuum/ui/summary.yaml
 
