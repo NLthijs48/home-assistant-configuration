@@ -68,10 +68,3 @@ cards:
           #   controls: true
           #   mute: true
           #   power: true
-
-  # Spotify when not already showing on the Chromecast player
-  - type: conditional
-    conditions:
-    - entity: media_player.google_tv_streamer
-      state: 'off'
-    card: !include ../../spotify/ui/media_player.yaml
