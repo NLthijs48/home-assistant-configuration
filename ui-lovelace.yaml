@@ -105,7 +105,6 @@ views:
       - !include features/system/ui/problems.yaml
       - !include features/guests/ui/summary.yaml
 
-      - !include features/crisp/ui/next_order.yaml
       - !include features/washing_machine/ui/summary.yaml
       - !include features/dishwasher/ui/summary.yaml
       - type: horizontal-stack
