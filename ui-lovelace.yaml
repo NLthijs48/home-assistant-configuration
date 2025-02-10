@@ -10,8 +10,6 @@ views:
   - icon: "mdi:theater"
     path: living-room
     cards:
-      - !include features/home_cinema/ui/players.yaml
-
       - type: horizontal-stack
         cards:
           - !include features/weather/ui/living_room_summary.yaml
