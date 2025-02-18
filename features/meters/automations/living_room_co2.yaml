@@ -67,8 +67,8 @@
                   {% macro segment(start_led, end_led, color, scaledown=1) -%}
                     {%
                       set result.segments = result.segments + [
-                        led_count - end_led,
-                        led_count - start_led,
+                        start_led,
+                        end_led,
                         [
                           (color[0] / scaledown) | round(0, 'ceil'),
                           (color[1] / scaledown) | round(0, 'ceil'),
