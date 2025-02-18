@@ -14,7 +14,6 @@ cards:
           content:
             type: vertical-stack
             cards:
-              - !include living_room/temperature.yaml
               - !include living_room/co2.yaml
               - !include living_room/noise.yaml
               - !include living_room/humidity.yaml
@@ -22,8 +21,6 @@ cards:
               - !include living_room/pm2_5.yaml
               - !include living_room/pm10.yaml
               - !include living_room/fridge_temperature.yaml
-
-  - !include living_room/temperature_preview.yaml
 
   # Rows of tiny living room stats
   - type: horizontal-stack
