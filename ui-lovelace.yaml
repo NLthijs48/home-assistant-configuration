@@ -151,40 +151,6 @@ button_card_templates:
       - operator: "default"
         color: "var( --ha-card-background, var(--card-background-color, white) )"
 
-  # PM 2.5 state color
-  statistic_button_pm2_5:
-    template: statistic_button
-    color_type: card # Use the color as card background
-    state:
-      # Bad state
-      - value: 35
-        operator: ">"
-        color: "#790000"
-      # Worrisome state
-      - value: 12
-        operator: ">"
-        color: "#ab6300"
-      # Good state
-      - operator: "default"
-        color: "var( --ha-card-background, var(--card-background-color, white) )"
-
-  # PM 10 state color
-  statistic_button_pm10:
-    template: statistic_button
-    color_type: card # Use the color as card background
-    state:
-      # Bad state
-      - value: 80
-        operator: ">"
-        color: "#790000"
-      # Worrisome state
-      - value: 40
-        operator: ">"
-        color: "#ab6300"
-      # Good state
-      - operator: "default"
-        color: "var( --ha-card-background, var(--card-background-color, white) )"
-
   # Plant state color
   statistic_button_plant:
     template: statistic_button
