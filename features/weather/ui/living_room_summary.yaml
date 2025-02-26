@@ -14,7 +14,6 @@ cards:
           content:
             type: vertical-stack
             cards:
-              - !include living_room/co2.yaml
               - !include living_room/noise.yaml
               - !include living_room/humidity.yaml
               - !include living_room/pressure.yaml
@@ -23,17 +22,6 @@ cards:
   # Rows of tiny living room stats
   - type: horizontal-stack
     cards:
-      # CO2
-      - type: custom:button-card
-        name: CO2
-        entity: sensor.ecowitt_wh45_co2
-        template: statistic_button_co2
-        tap_action:
-          action: fire-dom-event
-          browser_mod:
-            service: browser_mod.popup
-            data:
-              content: !include living_room/co2.yaml
       # Humidity
       - type: custom:button-card
         name: Humidity
