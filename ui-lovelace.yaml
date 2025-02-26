@@ -13,9 +13,6 @@ views:
       - type: horizontal-stack
         cards:
           - !include features/weather/ui/garden_summary.yaml
-      - type: horizontal-stack
-        cards:
-          - !include features/weather/ui/guest_room_summary.yaml
 
       # - !include ui/media/plex-status.yaml, not useful yet
 
