@@ -99,12 +99,6 @@ tts:
 automation: !include automations.yaml
 script: !include scripts.yaml
 
-# Frontend settings
-lovelace:
-  # Set the main dashboard to use the yaml configured UI, this is shown as default
-  mode: yaml
-  resources: !include lovelace_resources.yaml
-
 # REST commands
 rest_command:
   tv_input:
