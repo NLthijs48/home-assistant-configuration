@@ -14,23 +14,8 @@ cards:
             type: vertical-stack
             cards:
             - !include garden/wind.yaml
-            - !include garden/humidity.yaml
 
   # Rows of tiny garden stats
-  - type: horizontal-stack
-    cards:
-      # Humidity
-      - type: custom:button-card
-        name: Humidity
-        entity: sensor.netatmo_terrace_humidity
-        template: statistic_button # Don't use humidity template, for outside it does not matter
-        tap_action:
-          action: fire-dom-event
-          browser_mod:
-            service: browser_mod.popup
-            data:
-              content: !include garden/humidity.yaml
-
   - type: horizontal-stack
     cards:
       # Wind gust
