@@ -15,7 +15,6 @@ cards:
             cards:
             - !include garden/wind.yaml
             - !include garden/humidity.yaml
-            - !include garden/rain.yaml
 
   # Rows of tiny garden stats
   - type: horizontal-stack
@@ -31,17 +30,6 @@ cards:
             service: browser_mod.popup
             data:
               content: !include garden/humidity.yaml
-      # Rain today
-      - type: custom:button-card
-        name: Rain today
-        entity: sensor.netatmo_rain_sum_rain_24
-        template: statistic_button_rain
-        tap_action:
-          action: fire-dom-event
-          browser_mod:
-            service: browser_mod.popup
-            data:
-              content: !include garden/rain.yaml
 
   - type: horizontal-stack
     cards:
