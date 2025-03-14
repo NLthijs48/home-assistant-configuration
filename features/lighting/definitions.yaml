@@ -62,15 +62,3 @@ light:
     entities:
       - light.attic_beds
       - light.attic_standing
-
-input_select:
-  # Living room light mode: determines brightness of all lights
-  living_room_lighting_mode:
-    name: Living room lighting mode
-    icon: mdi:brightness-4
-    options:
-      - 'manual'
-      - 'day'
-      - 'cooking'
-      - 'evening'
-      - 'night'
