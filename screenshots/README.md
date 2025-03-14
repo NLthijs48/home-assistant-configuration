@@ -1,5 +1,7 @@
 # Screenshots
 
+These are currently outdated, everything has been moved to the new sections UI and upgraded!
+
 In this folder you can find screenshots of complete dashboard tabs. For specific features and their details see the relevant `features/<feature>/ui/` [folder](/features) for more detailed screenshots.
 
 ## Home
