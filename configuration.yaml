@@ -5,9 +5,7 @@ default_config:
 homeassistant:
   customize:
     person.thijs:
-      entity_picture: "/local/thijs.jpg"
-    person.frits:
-      entity_picture: "/local/frits.jpg"
+      entity_picture: "/local/icon.png"
   packages:
     computer: !include features/computer/definitions.yaml
     curtain: !include features/curtain/definitions.yaml
