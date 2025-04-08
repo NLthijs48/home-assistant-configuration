@@ -1,6 +1,4 @@
 # Integration of smart curtains
-automation: !include_dir_merge_list automations
-
 # https://slide.store/
 # https://www.home-assistant.io/integrations/slide
 # Thijs: disabled, trying out https://github.com/ualex73/slide with support for local api
