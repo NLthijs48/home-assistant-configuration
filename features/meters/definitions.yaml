@@ -1,5 +1,3 @@
-automation: !include_dir_merge_list automations
-
 # WLED update command
 # - you can only define 16 segments, so that is not an option for exact control
 # - use the 'i' field of the 'seg' field to do individual LED range control
