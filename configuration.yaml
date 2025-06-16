@@ -50,8 +50,6 @@ recorder:
       - camera
       # Not using weather history, just current predictions
       - weather
-      # Not using history, updates every few seconds while playing
-      - media_player
     entities:
       # Triggers often, no need for history
       - automation.detect_motion_in_the_living_room
