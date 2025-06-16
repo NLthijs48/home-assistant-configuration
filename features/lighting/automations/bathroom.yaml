@@ -24,7 +24,7 @@
             100
           {% endif %}
         # White(r) during the day, yellow-ish at night
-        kelvin: >-
+        color_temp_kelvin: >-
           {% if dnd %}
             2202
           {% elif sleepy %}

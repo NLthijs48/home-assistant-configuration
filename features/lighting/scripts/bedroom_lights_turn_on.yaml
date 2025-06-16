@@ -19,11 +19,11 @@ sequence:
         {% else %}
           30
         {% endif %}
-      color_temp: >-
+      color_temp_kelvin: >-
         {% if daytime and not dnd %}
-          300
+          3333
         {% else %}
-          495
+          2000
         {% endif %}
 
   # Turn on the ceiling light during daytime
@@ -43,7 +43,7 @@ sequence:
             data:
               transition: 1
               entity_id: light.bedroom_ceiling
-              color_temp: 250
+              color_temp_kelvin: 4000
     # Turn off at nighttime
     default:
       - action: light.turn_off

@@ -33,7 +33,7 @@ sequence:
     data:
       entity_id: light.bedroom_closets
       transition: 1
-      kelvin: >-
+      color_temp_kelvin: >-
         {% if daytime %}
           4000
         {% else %}
