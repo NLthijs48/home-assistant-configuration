@@ -11,7 +11,7 @@ sequence:
   # Turn on the receiver
   - action: media_player.turn_on
     data:
-      entity_id: media_player.hdmi_5
+      entity_id: media_player.receiver
 
   # Receiver input
   - action: media_player.select_source
