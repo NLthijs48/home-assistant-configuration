@@ -50,6 +50,7 @@ light:
       - light.dining_ceiling
       - light.kitchen_ceiling
       - light.tv_led_strip
+      - light.panel_corner_light
   # Thijs' bedroom lights (light.bedroom_thijs_lights)
   - platform: group
     name: "Bedroom Thijs lights"
