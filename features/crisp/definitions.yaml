@@ -51,7 +51,7 @@ rest:
         value_template: >-
           {% set deliveryDate = as_timestamp(strptime(value_json.data[0].deliverySlot.date, '%Y-%m-%d'), default=None) %}
           {% if deliveryDate is not none %}
-            {{ deliveryDate | timestamp_custom('%A') }}
+            {{ deliveryDate | timestamp_custom('%A', '<missing>' }}
           {% else %}
             {{ None }}
           {% endif %}
@@ -251,7 +251,7 @@ template:
           {# Built expected at line #}
           {% set eta = as_timestamp(state_attr('sensor.crisp_next_order_tracking', 'eta'), default=None) %}
           {% if eta is not none %}
-            {% set result = 'Expected at ' + (eta | timestamp_custom('%H:%M')) %}
+            {% set result = 'Expected at ' + (eta | timestamp_custom('%H:%M', '<missing>')) %}
           {% else %}
             {% set result = None %}
           {% endif %}
