@@ -36,13 +36,3 @@ homeassistant:
   customize:
     switch.computer_thijs_wake_on_lan:
       icon: mdi:desktop-tower-monitor
-
-script:
-  # Wake my computer
-  computer_thijs_wake:
-    alias: "Computer Thijs: wake up"
-    sequence:
-      - action: wake_on_lan.send_magic_packet
-        data:
-          mac: "f0:2f:74:16:19:9b"
-          broadcast_address: "10.0.1.1"
