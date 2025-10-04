@@ -11,7 +11,7 @@
 - alias: "Thijs' room turn on when going out of do-not-disturb"
   trigger:
     - platform: state
-      entity_id: sensor.phone_thijs_do_not_disturb
+      entity_id: input_boolean.sleeping
       to: 'off'
   condition:
     # Only do this when Thijs is on the first floor
@@ -60,7 +60,7 @@
   condition:
     # Do not disturb is off: Thijs is not sleeping yet
     - condition: 'state'
-      entity_id: sensor.phone_thijs_do_not_disturb
+      entity_id: input_boolean.sleeping
       state: 'off'
   action:
     - action: script.bedroom_light_turn_on

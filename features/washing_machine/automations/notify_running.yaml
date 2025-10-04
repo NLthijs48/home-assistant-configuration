@@ -26,7 +26,7 @@
     - alias: "Notify turned on"
       action: >-
         {% if is_state('input_select.washing_machine_user', 'Thijs') %}
-          notify.mobile_app_phone_thijs
+          notify.mobile_app_thijs_oneplus_13
         {% endif %}
       data:
         title: >-
@@ -79,7 +79,7 @@
 #     - alias: "Confirmation notification"
 #       action: >-
 #         {% if is_state('input_select.washing_machine_user', 'Thijs') %}
-#           notify.mobile_app_phone_thijs
+#           notify.mobile_app_thijs_oneplus_13
 #         {% endif %}
 #       data:
 #         title: "Assigned this cycle to {{ other_user }}"

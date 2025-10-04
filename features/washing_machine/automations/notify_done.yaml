@@ -14,7 +14,7 @@
     - alias: "Notify done, ask to empty it"
       action: >-
         {% if is_state('input_select.washing_machine_user', 'Thijs') %}
-          notify.mobile_app_phone_thijs
+          notify.mobile_app_thijs_oneplus_13
         {% endif %}
       data:
         title: Washing machine done!

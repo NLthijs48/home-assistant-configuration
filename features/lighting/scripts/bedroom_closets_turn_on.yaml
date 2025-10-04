@@ -5,14 +5,14 @@ sequence:
   - alias: Set daytime variable
     variables:
       daytime: "{{ is_state('input_boolean.thijs_sleepy', 'off') }}"
-      dnd: "{{ is_state('sensor.phone_thijs_do_not_disturb', 'priority_only') }}"
+      dnd: "{{ is_state('input_boolean.sleeping', 'on') }}"
 
   - alias: "Not actually sleeping"
     condition: not
     conditions:
       - condition: state
-        entity_id: sensor.phone_thijs_do_not_disturb
-        state: "priority_only"
+        entity_id: input_boolean.sleeping
+        state: "on"
 
   - alias: Turn on the closets light panel
     action: light.turn_on

@@ -8,7 +8,7 @@
       entity_id: sensor.ecowitt_wh45_co2
       above: '1300'
   action:
-    - action: notify.mobile_app_phone_thijs
+    - action: notify.mobile_app_thijs_oneplus_13
       data:
         title: Living room CO2 is at {{states("sensor.ecowitt_wh45_co2")}} ppm!
         message: Open a window to fix it

@@ -27,7 +27,7 @@
     - delay: 1
     # Send notification
     - alias: Send persistent notification
-      action: notify.mobile_app_phone_thijs
+      action: notify.mobile_app_thijs_oneplus_13
       data:
         title: >-
           Crisp order
@@ -62,7 +62,7 @@
       below: 200 # Meters
   action:
     - alias: Send driver is close notification
-      action: notify.mobile_app_phone_thijs
+      action: notify.mobile_app_thijs_oneplus_13
       data:
         title: Crisp van is around the block!
         message: >-
@@ -85,7 +85,7 @@
       to: done
   action:
     - alias: Send delivered notification
-      action: notify.mobile_app_phone_thijs
+      action: notify.mobile_app_thijs_oneplus_13
       data:
         title: Order delivered, enjoy!
         message: >-
@@ -107,7 +107,7 @@
       to: cancel
   action:
     - alias: Send cancelled notification
-      action: notify.mobile_app_phone_thijs
+      action: notify.mobile_app_thijs_oneplus_13
       data:
         title: Order is cancelled!
         message: >-

@@ -5,7 +5,7 @@
       above: 1000
   action:
     # Notify phone of Thijs
-    - action: notify.mobile_app_phone_thijs
+    - action: notify.mobile_app_thijs_oneplus_13
       data:
         title: >-
           Bedroom CO2 is at {{ states("sensor.netatmo_bedroom_co2") }} ppm!

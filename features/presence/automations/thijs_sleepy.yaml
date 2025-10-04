@@ -2,7 +2,7 @@
 - alias: Set sleepy when phone to ring mode
   trigger:
     - platform: state
-      entity_id: sensor.phone_thijs_audio_setting
+      entity_id: sensor.thijs_oneplus_13_ringer_mode
       to: normal
   action:
     - action: input_boolean.turn_on
@@ -13,7 +13,7 @@
 - alias: Unset sleepy when phone goes to vibrate mode
   trigger:
     - platform: state
-      entity_id: sensor.phone_thijs_audio_setting
+      entity_id: sensor.thijs_oneplus_13_ringer_mode
       to: vibrate
   action:
     - action: input_boolean.turn_off
