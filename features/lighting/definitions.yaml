@@ -2,12 +2,3 @@
 script:
   living_room_lighting_mode: !include scripts/set_living_room_lighting_mode.yaml
   bedroom_closets_turn_on: !include scripts/bedroom_closets_turn_on.yaml
-
-homeassistant:
-  customize_glob:
-    # TODO: probably just remove? they should have nice defaults already
-    # Remotes
-    "sensor.remote_*": # TODO phase out legacy, renaming to the one below
-      icon: mdi:remote-tv
-    "sensor.*_remote":
-      icon: mdi:remote-tv
