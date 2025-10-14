@@ -134,6 +134,8 @@ sensor:
 logger:
   default: warning
   #logs:
+  #  custom_components.victron_ble: debug
   #  goslideapi: debug
   #  custom_components.slide: debug
   #  homeassistant.components.slide: debug
+
