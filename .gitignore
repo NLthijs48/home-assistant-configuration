@@ -11,6 +11,7 @@
 ##### Ignore Home Assistant runtime folders
 # UI configuration
 .storage
+.ha_run.lock
 # Home Assistant Cloud settings
 .cloud
 .google.token
