@@ -2,12 +2,6 @@
 
 automation: !include_dir_merge_list automations
 
-input_boolean:
-  # Tracks in someone is in the living room
-  living_room_in_use:
-    name: Living room in use
-    icon: mdi:sofa
-
 sensor:
   - platform: template
     sensors:
