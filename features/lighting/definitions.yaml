@@ -1,19 +1,3 @@
-# Using the Conbee II stick at: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2220048-if00
-zha:
-  zigpy_config:
-    ota:
-      # Auto-update Ikea devices (not constantly enabled to prevent sudden auto-update bricking devices)
-      #ikea_provider: true
-      # Firmware directory for Hue devices (keep enabled, in case new devices get added to the network)
-      otau_directory: /config/zigbee_firmware
-# Logging that can be enabled to view firmware upgrade checks/progress
-#logger:
-#  default: info
-#  logs:
-#    homeassistant.components.zha: debug
-#    zigpy: debug
-
-
 # Script for changing between modes
 script:
   living_room_lighting_mode: !include scripts/set_living_room_lighting_mode.yaml
