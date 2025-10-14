@@ -3,12 +3,6 @@ script:
   living_room_lighting_mode: !include scripts/set_living_room_lighting_mode.yaml
   bedroom_closets_turn_on: !include scripts/bedroom_closets_turn_on.yaml
 
-input_boolean:
-  # Indicates if we consider it light outside
-  light_outside:
-    name: Light outside
-    icon: mdi:theme-light-dark
-
 homeassistant:
   customize_glob:
     # TODO: probably just remove? they should have nice defaults already
