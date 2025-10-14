@@ -1,4 +1,0 @@
-# Script for changing between modes
-script:
-  living_room_lighting_mode: !include scripts/set_living_room_lighting_mode.yaml
-  bedroom_closets_turn_on: !include scripts/bedroom_closets_turn_on.yaml
