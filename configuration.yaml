@@ -8,7 +8,6 @@ homeassistant:
       entity_picture: "/local/icon.png"
   packages:
     computer: !include features/computer/definitions.yaml
-    curtain: !include features/curtain/definitions.yaml
     electricity: !include features/electricity/definitions.yaml
     gardening: !include features/gardening/definitions.yaml
     home_cinema: !include features/home_cinema/definitions.yaml
@@ -133,7 +132,6 @@ logger:
   default: warning
   #logs:
   #  custom_components.victron_ble: debug
-  #  goslideapi: debug
   #  custom_components.slide: debug
   #  homeassistant.components.slide: debug
 
