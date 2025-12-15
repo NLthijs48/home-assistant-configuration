@@ -2,162 +2,133 @@
 
 automation: !include_dir_merge_list automations
 
-sensor:
-  - platform: template
-    sensors:
-      # Floor that Thijs' phone is using
-      phone_thijs_wifi_ap:
-        friendly_name: "Phone Thijs Wifi AP"
-        value_template: >-
-          {% if is_state_attr('device_tracker.phone_thijs_oneplus_13', 'ap_mac', 'e4:38:83:67:b8:6e') %}
-            living room
-          {% elif is_state_attr('device_tracker.phone_thijs_oneplus_13', 'ap_mac', 'e4:38:83:56:cf:19') %}
-            first floor
-          {% elif is_state_attr('device_tracker.phone_thijs_oneplus_13', 'ap_mac', 'e4:38:83:73:be:4d') %}
-            attic
-          {% else %}
-            away
-          {% endif %}
-        icon_template: >-
-          {% if is_state('sensor.phone_thijs_wifi_ap', 'living room') %}
-            mdi:home-floor-0
-          {% elif is_state('sensor.phone_thijs_wifi_ap', 'first floor') %}
-            mdi:home-floor-1
-          {% elif is_state('sensor.phone_thijs_wifi_ap', 'attic') %}
-            mdi:home-floor-2
-          {% else %}
-            mdi:home-remove-outline
-          {% endif %}
-      # Floor that Thijs' laptop is using
-      laptop_thijs_wifi_ap:
-        friendly_name: "Laptop Thijs Wifi AP"
-        value_template: >-
-          {% if is_state_attr('device_tracker.unifi_laptop_thijs', 'ap_mac', 'e4:38:83:67:b8:6e') %}
-            living room
-          {% elif is_state_attr('device_tracker.unifi_laptop_thijs', 'ap_mac', 'e4:38:83:56:cf:19') %}
-            first floor
-          {% elif is_state_attr('device_tracker.unifi_laptop_thijs', 'ap_mac', 'e4:38:83:73:be:4d') %}
-            attic
-          {% else %}
-            away
-          {% endif %}
-        icon_template: >-
-          {% if is_state('sensor.phone_thijs_wifi_ap', 'living room') %}
-            mdi:home-floor-0
-          {% elif is_state('sensor.phone_thijs_wifi_ap', 'first floor') %}
-            mdi:home-floor-1
-          {% elif is_state('sensor.phone_thijs_wifi_ap', 'attic') %}
-            mdi:home-floor-2
-          {% else %}
-            mdi:home-remove-outline
-          {% endif %}
-      # Thijs' location
-      thijs_location:
-        friendly_name: "Thijs' location"
-        value_template: >-
-          {% if is_state('sensor.phone_thijs_wifi_ap', 'away') %}
-            {% if is_state('device_tracker.phone_thijs_zone', 'not_home') %}
-              Away
-            {% else %}
-              {{ states('device_tracker.phone_thijs_zone').capitalize() }}
-            {% endif %}
-          {% else %}
-            {{ states('sensor.phone_thijs_wifi_ap').capitalize() }}
-          {% endif %}
-        icon_template: >-
-          {% if is_state('sensor.phone_thijs_wifi_ap', 'away') %}
-            {# Not on wifi, use phone location tracker #}
-            {% if is_state('device_tracker.phone_thijs_zone', 'not_home') %}
-              {# Away #}
-              mdi:run-fast
-            {% else %}
-              {# Get the icon from the active zone (sadly not set as attribute on the device_tracker) #}
-              {{
-                states.zone
-                | selectattr("entity_id", "equalto", "zone." + (states("device_tracker.phone_thijs_zone") | lower | trim('0')))
-                | map(attribute="attributes.icon")
-                | first
-                | default('mdi:alert')
-              }}
-            {% endif %}
-          {% else %}
-            {# On wifi, use icon of that tracker (indicates floor) #}
-            {{ state_attr('sensor.phone_thijs_wifi_ap', 'icon') }}
-          {% endif %}
-  - platform: history_stats
-    name: Office this week
-    entity_id: sensor.thijs_location
-    unique_id: office_this_week
-    state: "Office"
-    type: time
-    start: "{{ today_at() - timedelta(days=now().weekday()) }}"
-    end: "{{ now() }}"
-  - platform: history_stats
-    name: Warehouse this week
-    entity_id: sensor.thijs_location
-    unique_id: warehouse_amsterdam_this_week
-    state: "Warehouse"
-    type: time
-    start: "{{ today_at() - timedelta(days=now().weekday()) }}"
-    end: "{{ now() }}"
-
-binary_sensor:
-  - platform: template
-    sensors:
-      # Someone present in the living room
-      living_room_used_wifi:
-        friendly_name: "Living room AP in use"
-        device_class: occupancy
-        value_template: >-
-          {% if is_state('sensor.phone_thijs_wifi_ap', 'living room') %}
-            yes
-          {% else %}
-            no
-          {% endif %}
-        icon_template: >-
-          {% if is_state('sensor.phone_thijs_wifi_ap', 'living room') %}
-            mdi:account
-          {% else %}
-            mdi:account-off
-          {% endif %}
-
-      thijs_home:
-        friendly_name: "Thijs is home"
-        device_class: presence
-        value_template: >-
-          {% if not is_state('sensor.phone_thijs_wifi_ap', 'away') or is_state('device_tracker.phone_thijs_zone', 'home') %}
-            yes
-          {% else %}
-            no
-          {% endif %}
-
-# New-style template sensor format (the sensors above need to be converted as well)
 template:
-  - binary_sensor:
-      # Computer Thijs turned on
-      - name: "Computer Thijs used"
-        device_class: running
-        # Prevent a small power dip turning it off
-        delay_off: 0:00:10
-        state: >-
-          {% if states('sensor.computer_thijs_power') | float(default=0) > 25 %}
-            yes
-          {% else %}
-            no
-          {% endif %}
-      # Computer room used based on computer activity
-      # - deals with remote work of Thijs by checking if home
-      - name: "Computer room used devices"
-        device_class: occupancy
-        state: >-
-          {% if (is_state('binary_sensor.computer_thijs_used', 'on') and is_state("binary_sensor.thijs_home", "on")) %}
-            yes
-          {% else %}
-            no
-          {% endif %}
-        icon: >-
-          {% if is_state('binary_sensor.computer_room_used_devices', 'on') %}
-            mdi:account-multiple
-          {% else %}
-            mdi:account-off
-          {% endif %}
+- sensor:
+  - default_entity_id: sensor.phone_thijs_wifi_ap
+    icon: >-
+      {% if is_state('sensor.phone_thijs_wifi_ap', 'living room') %}
+        mdi:home-floor-0
+      {% elif is_state('sensor.phone_thijs_wifi_ap', 'first floor') %}
+        mdi:home-floor-1
+      {% elif is_state('sensor.phone_thijs_wifi_ap', 'attic') %}
+        mdi:home-floor-2
+      {% else %}
+        mdi:home-remove-outline
+      {% endif %}
+    name: Phone Thijs Wifi AP
+    state: >-
+      {% if is_state_attr('device_tracker.phone_thijs_oneplus_13', 'ap_mac', 'e4:38:83:67:b8:6e') %}
+        living room
+      {% elif is_state_attr('device_tracker.phone_thijs_oneplus_13', 'ap_mac', 'e4:38:83:56:cf:19') %}
+        first floor
+      {% elif is_state_attr('device_tracker.phone_thijs_oneplus_13', 'ap_mac', 'e4:38:83:73:be:4d') %}
+        attic
+      {% else %}
+        away
+      {% endif %}
+  - default_entity_id: sensor.laptop_thijs_wifi_ap
+    name: Laptop Thijs Wifi AP
+    state: >-
+      {% if is_state_attr('device_tracker.laptop_thijs_oneplus_13', 'ap_mac', 'e4:38:83:67:b8:6e') %}
+        living room
+      {% elif is_state_attr('device_tracker.laptop_thijs_oneplus_13', 'ap_mac', 'e4:38:83:56:cf:19') %}
+        first floor
+      {% elif is_state_attr('device_tracker.laptop_thijs_oneplus_13', 'ap_mac', 'e4:38:83:73:be:4d') %}
+        attic
+      {% else %}
+        away
+      {% endif %}
+    icon: >-
+      {% if is_state('sensor.phone_thijs_wifi_ap', 'living room') %}
+        mdi:home-floor-0
+      {% elif is_state('sensor.phone_thijs_wifi_ap', 'first floor') %}
+        mdi:home-floor-1
+      {% elif is_state('sensor.phone_thijs_wifi_ap', 'attic') %}
+        mdi:home-floor-2
+      {% else %}
+        mdi:home-remove-outline
+      {% endif %}
+  - name: "Thijs' location"
+    default_entity_id: sensor.thijs_location
+    state: >-
+      {% if is_state('sensor.phone_thijs_wifi_ap', 'away') %}
+        {% if is_state('device_tracker.thijs_oneplus_13', 'not_home') %}
+          Away
+        {% else %}
+          {{ states('device_tracker.thijs_oneplus_13').capitalize() }}
+        {% endif %}
+      {% else %}
+        {{ states('sensor.phone_thijs_wifi_ap').capitalize() }}
+      {% endif %}
+    icon: >-
+      {% if is_state('sensor.phone_thijs_wifi_ap', 'away') %}
+        {# Not on wifi, use phone location tracker #}
+        {% if is_state('device_tracker.thijs_oneplus_13', 'not_home') %}
+          {# Away #}
+          mdi:run-fast
+        {% else %}
+          {# Get the icon from the active zone (sadly not set as attribute on the device_tracker) #}
+          {{
+            states.zone
+            | selectattr("entity_id", "equalto", "zone." + (states("device_tracker.thijs_oneplus_13") | lower | trim('0')))
+            | map(attribute="attributes.icon")
+            | first
+            | default('mdi:alert')
+          }}
+        {% endif %}
+      {% else %}
+        {# On wifi, use icon of that tracker (indicates floor) #}
+        {{ state_attr('sensor.phone_thijs_wifi_ap', 'icon') }}
+      {% endif %}
+
+- binary_sensor:
+  - name: "Computer Thijs used"
+    device_class: running
+    # Prevent a small power dip turning it off
+    delay_off: 0:00:10
+    state: >-
+      {% if states('sensor.computer_thijs_power') | float(default=0) > 25 %}
+        yes
+      {% else %}
+        no
+      {% endif %}
+  # Computer room used based on computer activity
+  # - deals with remote work of Thijs by checking if home
+  - name: "Computer room used devices"
+    device_class: occupancy
+    state: >-
+      {% if (is_state('binary_sensor.computer_thijs_used', 'on') and is_state("binary_sensor.thijs_home", "on")) %}
+        yes
+      {% else %}
+        no
+      {% endif %}
+    icon: >-
+      {% if is_state('binary_sensor.computer_room_used_devices', 'on') %}
+        mdi:account-multiple
+      {% else %}
+        mdi:account-off
+      {% endif %}
+  - name: "Living room AP in use"
+    default_entity_id: binary_sensor.living_room_used_wifi
+    device_class: occupancy
+    icon: >-
+      {% if is_state('sensor.phone_thijs_wifi_ap', 'living room') %}
+        mdi:account
+      {% else %}
+        mdi:account-off
+      {% endif %}
+    state: >-
+      {% if is_state('sensor.phone_thijs_wifi_ap', 'living room') %}
+        yes
+      {% else %}
+        no
+      {% endif %}
+  - name: "Thijs is home"
+    default_entity_id: binary_sensor.thijs_home
+    device_class: presence
+    state: >-
+      {% if not is_state('sensor.phone_thijs_wifi_ap', 'away') or is_state('device_tracker.phone_thijs_oneplus_13', 'home') %}
+        yes
+      {% else %}
+        no
+      {% endif %}
