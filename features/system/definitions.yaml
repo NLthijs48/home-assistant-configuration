@@ -1,6 +1,0 @@
-# System maintenance and monitoring
-
-# Enable this integration (which does autodiscovery using the UI)
-battery_notes:
-  round_battery: true # Whole numbers instead of 10.0 and such
-  hide_battery: true # Hide the original battery entity
